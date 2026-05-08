@@ -1,0 +1,32 @@
+:root {
+  --font: "Noto Sans", Roboto, "맑은 고딕", "Malgun Gothic", 돋움, dotum, Arial, sans-serif;
+  --page: #ffffff;
+  --text: #25282d;
+  --muted: #8c9aa8;
+  --line: #cfd5dc;
+  --soft-line: #e9eef2;
+  --blue: #2f95ed;
+  --yellow: #ffe94a;
+  --green: #32cd32;
+  --soft: #f4f9fd;
+  --panel: #f8f8f8;
+  --gray: #8d9dac;
+  --pink: #ea3b99;
+  --white: #fff;
+  --black: #000;
+  --max: 1200px;
+  --header: 98px;
+  --shadow: 0 18px 34px rgba(0, 0, 0, 0.08);
+  --shadow-border:
+    0 0 0 1px rgba(0, 0, 0, 0.06),
+    0 1px 2px -1px rgba(0, 0, 0, 0.06),
+    0 2px 4px rgba(0, 0, 0, 0.04);
+  --shadow-border-hover:
+    0 0 0 1px rgba(0, 0, 0, 0.08),
+    0 1px 2px -1px rgba(0, 0, 0, 0.08),
+    0 2px 4px rgba(0, 0, 0, 0.06);
+  --focus: 0 0 0 3px rgba(47, 149, 237, 0.32);
+  --ease-out: cubic-bezier(0.2, 0, 0, 1);
+  --duration-fast: 150ms;
+  --duration-normal: 200ms;
+}
