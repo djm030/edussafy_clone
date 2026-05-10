@@ -34,6 +34,7 @@ public class BoardQueryService {
     private final BoardCategoryRepository boardCategoryRepository;
     private final BoardPostRepository boardPostRepository;
     private final BoardDtoMapper boardDtoMapper;
+    private final BoardAttachmentService boardAttachmentService;
 
     public List<BoardResponse> getBoards() {
         return boardRepository.findAll(Sort.by(Sort.Direction.ASC, "id")).stream()
@@ -65,7 +66,7 @@ public class BoardQueryService {
         Board board = getBoard(boardCode);
         BoardPost post = boardPostRepository.findReadablePost(board, postId).orElseThrow(BoardPostNotFoundException::new);
         post.increaseViewCount();
-        return boardDtoMapper.toDetailResponse(post, currentUserId);
+        return boardDtoMapper.toDetailResponse(post, currentUserId, boardAttachmentService.getPostFiles(post.getId()));
     }
 
     private Board getBoard(String boardCode) {

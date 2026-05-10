@@ -4,10 +4,12 @@ import com.edussafy.clone.domain.board.domain.entity.Board;
 import com.edussafy.clone.domain.board.domain.entity.BoardCategory;
 import com.edussafy.clone.domain.board.domain.entity.BoardPost;
 import com.edussafy.clone.domain.board.dto.response.BoardCategoryResponse;
+import com.edussafy.clone.domain.board.dto.response.BoardFileResponse;
 import com.edussafy.clone.domain.board.dto.response.BoardPostDetailResponse;
 import com.edussafy.clone.domain.board.dto.response.BoardPostListResponse;
 import com.edussafy.clone.domain.board.dto.response.BoardResponse;
 import org.springframework.stereotype.Component;
+import java.util.List;
 
 @Component
 public class BoardDtoMapper {
@@ -40,7 +42,7 @@ public class BoardDtoMapper {
         );
     }
 
-    public BoardPostDetailResponse toDetailResponse(BoardPost post, Long currentUserId) {
+    public BoardPostDetailResponse toDetailResponse(BoardPost post, Long currentUserId, List<BoardFileResponse> files) {
         return new BoardPostDetailResponse(
                 post.getId(),
                 post.getCategory().getId(),
@@ -58,6 +60,7 @@ public class BoardDtoMapper {
                 post.getScrapCount(),
                 post.getHasAttachment(),
                 post.getIsNotice(),
+                files,
                 post.getCreatedAt(),
                 post.getUpdatedAt()
         );

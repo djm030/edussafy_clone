@@ -119,6 +119,26 @@ public class BoardPost extends BaseTimeEntity {
         this.isDeleted = true;
     }
 
+    public void increaseLikeCount() {
+        this.likeCount += 1;
+    }
+
+    public void decreaseLikeCount() {
+        this.likeCount = Math.max(0, this.likeCount - 1);
+    }
+
+    public void increaseCommentCount() {
+        this.commentCount += 1;
+    }
+
+    public void decreaseCommentCount() {
+        this.commentCount = Math.max(0, this.commentCount - 1);
+    }
+
+    public void updateAttachmentState(boolean hasAttachment) {
+        this.hasAttachment = hasAttachment;
+    }
+
     public boolean isWrittenBy(Long userId) {
         return user != null && user.getId() != null && user.getId().equals(userId);
     }

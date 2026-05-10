@@ -1,11 +1,13 @@
 package com.edussafy.clone;
 
 import com.edussafy.clone.domain.board.domain.repository.BoardCategoryRepository;
+import com.edussafy.clone.domain.board.domain.repository.BoardCommentRepository;
 import com.edussafy.clone.domain.board.domain.repository.BoardPostRepository;
 import com.edussafy.clone.domain.board.domain.repository.BoardRepository;
 import com.edussafy.clone.domain.user.domain.repository.UserRepository;
 import com.edussafy.clone.domain.user.domain.repository.UserStatRepository;
 import com.edussafy.clone.domain.user.dto.mapper.UserDtoMapper;
+import com.edussafy.clone.global.file.FileResourceRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -31,6 +33,12 @@ class EduSsafyCloneApplicationTests {
 
     @MockBean
     private BoardPostRepository boardPostRepository;
+
+    @MockBean
+    private BoardCommentRepository boardCommentRepository;
+
+    @MockBean
+    private FileResourceRepository fileResourceRepository;
 
     @MockBean
     private UserStatRepository userStatRepository;

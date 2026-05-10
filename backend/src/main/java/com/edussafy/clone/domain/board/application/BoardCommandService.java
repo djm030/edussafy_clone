@@ -29,6 +29,7 @@ public class BoardCommandService {
     private final BoardCategoryRepository boardCategoryRepository;
     private final BoardPostRepository boardPostRepository;
     private final UserRepository userRepository;
+    private final BoardAttachmentService boardAttachmentService;
 
     public Long createPost(String boardCode, Long currentUserId, UserRole currentUserRole, CreateBoardPostCommand command) {
         Board board = getBoard(boardCode);
@@ -46,7 +47,9 @@ public class BoardCommandService {
                 .hasAttachment(command.fileIds() != null && !command.fileIds().isEmpty())
                 .isNotice(board.isAdminWritable())
                 .build();
-        return boardPostRepository.save(post).getId();
+        BoardPost savedPost = boardPostRepository.save(post);
+        boardAttachmentService.linkPostFiles(savedPost.getId(), command.fileIds());
+        return savedPost.getId();
     }
 
     public void updatePost(String boardCode, Long postId, Long currentUserId, UserRole currentUserRole, UpdateBoardPostCommand command) {
@@ -56,6 +59,7 @@ public class BoardCommandService {
         BoardCategory category = getCategory(board, command.categoryId());
         post.update(category, command.title(), command.contentType(), command.contentText(), command.contentHtml(),
                 command.contentJson(), command.fileIds() != null && !command.fileIds().isEmpty());
+        boardAttachmentService.linkPostFiles(post.getId(), command.fileIds());
     }
 
     public void deletePost(String boardCode, Long postId, Long currentUserId, UserRole currentUserRole) {
@@ -63,6 +67,20 @@ public class BoardCommandService {
         BoardPost post = boardPostRepository.findReadablePost(board, postId).orElseThrow(BoardPostNotFoundException::new);
         validateOwnerOrAdmin(post, currentUserId, currentUserRole);
         post.softDelete();
+    }
+
+    public int likePost(String boardCode, Long postId) {
+        Board board = getBoard(boardCode);
+        BoardPost post = boardPostRepository.findReadablePost(board, postId).orElseThrow(BoardPostNotFoundException::new);
+        post.increaseLikeCount();
+        return post.getLikeCount();
+    }
+
+    public int unlikePost(String boardCode, Long postId) {
+        Board board = getBoard(boardCode);
+        BoardPost post = boardPostRepository.findReadablePost(board, postId).orElseThrow(BoardPostNotFoundException::new);
+        post.decreaseLikeCount();
+        return post.getLikeCount();
     }
 
     private Board getBoard(String boardCode) {

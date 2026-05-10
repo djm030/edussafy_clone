@@ -1,12 +1,18 @@
 package com.edussafy.clone.domain.board.api;
 
 import com.edussafy.clone.domain.board.application.BoardCommandService;
+import com.edussafy.clone.domain.board.application.BoardCommentService;
 import com.edussafy.clone.domain.board.application.BoardQueryService;
+import com.edussafy.clone.domain.board.dto.request.BoardCommentCreateRequest;
+import com.edussafy.clone.domain.board.dto.request.BoardCommentUpdateRequest;
 import com.edussafy.clone.domain.board.dto.request.BoardPostCreateRequest;
 import com.edussafy.clone.domain.board.dto.request.BoardPostUpdateRequest;
 import com.edussafy.clone.domain.board.dto.response.BoardCategoryResponse;
+import com.edussafy.clone.domain.board.dto.response.BoardCommentCreateResponse;
+import com.edussafy.clone.domain.board.dto.response.BoardCommentResponse;
 import com.edussafy.clone.domain.board.dto.response.BoardPostCreateResponse;
 import com.edussafy.clone.domain.board.dto.response.BoardPostDetailResponse;
+import com.edussafy.clone.domain.board.dto.response.BoardPostLikeResponse;
 import com.edussafy.clone.domain.board.dto.response.BoardPostListResponse;
 import com.edussafy.clone.domain.board.dto.response.BoardResponse;
 import com.edussafy.clone.global.response.ApiResponse;
@@ -28,23 +34,24 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/boards")
+@RequestMapping("/api/v1")
 public class BoardController {
 
     private final BoardQueryService boardQueryService;
     private final BoardCommandService boardCommandService;
+    private final BoardCommentService boardCommentService;
 
-    @GetMapping
+    @GetMapping("/boards")
     public ApiResponse<List<BoardResponse>> getBoards() {
         return ApiResponse.ok(boardQueryService.getBoards());
     }
 
-    @GetMapping("/{boardCode}/categories")
+    @GetMapping("/boards/{boardCode}/categories")
     public ApiResponse<List<BoardCategoryResponse>> getCategories(@PathVariable String boardCode) {
         return ApiResponse.ok(boardQueryService.getCategories(boardCode));
     }
 
-    @GetMapping("/{boardCode}/posts")
+    @GetMapping("/boards/{boardCode}/posts")
     public ApiResponse<PageResponse<BoardPostListResponse>> getPosts(
             @PathVariable String boardCode,
             @RequestParam(required = false) Long categoryId,
@@ -56,7 +63,7 @@ public class BoardController {
         return ApiResponse.ok(boardQueryService.getPosts(boardCode, categoryId, keyword, page, size, currentUserId));
     }
 
-    @GetMapping("/{boardCode}/posts/{postId}")
+    @GetMapping("/boards/{boardCode}/posts/{postId}")
     public ApiResponse<BoardPostDetailResponse> getPost(
             @PathVariable String boardCode,
             @PathVariable Long postId,
@@ -65,7 +72,7 @@ public class BoardController {
         return ApiResponse.ok(boardQueryService.getPost(boardCode, postId, currentUserId));
     }
 
-    @PostMapping("/{boardCode}/posts")
+    @PostMapping("/boards/{boardCode}/posts")
     public ApiResponse<BoardPostCreateResponse> createPost(
             @PathVariable String boardCode,
             @CurrentUser CurrentUserPrincipal currentUser,
@@ -75,7 +82,7 @@ public class BoardController {
         return ApiResponse.ok(new BoardPostCreateResponse(postId));
     }
 
-    @PatchMapping("/{boardCode}/posts/{postId}")
+    @PatchMapping("/boards/{boardCode}/posts/{postId}")
     public ApiResponse<Void> updatePost(
             @PathVariable String boardCode,
             @PathVariable Long postId,
@@ -86,13 +93,63 @@ public class BoardController {
         return ApiResponse.ok();
     }
 
-    @DeleteMapping("/{boardCode}/posts/{postId}")
+    @DeleteMapping("/boards/{boardCode}/posts/{postId}")
     public ApiResponse<Void> deletePost(
             @PathVariable String boardCode,
             @PathVariable Long postId,
             @CurrentUser CurrentUserPrincipal currentUser
     ) {
         boardCommandService.deletePost(boardCode, postId, currentUser.userId(), currentUser.role());
+        return ApiResponse.ok();
+    }
+
+    @PostMapping("/boards/{boardCode}/posts/{postId}/like")
+    public ApiResponse<BoardPostLikeResponse> likePost(@PathVariable String boardCode, @PathVariable Long postId) {
+        int likeCount = boardCommandService.likePost(boardCode, postId);
+        return ApiResponse.ok(new BoardPostLikeResponse(postId, likeCount));
+    }
+
+    @DeleteMapping("/boards/{boardCode}/posts/{postId}/like")
+    public ApiResponse<BoardPostLikeResponse> unlikePost(@PathVariable String boardCode, @PathVariable Long postId) {
+        int likeCount = boardCommandService.unlikePost(boardCode, postId);
+        return ApiResponse.ok(new BoardPostLikeResponse(postId, likeCount));
+    }
+
+    @GetMapping("/boards/{boardCode}/posts/{postId}/comments")
+    public ApiResponse<List<BoardCommentResponse>> getComments(
+            @PathVariable String boardCode,
+            @PathVariable Long postId,
+            @CurrentUser Long currentUserId
+    ) {
+        return ApiResponse.ok(boardCommentService.getComments(boardCode, postId, currentUserId));
+    }
+
+    @PostMapping("/boards/{boardCode}/posts/{postId}/comments")
+    public ApiResponse<BoardCommentCreateResponse> createComment(
+            @PathVariable String boardCode,
+            @PathVariable Long postId,
+            @CurrentUser CurrentUserPrincipal currentUser,
+            @Valid @RequestBody BoardCommentCreateRequest request
+    ) {
+        return ApiResponse.ok(boardCommentService.createComment(boardCode, postId, currentUser.userId(), request.toCommand()));
+    }
+
+    @PatchMapping("/comments/{commentId}")
+    public ApiResponse<Void> updateComment(
+            @PathVariable Long commentId,
+            @CurrentUser CurrentUserPrincipal currentUser,
+            @Valid @RequestBody BoardCommentUpdateRequest request
+    ) {
+        boardCommentService.updateComment(commentId, currentUser.userId(), currentUser.role(), request.toCommand());
+        return ApiResponse.ok();
+    }
+
+    @DeleteMapping("/comments/{commentId}")
+    public ApiResponse<Void> deleteComment(
+            @PathVariable Long commentId,
+            @CurrentUser CurrentUserPrincipal currentUser
+    ) {
+        boardCommentService.deleteComment(commentId, currentUser.userId(), currentUser.role());
         return ApiResponse.ok();
     }
 }

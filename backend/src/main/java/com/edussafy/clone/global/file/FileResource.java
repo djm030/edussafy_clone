@@ -54,6 +54,7 @@ public class FileResource extends BaseTimeEntity {
     @Column(nullable = false)
     private FileRole fileRole;
 
+    @Column(nullable = false)
     private Integer sortOrder;
 
     @Builder
@@ -67,6 +68,13 @@ public class FileResource extends BaseTimeEntity {
         this.fileType = fileType;
         this.fileSize = fileSize;
         this.uploadedBy = uploadedBy;
+        this.targetType = targetType;
+        this.targetId = targetId;
+        this.fileRole = fileRole;
+        this.sortOrder = sortOrder == null ? 0 : sortOrder;
+    }
+
+    public void linkTo(FileTargetType targetType, Long targetId, FileRole fileRole, int sortOrder) {
         this.targetType = targetType;
         this.targetId = targetId;
         this.fileRole = fileRole;
