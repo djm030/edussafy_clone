@@ -50,4 +50,10 @@ public class UserStat {
         this.completedLearningCount = completedLearningCount;
         this.updatedAt = updatedAt;
     }
+
+    public void adjust(int pointAmount, int expAmount) {
+        this.scholarshipPoint = (this.scholarshipPoint == null ? 0 : this.scholarshipPoint) + pointAmount;
+        this.totalExp = (this.totalExp == null ? 0 : this.totalExp) + expAmount;
+        this.updatedAt = LocalDateTime.now();
+    }
 }

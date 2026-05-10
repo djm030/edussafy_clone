@@ -54,4 +54,11 @@ public class AttendanceAppeal extends BaseTimeEntity {
         this.reason = reason; this.attachmentFile = attachmentFile;
         this.appealStatus = appealStatus == null ? AttendanceAppealStatus.SUBMITTED : appealStatus;
     }
+
+    public void review(AttendanceAppealStatus status, User reviewer, String reviewComment) {
+        this.appealStatus = status;
+        this.reviewedBy = reviewer;
+        this.reviewedAt = LocalDateTime.now();
+        this.reviewComment = reviewComment;
+    }
 }

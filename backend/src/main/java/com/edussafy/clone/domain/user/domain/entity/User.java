@@ -97,4 +97,20 @@ public class User extends BaseTimeEntity {
     public void changePassword(String encodedPassword) {
         this.password = encodedPassword;
     }
+
+    public void updateByAdmin(String name, Integer generation, String region, Integer classNo,
+                              String phoneNumber, String emergencyPhoneNumber, String zipCode,
+                              String address, String addressDetail, UserRole role, UserStatus status) {
+        if (name != null) this.name = name;
+        if (generation != null) this.generation = generation;
+        if (region != null) this.region = region;
+        if (classNo != null) this.classNo = classNo;
+        if (phoneNumber != null) this.phoneNumber = phoneNumber;
+        if (emergencyPhoneNumber != null) this.emergencyPhoneNumber = emergencyPhoneNumber;
+        if (zipCode != null) this.zipCode = zipCode;
+        if (address != null) this.address = address;
+        if (addressDetail != null) this.addressDetail = addressDetail;
+        if (role != null) this.role = role;
+        if (status != null) this.status = status;
+    }
 }

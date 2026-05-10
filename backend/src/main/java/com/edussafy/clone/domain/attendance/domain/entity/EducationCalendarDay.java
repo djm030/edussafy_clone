@@ -45,4 +45,13 @@ public class EducationCalendarDay extends BaseTimeEntity {
         this.id = id; this.course = course; this.calendarDate = calendarDate; this.dayType = dayType;
         this.isEducationDay = isEducationDay == null || isEducationDay; this.title = title; this.description = description;
     }
+
+    public void update(Course course, LocalDate calendarDate, EducationDayType dayType, Boolean isEducationDay, String title, String description) {
+        this.course = course;
+        if (calendarDate != null) this.calendarDate = calendarDate;
+        if (dayType != null) this.dayType = dayType;
+        if (isEducationDay != null) this.isEducationDay = isEducationDay;
+        if (title != null) this.title = title;
+        if (description != null) this.description = description;
+    }
 }

@@ -62,4 +62,18 @@ public class AttendanceRecord extends BaseTimeEntity {
         this.issueTypes = issueTypes; this.reasonStatus = reasonStatus == null ? AttendanceReasonStatus.NONE : reasonStatus;
         this.reasonText = reasonText; this.checkInType = checkInType; this.checkOutType = checkOutType; this.note = note;
     }
+
+    public void updateByAdmin(LocalDateTime checkInAt, LocalDateTime checkOutAt, AttendanceStatus status,
+                              AttendanceReasonStatus reasonStatus, String issueTypes, String reasonText,
+                              String checkInType, String checkOutType, String note) {
+        if (checkInAt != null) this.checkInAt = checkInAt;
+        if (checkOutAt != null) this.checkOutAt = checkOutAt;
+        if (status != null) this.status = status;
+        if (reasonStatus != null) this.reasonStatus = reasonStatus;
+        if (issueTypes != null) this.issueTypes = issueTypes;
+        if (reasonText != null) this.reasonText = reasonText;
+        if (checkInType != null) this.checkInType = checkInType;
+        if (checkOutType != null) this.checkOutType = checkOutType;
+        if (note != null) this.note = note;
+    }
 }
