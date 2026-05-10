@@ -44,4 +44,12 @@ public class CourseWeek {
         this.endDate = endDate;
         this.sortOrder = sortOrder == null ? 0 : sortOrder;
     }
+
+    public void update(Integer weekNo, String title, LocalDate startDate, LocalDate endDate, Integer sortOrder) {
+        this.weekNo = weekNo;
+        this.title = title;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.sortOrder = sortOrder == null ? this.sortOrder : sortOrder;
+    }
 }

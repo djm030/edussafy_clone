@@ -1,0 +1,98 @@
+package com.edussafy.clone.domain.admin.application;
+
+import com.edussafy.clone.domain.activity.domain.entity.UserActivityRecord;
+import com.edussafy.clone.domain.activity.domain.enums.ActivityType;
+import com.edussafy.clone.domain.activity.domain.repository.UserActivityRecordRepository;
+import com.edussafy.clone.domain.admin.domain.enums.AuditAction;
+import com.edussafy.clone.domain.board.domain.entity.BoardPost;
+import com.edussafy.clone.domain.board.domain.repository.BoardPostRepository;
+import com.edussafy.clone.domain.course.domain.entity.Course;
+import com.edussafy.clone.domain.course.domain.entity.CourseSession;
+import com.edussafy.clone.domain.course.domain.entity.CourseWeek;
+import com.edussafy.clone.domain.course.domain.enums.CourseSessionType;
+import com.edussafy.clone.domain.course.domain.enums.CourseStatus;
+import com.edussafy.clone.domain.course.domain.repository.CourseRepository;
+import com.edussafy.clone.domain.course.domain.repository.CourseSessionRepository;
+import com.edussafy.clone.domain.course.domain.repository.CourseWeekRepository;
+import com.edussafy.clone.domain.learning.domain.entity.LearningCategory;
+import com.edussafy.clone.domain.learning.domain.entity.LearningContent;
+import com.edussafy.clone.domain.learning.domain.enums.LearningCategoryType;
+import com.edussafy.clone.domain.learning.domain.enums.LearningContentType;
+import com.edussafy.clone.domain.learning.domain.repository.LearningCategoryRepository;
+import com.edussafy.clone.domain.learning.domain.repository.LearningContentRepository;
+import com.edussafy.clone.domain.survey.domain.entity.Survey;
+import com.edussafy.clone.domain.survey.domain.repository.SurveyRepository;
+import com.edussafy.clone.domain.task.domain.entity.CourseTask;
+import com.edussafy.clone.domain.task.domain.entity.UserTaskResult;
+import com.edussafy.clone.domain.task.domain.enums.CourseTaskType;
+import com.edussafy.clone.domain.task.domain.enums.TaskResultStatus;
+import com.edussafy.clone.domain.task.domain.repository.CourseTaskRepository;
+import com.edussafy.clone.domain.task.domain.repository.UserTaskResultRepository;
+import com.edussafy.clone.domain.user.domain.entity.User;
+import com.edussafy.clone.domain.user.domain.repository.UserRepository;
+import com.edussafy.clone.domain.user.exception.UserNotFoundException;
+import com.edussafy.clone.global.file.FileResource;
+import com.edussafy.clone.global.file.FileResourceRepository;
+import com.edussafy.clone.global.response.PageResponse;
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+@Service
+@RequiredArgsConstructor
+public class AdminLearningService {
+    private final AdminAccessService adminAccessService;
+    private final AuditLogService auditLogService;
+    private final CourseRepository courseRepository;
+    private final CourseWeekRepository weekRepository;
+    private final CourseSessionRepository sessionRepository;
+    private final LearningCategoryRepository learningCategoryRepository;
+    private final LearningContentRepository learningContentRepository;
+    private final CourseTaskRepository taskRepository;
+    private final UserTaskResultRepository taskResultRepository;
+    private final UserActivityRecordRepository activityRepository;
+    private final UserRepository userRepository;
+    private final SurveyRepository surveyRepository;
+    private final BoardPostRepository boardPostRepository;
+    private final FileResourceRepository fileRepository;
+
+    @Transactional public Map<String,Object> createCourse(Long adminId, Map<String,Object> r){adminAccessService.requireAdmin(adminId); Course e=courseRepository.save(Course.builder().title(str(r,"title")).description(str(r,"description")).generation(integer(r,"generation")).region(str(r,"region")).classNo(integer(r,"classNo")).instructorName(str(r,"instructorName")).status(en(CourseStatus.class,r,"status",CourseStatus.PLANNED)).startDate(date(r,"startDate")).endDate(date(r,"endDate")).build()); auditLogService.record(adminId,AuditAction.CREATE,"COURSE",e.getId(),"과정 생성"); return course(e);}    
+    @Transactional public Map<String,Object> updateCourse(Long adminId, Long id, Map<String,Object> r){adminAccessService.requireAdmin(adminId); Course e=course(id); e.update(str(r,"title"),str(r,"description"),integer(r,"generation"),str(r,"region"),integer(r,"classNo"),str(r,"instructorName"),en(CourseStatus.class,r,"status",e.getStatus()),date(r,"startDate"),date(r,"endDate")); auditLogService.record(adminId,AuditAction.UPDATE,"COURSE",id,"과정 수정"); return course(e);}    
+    @Transactional public void deleteCourse(Long adminId, Long id){adminAccessService.requireAdmin(adminId); courseRepository.delete(course(id)); auditLogService.record(adminId,AuditAction.DELETE,"COURSE",id,"과정 삭제");}
+
+    @Transactional public Map<String,Object> createCategory(Long adminId, Map<String,Object> r){adminAccessService.requireAdmin(adminId); LearningCategory e=learningCategoryRepository.save(LearningCategory.builder().parent(optLearningCategory(longVal(r,"parentId"))).name(str(r,"name")).code(str(r,"code")).categoryType(en(LearningCategoryType.class,r,"categoryType",LearningCategoryType.MAJOR)).build()); auditLogService.record(adminId,AuditAction.CREATE,"LEARNING_CATEGORY",e.getId(),"이러닝 카테고리 생성"); return learningCategory(e);}    
+    @Transactional public Map<String,Object> updateCategory(Long adminId, Long id, Map<String,Object> r){adminAccessService.requireAdmin(adminId); LearningCategory e=learningCategory(id); e.update(optLearningCategory(longVal(r,"parentId")),str(r,"name"),str(r,"code"),en(LearningCategoryType.class,r,"categoryType",e.getCategoryType())); auditLogService.record(adminId,AuditAction.UPDATE,"LEARNING_CATEGORY",id,"이러닝 카테고리 수정"); return learningCategory(e);}    
+    @Transactional public void deleteCategory(Long adminId, Long id){adminAccessService.requireAdmin(adminId); learningCategoryRepository.delete(learningCategory(id)); auditLogService.record(adminId,AuditAction.DELETE,"LEARNING_CATEGORY",id,"이러닝 카테고리 삭제");}
+
+    @Transactional public Map<String,Object> createWeek(Long adminId, Long courseId, Map<String,Object> r){adminAccessService.requireAdmin(adminId); CourseWeek e=weekRepository.save(CourseWeek.builder().course(course(courseId)).weekNo(integer(r,"weekNo")).title(str(r,"title")).startDate(date(r,"startDate")).endDate(date(r,"endDate")).sortOrder(integer(r,"sortOrder")).build()); auditLogService.record(adminId,AuditAction.CREATE,"COURSE_WEEK",e.getId(),"주차 생성"); return week(e);}    
+    @Transactional public Map<String,Object> updateWeek(Long adminId, Long id, Map<String,Object> r){adminAccessService.requireAdmin(adminId); CourseWeek e=week(id); e.update(integer(r,"weekNo"),str(r,"title"),date(r,"startDate"),date(r,"endDate"),integer(r,"sortOrder")); auditLogService.record(adminId,AuditAction.UPDATE,"COURSE_WEEK",id,"주차 수정"); return week(e);}    
+    @Transactional public void deleteWeek(Long adminId, Long id){adminAccessService.requireAdmin(adminId); weekRepository.delete(week(id)); auditLogService.record(adminId,AuditAction.DELETE,"COURSE_WEEK",id,"주차 삭제");}
+
+    @Transactional public Map<String,Object> createSession(Long adminId, Map<String,Object> r){adminAccessService.requireAdmin(adminId); CourseSession e=sessionRepository.save(CourseSession.builder().course(course(longVal(r,"courseId"))).week(optWeek(longVal(r,"weekId"))).title(str(r,"title")).subtitle(str(r,"subtitle")).sessionType(en(CourseSessionType.class,r,"sessionType",CourseSessionType.LECTURE)).sessionDate(date(r,"sessionDate")).startAt(dateTime(r,"startAt")).endAt(dateTime(r,"endAt")).instructorName(str(r,"instructorName")).location(str(r,"location")).liveUrl(str(r,"liveUrl")).replayUrl(str(r,"replayUrl")).materialPost(optPost(longVal(r,"materialPostId"))).isRequired(bool(r,"isRequired")).sortOrder(integer(r,"sortOrder")).build()); auditLogService.record(adminId,AuditAction.CREATE,"COURSE_SESSION",e.getId(),"세션 생성"); return session(e);}    
+    @Transactional public Map<String,Object> updateSession(Long adminId, Long id, Map<String,Object> r){adminAccessService.requireAdmin(adminId); CourseSession e=session(id); e.update(course(longVal(r,"courseId")),optWeek(longVal(r,"weekId")),str(r,"title"),str(r,"subtitle"),en(CourseSessionType.class,r,"sessionType",e.getSessionType()),date(r,"sessionDate"),dateTime(r,"startAt"),dateTime(r,"endAt"),str(r,"instructorName"),str(r,"location"),str(r,"liveUrl"),str(r,"replayUrl"),optPost(longVal(r,"materialPostId")),bool(r,"isRequired"),integer(r,"sortOrder")); auditLogService.record(adminId,AuditAction.UPDATE,"COURSE_SESSION",id,"세션 수정"); return session(e);}    
+    @Transactional public void deleteSession(Long adminId, Long id){adminAccessService.requireAdmin(adminId); sessionRepository.delete(session(id)); auditLogService.record(adminId,AuditAction.DELETE,"COURSE_SESSION",id,"세션 삭제");}
+
+    @Transactional public Map<String,Object> createContent(Long adminId, Map<String,Object> r){adminAccessService.requireAdmin(adminId); User admin=user(adminId); LearningContent e=learningContentRepository.save(LearningContent.builder().course(optCourse(longVal(r,"courseId"))).session(optSession(longVal(r,"sessionId"))).category(optLearningCategory(longVal(r,"categoryId"))).title(str(r,"title")).description(str(r,"description")).contentType(en(LearningContentType.class,r,"contentType",LearningContentType.VIDEO)).thumbnailFile(optFile(longVal(r,"thumbnailFileId"))).contentUrl(str(r,"contentUrl")).durationSeconds(integer(r,"durationSeconds")).isRequired(bool(r,"isRequired")).openAt(dateTime(r,"openAt")).closeAt(dateTime(r,"closeAt")).createdBy(admin).build()); auditLogService.record(adminId,AuditAction.CREATE,"LEARNING_CONTENT",e.getId(),"학습 콘텐츠 생성"); return content(e);}    
+    @Transactional public Map<String,Object> updateContent(Long adminId, Long id, Map<String,Object> r){adminAccessService.requireAdmin(adminId); LearningContent e=contentEntity(id); e.update(optCourse(longVal(r,"courseId")),optSession(longVal(r,"sessionId")),optLearningCategory(longVal(r,"categoryId")),str(r,"title"),str(r,"description"),en(LearningContentType.class,r,"contentType",e.getContentType()),optFile(longVal(r,"thumbnailFileId")),str(r,"contentUrl"),integer(r,"durationSeconds"),bool(r,"isRequired"),dateTime(r,"openAt"),dateTime(r,"closeAt")); auditLogService.record(adminId,AuditAction.UPDATE,"LEARNING_CONTENT",id,"학습 콘텐츠 수정"); return content(e);}    
+    @Transactional public void deleteContent(Long adminId, Long id){adminAccessService.requireAdmin(adminId); learningContentRepository.delete(contentEntity(id)); auditLogService.record(adminId,AuditAction.DELETE,"LEARNING_CONTENT",id,"학습 콘텐츠 삭제");}
+
+    @Transactional public Map<String,Object> createTask(Long adminId, Map<String,Object> r){adminAccessService.requireAdmin(adminId); CourseTask e=taskRepository.save(CourseTask.builder().course(course(longVal(r,"courseId"))).session(optSession(longVal(r,"sessionId"))).survey(optSurvey(longVal(r,"surveyId"))).title(str(r,"title")).roundNo(integer(r,"roundNo")).taskType(en(CourseTaskType.class,r,"taskType",CourseTaskType.QUEST)).description(str(r,"description")).openAt(dateTime(r,"openAt")).closeAt(dateTime(r,"closeAt")).totalScore(integer(r,"totalScore")).isRequired(bool(r,"isRequired")).sortOrder(integer(r,"sortOrder")).build()); auditLogService.record(adminId,AuditAction.CREATE,"COURSE_TASK",e.getId(),"Quest/과제 생성"); return task(e);}    
+    @Transactional public Map<String,Object> updateTask(Long adminId, Long id, Map<String,Object> r){adminAccessService.requireAdmin(adminId); CourseTask e=task(id); e.update(course(longVal(r,"courseId")),optSession(longVal(r,"sessionId")),optSurvey(longVal(r,"surveyId")),str(r,"title"),integer(r,"roundNo"),en(CourseTaskType.class,r,"taskType",e.getTaskType()),str(r,"description"),dateTime(r,"openAt"),dateTime(r,"closeAt"),integer(r,"totalScore"),bool(r,"isRequired"),integer(r,"sortOrder")); auditLogService.record(adminId,AuditAction.UPDATE,"COURSE_TASK",id,"Quest/과제 수정"); return task(e);}    
+    @Transactional public Map<String,Object> updateTaskResult(Long adminId, Long id, Map<String,Object> r){adminAccessService.requireAdmin(adminId); UserTaskResult e=taskResultRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("task result not found")); e.updateResult(en(TaskResultStatus.class,r,"resultStatus",e.getResultStatus()),decimal(r,"score"),decimal(r,"originalScore"),decimal(r,"retakeScore"),str(r,"answerData")); auditLogService.record(adminId,AuditAction.UPDATE,"USER_TASK_RESULT",id,"Quest/과제 결과 수정"); return taskResult(e);}    
+    @Transactional public void deleteTask(Long adminId, Long id){adminAccessService.requireAdmin(adminId); taskRepository.delete(task(id)); auditLogService.record(adminId,AuditAction.DELETE,"COURSE_TASK",id,"Quest/과제 삭제");}
+
+    @Transactional public Map<String,Object> createActivity(Long adminId, Map<String,Object> r){adminAccessService.requireAdmin(adminId); UserActivityRecord e=activityRepository.save(UserActivityRecord.builder().user(user(longVal(r,"userId"))).activityType(en(ActivityType.class,r,"activityType",ActivityType.SSAFY_ACTIVITY)).title(str(r,"title")).description(str(r,"description")).organization(str(r,"organization")).activityDate(date(r,"activityDate")).resultText(str(r,"resultText")).evidenceFile(optFile(longVal(r,"evidenceFileId"))).build()); auditLogService.record(adminId,AuditAction.CREATE,"USER_ACTIVITY",e.getId(),"교육현황 기록 등록"); return activity(e);}    
+    @Transactional public Map<String,Object> updateActivity(Long adminId, Long id, Map<String,Object> r){adminAccessService.requireAdmin(adminId); UserActivityRecord e=activityRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("activity not found")); e.update(en(ActivityType.class,r,"activityType",e.getActivityType()),str(r,"title"),str(r,"description"),str(r,"organization"),date(r,"activityDate"),str(r,"resultText"),optFile(longVal(r,"evidenceFileId"))); auditLogService.record(adminId,AuditAction.UPDATE,"USER_ACTIVITY",id,"교육현황 기록 수정"); return activity(e);}    
+    @Transactional public void deleteActivity(Long adminId, Long id){adminAccessService.requireAdmin(adminId); activityRepository.deleteById(id); auditLogService.record(adminId,AuditAction.DELETE,"USER_ACTIVITY",id,"교육현황 기록 삭제");}
+
+    private Course course(Long id){return courseRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("course not found"));} private Course optCourse(Long id){return id==null?null:course(id);} private CourseWeek week(Long id){return weekRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("week not found"));} private CourseWeek optWeek(Long id){return id==null?null:week(id);} private CourseSession session(Long id){return sessionRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("session not found"));} private CourseSession optSession(Long id){return id==null?null:session(id);} private LearningCategory learningCategory(Long id){return learningCategoryRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("learning category not found"));} private LearningCategory optLearningCategory(Long id){return id==null?null:learningCategory(id);} private LearningContent contentEntity(Long id){return learningContentRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("content not found"));} private CourseTask task(Long id){return taskRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("task not found"));} private Survey optSurvey(Long id){return id==null?null:surveyRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("survey not found"));} private BoardPost optPost(Long id){return id==null?null:boardPostRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("post not found"));} private FileResource optFile(Long id){return id==null?null:fileRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("file not found"));} private User user(Long id){return userRepository.findById(id).orElseThrow(UserNotFoundException::new);}    
+    private static String str(Map<String,Object> r,String k){Object v=r.get(k);return v==null?null:v.toString();} private static Long longVal(Map<String,Object> r,String k){Object v=r.get(k);return v==null||v.toString().isBlank()?null:Long.valueOf(v.toString());} private static Integer integer(Map<String,Object> r,String k){Object v=r.get(k);return v==null||v.toString().isBlank()?null:Integer.valueOf(v.toString());} private static Boolean bool(Map<String,Object> r,String k){Object v=r.get(k);return v==null?null:Boolean.valueOf(v.toString());} private static LocalDate date(Map<String,Object> r,String k){String v=str(r,k);return v==null||v.isBlank()?null:LocalDate.parse(v);} private static LocalDateTime dateTime(Map<String,Object> r,String k){String v=str(r,k);return v==null||v.isBlank()?null:LocalDateTime.parse(v);} private static BigDecimal decimal(Map<String,Object> r,String k){Object v=r.get(k);return v==null||v.toString().isBlank()?null:new BigDecimal(v.toString());} private static <E extends Enum<E>> E en(Class<E> t,Map<String,Object> r,String k,E d){String v=str(r,k);return v==null||v.isBlank()?d:Enum.valueOf(t,v);}    
+    private static Map<String,Object> map(){return new LinkedHashMap<>();} private static void p(Map<String,Object> m,String k,Object v){m.put(k,v);}    
+    private static Map<String,Object> course(Course e){Map<String,Object> m=map();p(m,"id",e.getId());p(m,"title",e.getTitle());p(m,"status",e.getStatus());p(m,"generation",e.getGeneration());p(m,"region",e.getRegion());p(m,"classNo",e.getClassNo());return m;} private static Map<String,Object> week(CourseWeek e){Map<String,Object> m=map();p(m,"id",e.getId());p(m,"courseId",e.getCourse().getId());p(m,"weekNo",e.getWeekNo());p(m,"title",e.getTitle());return m;} private static Map<String,Object> session(CourseSession e){Map<String,Object> m=map();p(m,"id",e.getId());p(m,"courseId",e.getCourse().getId());p(m,"weekId",e.getWeek()==null?null:e.getWeek().getId());p(m,"title",e.getTitle());p(m,"sessionType",e.getSessionType());return m;} private static Map<String,Object> learningCategory(LearningCategory e){Map<String,Object> m=map();p(m,"id",e.getId());p(m,"parentId",e.getParent()==null?null:e.getParent().getId());p(m,"name",e.getName());p(m,"code",e.getCode());p(m,"categoryType",e.getCategoryType());return m;} private static Map<String,Object> content(LearningContent e){Map<String,Object> m=map();p(m,"id",e.getId());p(m,"title",e.getTitle());p(m,"contentType",e.getContentType());p(m,"courseId",e.getCourse()==null?null:e.getCourse().getId());p(m,"categoryId",e.getCategory()==null?null:e.getCategory().getId());return m;} private static Map<String,Object> task(CourseTask e){Map<String,Object> m=map();p(m,"id",e.getId());p(m,"courseId",e.getCourse().getId());p(m,"title",e.getTitle());p(m,"taskType",e.getTaskType());return m;} private static Map<String,Object> taskResult(UserTaskResult e){Map<String,Object> m=map();p(m,"id",e.getId());p(m,"taskId",e.getTask().getId());p(m,"userId",e.getUser().getId());p(m,"resultStatus",e.getResultStatus());p(m,"score",e.getScore());return m;} private static Map<String,Object> activity(UserActivityRecord e){Map<String,Object> m=map();p(m,"id",e.getId());p(m,"userId",e.getUser().getId());p(m,"activityType",e.getActivityType());p(m,"title",e.getTitle());return m;}
+}

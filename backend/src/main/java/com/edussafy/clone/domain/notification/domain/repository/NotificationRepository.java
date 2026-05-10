@@ -7,8 +7,9 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
-public interface NotificationRepository extends JpaRepository<Notification, Long> {
+public interface NotificationRepository extends JpaRepository<Notification, Long>, JpaSpecificationExecutor<Notification> {
     Page<Notification> findByReceiverOrderByCreatedAtDesc(User receiver, Pageable pageable);
     Page<Notification> findByReceiverAndIsReadOrderByCreatedAtDesc(User receiver, Boolean isRead, Pageable pageable);
     Page<Notification> findByReceiverAndNotificationTypeOrderByCreatedAtDesc(User receiver, NotificationType notificationType, Pageable pageable);

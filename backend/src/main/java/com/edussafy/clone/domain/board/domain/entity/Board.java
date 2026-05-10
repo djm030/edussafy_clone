@@ -53,4 +53,11 @@ public class Board {
     public boolean isAdminWritable() {
         return boardType == BoardType.NOTICE || boardType == BoardType.FAQ || boardType == BoardType.ACADEMIC_RULE;
     }
+
+    public void update(String name, String code, BoardType boardType, String description) {
+        this.name = name;
+        this.code = code;
+        this.boardType = boardType;
+        this.description = description;
+    }
 }

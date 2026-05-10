@@ -42,4 +42,11 @@ public class LearningCategory extends BaseTimeEntity {
         this.code = code;
         this.categoryType = categoryType;
     }
+
+    public void update(LearningCategory parent, String name, String code, LearningCategoryType categoryType) {
+        this.parent = parent;
+        this.name = name;
+        this.code = code;
+        this.categoryType = categoryType;
+    }
 }

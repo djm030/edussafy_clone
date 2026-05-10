@@ -41,4 +41,9 @@ public class BoardCategory {
         this.name = name;
         this.code = code;
     }
+
+    public void update(String name, String code) {
+        this.name = name;
+        this.code = code;
+    }
 }

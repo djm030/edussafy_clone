@@ -98,6 +98,10 @@ public class User extends BaseTimeEntity {
         this.password = encodedPassword;
     }
 
+    public void updateProfileFile(FileResource profileFile) {
+        this.profileFile = profileFile;
+    }
+
     public void updateByAdmin(String name, Integer generation, String region, Integer classNo,
                               String phoneNumber, String emergencyPhoneNumber, String zipCode,
                               String address, String addressDetail, UserRole role, UserStatus status) {

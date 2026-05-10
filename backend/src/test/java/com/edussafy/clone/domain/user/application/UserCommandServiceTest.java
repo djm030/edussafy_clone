@@ -11,6 +11,7 @@ import com.edussafy.clone.domain.user.domain.enums.UserRole;
 import com.edussafy.clone.domain.user.domain.enums.UserStatus;
 import com.edussafy.clone.domain.user.domain.repository.UserRepository;
 import com.edussafy.clone.domain.user.exception.UserNotFoundException;
+import com.edussafy.clone.global.file.FileResourceRepository;
 import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -25,13 +26,16 @@ class UserCommandServiceTest {
     @Mock
     private UserRepository userRepository;
 
+    @Mock
+    private FileResourceRepository fileResourceRepository;
+
     private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     @Test
     void verifyPassword_returns_true_when_raw_password_matches_encoded_password() {
         User user = userWithPassword(passwordEncoder.encode("password1234!"));
         given(userRepository.findById(1L)).willReturn(Optional.of(user));
-        UserCommandService service = new UserCommandService(userRepository, passwordEncoder);
+        UserCommandService service = new UserCommandService(userRepository, fileResourceRepository, passwordEncoder);
 
         boolean result = service.verifyPassword(1L, new VerifyPasswordCommand("password1234!"));
 
@@ -42,7 +46,7 @@ class UserCommandServiceTest {
     void verifyPassword_returns_false_when_raw_password_does_not_match() {
         User user = userWithPassword(passwordEncoder.encode("password1234!"));
         given(userRepository.findById(1L)).willReturn(Optional.of(user));
-        UserCommandService service = new UserCommandService(userRepository, passwordEncoder);
+        UserCommandService service = new UserCommandService(userRepository, fileResourceRepository, passwordEncoder);
 
         boolean result = service.verifyPassword(1L, new VerifyPasswordCommand("wrong-password"));
 
@@ -52,7 +56,7 @@ class UserCommandServiceTest {
     @Test
     void verifyPassword_throws_when_user_not_found() {
         given(userRepository.findById(999L)).willReturn(Optional.empty());
-        UserCommandService service = new UserCommandService(userRepository, passwordEncoder);
+        UserCommandService service = new UserCommandService(userRepository, fileResourceRepository, passwordEncoder);
 
         assertThatThrownBy(() -> service.verifyPassword(999L, new VerifyPasswordCommand("password")))
                 .isInstanceOf(UserNotFoundException.class);
@@ -62,7 +66,7 @@ class UserCommandServiceTest {
     void changePassword_encodes_new_password_and_updates_user() {
         User user = userWithPassword(passwordEncoder.encode("old-password"));
         given(userRepository.findById(1L)).willReturn(Optional.of(user));
-        UserCommandService service = new UserCommandService(userRepository, passwordEncoder);
+        UserCommandService service = new UserCommandService(userRepository, fileResourceRepository, passwordEncoder);
 
         service.changePassword(1L, "new-password123!");
 

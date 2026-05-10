@@ -55,4 +55,8 @@ public class Survey extends BaseTimeEntity {
     public Survey(Long id, SurveyCategory category, String title, String description, FormType formType, LocalDateTime openAt, LocalDateTime closeAt, Boolean isRequired, EventType eventType, String location, Integer capacity, String selectionPolicy, BoardPost linkedPost, User createdBy) {
         this.id=id; this.category=category; this.title=title; this.description=description; this.formType=formType; this.openAt=openAt; this.closeAt=closeAt; this.isRequired=isRequired == null ? false : isRequired; this.eventType=eventType; this.location=location; this.capacity=capacity; this.selectionPolicy=selectionPolicy; this.linkedPost=linkedPost; this.createdBy=createdBy;
     }
+
+    public void update(SurveyCategory category, String title, String description, FormType formType, LocalDateTime openAt, LocalDateTime closeAt, Boolean isRequired, EventType eventType, String location, Integer capacity, String selectionPolicy, BoardPost linkedPost) {
+        this.category=category; this.title=title; this.description=description; this.formType=formType; this.openAt=openAt; this.closeAt=closeAt; this.isRequired=isRequired != null && isRequired; this.eventType=eventType; this.location=location; this.capacity=capacity; this.selectionPolicy=selectionPolicy; this.linkedPost=linkedPost;
+    }
 }

@@ -73,4 +73,24 @@ public class CourseSession extends BaseTimeEntity {
         this.isRequired = isRequired != null && isRequired;
         this.sortOrder = sortOrder == null ? 0 : sortOrder;
     }
+
+    public void update(Course course, CourseWeek week, String title, String subtitle, CourseSessionType sessionType,
+                       LocalDate sessionDate, LocalDateTime startAt, LocalDateTime endAt, String instructorName,
+                       String location, String liveUrl, String replayUrl, BoardPost materialPost, Boolean isRequired, Integer sortOrder) {
+        this.course = course;
+        this.week = week;
+        this.title = title;
+        this.subtitle = subtitle;
+        this.sessionType = sessionType;
+        this.sessionDate = sessionDate;
+        this.startAt = startAt;
+        this.endAt = endAt;
+        this.instructorName = instructorName;
+        this.location = location;
+        this.liveUrl = liveUrl;
+        this.replayUrl = replayUrl;
+        this.materialPost = materialPost;
+        this.isRequired = isRequired != null && isRequired;
+        this.sortOrder = sortOrder == null ? this.sortOrder : sortOrder;
+    }
 }

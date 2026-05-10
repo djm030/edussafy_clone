@@ -5,6 +5,8 @@ import com.edussafy.clone.domain.user.application.command.VerifyPasswordCommand;
 import com.edussafy.clone.domain.user.domain.entity.User;
 import com.edussafy.clone.domain.user.domain.repository.UserRepository;
 import com.edussafy.clone.domain.user.exception.UserNotFoundException;
+import com.edussafy.clone.global.file.FileResource;
+import com.edussafy.clone.global.file.FileResourceRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -16,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserCommandService {
 
     private final UserRepository userRepository;
+    private final FileResourceRepository fileResourceRepository;
     private final PasswordEncoder passwordEncoder;
 
     public void updateProfile(Long userId, UpdateUserProfileCommand command) {
@@ -32,6 +35,12 @@ public class UserCommandService {
     public void changePassword(Long userId, String rawPassword) {
         User user = getUser(userId);
         user.changePassword(passwordEncoder.encode(rawPassword));
+    }
+
+    public void updateProfileImage(Long userId, Long fileId) {
+        User user = getUser(userId);
+        FileResource file = fileId == null ? null : fileResourceRepository.findById(fileId).orElseThrow(() -> new IllegalArgumentException("file not found"));
+        user.updateProfileFile(file);
     }
 
     private User getUser(Long userId) {

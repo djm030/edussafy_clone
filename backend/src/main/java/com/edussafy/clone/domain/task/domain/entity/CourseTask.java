@@ -53,4 +53,11 @@ public class CourseTask extends BaseTimeEntity {
     public CourseTask(Long id, Course course, CourseSession session, Survey survey, String title, Integer roundNo, CourseTaskType taskType, String description, LocalDateTime openAt, LocalDateTime closeAt, Integer totalScore, Boolean isRequired, Integer sortOrder) {
         this.id=id; this.course=course; this.session=session; this.survey=survey; this.title=title; this.roundNo=roundNo; this.taskType=taskType; this.description=description; this.openAt=openAt; this.closeAt=closeAt; this.totalScore=totalScore; this.isRequired=isRequired == null ? false : isRequired; this.sortOrder=sortOrder == null ? 0 : sortOrder;
     }
+
+    public void update(Course course, CourseSession session, Survey survey, String title, Integer roundNo, CourseTaskType taskType,
+                       String description, LocalDateTime openAt, LocalDateTime closeAt, Integer totalScore, Boolean isRequired, Integer sortOrder) {
+        this.course=course; this.session=session; this.survey=survey; this.title=title; this.roundNo=roundNo; this.taskType=taskType;
+        this.description=description; this.openAt=openAt; this.closeAt=closeAt; this.totalScore=totalScore; this.isRequired=isRequired != null && isRequired;
+        this.sortOrder=sortOrder == null ? this.sortOrder : sortOrder;
+    }
 }

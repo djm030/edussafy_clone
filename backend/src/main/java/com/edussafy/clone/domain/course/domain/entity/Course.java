@@ -51,4 +51,17 @@ public class Course extends BaseTimeEntity {
         this.startDate = startDate;
         this.endDate = endDate;
     }
+
+    public void update(String title, String description, Integer generation, String region, Integer classNo,
+                       String instructorName, CourseStatus status, LocalDate startDate, LocalDate endDate) {
+        this.title = title;
+        this.description = description;
+        this.generation = generation;
+        this.region = region;
+        this.classNo = classNo;
+        this.instructorName = instructorName;
+        this.status = status == null ? this.status : status;
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
 }

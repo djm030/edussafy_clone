@@ -49,4 +49,14 @@ public class UserTaskResult {
         this.id=id; this.task=task; this.user=user; this.resultStatus=resultStatus == null ? TaskResultStatus.SCHEDULED : resultStatus; this.score=score; this.originalScore=originalScore; this.retakeScore=retakeScore; this.attemptCount=attemptCount == null ? 0 : attemptCount; this.answerData=answerData; this.updatedAt=LocalDateTime.now();
     }
     public void submit(String answerData) { this.answerData=answerData; this.resultStatus=TaskResultStatus.SUBMITTED; this.attemptCount=this.attemptCount+1; this.submittedAt=LocalDateTime.now(); this.updatedAt=LocalDateTime.now(); }
+
+    public void updateResult(TaskResultStatus resultStatus, BigDecimal score, BigDecimal originalScore, BigDecimal retakeScore, String answerData) {
+        this.resultStatus = resultStatus;
+        this.score = score;
+        this.originalScore = originalScore;
+        this.retakeScore = retakeScore;
+        this.answerData = answerData;
+        this.completedAt = (resultStatus == TaskResultStatus.COMPLETED || resultStatus == TaskResultStatus.PASSED || resultStatus == TaskResultStatus.FAILED) ? LocalDateTime.now() : this.completedAt;
+        this.updatedAt = LocalDateTime.now();
+    }
 }

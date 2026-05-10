@@ -87,6 +87,23 @@ public class LearningContent extends BaseTimeEntity {
         this.createdBy = createdBy;
     }
 
+    public void update(Course course, CourseSession session, LearningCategory category, String title, String description,
+                       LearningContentType contentType, FileResource thumbnailFile, String contentUrl, Integer durationSeconds,
+                       Boolean isRequired, LocalDateTime openAt, LocalDateTime closeAt) {
+        this.course = course;
+        this.session = session;
+        this.category = category;
+        this.title = title;
+        this.description = description;
+        this.contentType = contentType;
+        this.thumbnailFile = thumbnailFile;
+        this.contentUrl = contentUrl;
+        this.durationSeconds = durationSeconds;
+        this.isRequired = isRequired != null && isRequired;
+        this.openAt = openAt;
+        this.closeAt = closeAt;
+    }
+
     public void increaseViewCount() { this.viewCount += 1; }
     public void increaseLikeCount() { this.likeCount += 1; }
     public void increaseDownloadCount() { this.downloadCount += 1; }

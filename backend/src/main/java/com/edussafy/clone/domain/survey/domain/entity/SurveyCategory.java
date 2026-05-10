@@ -26,4 +26,6 @@ public class SurveyCategory {
     private String description;
     @Builder
     public SurveyCategory(Long id, String name, String code, String description) { this.id=id; this.name=name; this.code=code; this.description=description; }
+
+    public void update(String name, String code, String description) { this.name=name; this.code=code; this.description=description; }
 }

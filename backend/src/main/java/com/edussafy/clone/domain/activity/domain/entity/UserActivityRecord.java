@@ -45,4 +45,8 @@ public class UserActivityRecord extends BaseTimeEntity {
     public UserActivityRecord(Long id, User user, ActivityType activityType, String title, String description, String organization, LocalDate activityDate, String resultText, FileResource evidenceFile) {
         this.id=id; this.user=user; this.activityType=activityType; this.title=title; this.description=description; this.organization=organization; this.activityDate=activityDate; this.resultText=resultText; this.evidenceFile=evidenceFile;
     }
+
+    public void update(ActivityType activityType, String title, String description, String organization, LocalDate activityDate, String resultText, FileResource evidenceFile) {
+        this.activityType=activityType; this.title=title; this.description=description; this.organization=organization; this.activityDate=activityDate; this.resultText=resultText; this.evidenceFile=evidenceFile;
+    }
 }

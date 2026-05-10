@@ -49,5 +49,7 @@ public class Inquiry extends BaseTimeEntity {
         this.id=id; this.user=user; this.category=category; this.title=title; this.content=content; this.status=status == null ? InquiryStatus.WAITING : status; this.answerContent=answerContent; this.answeredBy=answeredBy; this.answeredAt=answeredAt; this.isDeleted=isDeleted == null ? false : isDeleted;
     }
     public void update(String category, String title, String content) { this.category=category; this.title=title; this.content=content; }
+    public void answer(String answerContent, User answeredBy) { this.answerContent=answerContent; this.answeredBy=answeredBy; this.answeredAt=LocalDateTime.now(); this.status=InquiryStatus.ANSWERED; }
+    public void close() { this.status=InquiryStatus.CLOSED; }
     public void delete() { this.isDeleted = true; }
 }

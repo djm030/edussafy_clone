@@ -46,4 +46,6 @@ public class SurveyParticipant {
     }
     public void submit(String answers) { this.answers=answers; this.participantStatus=ParticipantStatus.SUBMITTED; this.submittedAt=LocalDateTime.now(); this.cancelledAt=null; this.updatedAt=LocalDateTime.now(); }
     public void cancel() { this.participantStatus=ParticipantStatus.CANCELLED; this.cancelledAt=LocalDateTime.now(); this.updatedAt=LocalDateTime.now(); }
+    public void select() { this.participantStatus=ParticipantStatus.SELECTED; this.updatedAt=LocalDateTime.now(); }
+    public void reject() { this.participantStatus=ParticipantStatus.REJECTED; this.updatedAt=LocalDateTime.now(); }
 }

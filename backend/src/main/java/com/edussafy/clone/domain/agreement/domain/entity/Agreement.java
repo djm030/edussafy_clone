@@ -53,4 +53,10 @@ public class Agreement extends BaseTimeEntity {
     public Agreement(Long id, AgreementCategory category, AgreementTargetType targetType, Long targetId, String title, String contentHtml, FileResource attachmentFile, AgreementType agreementType, String version, Boolean isRequired, Boolean isActive, Integer sortOrder) {
         this.id=id; this.category=category; this.targetType=targetType == null ? AgreementTargetType.GLOBAL : targetType; this.targetId=targetId; this.title=title; this.contentHtml=contentHtml; this.attachmentFile=attachmentFile; this.agreementType=agreementType; this.version=version; this.isRequired=isRequired == null ? false : isRequired; this.isActive=isActive == null ? true : isActive; this.sortOrder=sortOrder == null ? 0 : sortOrder;
     }
+
+    public void update(AgreementCategory category, AgreementTargetType targetType, Long targetId, String title, String contentHtml, FileResource attachmentFile, AgreementType agreementType, String version, Boolean isRequired, Boolean isActive, Integer sortOrder) {
+        this.category=category; this.targetType=targetType == null ? AgreementTargetType.GLOBAL : targetType; this.targetId=targetId; this.title=title; this.contentHtml=contentHtml; this.attachmentFile=attachmentFile; this.agreementType=agreementType; this.version=version; this.isRequired=isRequired != null && isRequired; this.isActive=isActive != null && isActive; this.sortOrder=sortOrder == null ? this.sortOrder : sortOrder;
+    }
+
+    public void inactive() { this.isActive = false; }
 }

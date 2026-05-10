@@ -42,4 +42,8 @@ public class SurveyQuestion {
     public SurveyQuestion(Long id, Survey survey, Integer questionNo, String questionText, QuestionType questionType, String options, Boolean isRequired, Integer sortOrder) {
         this.id=id; this.survey=survey; this.questionNo=questionNo; this.questionText=questionText; this.questionType=questionType; this.options=options; this.isRequired=isRequired == null ? false : isRequired; this.sortOrder=sortOrder == null ? 0 : sortOrder;
     }
+
+    public void update(Integer questionNo, String questionText, QuestionType questionType, String options, Boolean isRequired, Integer sortOrder) {
+        this.questionNo=questionNo; this.questionText=questionText; this.questionType=questionType; this.options=options; this.isRequired=isRequired != null && isRequired; this.sortOrder=sortOrder == null ? this.sortOrder : sortOrder;
+    }
 }
