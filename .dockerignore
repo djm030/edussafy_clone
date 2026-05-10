@@ -1,0 +1,16 @@
+.git
+.gitignore
+.omx
+**/.DS_Store
+**/.gradle
+**/build
+**/out
+**/target
+**/node_modules
+**/dist
+frontend
+edu_screnshot
+DESIGN.md
+FRAME.md
+design
+*.log
