@@ -7,15 +7,29 @@ import io.jsonwebtoken.security.Keys;
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import javax.crypto.SecretKey;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
+@Component
 public class JwtTokenProvider {
 
     private final SecretKey secretKey;
     private final long accessTokenValidityMillis;
+    private final long refreshTokenValidityMillis;
 
-    public JwtTokenProvider(String secret, long accessTokenValidityMillis) {
+    @Autowired
+    public JwtTokenProvider(
+            @Value("${jwt.secret:1234567890123456789012345678901234567890123456789012345678901234}") String secret,
+            @Value("${jwt.access-token-validity-millis:3600000}") long accessTokenValidityMillis
+    ) {
+        this(secret, accessTokenValidityMillis, 1209600000L);
+    }
+
+    public JwtTokenProvider(String secret, long accessTokenValidityMillis, long refreshTokenValidityMillis) {
         this.secretKey = Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
         this.accessTokenValidityMillis = accessTokenValidityMillis;
+        this.refreshTokenValidityMillis = refreshTokenValidityMillis;
     }
 
     public String createAccessToken(Long userId, String email, UserRole role) {
@@ -26,6 +40,19 @@ public class JwtTokenProvider {
                 .subject(String.valueOf(userId))
                 .claim("email", email)
                 .claim("role", role.name())
+                .issuedAt(now)
+                .expiration(expiresAt)
+                .signWith(secretKey)
+                .compact();
+    }
+
+    public String createRefreshToken(Long userId) {
+        Date now = new Date();
+        Date expiresAt = new Date(now.getTime() + refreshTokenValidityMillis);
+
+        return Jwts.builder()
+                .subject(String.valueOf(userId))
+                .claim("type", "refresh")
                 .issuedAt(now)
                 .expiration(expiresAt)
                 .signWith(secretKey)

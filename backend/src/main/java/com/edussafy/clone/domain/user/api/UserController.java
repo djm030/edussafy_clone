@@ -5,6 +5,7 @@ import com.edussafy.clone.domain.user.application.UserQueryService;
 import com.edussafy.clone.domain.user.dto.request.UserProfileUpdateRequest;
 import com.edussafy.clone.domain.user.dto.response.UserMeResponse;
 import com.edussafy.clone.global.response.ApiResponse;
+import com.edussafy.clone.global.security.CurrentUser;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,19 +19,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1/users")
 public class UserController {
 
-    private static final Long TEMP_USER_ID = 1L;
-
     private final UserQueryService userQueryService;
     private final UserCommandService userCommandService;
 
     @GetMapping("/me")
-    public ApiResponse<UserMeResponse> getMe() {
-        return ApiResponse.ok(userQueryService.getMe(TEMP_USER_ID));
+    public ApiResponse<UserMeResponse> getMe(@CurrentUser Long userId) {
+        return ApiResponse.ok(userQueryService.getMe(userId));
     }
 
     @PatchMapping("/me")
-    public ApiResponse<Void> updateMe(@Valid @RequestBody UserProfileUpdateRequest request) {
-        userCommandService.updateProfile(TEMP_USER_ID, request.toCommand());
+    public ApiResponse<Void> updateMe(@CurrentUser Long userId, @Valid @RequestBody UserProfileUpdateRequest request) {
+        userCommandService.updateProfile(userId, request.toCommand());
         return ApiResponse.ok();
     }
 }

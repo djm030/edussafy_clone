@@ -1,10 +1,17 @@
 package com.edussafy.clone.domain.auth.api;
 
+import com.edussafy.clone.domain.auth.application.AuthService;
+import com.edussafy.clone.domain.auth.dto.request.LoginRequest;
+import com.edussafy.clone.domain.auth.dto.response.LoginResponse;
 import com.edussafy.clone.domain.user.application.UserQueryService;
 import com.edussafy.clone.domain.user.dto.response.UserMeResponse;
 import com.edussafy.clone.global.response.ApiResponse;
+import com.edussafy.clone.global.security.CurrentUser;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,12 +20,21 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1/auth")
 public class AuthController {
 
-    private static final Long TEMP_USER_ID = 1L;
-
+    private final AuthService authService;
     private final UserQueryService userQueryService;
 
+    @PostMapping("/login")
+    public ApiResponse<LoginResponse> login(@Valid @RequestBody LoginRequest request) {
+        return ApiResponse.ok(authService.login(request));
+    }
+
+    @PostMapping("/logout")
+    public ApiResponse<Void> logout() {
+        return ApiResponse.ok();
+    }
+
     @GetMapping("/me")
-    public ApiResponse<UserMeResponse> me() {
-        return ApiResponse.ok(userQueryService.getMe(TEMP_USER_ID));
+    public ApiResponse<UserMeResponse> me(@CurrentUser Long userId) {
+        return ApiResponse.ok(userQueryService.getMe(userId));
     }
 }
