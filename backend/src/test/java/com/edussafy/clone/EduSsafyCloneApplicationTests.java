@@ -1,6 +1,7 @@
 package com.edussafy.clone;
 
 import com.edussafy.clone.domain.user.domain.repository.UserRepository;
+import com.edussafy.clone.domain.user.domain.repository.UserStatRepository;
 import com.edussafy.clone.domain.user.dto.mapper.UserDtoMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -18,6 +19,9 @@ class EduSsafyCloneApplicationTests {
 
     @MockBean
     private UserRepository userRepository;
+
+    @MockBean
+    private UserStatRepository userStatRepository;
 
     @MockBean
     private UserDtoMapper userDtoMapper;

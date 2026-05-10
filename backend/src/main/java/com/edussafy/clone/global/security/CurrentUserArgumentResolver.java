@@ -21,10 +21,15 @@ public class CurrentUserArgumentResolver implements HandlerMethodArgumentResolve
     @Override
     public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer,
                                   NativeWebRequest webRequest, WebDataBinderFactory binderFactory) {
+        CurrentUserPrincipal principal = getPrincipal();
+        return principal == null ? null : principal.userId();
+    }
+
+    protected CurrentUserPrincipal getPrincipal() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication == null || !(authentication.getPrincipal() instanceof CurrentUserPrincipal principal)) {
             return null;
         }
-        return principal.userId();
+        return principal;
     }
 }
