@@ -9,6 +9,7 @@ import com.edussafy.clone.domain.auth.dto.response.LoginResponse;
 import com.edussafy.clone.domain.user.domain.entity.User;
 import com.edussafy.clone.domain.user.domain.enums.UserRole;
 import com.edussafy.clone.domain.user.domain.enums.UserStatus;
+import com.edussafy.clone.domain.user.domain.repository.PasswordChangeHistoryRepository;
 import com.edussafy.clone.domain.user.domain.repository.UserRepository;
 import com.edussafy.clone.domain.user.dto.mapper.UserDtoMapper;
 import com.edussafy.clone.domain.user.dto.response.UserMeResponse;
@@ -26,6 +27,9 @@ class AuthServiceTest {
 
     @Mock
     private UserRepository userRepository;
+
+    @Mock
+    private PasswordChangeHistoryRepository passwordChangeHistoryRepository;
 
     @Mock
     private PasswordEncoder passwordEncoder;

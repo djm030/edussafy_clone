@@ -64,7 +64,7 @@ public class AdminSupportController {
         return ApiResponse.ok(service.updateAgreement(adminId, agreementId, request));
     }
 
-    @PostMapping("/agreements/{agreementId}/inactive")
+    @RequestMapping(value = "/agreements/{agreementId}/inactive", method = {RequestMethod.PATCH, RequestMethod.POST})
     public ApiResponse<Void> inactiveAgreement(@CurrentUser Long adminId, @PathVariable Long agreementId) {
         service.inactiveAgreement(adminId, agreementId);
         return ApiResponse.ok();

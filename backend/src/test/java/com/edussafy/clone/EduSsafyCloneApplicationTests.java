@@ -28,6 +28,7 @@ import com.edussafy.clone.domain.survey.domain.repository.SurveyQuestionReposito
 import com.edussafy.clone.domain.survey.domain.repository.SurveyRepository;
 import com.edussafy.clone.domain.task.domain.repository.CourseTaskRepository;
 import com.edussafy.clone.domain.task.domain.repository.UserTaskResultRepository;
+import com.edussafy.clone.domain.user.domain.repository.PasswordChangeHistoryRepository;
 import com.edussafy.clone.domain.user.domain.repository.UserRepository;
 import com.edussafy.clone.domain.user.domain.repository.UserStatRepository;
 import com.edussafy.clone.domain.user.dto.mapper.UserDtoMapper;
@@ -48,6 +49,9 @@ class EduSsafyCloneApplicationTests {
 
     @MockBean
     private UserRepository userRepository;
+
+    @MockBean
+    private PasswordChangeHistoryRepository passwordChangeHistoryRepository;
 
     @MockBean
     private BoardRepository boardRepository;

@@ -1,10 +1,14 @@
 package com.edussafy.clone.domain.learning.api;
 
+import com.edussafy.clone.domain.bookmark.application.BookmarkService;
+import com.edussafy.clone.domain.bookmark.domain.enums.BookmarkTargetType;
+import com.edussafy.clone.domain.bookmark.dto.response.BookmarkResponse;
 import com.edussafy.clone.domain.learning.application.LearningInteractionService;
 import com.edussafy.clone.domain.learning.application.LearningProgressService;
 import com.edussafy.clone.domain.learning.application.LearningQueryService;
 import com.edussafy.clone.domain.learning.domain.enums.LearningContentType;
 import com.edussafy.clone.domain.learning.domain.enums.LearningProgressStatus;
+import com.edussafy.clone.domain.learning.dto.request.LearningInteractionRequest;
 import com.edussafy.clone.domain.learning.dto.request.LearningProgressRequest;
 import com.edussafy.clone.domain.learning.dto.response.LearningCategoryResponse;
 import com.edussafy.clone.domain.learning.dto.response.LearningContentResponse;
@@ -30,6 +34,7 @@ public class LearningController {
     private final LearningQueryService learningQueryService;
     private final LearningInteractionService learningInteractionService;
     private final LearningProgressService learningProgressService;
+    private final BookmarkService bookmarkService;
 
     @GetMapping("/categories")
     public ApiResponse<List<LearningCategoryResponse>> getCategories() {
@@ -117,5 +122,23 @@ public class LearningController {
             @RequestParam(defaultValue = "20") int size
     ) {
         return ApiResponse.ok(learningProgressService.getMyProgress(currentUserId, progressStatus, page, size));
+    }
+
+    @GetMapping("/contents/my-selected")
+    public ApiResponse<PageResponse<BookmarkResponse>> getMySelectedContents(
+            @CurrentUser Long currentUserId,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "20") int size
+    ) {
+        return ApiResponse.ok(bookmarkService.getMyBookmarks(currentUserId, BookmarkTargetType.LEARNING_CONTENT, page, size));
+    }
+
+    @PostMapping("/contents/{contentId}/interactions")
+    public ApiResponse<LearningInteractionResponse> recordInteraction(
+            @PathVariable Long contentId,
+            @CurrentUser Long currentUserId,
+            @RequestBody LearningInteractionRequest request
+    ) {
+        return ApiResponse.ok(learningInteractionService.record(contentId, currentUserId, request.interactionType()));
     }
 }

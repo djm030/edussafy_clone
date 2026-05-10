@@ -38,6 +38,20 @@ public class LearningInteractionService {
         return toInteractionResponse(content);
     }
 
+    public LearningInteractionResponse record(Long contentId, Long userId, ContentInteractionType interactionType) {
+        LearningContent content = getContent(contentId);
+        User user = getUser(userId);
+        if (interactionType == ContentInteractionType.VIEW || interactionType == ContentInteractionType.PLAY) {
+            content.increaseViewCount();
+        } else if (interactionType == ContentInteractionType.LIKE) {
+            content.increaseLikeCount();
+        } else if (interactionType == ContentInteractionType.DOWNLOAD) {
+            content.increaseDownloadCount();
+        }
+        saveInteraction(user, content, interactionType);
+        return toInteractionResponse(content);
+    }
+
     private LearningContent getContent(Long contentId) {
         return learningContentRepository.findById(contentId).orElseThrow(LearningContentNotFoundException::new);
     }
