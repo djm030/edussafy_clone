@@ -1,176 +1,45 @@
-# PrimeVue / Vue Design Docs
+# eduSSAFY design docs
 
-## Project-specific Vue mockup docs
+이 폴더는 더 이상 최상위 디자인 기준서가 아니다. 현재 클론 작업의 기준은 루트 문서다.
 
-These files document the SSAFY dashboard page implemented in `src/` with Vue 3.
+## 기준 우선순위
 
-- [SSAFY Dashboard Vue Mockup Design Notes](./app-vue/README.md)
-- [Dashboard Frame](./app-vue/00-dashboard-frame.md)
-- [Vue Component Structure](./app-vue/01-vue-component-structure.md)
-- [UI/UX Pro Max Pass](./app-vue/02-ui-ux-pro-max-pass.md)
+1. `../FRAME.md` — 화면 프레임, 라우팅, 클릭/이동 연결, 페이지 skeleton
+2. `../DESIGN.md` — 색상, 타이포그래피, spacing, component visual rule
+3. `app-vue/` — 위 두 문서를 실제 Vue/Vite 구현 구조로 번역한 구현 가이드
+4. `reference-primevue/` — PrimeVue/Vue 라이브러리 참고 자료
 
-### App component docs
+상충하는 내용이 있으면 항상 `FRAME.md`와 `DESIGN.md`를 우선한다.
 
-- [Header](./app-vue/components/01-header.md)
-- [Attendance Card](./app-vue/components/02-attendance-card.md)
-- [Summary Panel](./app-vue/components/03-summary-panel.md)
-- [Curriculum Section](./app-vue/components/04-curriculum-section.md)
-- [Quest Evaluation Panel](./app-vue/components/05-quest-evaluation-panel.md)
-- [Study Materials Section](./app-vue/components/06-study-materials-section.md)
-- [Elearning Card](./app-vue/components/07-elearning-card.md)
+## 폴더 역할
 
----
+```text
+design/
+├── app-vue/              # eduSSAFY Vue 구현 가이드
+└── reference-primevue/   # PrimeVue/Vue 참고 문서, 구현 기준 아님
+```
 
-## PrimeVue reference split from DESIGN.md
+## 작업 흐름
 
-The files below are split from the current `DESIGN.md`. They are grouped by folder and keep their numeric order.
+```text
+1. FRAME.md에서 페이지 구조와 이동 경로 확인
+2. DESIGN.md에서 시각 규칙 확인
+3. design/app-vue에서 Vue 파일/컴포넌트 매핑 확인
+4. 필요할 때만 reference-primevue에서 라이브러리 사용법 참고
+```
 
-### root
+## 주의
 
-- [001 primevue documentation](./001-primevue-documentation.md)
-- [003 introduction](./003-introduction.md)
-- [035 using the cli](./035-using-the-cli.md)
-- [036 or edit codex config toml](./036-or-edit-codex-config-toml.md)
-### 30-components-index
+- `reference-primevue/`는 SSAFY EDU 클론의 디자인 기준이 아니다.
+- PrimeVue 기본 스타일을 그대로 쓰지 말고, `../DESIGN.md`의 SSAFY EDU token과 visual rule을 우선 적용한다.
+- 기존 한 페이지 대시보드 문서는 `app-vue/`에서 최신 전체 프레임 기준으로 재정리한다.
+## Screenshot-first implementation rule
 
-- [042 components](./30-components-index/042-components.md)
-### components
+페이지 구현을 에이전트에게 맡길 때는 `app-vue/05-screenshot-reference-map.md`에서 해당 route의 screenshot을 찾고, 반드시 이미지를 직접 확인하게 한다.
 
-- [043 vue accordion component](./components/043-vue-accordion-component.md)
-- [044 vue animateonscroll directive](./components/044-vue-animateonscroll-directive.md)
-- [045 vue autocomplete component](./components/045-vue-autocomplete-component.md)
-- [046 vue avatar component](./components/046-vue-avatar-component.md)
-- [047 vue badge component](./components/047-vue-badge-component.md)
-- [048 vue blockui component](./components/048-vue-blockui-component.md)
-- [049 vue breadcrumb component](./components/049-vue-breadcrumb-component.md)
-- [050 vue button component](./components/050-vue-button-component.md)
-- [051 vue card component](./components/051-vue-card-component.md)
-- [052 vue carousel component](./components/052-vue-carousel-component.md)
-- [053 vue cascadeselect component](./components/053-vue-cascadeselect-component.md)
-- [054 vue chart component](./components/054-vue-chart-component.md)
-- [055 vue checkbox component](./components/055-vue-checkbox-component.md)
-- [056 vue chip component](./components/056-vue-chip-component.md)
-- [057 vue colorpicker component](./components/057-vue-colorpicker-component.md)
-- [058 vue confirmation dialog component](./components/058-vue-confirmation-dialog-component.md)
-- [059 vue confirmation popup component](./components/059-vue-confirmation-popup-component.md)
-- [060 vue contextmenu component](./components/060-vue-contextmenu-component.md)
-- [061 vue table component](./components/061-vue-table-component.md)
-- [062 vue dataview component](./components/062-vue-dataview-component.md)
-- [063 vue datepicker component](./components/063-vue-datepicker-component.md)
-- [064 vue deferred content component](./components/064-vue-deferred-content-component.md)
-- [065 vue dialog component](./components/065-vue-dialog-component.md)
-- [066 vue divider component](./components/066-vue-divider-component.md)
-- [067 vue dock component](./components/067-vue-dock-component.md)
-- [068 vue drawer component](./components/068-vue-drawer-component.md)
-- [069 vue dynamic dialog component](./components/069-vue-dynamic-dialog-component.md)
-- [070 vue editor component](./components/070-vue-editor-component.md)
-- [071 vue fieldset component](./components/071-vue-fieldset-component.md)
-- [072 vue file upload component](./components/072-vue-file-upload-component.md)
-- [073 vue float label](./components/073-vue-float-label.md)
-- [074 vue fluid component](./components/074-vue-fluid-component.md)
-- [075 vue focustrap directive](./components/075-vue-focustrap-directive.md)
-- [076 vue gallery component](./components/076-vue-gallery-component.md)
-- [077 vue iconfield](./components/077-vue-iconfield.md)
-- [078 vue ifta label](./components/078-vue-ifta-label.md)
-- [079 vue image component](./components/079-vue-image-component.md)
-- [080 vue imagecompare component](./components/080-vue-imagecompare-component.md)
-- [081 vue inplace component](./components/081-vue-inplace-component.md)
-- [082 vue inputgroup component](./components/082-vue-inputgroup-component.md)
-- [083 vue mask component](./components/083-vue-mask-component.md)
-- [084 vue inputnumber component](./components/084-vue-inputnumber-component.md)
-- [085 vue otp input component](./components/085-vue-otp-input-component.md)
-- [086 vue input component](./components/086-vue-input-component.md)
-- [087 vue keyfilter component](./components/087-vue-keyfilter-component.md)
-- [088 vue knob component](./components/088-vue-knob-component.md)
-- [089 vue listbox component](./components/089-vue-listbox-component.md)
-- [090 mcp](./components/090-mcp.md)
-- [091 using the cli](./components/091-using-the-cli.md)
-- [092 or edit codex config toml](./components/092-or-edit-codex-config-toml.md)
-- [093 vue megamenu component](./components/093-vue-megamenu-component.md)
-- [094 vue menu component](./components/094-vue-menu-component.md)
-- [095 vue navbar component](./components/095-vue-navbar-component.md)
-- [096 vue message component](./components/096-vue-message-component.md)
-- [097 vue metergroup component](./components/097-vue-metergroup-component.md)
-- [098 vue multiselect component](./components/098-vue-multiselect-component.md)
-- [099 vue orderlist component](./components/099-vue-orderlist-component.md)
-- [100 vue organization chart component](./components/100-vue-organization-chart-component.md)
-- [101 vue paginator component](./components/101-vue-paginator-component.md)
-- [102 vue panel component](./components/102-vue-panel-component.md)
-- [103 vue panelmenu component](./components/103-vue-panelmenu-component.md)
-- [104 vue password component](./components/104-vue-password-component.md)
-- [105 vue picklist component](./components/105-vue-picklist-component.md)
-- [106 vue popover component](./components/106-vue-popover-component.md)
-- [107 vue progressbar component](./components/107-vue-progressbar-component.md)
-- [108 vue progressspinner component](./components/108-vue-progressspinner-component.md)
-- [109 vue radiobutton component](./components/109-vue-radiobutton-component.md)
-- [110 vue rating component](./components/110-vue-rating-component.md)
-- [111 vue ripple component](./components/111-vue-ripple-component.md)
-- [112 vue scrollpanel component](./components/112-vue-scrollpanel-component.md)
-- [113 vue scrolltop component](./components/113-vue-scrolltop-component.md)
-- [114 vue select component](./components/114-vue-select-component.md)
-- [115 vue selectbutton component](./components/115-vue-selectbutton-component.md)
-- [116 vue skeleton component](./components/116-vue-skeleton-component.md)
-- [117 vue slider component](./components/117-vue-slider-component.md)
-- [118 vue speed dial component](./components/118-vue-speed-dial-component.md)
-- [119 vue splitbutton component](./components/119-vue-splitbutton-component.md)
-- [120 vue splitter component](./components/120-vue-splitter-component.md)
-- [121 vue stepper component](./components/121-vue-stepper-component.md)
-- [122 vue styleclass directive](./components/122-vue-styleclass-directive.md)
-- [123 vue tabs component](./components/123-vue-tabs-component.md)
-- [124 vue tag component](./components/124-vue-tag-component.md)
-- [125 vue terminal component](./components/125-vue-terminal-component.md)
-- [126 vue textarea component](./components/126-vue-textarea-component.md)
-- [127 vue tieredmenu component](./components/127-vue-tieredmenu-component.md)
-- [128 vue timeline component](./components/128-vue-timeline-component.md)
-- [129 vue toast component](./components/129-vue-toast-component.md)
-- [130 vue togglebutton component](./components/130-vue-togglebutton-component.md)
-- [131 vue toggleswitch component](./components/131-vue-toggleswitch-component.md)
-- [132 vue toolbar component](./components/132-vue-toolbar-component.md)
-- [133 vue tooltip directive](./components/133-vue-tooltip-directive.md)
-- [134 vue tree component](./components/134-vue-tree-component.md)
-- [135 vue treeselect component](./components/135-vue-treeselect-component.md)
-- [136 vue treetable component](./components/136-vue-treetable-component.md)
-- [137 vue virtual scroller component](./components/137-vue-virtual-scroller-component.md)
-### guides
+- `FRAME.md`: 구조/route/클릭 이동 기준
+- `DESIGN.md`: visual token/component 기준
+- `edu_screnshot/`: 실제 배치/밀도/간격/상태 UI 기준
+- `app-vue/`: Vue 파일 매핑과 구현 예외만 기록
 
-- [002 guide pages](./guides/002-guide-pages.md)
-- [004 configuration](./guides/004-configuration.md)
-- [005 styled mode](./guides/005-styled-mode.md)
-- [006 unstyled mode](./guides/006-unstyled-mode.md)
-- [007 pass through](./guides/007-pass-through.md)
-- [008 icons](./guides/008-icons.md)
-- [009 custom icons](./guides/009-custom-icons.md)
-- [010 forms](./guides/010-forms.md)
-- [014 auto import](./guides/014-auto-import.md)
-### installation
-
-- [011 using npm](./installation/011-using-npm.md)
-- [012 using yarn](./installation/012-using-yarn.md)
-- [013 using pnpm](./installation/013-using-pnpm.md)
-- [015 install primevue with cdn](./installation/015-install-primevue-with-cdn.md)
-- [016 install primevue with laravel](./installation/016-install-primevue-with-laravel.md)
-- [017 using npm](./installation/017-using-npm.md)
-- [018 using yarn](./installation/018-using-yarn.md)
-- [019 using pnpm](./installation/019-using-pnpm.md)
-- [020 install primevue with nuxt](./installation/020-install-primevue-with-nuxt.md)
-- [021 using npm](./installation/021-using-npm.md)
-- [022 using yarn](./installation/022-using-yarn.md)
-- [023 using pnpm](./installation/023-using-pnpm.md)
-- [024 install primevue with vite](./installation/024-install-primevue-with-vite.md)
-- [025 using npm](./installation/025-using-npm.md)
-- [026 using yarn](./installation/026-using-yarn.md)
-- [027 using pnpm](./installation/027-using-pnpm.md)
-### reference
-
-- [028 terms and conditions](./reference/028-terms-and-conditions.md)
-- [029 tailwind css](./reference/029-tailwind-css.md)
-- [030 ui kit](./reference/030-ui-kit.md)
-- [031 contribution guide](./reference/031-contribution-guide.md)
-- [032 setup](./reference/032-setup.md)
-- [033 llms txt](./reference/033-llms-txt.md)
-- [034 mcp server](./reference/034-mcp-server.md)
-- [037 accessibility](./reference/037-accessibility.md)
-- [038 animations](./reference/038-animations.md)
-- [039 dynamic imports](./reference/039-dynamic-imports.md)
-- [040 migration](./reference/040-migration.md)
-- [041 rtl support](./reference/041-rtl-support.md)
+긴 문서를 매번 전체로 읽지 말고, 구현할 page에 해당하는 섹션과 screenshot만 읽는다.
