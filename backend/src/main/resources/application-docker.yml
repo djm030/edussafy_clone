@@ -1,0 +1,6 @@
+spring:
+  datasource:
+    url: jdbc:mysql://${DB_HOST:mysql}:${DB_PORT:3306}/${DB_NAME:edussafy}?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: ${DB_USER:edussafy}
+    password: ${DB_PASSWORD:edussafy}
+    driver-class-name: com.mysql.cj.jdbc.Driver
