@@ -1,5 +1,8 @@
 package com.edussafy.clone;
 
+import com.edussafy.clone.domain.board.domain.repository.BoardCategoryRepository;
+import com.edussafy.clone.domain.board.domain.repository.BoardPostRepository;
+import com.edussafy.clone.domain.board.domain.repository.BoardRepository;
 import com.edussafy.clone.domain.user.domain.repository.UserRepository;
 import com.edussafy.clone.domain.user.domain.repository.UserStatRepository;
 import com.edussafy.clone.domain.user.dto.mapper.UserDtoMapper;
@@ -19,6 +22,15 @@ class EduSsafyCloneApplicationTests {
 
     @MockBean
     private UserRepository userRepository;
+
+    @MockBean
+    private BoardRepository boardRepository;
+
+    @MockBean
+    private BoardCategoryRepository boardCategoryRepository;
+
+    @MockBean
+    private BoardPostRepository boardPostRepository;
 
     @MockBean
     private UserStatRepository userStatRepository;

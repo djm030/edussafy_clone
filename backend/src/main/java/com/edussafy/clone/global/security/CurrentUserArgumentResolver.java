@@ -15,14 +15,21 @@ public class CurrentUserArgumentResolver implements HandlerMethodArgumentResolve
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
         return parameter.hasParameterAnnotation(CurrentUser.class)
-                && Long.class.isAssignableFrom(parameter.getParameterType());
+                && (Long.class.isAssignableFrom(parameter.getParameterType())
+                || CurrentUserPrincipal.class.isAssignableFrom(parameter.getParameterType()));
     }
 
     @Override
     public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer,
                                   NativeWebRequest webRequest, WebDataBinderFactory binderFactory) {
         CurrentUserPrincipal principal = getPrincipal();
-        return principal == null ? null : principal.userId();
+        if (principal == null) {
+            return null;
+        }
+        if (CurrentUserPrincipal.class.isAssignableFrom(parameter.getParameterType())) {
+            return principal;
+        }
+        return principal.userId();
     }
 
     protected CurrentUserPrincipal getPrincipal() {
