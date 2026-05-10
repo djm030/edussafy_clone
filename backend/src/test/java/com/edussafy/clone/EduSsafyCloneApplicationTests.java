@@ -5,6 +5,8 @@ import com.edussafy.clone.domain.board.domain.repository.BoardCommentRepository;
 import com.edussafy.clone.domain.board.domain.repository.BoardPostRepository;
 import com.edussafy.clone.domain.board.domain.repository.BoardRepository;
 import com.edussafy.clone.domain.activity.domain.repository.UserActivityRecordRepository;
+import com.edussafy.clone.domain.agreement.domain.repository.AgreementRepository;
+import com.edussafy.clone.domain.agreement.domain.repository.UserAgreementRepository;
 import com.edussafy.clone.domain.attendance.domain.repository.AttendanceAppealRepository;
 import com.edussafy.clone.domain.attendance.domain.repository.AttendanceRecordRepository;
 import com.edussafy.clone.domain.attendance.domain.repository.EducationCalendarDayRepository;
@@ -16,6 +18,8 @@ import com.edussafy.clone.domain.learning.domain.repository.LearningCategoryRepo
 import com.edussafy.clone.domain.learning.domain.repository.LearningContentRepository;
 import com.edussafy.clone.domain.learning.domain.repository.UserContentInteractionRepository;
 import com.edussafy.clone.domain.learning.domain.repository.UserLearningProgressRepository;
+import com.edussafy.clone.domain.inquiry.domain.repository.InquiryRepository;
+import com.edussafy.clone.domain.notification.domain.repository.NotificationRepository;
 import com.edussafy.clone.domain.point.domain.repository.PointTransactionRepository;
 import com.edussafy.clone.domain.survey.domain.repository.SurveyCategoryRepository;
 import com.edussafy.clone.domain.survey.domain.repository.SurveyParticipantRepository;
@@ -118,6 +122,18 @@ class EduSsafyCloneApplicationTests {
 
     @MockBean
     private UserActivityRecordRepository userActivityRecordRepository;
+
+    @MockBean
+    private InquiryRepository inquiryRepository;
+
+    @MockBean
+    private NotificationRepository notificationRepository;
+
+    @MockBean
+    private AgreementRepository agreementRepository;
+
+    @MockBean
+    private UserAgreementRepository userAgreementRepository;
 
     @MockBean
     private UserDtoMapper userDtoMapper;
