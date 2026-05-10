@@ -4,6 +4,10 @@ import com.edussafy.clone.domain.board.domain.repository.BoardCategoryRepository
 import com.edussafy.clone.domain.board.domain.repository.BoardCommentRepository;
 import com.edussafy.clone.domain.board.domain.repository.BoardPostRepository;
 import com.edussafy.clone.domain.board.domain.repository.BoardRepository;
+import com.edussafy.clone.domain.attendance.domain.repository.AttendanceAppealRepository;
+import com.edussafy.clone.domain.attendance.domain.repository.AttendanceRecordRepository;
+import com.edussafy.clone.domain.attendance.domain.repository.EducationCalendarDayRepository;
+import com.edussafy.clone.domain.bookmark.domain.repository.UserBookmarkRepository;
 import com.edussafy.clone.domain.course.domain.repository.CourseRepository;
 import com.edussafy.clone.domain.course.domain.repository.CourseSessionRepository;
 import com.edussafy.clone.domain.course.domain.repository.CourseWeekRepository;
@@ -11,6 +15,7 @@ import com.edussafy.clone.domain.learning.domain.repository.LearningCategoryRepo
 import com.edussafy.clone.domain.learning.domain.repository.LearningContentRepository;
 import com.edussafy.clone.domain.learning.domain.repository.UserContentInteractionRepository;
 import com.edussafy.clone.domain.learning.domain.repository.UserLearningProgressRepository;
+import com.edussafy.clone.domain.point.domain.repository.PointTransactionRepository;
 import com.edussafy.clone.domain.user.domain.repository.UserRepository;
 import com.edussafy.clone.domain.user.domain.repository.UserStatRepository;
 import com.edussafy.clone.domain.user.dto.mapper.UserDtoMapper;
@@ -70,6 +75,21 @@ class EduSsafyCloneApplicationTests {
 
     @MockBean
     private UserStatRepository userStatRepository;
+
+    @MockBean
+    private AttendanceRecordRepository attendanceRecordRepository;
+
+    @MockBean
+    private AttendanceAppealRepository attendanceAppealRepository;
+
+    @MockBean
+    private EducationCalendarDayRepository educationCalendarDayRepository;
+
+    @MockBean
+    private PointTransactionRepository pointTransactionRepository;
+
+    @MockBean
+    private UserBookmarkRepository userBookmarkRepository;
 
     @MockBean
     private UserDtoMapper userDtoMapper;
