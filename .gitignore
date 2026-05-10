@@ -6,6 +6,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .DS_Store
+.vscode/
 
 # OMX local runtime state/logs should stay local.
 # Keep shareable project-level OMX assets trackable if they are added later.
