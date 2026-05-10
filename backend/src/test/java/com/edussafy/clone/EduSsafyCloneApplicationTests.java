@@ -4,6 +4,7 @@ import com.edussafy.clone.domain.board.domain.repository.BoardCategoryRepository
 import com.edussafy.clone.domain.board.domain.repository.BoardCommentRepository;
 import com.edussafy.clone.domain.board.domain.repository.BoardPostRepository;
 import com.edussafy.clone.domain.board.domain.repository.BoardRepository;
+import com.edussafy.clone.domain.activity.domain.repository.UserActivityRecordRepository;
 import com.edussafy.clone.domain.attendance.domain.repository.AttendanceAppealRepository;
 import com.edussafy.clone.domain.attendance.domain.repository.AttendanceRecordRepository;
 import com.edussafy.clone.domain.attendance.domain.repository.EducationCalendarDayRepository;
@@ -16,6 +17,12 @@ import com.edussafy.clone.domain.learning.domain.repository.LearningContentRepos
 import com.edussafy.clone.domain.learning.domain.repository.UserContentInteractionRepository;
 import com.edussafy.clone.domain.learning.domain.repository.UserLearningProgressRepository;
 import com.edussafy.clone.domain.point.domain.repository.PointTransactionRepository;
+import com.edussafy.clone.domain.survey.domain.repository.SurveyCategoryRepository;
+import com.edussafy.clone.domain.survey.domain.repository.SurveyParticipantRepository;
+import com.edussafy.clone.domain.survey.domain.repository.SurveyQuestionRepository;
+import com.edussafy.clone.domain.survey.domain.repository.SurveyRepository;
+import com.edussafy.clone.domain.task.domain.repository.CourseTaskRepository;
+import com.edussafy.clone.domain.task.domain.repository.UserTaskResultRepository;
 import com.edussafy.clone.domain.user.domain.repository.UserRepository;
 import com.edussafy.clone.domain.user.domain.repository.UserStatRepository;
 import com.edussafy.clone.domain.user.dto.mapper.UserDtoMapper;
@@ -90,6 +97,27 @@ class EduSsafyCloneApplicationTests {
 
     @MockBean
     private UserBookmarkRepository userBookmarkRepository;
+
+    @MockBean
+    private SurveyCategoryRepository surveyCategoryRepository;
+
+    @MockBean
+    private SurveyRepository surveyRepository;
+
+    @MockBean
+    private SurveyQuestionRepository surveyQuestionRepository;
+
+    @MockBean
+    private SurveyParticipantRepository surveyParticipantRepository;
+
+    @MockBean
+    private CourseTaskRepository courseTaskRepository;
+
+    @MockBean
+    private UserTaskResultRepository userTaskResultRepository;
+
+    @MockBean
+    private UserActivityRecordRepository userActivityRecordRepository;
 
     @MockBean
     private UserDtoMapper userDtoMapper;

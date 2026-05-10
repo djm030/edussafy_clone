@@ -26,6 +26,9 @@ public enum ErrorCode {
     ATTENDANCE_RECORD_NOT_FOUND(HttpStatus.NOT_FOUND, "ATTENDANCE_RECORD_NOT_FOUND", "출결 기록을 찾을 수 없습니다."),
     ATTENDANCE_APPEAL_NOT_FOUND(HttpStatus.NOT_FOUND, "ATTENDANCE_APPEAL_NOT_FOUND", "출결 소명을 찾을 수 없습니다."),
     BOOKMARK_NOT_FOUND(HttpStatus.NOT_FOUND, "BOOKMARK_NOT_FOUND", "찜 정보를 찾을 수 없습니다."),
+    SURVEY_NOT_FOUND(HttpStatus.NOT_FOUND, "SURVEY_NOT_FOUND", "설문/신청을 찾을 수 없습니다."),
+    COURSE_TASK_NOT_FOUND(HttpStatus.NOT_FOUND, "COURSE_TASK_NOT_FOUND", "수행 항목을 찾을 수 없습니다."),
+    USER_TASK_RESULT_NOT_FOUND(HttpStatus.NOT_FOUND, "USER_TASK_RESULT_NOT_FOUND", "수행 결과를 찾을 수 없습니다."),
     INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "INTERNAL_SERVER_ERROR", "서버 오류가 발생했습니다.");
 
     private final HttpStatus status;
