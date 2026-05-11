@@ -1,0 +1,263 @@
+{
+  "schemaVersion": "1.0",
+  "generatedAt": "2026-05-11T16:16:45Z",
+  "scope": "frontend form interaction source audit only",
+  "taskId": "8",
+  "editScope": [
+    "frontend/docs/design/app-vue/verification-pack/api/form-interactions/form-interaction-audit.json",
+    "frontend/docs/design/app-vue/verification-pack/api/form-interactions/form-interaction-audit.md"
+  ],
+  "constraints": {
+    "appCodeEdited": false,
+    "backendCodeEdited": false,
+    "packageFilesEdited": false,
+    "realBrowserOrHttpRuntimeExercisedByThisLane": false
+  },
+  "runtimeEvidence": {
+    "status": "PENDING_ELSEWHERE",
+    "notes": [
+      "Task 6 owns frontend/docs/design/app-vue/verification-pack/api/runtime/ and was in_progress during this audit.",
+      "No frontend/docs/design/app-vue/verification-pack/api/runtime/ files existed in this worker-2 worktree at audit time.",
+      "This audit therefore classifies source coverage and does not claim real API runtime completion."
+    ]
+  },
+  "sharedApiFacts": {
+    "apiGate": {
+      "status": "PARTIAL",
+      "evidence": [
+        "frontend/src/api/client.js:5 defines isApiEnabled from VITE_USE_API === 'true'.",
+        "frontend/src/api/client.js:24-27 sets the axios API base URL to /api/v1."
+      ]
+    },
+    "formFileControl": {
+      "status": "FEASIBLE",
+      "evidence": [
+        "frontend/src/components/ui/FormTable.vue:37-45 renders controlled input fields including file inputs.",
+        "frontend/src/components/ui/FormTable.vue:108-111 stores the first selected File object for file fields."
+      ]
+    }
+  },
+  "interactions": [
+    {
+      "id": "community-board-write",
+      "label": "community board write",
+      "route": "/community/boards/open/write",
+      "routeStatus": "NO_SCREENSHOT",
+      "status": "FEASIBLE",
+      "realApiRuntimeEvidence": "PENDING_ELSEWHERE",
+      "canonicalEvidence": [
+        "frontend/docs/design/app-vue/canonical-contract.md:51 lists /community/boards/open/write with GET /api/v1/boards/free/categories and POST /api/v1/boards/free/posts."
+      ],
+      "handlerEvidence": [
+        "frontend/src/pages/community/BoardWritePage.vue:14-20 wires form submit to submitPost.",
+        "frontend/src/pages/community/BoardWritePage.vue:45-66 validates title/content, calls createCommunityPost, resets form, and reports errors."
+      ],
+      "serviceEvidence": [
+        "frontend/src/services/boardService.js:122-139 resolves category and posts title/contentText to boardsApi.createPost with fileIds: [].",
+        "frontend/src/services/boardService.js:168-170 maps createCommunityPost to the open/free board key.",
+        "frontend/src/api/modules.js:52-58 exposes board categories and createPost endpoints."
+      ],
+      "notes": [
+        "Source coverage exists for text/category submission against the canonical free-board endpoints.",
+        "The visible form includes an attachment input, but this row is not marked blocked because the canonical row does not require file upload for community board write."
+      ]
+    },
+    {
+      "id": "document-submit-with-file",
+      "label": "document submit with file path",
+      "route": "/mycampus/documents/write",
+      "routeStatus": "NO_SCREENSHOT",
+      "status": "FEASIBLE",
+      "realApiRuntimeEvidence": "PENDING_ELSEWHERE",
+      "canonicalEvidence": [
+        "frontend/docs/design/app-vue/canonical-contract.md:35 lists /mycampus/documents/write with GET categories, POST /api/v1/files, and POST /api/v1/boards/doc-req/posts."
+      ],
+      "handlerEvidence": [
+        "frontend/src/pages/mycampus/DocumentWritePage.vue:14-20 wires form submit to submitDocument.",
+        "frontend/src/pages/mycampus/DocumentWritePage.vue:33-40 defines category/title/content/file fields and initializes file as null.",
+        "frontend/src/pages/mycampus/DocumentWritePage.vue:45-66 validates title/content, calls submitDocumentData, resets form, and reports errors."
+      ],
+      "serviceEvidence": [
+        "frontend/src/services/mycampusService.js:197-203 resolves document board category IDs.",
+        "frontend/src/services/mycampusService.js:205-214 uploads a selected file as FormData to filesApi.upload.",
+        "frontend/src/services/mycampusService.js:360-387 creates the doc-req board post and includes fileIds when upload returns an ID.",
+        "frontend/src/api/modules.js:111-114 exposes filesApi.upload/detail/delete.",
+        "frontend/src/api/modules.js:52-58 exposes board categories and createPost endpoints."
+      ],
+      "notes": [
+        "This is the strongest file-path flow: the File object from FormTable can reach POST /files, then the resulting ID is attached to the board post."
+      ]
+    },
+    {
+      "id": "inquiry-write",
+      "label": "inquiry write",
+      "route": "/help/inquiries/write",
+      "routeStatus": "NO_SCREENSHOT",
+      "status": "PARTIAL",
+      "realApiRuntimeEvidence": "PENDING_ELSEWHERE",
+      "canonicalEvidence": [
+        "frontend/docs/design/app-vue/canonical-contract.md:61 lists /help/inquiries/write with POST /api/v1/inquiries."
+      ],
+      "handlerEvidence": [
+        "frontend/src/pages/help/HelpInquiryWritePage.vue:14-20 wires form submit to submitInquiry.",
+        "frontend/src/pages/help/HelpInquiryWritePage.vue:33-40 defines category/title/content/file fields and initializes file as null.",
+        "frontend/src/pages/help/HelpInquiryWritePage.vue:45-66 validates title/content, calls createInquiry, resets form, and reports errors."
+      ],
+      "serviceEvidence": [
+        "frontend/src/services/userListService.js:87-95 posts category/title/content to inquiriesApi.create but sends fileIds: [] regardless of selected file.",
+        "frontend/src/api/modules.js:126-131 exposes inquiriesApi.create/update/delete endpoints."
+      ],
+      "notes": [
+        "Basic inquiry submit is source-covered against POST /api/v1/inquiries.",
+        "Marked PARTIAL because the UI exposes a file field but the service does not upload or attach the selected file."
+      ]
+    },
+    {
+      "id": "mentoring-review-write",
+      "label": "mentoring review write",
+      "route": "/mentoring/meetups/reviews/write",
+      "routeStatus": "NO_SCREENSHOT",
+      "status": "PARTIAL",
+      "realApiRuntimeEvidence": "PENDING_ELSEWHERE",
+      "canonicalEvidence": [
+        "frontend/docs/design/app-vue/canonical-contract.md:73 lists /mentoring/meetups/reviews/write with GET /api/v1/boards/mento-review/categories and POST /api/v1/boards/mento-review/posts."
+      ],
+      "handlerEvidence": [
+        "frontend/src/pages/mentoring/MeetupReviewWritePage.vue:14-20 wires form submit to submitReview.",
+        "frontend/src/pages/mentoring/MeetupReviewWritePage.vue:33-40 defines meetup/title/content/file fields and initializes file as null.",
+        "frontend/src/pages/mentoring/MeetupReviewWritePage.vue:45-68 validates title/content, calls createMentoringReviewPost, resets form, and reports errors."
+      ],
+      "serviceEvidence": [
+        "frontend/src/services/boardService.js:122-139 resolves category and posts title/contentText to boardsApi.createPost with fileIds: [].",
+        "frontend/src/services/boardService.js:172-175 prepends the meetup value into content and maps the post to the mentoring review board key.",
+        "frontend/src/api/modules.js:52-58 exposes board categories and createPost endpoints."
+      ],
+      "notes": [
+        "Basic mentoring review submit is source-covered against the canonical mento-review board endpoints.",
+        "Marked PARTIAL because the UI exposes a file field but the shared board post service does not upload or attach that file."
+      ]
+    },
+    {
+      "id": "password-save",
+      "label": "password save",
+      "route": "/mycampus/password",
+      "routeStatus": "NO_SCREENSHOT",
+      "status": "FEASIBLE",
+      "realApiRuntimeEvidence": "PENDING_ELSEWHERE",
+      "canonicalEvidence": [
+        "frontend/docs/design/app-vue/canonical-contract.md:39 lists /mycampus/password with PATCH /api/v1/auth/password."
+      ],
+      "handlerEvidence": [
+        "frontend/src/pages/mycampus/PasswordPage.vue:14-17 wires form submit to changePassword.",
+        "frontend/src/pages/mycampus/PasswordPage.vue:39-43 defines current/new/confirm password fields.",
+        "frontend/src/pages/mycampus/PasswordPage.vue:45-66 validates new/confirm match, calls changePasswordData, clears fields, and reports errors."
+      ],
+      "serviceEvidence": [
+        "frontend/src/services/mycampusService.js:272-278 maps currentPassword/newPassword to authApi.changePassword.",
+        "frontend/src/api/modules.js:24-40 exposes authApi.changePassword as PATCH /auth/password."
+      ],
+      "notes": [
+        "Source path aligns with the canonical password endpoint; runtime validation remains pending outside this lane."
+      ]
+    },
+    {
+      "id": "profile-save",
+      "label": "profile save",
+      "route": "/mycampus/profile",
+      "routeStatus": "NO_SCREENSHOT",
+      "status": "FEASIBLE",
+      "realApiRuntimeEvidence": "PENDING_ELSEWHERE",
+      "canonicalEvidence": [
+        "frontend/docs/design/app-vue/canonical-contract.md:38 lists /mycampus/profile with GET /api/v1/users/me and PATCH /api/v1/users/me."
+      ],
+      "handlerEvidence": [
+        "frontend/src/pages/mycampus/ProfilePage.vue:15-21 wires form submit to saveProfile.",
+        "frontend/src/pages/mycampus/ProfilePage.vue:40-45 defines readonly name/email/campus and editable phoneNumber fields.",
+        "frontend/src/pages/mycampus/ProfilePage.vue:47-58 loads profile data on mount.",
+        "frontend/src/pages/mycampus/ProfilePage.vue:60-74 calls saveProfileData, updates profile, and reports errors."
+      ],
+      "serviceEvidence": [
+        "frontend/src/services/mycampusService.js:255-269 loads usersApi.me and patches usersApi.updateMe with phoneNumber.",
+        "frontend/src/api/modules.js:42-45 exposes usersApi.me and usersApi.updateMe as GET/PATCH /users/me."
+      ],
+      "notes": [
+        "Source path aligns with canonical profile load/save endpoints; only phoneNumber is editable in the current UI."
+      ]
+    },
+    {
+      "id": "survey-submit",
+      "label": "survey submit",
+      "route": "/community/surveys/:id",
+      "routeStatus": "NO_SCREENSHOT",
+      "status": "PARTIAL",
+      "realApiRuntimeEvidence": "PENDING_ELSEWHERE",
+      "canonicalEvidence": [
+        "frontend/docs/design/app-vue/canonical-contract.md:49 lists /community/surveys/:id with GET /api/v1/surveys/{surveyId}; it does not list the submit endpoint used by the current source."
+      ],
+      "handlerEvidence": [
+        "frontend/src/pages/community/SurveyDetailPage.vue:15-38 renders a submit form for survey questions and answers.",
+        "frontend/src/pages/community/SurveyDetailPage.vue:59-73 loads survey detail and initializes answer keys.",
+        "frontend/src/pages/community/SurveyDetailPage.vue:87-101 calls submitSurveyAnswers with route.params.id and answers, then reports success/error."
+      ],
+      "serviceEvidence": [
+        "frontend/src/services/surveyService.js:132-142 loads survey detail and posts answers through surveysApi.submit.",
+        "frontend/src/api/modules.js:117-123 exposes surveysApi.detail and surveysApi.submit as GET /surveys/{id} and POST /surveys/{id}/submit."
+      ],
+      "notes": [
+        "Frontend source has a submit path, but contract alignment is PARTIAL because canonical-contract.md currently documents only the detail GET for this dynamic route."
+      ]
+    },
+    {
+      "id": "quest-submit",
+      "label": "quest submit",
+      "route": "/classroom/quests/:id",
+      "routeStatus": "NO_SCREENSHOT",
+      "status": "PARTIAL",
+      "realApiRuntimeEvidence": "PENDING_ELSEWHERE",
+      "canonicalEvidence": [
+        "frontend/docs/design/app-vue/canonical-contract.md:44 lists /classroom/quests/:id with GET /api/v1/tasks/{taskId} and GET /api/v1/tasks/{taskId}/my-result; it does not list the submit endpoint used by the current source."
+      ],
+      "handlerEvidence": [
+        "frontend/src/pages/classroom/ClassroomQuestDetailPage.vue:19-34 loads quest detail and current answer for route.params.id.",
+        "frontend/src/pages/classroom/ClassroomQuestDetailPage.vue:36-54 validates a non-empty answer, calls submitQuestAnswer, merges the result, and reports success/error.",
+        "frontend/src/pages/classroom/ClassroomQuestDetailPage.vue:103-113 renders the answer textarea and submit button."
+      ],
+      "serviceEvidence": [
+        "frontend/src/services/classroomService.js:157-167 loads task detail and my-result.",
+        "frontend/src/services/classroomService.js:169-178 posts answerData through tasksApi.submit and refreshes my-result.",
+        "frontend/src/api/modules.js:85-90 exposes tasksApi.detail, tasksApi.submit, and tasksApi.myResult."
+      ],
+      "notes": [
+        "Frontend source has a submit path, but contract alignment is PARTIAL because canonical-contract.md currently documents only detail/result GET endpoints for the quest dynamic route."
+      ]
+    }
+  ],
+  "summary": {
+    "total": 8,
+    "feasible": 4,
+    "partial": 4,
+    "blocked": 0,
+    "feasibleIds": [
+      "community-board-write",
+      "document-submit-with-file",
+      "password-save",
+      "profile-save"
+    ],
+    "partialIds": [
+      "inquiry-write",
+      "mentoring-review-write",
+      "survey-submit",
+      "quest-submit"
+    ],
+    "blockedIds": []
+  },
+  "commands": [
+    "omx team api mailbox-list --input '{...}' --json",
+    "omx team api mailbox-mark-delivered --input '{...}' --json",
+    "omx team api claim-task --input '{...task_id:8...}' --json",
+    "rg -n 'board|write|document|inquiry|mentoring|review|password|profile|survey|quest|submit|form' docs/design/app-vue/canonical-contract.md",
+    "rg -n 'submit|handleSubmit|save|password|profile|review|survey|quest|document|inquiry|board|create|update|upload|file' src/pages src/services src/api src/data",
+    "nl -ba <relevant source files>",
+    "find docs/design/app-vue/verification-pack/api/runtime -maxdepth 2 -type f"
+  ]
+}
