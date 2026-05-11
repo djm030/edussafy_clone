@@ -11,7 +11,10 @@ import com.edussafy.clone.domain.user.domain.enums.UserRole;
 import com.edussafy.clone.domain.user.domain.enums.UserStatus;
 import com.edussafy.clone.domain.user.domain.repository.UserRepository;
 import com.edussafy.clone.domain.user.exception.UserNotFoundException;
+import com.edussafy.clone.global.file.FileResource;
+import com.edussafy.clone.global.file.FileRole;
 import com.edussafy.clone.global.file.FileResourceRepository;
+import com.edussafy.clone.global.file.FileTargetType;
 import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -74,14 +77,71 @@ class UserCommandServiceTest {
         verify(userRepository).findById(1L);
     }
 
+    @Test
+    void updateProfileImage_connects_user_profile_file_when_file_is_user_profile_image() {
+        User user = userWithPassword(passwordEncoder.encode("password"));
+        FileResource file = fileResource(FileTargetType.USER_PROFILE, FileRole.PROFILE_IMAGE);
+        given(userRepository.findById(1L)).willReturn(Optional.of(user));
+        given(fileResourceRepository.findById(10L)).willReturn(Optional.of(file));
+        UserCommandService service = new UserCommandService(userRepository, fileResourceRepository, passwordEncoder);
+
+        service.updateProfileImage(1L, 10L);
+
+        assertThat(user.getProfileFile()).isSameAs(file);
+    }
+
+    @Test
+    void updateProfileImage_clears_profile_file_when_file_id_is_null() {
+        FileResource existing = fileResource(FileTargetType.USER_PROFILE, FileRole.PROFILE_IMAGE);
+        User user = User.builder()
+                .id(1L)
+                .email("user@example.com")
+                .password("encoded")
+                .name("User")
+                .profileFile(existing)
+                .role(UserRole.STUDENT)
+                .status(UserStatus.ACTIVE)
+                .build();
+        given(userRepository.findById(1L)).willReturn(Optional.of(user));
+        UserCommandService service = new UserCommandService(userRepository, fileResourceRepository, passwordEncoder);
+
+        service.updateProfileImage(1L, null);
+
+        assertThat(user.getProfileFile()).isNull();
+    }
+
+    @Test
+    void updateProfileImage_rejects_non_profile_file() {
+        User user = userWithPassword(passwordEncoder.encode("password"));
+        FileResource file = fileResource(FileTargetType.BOARD_POST, FileRole.ATTACHMENT);
+        given(userRepository.findById(1L)).willReturn(Optional.of(user));
+        given(fileResourceRepository.findById(10L)).willReturn(Optional.of(file));
+        UserCommandService service = new UserCommandService(userRepository, fileResourceRepository, passwordEncoder);
+
+        assertThatThrownBy(() -> service.updateProfileImage(1L, 10L))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("profile image file required");
+    }
+
     private User userWithPassword(String password) {
         return User.builder()
                 .id(1L)
                 .email("user@example.com")
                 .password(password)
-                .name("홍길동")
+                .name("User")
                 .role(UserRole.STUDENT)
                 .status(UserStatus.ACTIVE)
+                .build();
+    }
+
+    private FileResource fileResource(FileTargetType targetType, FileRole fileRole) {
+        return FileResource.builder()
+                .id(10L)
+                .originalName("profile.png")
+                .storedName("stored-profile.png")
+                .fileUrl("/files/stored-profile.png")
+                .targetType(targetType)
+                .fileRole(fileRole)
                 .build();
     }
 }

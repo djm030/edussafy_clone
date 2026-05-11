@@ -5,8 +5,10 @@ import com.edussafy.clone.domain.user.application.command.VerifyPasswordCommand;
 import com.edussafy.clone.domain.user.domain.entity.User;
 import com.edussafy.clone.domain.user.domain.repository.UserRepository;
 import com.edussafy.clone.domain.user.exception.UserNotFoundException;
+import com.edussafy.clone.global.file.FileRole;
 import com.edussafy.clone.global.file.FileResource;
 import com.edussafy.clone.global.file.FileResourceRepository;
+import com.edussafy.clone.global.file.FileTargetType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -40,6 +42,9 @@ public class UserCommandService {
     public void updateProfileImage(Long userId, Long fileId) {
         User user = getUser(userId);
         FileResource file = fileId == null ? null : fileResourceRepository.findById(fileId).orElseThrow(() -> new IllegalArgumentException("file not found"));
+        if (file != null && (file.getTargetType() != FileTargetType.USER_PROFILE || file.getFileRole() != FileRole.PROFILE_IMAGE)) {
+            throw new IllegalArgumentException("profile image file required");
+        }
         user.updateProfileFile(file);
     }
 

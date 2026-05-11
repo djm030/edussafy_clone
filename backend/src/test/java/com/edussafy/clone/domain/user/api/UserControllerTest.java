@@ -2,9 +2,11 @@ package com.edussafy.clone.domain.user.api;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.ArgumentMatchers.isNull;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -75,6 +77,28 @@ class UserControllerTest {
                 .andExpect(jsonPath("$.data.verified").value(true));
 
         verify(userCommandService).verifyPassword(eq(1L), any());
+    }
+
+    @Test
+    void updateProfileImage_connects_uploaded_file_to_current_user() throws Exception {
+        mockMvc.perform(patch("/api/v1/users/me/profile-image")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"fileId\":10}"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.success").value(true));
+
+        verify(userCommandService).updateProfileImage(1L, 10L);
+    }
+
+    @Test
+    void updateProfileImage_clears_profile_image_when_file_id_is_null() throws Exception {
+        mockMvc.perform(patch("/api/v1/users/me/profile-image")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"fileId\":null}"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.success").value(true));
+
+        verify(userCommandService).updateProfileImage(eq(1L), isNull());
     }
 
     @TestConfiguration

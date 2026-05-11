@@ -224,23 +224,31 @@ Request:
 }
 ```
 
-## 3.3 프로필 이미지 변경
+## 3.3 Profile image update
+
+Profile images use the common file upload flow first, then connect the returned `fileId` to the current user profile.
+
+1. Upload the image with `POST /api/v1/files` using `targetType=USER_PROFILE` and `fileRole=PROFILE_IMAGE`.
+2. Connect or clear `users.profileFile` with the API below.
 
 ```http
-POST /api/v1/users/me/profile-image
-Content-Type: multipart/form-data
+PATCH /api/v1/users/me/profile-image
+Content-Type: application/json
 ```
 
-Form Data:
+Request:
 
-```text
-file: 이미지 파일
+```json
+{
+  "fileId": 1
+}
 ```
 
-처리:
+Processing:
 
-- `files.targetType = USER_PROFILE`
-- `users.profileFile` 연결
+- Uses a `files` resource whose target type is `USER_PROFILE` and role is `PROFILE_IMAGE`.
+- Connects the file to `users.profileFile`.
+- Send `fileId: null` to clear the profile image.
 
 ## 3.4 교육생 검색
 
@@ -361,9 +369,9 @@ Form Data:
 
 ```text
 file: 업로드 파일
-targetType: BOARD_POST | SURVEY | INQUIRY | COURSE_SESSION | LEARNING_CONTENT | AGREEMENT | ATTENDANCE_APPEAL | USER_ACTIVITY
+targetType: USER_PROFILE | BOARD_POST | SURVEY | INQUIRY | COURSE_SESSION | LEARNING_CONTENT | AGREEMENT | ATTENDANCE_APPEAL | USER_ACTIVITY
 targetId: 연결 대상 ID
-fileRole: ATTACHMENT | EDITOR_IMAGE | THUMBNAIL | VIDEO_THUMBNAIL
+fileRole: ATTACHMENT | EDITOR_IMAGE | THUMBNAIL | PROFILE_IMAGE | VIDEO_THUMBNAIL
 ```
 
 ## 4.2 파일 다운로드
