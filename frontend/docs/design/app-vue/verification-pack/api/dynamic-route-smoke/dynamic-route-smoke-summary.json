@@ -1,0 +1,502 @@
+{
+  "generatedAt": "2026-05-11T16:14:39.505Z",
+  "task": "task-5 NO_SCREENSHOT dynamic route smoke evidence",
+  "verificationMethod": "Static contract/router-source smoke plus production Vite build. Vue router route records were checked from frontend/src/router/index.js and route constants from frontend/src/constants/routes.js without editing app code.",
+  "sourceInventory": "frontend/docs/design/app-vue/contract-inventory.json",
+  "assignedWriteScope": [
+    "frontend/docs/design/app-vue/verification-pack/api/dynamic-route-smoke/",
+    "frontend/docs/design/app-vue/verification-pack/visual/no-screenshot/"
+  ],
+  "counts": {
+    "noScreenshotRows": 19,
+    "dynamicNoScreenshotRows": 11,
+    "staticNoScreenshotRows": 8,
+    "pass": 19,
+    "blocked": 0
+  },
+  "apiCompleteClaim": false,
+  "visualParityClaim": false,
+  "rows": [
+    {
+      "routePath": "/login",
+      "routeName": "login",
+      "routeKind": "page",
+      "status": "NO_SCREENSHOT",
+      "samplePath": "/login",
+      "sampleId": null,
+      "routePatternFound": true,
+      "smokeStatus": "PASS",
+      "screenshotStatus": "NO_SCREENSHOT",
+      "noScreenshotReason": "No primary screenshot mapped in frontend/docs/design/app-vue/05-screenshot-reference-map.md / canonical contract; this task preserves NO_SCREENSHOT rather than claiming visual parity.",
+      "sourceDataEvidence": "static page route; login form has no screenshot reference",
+      "apiEndpoints": [
+        "POST /api/v1/auth/login",
+        "GET /api/v1/auth/me"
+      ],
+      "boardCodes": [],
+      "expectedDataShape": "form submit response or auth/session object",
+      "evidenceApiPath": "verification-pack/api/phase-0/login.json",
+      "checkedSources": [
+        "frontend/docs/design/app-vue/contract-inventory.json",
+        "frontend/src/router/index.js",
+        "frontend/src/constants/routes.js"
+      ]
+    },
+    {
+      "routePath": "/mycampus/documents/write",
+      "routeName": "mycampus-document-write",
+      "routeKind": "page",
+      "status": "NO_SCREENSHOT",
+      "samplePath": "/mycampus/documents/write",
+      "sampleId": null,
+      "routePatternFound": true,
+      "smokeStatus": "PASS",
+      "screenshotStatus": "NO_SCREENSHOT",
+      "noScreenshotReason": "No primary screenshot mapped in frontend/docs/design/app-vue/05-screenshot-reference-map.md / canonical contract; this task preserves NO_SCREENSHOT rather than claiming visual parity.",
+      "sourceDataEvidence": "static write route",
+      "apiEndpoints": [
+        "GET /api/v1/boards/doc-req/categories",
+        "POST /api/v1/files",
+        "POST /api/v1/boards/doc-req/posts"
+      ],
+      "boardCodes": [
+        "doc-req"
+      ],
+      "expectedDataShape": "form submit response or auth/session object",
+      "evidenceApiPath": "verification-pack/api/phase-0/mycampus-documents-write.json",
+      "checkedSources": [
+        "frontend/docs/design/app-vue/contract-inventory.json",
+        "frontend/src/router/index.js",
+        "frontend/src/constants/routes.js"
+      ]
+    },
+    {
+      "routePath": "/mycampus/profile",
+      "routeName": "mycampus-profile",
+      "routeKind": "page",
+      "status": "NO_SCREENSHOT",
+      "samplePath": "/mycampus/profile",
+      "sampleId": null,
+      "routePatternFound": true,
+      "smokeStatus": "PASS",
+      "screenshotStatus": "NO_SCREENSHOT",
+      "noScreenshotReason": "No primary screenshot mapped in frontend/docs/design/app-vue/05-screenshot-reference-map.md / canonical contract; this task preserves NO_SCREENSHOT rather than claiming visual parity.",
+      "sourceDataEvidence": "static profile route",
+      "apiEndpoints": [
+        "GET /api/v1/users/me",
+        "PATCH /api/v1/users/me"
+      ],
+      "boardCodes": [],
+      "expectedDataShape": "page-specific DTO or paged list normalized by frontend service",
+      "evidenceApiPath": "verification-pack/api/phase-0/mycampus-profile.json",
+      "checkedSources": [
+        "frontend/docs/design/app-vue/contract-inventory.json",
+        "frontend/src/router/index.js",
+        "frontend/src/constants/routes.js"
+      ]
+    },
+    {
+      "routePath": "/mycampus/password",
+      "routeName": "mycampus-password",
+      "routeKind": "page",
+      "status": "NO_SCREENSHOT",
+      "samplePath": "/mycampus/password",
+      "sampleId": null,
+      "routePatternFound": true,
+      "smokeStatus": "PASS",
+      "screenshotStatus": "NO_SCREENSHOT",
+      "noScreenshotReason": "No primary screenshot mapped in frontend/docs/design/app-vue/05-screenshot-reference-map.md / canonical contract; this task preserves NO_SCREENSHOT rather than claiming visual parity.",
+      "sourceDataEvidence": "static password route",
+      "apiEndpoints": [
+        "PATCH /api/v1/auth/password"
+      ],
+      "boardCodes": [],
+      "expectedDataShape": "form submit response or auth/session object",
+      "evidenceApiPath": "verification-pack/api/phase-0/mycampus-password.json",
+      "checkedSources": [
+        "frontend/docs/design/app-vue/contract-inventory.json",
+        "frontend/src/router/index.js",
+        "frontend/src/constants/routes.js"
+      ]
+    },
+    {
+      "routePath": "/classroom/quests/:id",
+      "routeName": "classroom-quest-detail",
+      "routeKind": "dynamic-page",
+      "status": "NO_SCREENSHOT",
+      "samplePath": "/classroom/quests/1",
+      "sampleId": "1",
+      "routePatternFound": true,
+      "smokeStatus": "PASS",
+      "screenshotStatus": "NO_SCREENSHOT",
+      "noScreenshotReason": "No primary screenshot mapped in frontend/docs/design/app-vue/05-screenshot-reference-map.md / canonical contract; this task preserves NO_SCREENSHOT rather than claiming visual parity.",
+      "sourceDataEvidence": "frontend/src/data/classroom.js questItems includes id 1; ClassroomQuestDetailPage falls back by route.params.id",
+      "apiEndpoints": [
+        "GET /api/v1/tasks/{taskId}",
+        "GET /api/v1/tasks/{taskId}/my-result"
+      ],
+      "boardCodes": [],
+      "expectedDataShape": "detail object; route param id must map to API id",
+      "evidenceApiPath": "verification-pack/api/phase-0/classroom-quests-id.json",
+      "checkedSources": [
+        "frontend/docs/design/app-vue/contract-inventory.json",
+        "frontend/src/router/index.js",
+        "frontend/src/constants/routes.js"
+      ]
+    },
+    {
+      "routePath": "/classroom/resources/:id",
+      "routeName": "classroom-resource-detail",
+      "routeKind": "dynamic-page",
+      "status": "NO_SCREENSHOT",
+      "samplePath": "/classroom/resources/1",
+      "sampleId": "1",
+      "routePatternFound": true,
+      "smokeStatus": "PASS",
+      "screenshotStatus": "NO_SCREENSHOT",
+      "noScreenshotReason": "No primary screenshot mapped in frontend/docs/design/app-vue/05-screenshot-reference-map.md / canonical contract; this task preserves NO_SCREENSHOT rather than claiming visual parity.",
+      "sourceDataEvidence": "frontend/src/data/classroom.js learningResources includes id 1; ClassroomResourceDetailPage falls back by route.params.id",
+      "apiEndpoints": [
+        "GET /api/v1/learning/contents/{contentId}"
+      ],
+      "boardCodes": [],
+      "expectedDataShape": "detail object; route param id must map to API id",
+      "evidenceApiPath": "verification-pack/api/phase-0/classroom-resources-id.json",
+      "checkedSources": [
+        "frontend/docs/design/app-vue/contract-inventory.json",
+        "frontend/src/router/index.js",
+        "frontend/src/constants/routes.js"
+      ]
+    },
+    {
+      "routePath": "/community/surveys/:id",
+      "routeName": "community-survey-detail",
+      "routeKind": "dynamic-page",
+      "status": "NO_SCREENSHOT",
+      "samplePath": "/community/surveys/1",
+      "sampleId": "1",
+      "routePatternFound": true,
+      "smokeStatus": "PASS",
+      "screenshotStatus": "NO_SCREENSHOT",
+      "noScreenshotReason": "No primary screenshot mapped in frontend/docs/design/app-vue/05-screenshot-reference-map.md / canonical contract; this task preserves NO_SCREENSHOT rather than claiming visual parity.",
+      "sourceDataEvidence": "frontend/src/data/boards.js surveys includes id 1; surveyService mock lookup uses surveyId",
+      "apiEndpoints": [
+        "GET /api/v1/surveys/{surveyId}"
+      ],
+      "boardCodes": [],
+      "expectedDataShape": "detail object; route param id must map to API id",
+      "evidenceApiPath": "verification-pack/api/phase-0/community-surveys-id.json",
+      "checkedSources": [
+        "frontend/docs/design/app-vue/contract-inventory.json",
+        "frontend/src/router/index.js",
+        "frontend/src/constants/routes.js"
+      ]
+    },
+    {
+      "routePath": "/community/boards/open/write",
+      "routeName": "community-open-board-write",
+      "routeKind": "page",
+      "status": "NO_SCREENSHOT",
+      "samplePath": "/community/boards/open/write",
+      "sampleId": null,
+      "routePatternFound": true,
+      "smokeStatus": "PASS",
+      "screenshotStatus": "NO_SCREENSHOT",
+      "noScreenshotReason": "No primary screenshot mapped in frontend/docs/design/app-vue/05-screenshot-reference-map.md / canonical contract; this task preserves NO_SCREENSHOT rather than claiming visual parity.",
+      "sourceDataEvidence": "static write route for free board",
+      "apiEndpoints": [
+        "GET /api/v1/boards/free/categories",
+        "POST /api/v1/boards/free/posts"
+      ],
+      "boardCodes": [
+        "free"
+      ],
+      "expectedDataShape": "form submit response or auth/session object",
+      "evidenceApiPath": "verification-pack/api/phase-0/community-boards-open-write.json",
+      "checkedSources": [
+        "frontend/docs/design/app-vue/contract-inventory.json",
+        "frontend/src/router/index.js",
+        "frontend/src/constants/routes.js"
+      ]
+    },
+    {
+      "routePath": "/community/boards/open/:id",
+      "routeName": "community-open-board-detail",
+      "routeKind": "dynamic-page",
+      "status": "NO_SCREENSHOT",
+      "samplePath": "/community/boards/open/101",
+      "sampleId": "101",
+      "routePatternFound": true,
+      "smokeStatus": "PASS",
+      "screenshotStatus": "NO_SCREENSHOT",
+      "noScreenshotReason": "No primary screenshot mapped in frontend/docs/design/app-vue/05-screenshot-reference-map.md / canonical contract; this task preserves NO_SCREENSHOT rather than claiming visual parity.",
+      "sourceDataEvidence": "frontend/src/data/boards.js openPosts includes id 101; PostDetailPage matches route.params.id",
+      "apiEndpoints": [
+        "GET /api/v1/boards/free/posts/{postId}"
+      ],
+      "boardCodes": [
+        "free"
+      ],
+      "expectedDataShape": "detail object; route param id must map to API id",
+      "evidenceApiPath": "verification-pack/api/phase-0/community-boards-open-id.json",
+      "checkedSources": [
+        "frontend/docs/design/app-vue/contract-inventory.json",
+        "frontend/src/router/index.js",
+        "frontend/src/constants/routes.js"
+      ]
+    },
+    {
+      "routePath": "/community/boards/anonymous/:id",
+      "routeName": "community-anonymous-board-detail",
+      "routeKind": "dynamic-page",
+      "status": "NO_SCREENSHOT",
+      "samplePath": "/community/boards/anonymous/201",
+      "sampleId": "201",
+      "routePatternFound": true,
+      "smokeStatus": "PASS",
+      "screenshotStatus": "NO_SCREENSHOT",
+      "noScreenshotReason": "No primary screenshot mapped in frontend/docs/design/app-vue/05-screenshot-reference-map.md / canonical contract; this task preserves NO_SCREENSHOT rather than claiming visual parity.",
+      "sourceDataEvidence": "frontend/src/data/boards.js anonymousPosts includes id 201; PostDetailPage matches route.params.id",
+      "apiEndpoints": [
+        "GET /api/v1/boards/anonymity/posts/{postId}"
+      ],
+      "boardCodes": [
+        "anonymity"
+      ],
+      "expectedDataShape": "detail object; route param id must map to API id",
+      "evidenceApiPath": "verification-pack/api/phase-0/community-boards-anonymous-id.json",
+      "checkedSources": [
+        "frontend/docs/design/app-vue/contract-inventory.json",
+        "frontend/src/router/index.js",
+        "frontend/src/constants/routes.js"
+      ]
+    },
+    {
+      "routePath": "/help/notice/:id",
+      "routeName": "help-notice-detail",
+      "routeKind": "dynamic-page",
+      "status": "NO_SCREENSHOT",
+      "samplePath": "/help/notice/1",
+      "sampleId": "1",
+      "routePatternFound": true,
+      "smokeStatus": "PASS",
+      "screenshotStatus": "NO_SCREENSHOT",
+      "noScreenshotReason": "No primary screenshot mapped in frontend/docs/design/app-vue/05-screenshot-reference-map.md / canonical contract; this task preserves NO_SCREENSHOT rather than claiming visual parity.",
+      "sourceDataEvidence": "frontend/src/data/boards.js notices includes id 1; HelpNoticeDetailPage matches route.params.id",
+      "apiEndpoints": [
+        "GET /api/v1/boards/notice/posts/{postId}"
+      ],
+      "boardCodes": [
+        "notice"
+      ],
+      "expectedDataShape": "detail object; route param id must map to API id",
+      "evidenceApiPath": "verification-pack/api/phase-0/help-notice-id.json",
+      "checkedSources": [
+        "frontend/docs/design/app-vue/contract-inventory.json",
+        "frontend/src/router/index.js",
+        "frontend/src/constants/routes.js"
+      ]
+    },
+    {
+      "routePath": "/help/inquiries/:id",
+      "routeName": "help-inquiry-detail",
+      "routeKind": "dynamic-page",
+      "status": "NO_SCREENSHOT",
+      "samplePath": "/help/inquiries/1",
+      "sampleId": "1",
+      "routePatternFound": true,
+      "smokeStatus": "PASS",
+      "screenshotStatus": "NO_SCREENSHOT",
+      "noScreenshotReason": "No primary screenshot mapped in frontend/docs/design/app-vue/05-screenshot-reference-map.md / canonical contract; this task preserves NO_SCREENSHOT rather than claiming visual parity.",
+      "sourceDataEvidence": "frontend/src/data/boards.js inquiries includes id 1; HelpInquiryDetailPage/service fallback uses inquiryId",
+      "apiEndpoints": [
+        "GET /api/v1/inquiries/{inquiryId}"
+      ],
+      "boardCodes": [],
+      "expectedDataShape": "detail object; route param id must map to API id",
+      "evidenceApiPath": "verification-pack/api/phase-0/help-inquiries-id.json",
+      "checkedSources": [
+        "frontend/docs/design/app-vue/contract-inventory.json",
+        "frontend/src/router/index.js",
+        "frontend/src/constants/routes.js"
+      ]
+    },
+    {
+      "routePath": "/help/inquiries/write",
+      "routeName": "help-inquiry-write",
+      "routeKind": "page",
+      "status": "NO_SCREENSHOT",
+      "samplePath": "/help/inquiries/write",
+      "sampleId": null,
+      "routePatternFound": true,
+      "smokeStatus": "PASS",
+      "screenshotStatus": "NO_SCREENSHOT",
+      "noScreenshotReason": "No primary screenshot mapped in frontend/docs/design/app-vue/05-screenshot-reference-map.md / canonical contract; this task preserves NO_SCREENSHOT rather than claiming visual parity.",
+      "sourceDataEvidence": "static write route",
+      "apiEndpoints": [
+        "POST /api/v1/inquiries"
+      ],
+      "boardCodes": [],
+      "expectedDataShape": "form submit response or auth/session object",
+      "evidenceApiPath": "verification-pack/api/phase-0/help-inquiries-write.json",
+      "checkedSources": [
+        "frontend/docs/design/app-vue/contract-inventory.json",
+        "frontend/src/router/index.js",
+        "frontend/src/constants/routes.js"
+      ]
+    },
+    {
+      "routePath": "/mentoring/stories/:id",
+      "routeName": "mentoring-story-detail",
+      "routeKind": "dynamic-page",
+      "status": "NO_SCREENSHOT",
+      "samplePath": "/mentoring/stories/301",
+      "sampleId": "301",
+      "routePatternFound": true,
+      "smokeStatus": "PASS",
+      "screenshotStatus": "NO_SCREENSHOT",
+      "noScreenshotReason": "No primary screenshot mapped in frontend/docs/design/app-vue/05-screenshot-reference-map.md / canonical contract; this task preserves NO_SCREENSHOT rather than claiming visual parity.",
+      "sourceDataEvidence": "frontend/src/data/boards.js mentoringBoards.stories includes id 301; PostDetailPage matches route.params.id",
+      "apiEndpoints": [
+        "GET /api/v1/boards/mento-state/posts/{postId}"
+      ],
+      "boardCodes": [
+        "mento-state"
+      ],
+      "expectedDataShape": "detail object; route param id must map to API id",
+      "evidenceApiPath": "verification-pack/api/phase-0/mentoring-stories-id.json",
+      "checkedSources": [
+        "frontend/docs/design/app-vue/contract-inventory.json",
+        "frontend/src/router/index.js",
+        "frontend/src/constants/routes.js"
+      ]
+    },
+    {
+      "routePath": "/mentoring/qna/:id",
+      "routeName": "mentoring-qna-detail",
+      "routeKind": "dynamic-page",
+      "status": "NO_SCREENSHOT",
+      "samplePath": "/mentoring/qna/401",
+      "sampleId": "401",
+      "routePatternFound": true,
+      "smokeStatus": "PASS",
+      "screenshotStatus": "NO_SCREENSHOT",
+      "noScreenshotReason": "No primary screenshot mapped in frontend/docs/design/app-vue/05-screenshot-reference-map.md / canonical contract; this task preserves NO_SCREENSHOT rather than claiming visual parity.",
+      "sourceDataEvidence": "frontend/src/data/boards.js mentoringBoards.qna includes id 401; PostDetailPage matches route.params.id",
+      "apiEndpoints": [
+        "GET /api/v1/boards/mento-qna/posts/{postId}"
+      ],
+      "boardCodes": [
+        "mento-qna"
+      ],
+      "expectedDataShape": "detail object; route param id must map to API id",
+      "evidenceApiPath": "verification-pack/api/phase-0/mentoring-qna-id.json",
+      "checkedSources": [
+        "frontend/docs/design/app-vue/contract-inventory.json",
+        "frontend/src/router/index.js",
+        "frontend/src/constants/routes.js"
+      ]
+    },
+    {
+      "routePath": "/mentoring/notice/:id",
+      "routeName": "mentoring-notice-detail",
+      "routeKind": "dynamic-page",
+      "status": "NO_SCREENSHOT",
+      "samplePath": "/mentoring/notice/501",
+      "sampleId": "501",
+      "routePatternFound": true,
+      "smokeStatus": "PASS",
+      "screenshotStatus": "NO_SCREENSHOT",
+      "noScreenshotReason": "No primary screenshot mapped in frontend/docs/design/app-vue/05-screenshot-reference-map.md / canonical contract; this task preserves NO_SCREENSHOT rather than claiming visual parity.",
+      "sourceDataEvidence": "frontend/src/data/boards.js mentoringBoards.notice includes id 501; PostDetailPage matches route.params.id",
+      "apiEndpoints": [
+        "GET /api/v1/boards/mento-notice/posts/{postId}"
+      ],
+      "boardCodes": [
+        "mento-notice"
+      ],
+      "expectedDataShape": "detail object; route param id must map to API id",
+      "evidenceApiPath": "verification-pack/api/phase-0/mentoring-notice-id.json",
+      "checkedSources": [
+        "frontend/docs/design/app-vue/contract-inventory.json",
+        "frontend/src/router/index.js",
+        "frontend/src/constants/routes.js"
+      ]
+    },
+    {
+      "routePath": "/mentoring/meetups/reviews/:id",
+      "routeName": "mentoring-meetup-review-detail",
+      "routeKind": "dynamic-page",
+      "status": "NO_SCREENSHOT",
+      "samplePath": "/mentoring/meetups/reviews/601",
+      "sampleId": "601",
+      "routePatternFound": true,
+      "smokeStatus": "PASS",
+      "screenshotStatus": "NO_SCREENSHOT",
+      "noScreenshotReason": "No primary screenshot mapped in frontend/docs/design/app-vue/05-screenshot-reference-map.md / canonical contract; this task preserves NO_SCREENSHOT rather than claiming visual parity.",
+      "sourceDataEvidence": "frontend/src/data/boards.js mentoringBoards.reviews includes id 601; PostDetailPage matches route.params.id",
+      "apiEndpoints": [
+        "GET /api/v1/boards/mento-review/posts/{postId}"
+      ],
+      "boardCodes": [
+        "mento-review"
+      ],
+      "expectedDataShape": "detail object; route param id must map to API id",
+      "evidenceApiPath": "verification-pack/api/phase-0/mentoring-meetups-reviews-id.json",
+      "checkedSources": [
+        "frontend/docs/design/app-vue/contract-inventory.json",
+        "frontend/src/router/index.js",
+        "frontend/src/constants/routes.js"
+      ]
+    },
+    {
+      "routePath": "/mentoring/meetups/reviews/write",
+      "routeName": "mentoring-meetup-review-write",
+      "routeKind": "page",
+      "status": "NO_SCREENSHOT",
+      "samplePath": "/mentoring/meetups/reviews/write",
+      "sampleId": null,
+      "routePatternFound": true,
+      "smokeStatus": "PASS",
+      "screenshotStatus": "NO_SCREENSHOT",
+      "noScreenshotReason": "No primary screenshot mapped in frontend/docs/design/app-vue/05-screenshot-reference-map.md / canonical contract; this task preserves NO_SCREENSHOT rather than claiming visual parity.",
+      "sourceDataEvidence": "static write route for mento-review board",
+      "apiEndpoints": [
+        "GET /api/v1/boards/mento-review/categories",
+        "POST /api/v1/boards/mento-review/posts"
+      ],
+      "boardCodes": [
+        "mento-review"
+      ],
+      "expectedDataShape": "form submit response or auth/session object",
+      "evidenceApiPath": "verification-pack/api/phase-0/mentoring-meetups-reviews-write.json",
+      "checkedSources": [
+        "frontend/docs/design/app-vue/contract-inventory.json",
+        "frontend/src/router/index.js",
+        "frontend/src/constants/routes.js"
+      ]
+    },
+    {
+      "routePath": "/404",
+      "routeName": "not-found",
+      "routeKind": "error",
+      "status": "NO_SCREENSHOT",
+      "samplePath": "/404",
+      "sampleId": null,
+      "routePatternFound": true,
+      "smokeStatus": "PASS",
+      "screenshotStatus": "NO_SCREENSHOT",
+      "noScreenshotReason": "No primary screenshot mapped in frontend/docs/design/app-vue/05-screenshot-reference-map.md / canonical contract; this task preserves NO_SCREENSHOT rather than claiming visual parity.",
+      "sourceDataEvidence": "static error route; wildcard redirects here",
+      "apiEndpoints": [],
+      "boardCodes": [],
+      "expectedDataShape": "N/A",
+      "evidenceApiPath": "N/A",
+      "checkedSources": [
+        "frontend/docs/design/app-vue/contract-inventory.json",
+        "frontend/src/router/index.js",
+        "frontend/src/constants/routes.js"
+      ]
+    }
+  ]
+}

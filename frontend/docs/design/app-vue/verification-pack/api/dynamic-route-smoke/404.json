@@ -1,0 +1,36 @@
+{
+  "generatedAt": "2026-05-11T16:14:39.505Z",
+  "task": "task-5 NO_SCREENSHOT dynamic route smoke evidence",
+  "verificationMethod": "Static contract/router-source smoke plus production Vite build. Vue router route records were checked from frontend/src/router/index.js and route constants from frontend/src/constants/routes.js without editing app code.",
+  "sourceInventory": "frontend/docs/design/app-vue/contract-inventory.json",
+  "assignedWriteScope": [
+    "frontend/docs/design/app-vue/verification-pack/api/dynamic-route-smoke/",
+    "frontend/docs/design/app-vue/verification-pack/visual/no-screenshot/"
+  ],
+  "apiCompleteClaim": false,
+  "visualParityClaim": false,
+  "rows": [
+    {
+      "routePath": "/404",
+      "routeName": "not-found",
+      "routeKind": "error",
+      "status": "NO_SCREENSHOT",
+      "samplePath": "/404",
+      "sampleId": null,
+      "routePatternFound": true,
+      "smokeStatus": "PASS",
+      "screenshotStatus": "NO_SCREENSHOT",
+      "noScreenshotReason": "No primary screenshot mapped in frontend/docs/design/app-vue/05-screenshot-reference-map.md / canonical contract; this task preserves NO_SCREENSHOT rather than claiming visual parity.",
+      "sourceDataEvidence": "static error route; wildcard redirects here",
+      "apiEndpoints": [],
+      "boardCodes": [],
+      "expectedDataShape": "N/A",
+      "evidenceApiPath": "N/A",
+      "checkedSources": [
+        "frontend/docs/design/app-vue/contract-inventory.json",
+        "frontend/src/router/index.js",
+        "frontend/src/constants/routes.js"
+      ]
+    }
+  ]
+}
