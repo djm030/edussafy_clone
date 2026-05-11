@@ -1,13 +1,34 @@
 <script setup>
-import { computed } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import PageHero from '../../components/ui/PageHero.vue'
 import SectionTabs from '../../components/ui/SectionTabs.vue'
 import { classroomTabs } from '../../constants/navigation'
 import { learningResources } from '../../data/classroom'
+import { loadLearningResourceDetail } from '../../services/classroomService'
 
 const route = useRoute()
-const resource = computed(() => learningResources.find((item) => String(item.id) === route.params.id) || learningResources[0])
+const resource = ref(learningResources[0])
+const isLoading = ref(false)
+const loadError = ref('')
+const breadcrumb = computed(() => resource.value.breadcrumb || [])
+
+async function loadResource() {
+  isLoading.value = true
+  loadError.value = ''
+  try {
+    resource.value = await loadLearningResourceDetail(route.params.id)
+  } catch (error) {
+    resource.value = learningResources.find((item) => String(item.id) === String(route.params.id)) || learningResources[0]
+    loadError.value = '학습자료 상세를 불러오지 못해 데모 데이터를 표시합니다.'
+    console.warn(error)
+  } finally {
+    isLoading.value = false
+  }
+}
+
+onMounted(loadResource)
+watch(() => route.params.id, loadResource)
 </script>
 
 <template>
@@ -15,10 +36,13 @@ const resource = computed(() => learningResources.find((item) => String(item.id)
   <SectionTabs :items="classroomTabs" aria-label="Classroom navigation" />
 
   <section class="classroom-page page-container">
-    <article class="detail-panel">
+    <p v-if="isLoading" class="dashboard-state">학습자료 상세를 확인하고 있습니다.</p>
+    <p v-if="loadError" class="dashboard-state warning">{{ loadError }}</p>
+
+    <article v-if="!isLoading" class="detail-panel">
       <div class="detail-header">
         <div>
-          <p class="eyebrow-text">{{ resource.breadcrumb.join(' > ') }}</p>
+          <p class="eyebrow-text">{{ breadcrumb.join(' > ') }}</p>
           <h1>{{ resource.title }}</h1>
           <p>{{ resource.description }}</p>
         </div>

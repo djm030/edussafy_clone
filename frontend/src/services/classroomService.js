@@ -72,6 +72,10 @@ function normalizeLearningResource(item) {
   }
 }
 
+function requiredLearningFallback() {
+  return learningResources.filter((item) => !item.textbook).slice(0, 3)
+}
+
 function normalizeReplay(item) {
   return {
     id: item.id || item.sessionId,
@@ -137,13 +141,21 @@ export async function loadQuestItems() {
 }
 
 export async function loadLearningResources({ required = false } = {}) {
-  if (!isApiEnabled) return required ? [] : learningResources
+  if (!isApiEnabled) return required ? requiredLearningFallback() : learningResources
 
   const page = required
     ? await learningApi.required({ page: 0, size: 10 }).catch(() => null)
     : await learningApi.openLearning({ page: 0, size: 10 }).catch(() => null)
   const items = pageItems(page).map(normalizeLearningResource)
-  return items.length ? items : (required ? [] : learningResources)
+  return items.length ? items : (required ? requiredLearningFallback() : learningResources)
+}
+
+export async function loadLearningResourceDetail(resourceId) {
+  const fallback = learningResources.find((item) => String(item.id) === String(resourceId)) || learningResources[0]
+  if (!isApiEnabled) return fallback
+
+  const resource = await learningApi.content(resourceId).catch(() => null)
+  return resource ? normalizeLearningResource(resource) : fallback
 }
 
 export async function loadReplayItems() {
