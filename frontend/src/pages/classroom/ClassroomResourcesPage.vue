@@ -3,6 +3,9 @@
   <SectionTabs :items="classroomTabs" aria-label="Classroom navigation" />
 
   <section class="classroom-page page-container">
+    <p v-if="isLoading" class="dashboard-state">학습자료를 확인하고 있습니다.</p>
+    <p v-else-if="loadError" class="dashboard-state warning">{{ loadError }}</p>
+
     <div class="resource-tabs"><button class="active" type="button">오프러닝</button></div>
     <div class="sub-tabs"><button class="active" type="button">전체</button><button type="button">커리큘럼 +</button></div>
 
@@ -39,8 +42,26 @@
 </template>
 
 <script setup>
+import { onMounted, ref } from 'vue'
 import PageHero from '../../components/ui/PageHero.vue'
 import SectionTabs from '../../components/ui/SectionTabs.vue'
 import { classroomTabs } from '../../constants/navigation'
-import { learningResources } from '../../data/classroom'
+import { learningResources as mockLearningResources } from '../../data/classroom'
+import { loadLearningResources } from '../../services/classroomService'
+
+const learningResources = ref(mockLearningResources)
+const isLoading = ref(false)
+const loadError = ref('')
+
+onMounted(async () => {
+  isLoading.value = true
+  try {
+    learningResources.value = await loadLearningResources()
+  } catch (error) {
+    loadError.value = '학습자료를 불러오지 못해 데모 데이터를 표시합니다.'
+    console.warn(error)
+  } finally {
+    isLoading.value = false
+  }
+})
 </script>

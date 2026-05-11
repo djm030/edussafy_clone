@@ -3,6 +3,9 @@
   <SectionTabs :items="classroomTabs" aria-label="Classroom navigation" />
 
   <section class="classroom-page page-container">
+    <p v-if="isLoading" class="dashboard-state">Quest/평가 목록을 확인하고 있습니다.</p>
+    <p v-else-if="loadError" class="dashboard-state warning">{{ loadError }}</p>
+
     <div class="quest-evaluation-list">
       <RouterLink v-for="item in questItems" :key="item.id" class="quest-evaluation-card" :to="`/classroom/quests/${item.id}`">
         <strong class="quest-type">{{ item.type }}</strong>
@@ -36,8 +39,26 @@
 </template>
 
 <script setup>
+import { onMounted, ref } from 'vue'
 import PageHero from '../../components/ui/PageHero.vue'
 import SectionTabs from '../../components/ui/SectionTabs.vue'
 import { classroomTabs } from '../../constants/navigation'
-import { questItems } from '../../data/classroom'
+import { questItems as mockQuestItems } from '../../data/classroom'
+import { loadQuestItems } from '../../services/classroomService'
+
+const questItems = ref(mockQuestItems)
+const isLoading = ref(false)
+const loadError = ref('')
+
+onMounted(async () => {
+  isLoading.value = true
+  try {
+    questItems.value = await loadQuestItems()
+  } catch (error) {
+    loadError.value = 'Quest/평가 목록을 불러오지 못해 데모 데이터를 표시합니다.'
+    console.warn(error)
+  } finally {
+    isLoading.value = false
+  }
+})
 </script>
