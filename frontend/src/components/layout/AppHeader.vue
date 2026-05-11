@@ -22,7 +22,7 @@
 
       <div class="header-tools" aria-label="User tools">
         <RouterLink class="notification-link" to="/notifications" aria-label="Notifications">
-          <span class="notification-dot">1</span>
+          <span class="notification-dot">{{ notificationCount }}</span>
           알림
         </RouterLink>
         <span class="profile-chip">김싸피</span>
@@ -46,10 +46,22 @@
 </template>
 
 <script setup>
+import { onMounted, ref } from 'vue'
 import { clearAccessToken } from '../../api/client'
 import { primaryNavigation, serviceLinks } from '../../constants/navigation'
+import { loadUnreadNotificationCount } from '../../services/notificationsService'
+
+const notificationCount = ref(1)
 
 function logout() {
   clearAccessToken()
 }
+
+onMounted(async () => {
+  try {
+    notificationCount.value = await loadUnreadNotificationCount()
+  } catch (error) {
+    console.warn('Notification count fallback:', error)
+  }
+})
 </script>
