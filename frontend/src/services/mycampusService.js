@@ -1,5 +1,5 @@
 import { isApiEnabled } from '../api/client'
-import { agreementsApi, attendanceApi, bookmarksApi, learningApi, pointsApi, usersApi } from '../api/modules'
+import { agreementsApi, attendanceApi, authApi, bookmarksApi, learningApi, pointsApi, usersApi } from '../api/modules'
 import {
   attendanceDays,
   attendanceSummary,
@@ -8,7 +8,8 @@ import {
   eLearningItems,
   pledges,
   pointHistory,
-  pointSummary
+  pointSummary,
+  profileInfo
 } from '../data/mycampus'
 
 const attendanceLabels = {
@@ -50,6 +51,22 @@ function dayFromDate(value) {
   const date = new Date(value)
   if (Number.isNaN(date.getTime())) return ''
   return new Intl.DateTimeFormat('ko-KR', { weekday: 'short' }).format(date).replace('요일', '')
+}
+
+function normalizeProfile(user) {
+  const campus = user.campus || [
+    user.generation && `${user.generation}기`,
+    user.region,
+    user.classNo && `${user.classNo}반`
+  ].filter(Boolean).join(' ')
+
+  return {
+    ...profileInfo,
+    name: user.name || profileInfo.name,
+    email: user.email || profileInfo.email,
+    phoneNumber: user.phoneNumber || user.phone || profileInfo.phoneNumber,
+    campus: campus || profileInfo.campus
+  }
 }
 
 function normalizePointSummary(summary, campusSummary) {
@@ -201,6 +218,31 @@ function buildEducationStatus(summary, campusSummary) {
   ]
 }
 
+export async function loadProfileData() {
+  if (!isApiEnabled) return profileInfo
+
+  const user = await usersApi.me().catch(() => null)
+  return user ? normalizeProfile(user) : profileInfo
+}
+
+export async function saveProfileData(profile) {
+  if (!isApiEnabled) return { ...profileInfo, ...profile }
+
+  const saved = await usersApi.updateMe({
+    phoneNumber: profile.phoneNumber
+  })
+
+  return saved ? normalizeProfile(saved) : { ...profileInfo, ...profile }
+}
+
+export async function changePasswordData(passwords) {
+  if (!isApiEnabled) return true
+
+  return authApi.changePassword({
+    currentPassword: passwords.currentPassword,
+    newPassword: passwords.newPassword
+  })
+}
 export async function loadLevelPointsData() {
   if (!isApiEnabled) return { pointSummary, pointHistory }
 

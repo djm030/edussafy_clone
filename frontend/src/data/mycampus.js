@@ -7,6 +7,12 @@ export const mycampusTabs = [
   { label: '교육생 서약서', path: '/mycampus/pledges' }
 ]
 
+export const profileInfo = {
+  name: '김싸피',
+  email: 'student@edussafy.local',
+  phoneNumber: '010-1234-5678',
+  campus: '13기 서울 6반'
+}
 export const pointSummary = {
   level: 'Lv. 5',
   totalPoints: 740,
