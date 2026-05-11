@@ -3,6 +3,9 @@
     <PageHero title="마이캠퍼스" />
     <SectionTabs :items="mycampusTabs" aria-label="MyCampus sections" />
     <main class="page-container mycampus-page">
+      <p v-if="isLoading" class="dashboard-state">서류 제출 내역을 확인하고 있습니다.</p>
+      <p v-else-if="loadError" class="dashboard-state warning">{{ loadError }}</p>
+
       <div class="board-page-title board-page-title-row">
         <div>
           <p class="eyebrow-text">Documents</p>
@@ -17,10 +20,16 @@
 </template>
 
 <script setup>
+import { onMounted, ref } from 'vue'
 import PageHero from '../../components/ui/PageHero.vue'
 import SectionTabs from '../../components/ui/SectionTabs.vue'
 import BoardTable from '../../components/ui/BoardTable.vue'
-import { documents, mycampusTabs } from '../../data/mycampus'
+import { documents as mockDocuments, mycampusTabs } from '../../data/mycampus'
+import { loadDocumentsData } from '../../services/mycampusService'
+
+const documents = ref(mockDocuments)
+const isLoading = ref(false)
+const loadError = ref('')
 
 const columns = [
   { key: 'category', label: '구분', width: '110px' },
@@ -28,4 +37,16 @@ const columns = [
   { key: 'status', label: '상태', width: '120px' },
   { key: 'date', label: '제출일', width: '130px' }
 ]
+
+onMounted(async () => {
+  isLoading.value = true
+  try {
+    documents.value = await loadDocumentsData()
+  } catch (error) {
+    loadError.value = '서류 제출 내역을 불러오지 못해 데모 데이터를 표시합니다.'
+    console.warn(error)
+  } finally {
+    isLoading.value = false
+  }
+})
 </script>

@@ -108,6 +108,12 @@ export const bookmarksApi = {
   remove: (payload) => remove('/bookmarks', payload)
 }
 
+export const filesApi = {
+  upload: (payload) => post('/files', payload),
+  detail: (fileId) => get(`/files/${fileId}`),
+  delete: (fileId) => remove(`/files/${fileId}`)
+}
+
 export const surveysApi = {
   categories: () => get('/survey-categories'),
   list: (params) => get('/surveys', params),

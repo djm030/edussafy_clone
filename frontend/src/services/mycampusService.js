@@ -1,9 +1,10 @@
 import { isApiEnabled } from '../api/client'
-import { agreementsApi, attendanceApi, authApi, bookmarksApi, learningApi, pointsApi, usersApi } from '../api/modules'
+import { agreementsApi, attendanceApi, authApi, boardsApi, bookmarksApi, filesApi, learningApi, pointsApi, usersApi } from '../api/modules'
 import {
   attendanceDays,
   attendanceSummary,
   bookmarkedLearningItems,
+  documents,
   educationStatus,
   eLearningItems,
   pledges,
@@ -180,6 +181,38 @@ function normalizeBookmarkedLearningItem(item) {
     label: content.label || 'BOOKMARK'
   }
 }
+
+function normalizeDocumentSubmission(item) {
+  return {
+    id: item.id,
+    category: item.categoryName || item.category || '서류',
+    title: item.title || '서류 제출',
+    status: item.statusLabel || item.status || '제출완료',
+    statusTone: item.statusTone || 'blue',
+    date: formatDate(item.createdAt || item.date)
+  }
+}
+
+async function resolveDocumentCategoryId(categoryName) {
+  const categories = await boardsApi.categories('doc-req').catch(() => [])
+  const items = pageItems(categories)
+  const category = items.find((item) => item.name === categoryName || item.label === categoryName || item.categoryName === categoryName || item.code === categoryName)
+  const fallback = items[0]
+  return category?.id || category?.categoryId || fallback?.id || fallback?.categoryId || null
+}
+
+async function uploadDocumentFile(file) {
+  if (!file) return null
+
+  const formData = new FormData()
+  formData.append('file', file)
+  formData.append('targetType', 'BOARD_POST')
+  formData.append('fileRole', 'ATTACHMENT')
+
+  const uploaded = await filesApi.upload(formData)
+  return uploaded?.id || uploaded?.fileId || null
+}
+
 function normalizeAgreement(item) {
   const agreement = item.agreement || item
   const agreedAt = item.agreedAt || item.signedAt || item.createdAt
@@ -313,4 +346,42 @@ export async function loadBookmarkData() {
   const selectedPage = await learningApi.mySelected({ page: 0, size: 10 }).catch(() => null)
   const selectedItems = pageItems(selectedPage).map(normalizeBookmarkedLearningItem)
   return selectedItems.length ? selectedItems : bookmarkedLearningItems
+}
+
+export async function loadDocumentsData() {
+  if (!isApiEnabled) return documents
+
+  const page = await boardsApi.posts('doc-req', { page: 0, size: 10 }).catch(() => null)
+  const items = pageItems(page).map(normalizeDocumentSubmission)
+  return items.length ? items : documents
+}
+
+export async function submitDocumentData(form) {
+  if (!isApiEnabled) {
+    return {
+      id: 'mock-document',
+      category: form.category,
+      title: form.title,
+      status: '제출완료',
+      statusTone: 'blue',
+      date: formatDate(new Date().toISOString())
+    }
+  }
+
+  const categoryId = await resolveDocumentCategoryId(form.category)
+  if (!categoryId) {
+    throw new Error('Missing document board category')
+  }
+
+  const fileId = await uploadDocumentFile(form.file)
+
+  return boardsApi.createPost('doc-req', {
+    categoryId,
+    title: form.title,
+    contentType: 'TEXT',
+    contentText: form.content,
+    contentHtml: null,
+    contentJson: null,
+    fileIds: fileId ? [fileId] : []
+  })
 }
