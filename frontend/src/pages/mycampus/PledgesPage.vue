@@ -3,6 +3,9 @@
     <PageHero title="마이캠퍼스" />
     <SectionTabs :items="mycampusTabs" aria-label="MyCampus sections" />
     <main class="page-container mycampus-page">
+      <p v-if="isLoading" class="dashboard-state">서약서 정보를 확인하고 있습니다.</p>
+      <p v-else-if="loadError" class="dashboard-state warning">{{ loadError }}</p>
+
       <div class="board-page-title">
         <p class="eyebrow-text">Pledge</p>
         <h1>교육생 서약서</h1>
@@ -14,14 +17,32 @@
 </template>
 
 <script setup>
+import { onMounted, ref } from 'vue'
 import PageHero from '../../components/ui/PageHero.vue'
 import SectionTabs from '../../components/ui/SectionTabs.vue'
 import BoardTable from '../../components/ui/BoardTable.vue'
-import { mycampusTabs, pledges } from '../../data/mycampus'
+import { mycampusTabs, pledges as mockPledges } from '../../data/mycampus'
+import { loadPledgesData } from '../../services/mycampusService'
+
+const pledges = ref(mockPledges)
+const isLoading = ref(false)
+const loadError = ref('')
 
 const columns = [
   { key: 'title', label: '서약서', className: 'title-cell' },
   { key: 'status', label: '상태', width: '140px' },
   { key: 'date', label: '서명일', width: '130px' }
 ]
+
+onMounted(async () => {
+  isLoading.value = true
+  try {
+    pledges.value = await loadPledgesData()
+  } catch (error) {
+    loadError.value = '서약서 데이터를 불러오지 못해 데모 데이터를 표시합니다.'
+    console.warn(error)
+  } finally {
+    isLoading.value = false
+  }
+})
 </script>

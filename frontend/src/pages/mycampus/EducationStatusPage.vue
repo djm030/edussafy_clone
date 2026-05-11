@@ -3,6 +3,9 @@
     <PageHero title="마이캠퍼스" />
     <SectionTabs :items="mycampusTabs" aria-label="MyCampus sections" />
     <main class="page-container mycampus-page">
+      <p v-if="isLoading" class="dashboard-state">교육현황 정보를 확인하고 있습니다.</p>
+      <p v-else-if="loadError" class="dashboard-state warning">{{ loadError }}</p>
+
       <div class="board-page-title">
         <p class="eyebrow-text">Education Status</p>
         <h1>교육현황</h1>
@@ -20,7 +23,25 @@
 </template>
 
 <script setup>
+import { onMounted, ref } from 'vue'
 import PageHero from '../../components/ui/PageHero.vue'
 import SectionTabs from '../../components/ui/SectionTabs.vue'
-import { educationStatus, mycampusTabs } from '../../data/mycampus'
+import { educationStatus as mockEducationStatus, mycampusTabs } from '../../data/mycampus'
+import { loadEducationStatusData } from '../../services/mycampusService'
+
+const educationStatus = ref(mockEducationStatus)
+const isLoading = ref(false)
+const loadError = ref('')
+
+onMounted(async () => {
+  isLoading.value = true
+  try {
+    educationStatus.value = await loadEducationStatusData()
+  } catch (error) {
+    loadError.value = '교육현황 데이터를 불러오지 못해 데모 데이터를 표시합니다.'
+    console.warn(error)
+  } finally {
+    isLoading.value = false
+  }
+})
 </script>

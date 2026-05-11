@@ -134,7 +134,7 @@ export const notificationsApi = {
 }
 
 export const agreementsApi = {
-  list: () => get('/agreements'),
+  list: (params) => get('/agreements', params),
   detail: (agreementId) => get(`/agreements/${agreementId}`),
   agree: (agreementId) => post(`/agreements/${agreementId}/agree`),
   my: () => get('/agreements/my')

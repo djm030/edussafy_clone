@@ -3,6 +3,9 @@
     <PageHero title="마이캠퍼스" />
     <SectionTabs :items="mycampusTabs" aria-label="MyCampus sections" />
     <main class="page-container mycampus-page">
+      <p v-if="isLoading" class="dashboard-state">포인트 정보를 확인하고 있습니다.</p>
+      <p v-else-if="loadError" class="dashboard-state warning">{{ loadError }}</p>
+
       <section class="level-dashboard">
         <article class="level-card primary">
           <p class="eyebrow-text">My Level</p>
@@ -33,10 +36,17 @@
 </template>
 
 <script setup>
+import { onMounted, ref } from 'vue'
 import PageHero from '../../components/ui/PageHero.vue'
 import SectionTabs from '../../components/ui/SectionTabs.vue'
 import BoardTable from '../../components/ui/BoardTable.vue'
-import { mycampusTabs, pointHistory, pointSummary } from '../../data/mycampus'
+import { mycampusTabs, pointHistory as mockPointHistory, pointSummary as mockPointSummary } from '../../data/mycampus'
+import { loadLevelPointsData } from '../../services/mycampusService'
+
+const pointSummary = ref(mockPointSummary)
+const pointHistory = ref(mockPointHistory)
+const isLoading = ref(false)
+const loadError = ref('')
 
 const columns = [
   { key: 'title', label: '내용', className: 'title-cell' },
@@ -44,4 +54,18 @@ const columns = [
   { key: 'amount', label: '포인트', width: '120px' },
   { key: 'date', label: '일자', width: '130px' }
 ]
+
+onMounted(async () => {
+  isLoading.value = true
+  try {
+    const data = await loadLevelPointsData()
+    pointSummary.value = data.pointSummary
+    pointHistory.value = data.pointHistory
+  } catch (error) {
+    loadError.value = '포인트 데이터를 불러오지 못해 데모 데이터를 표시합니다.'
+    console.warn(error)
+  } finally {
+    isLoading.value = false
+  }
+})
 </script>
