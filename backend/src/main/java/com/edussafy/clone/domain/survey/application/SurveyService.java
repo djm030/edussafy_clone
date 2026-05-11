@@ -55,8 +55,12 @@ public class SurveyService {
         participant.submit(toJson(request.answers()));
         return mapper.toParticipantResponse(participant);
     }
-    public PageResponse<SurveyParticipantResponse> getMyParticipations(Long userId, int page, int size) {
+    public PageResponse<SurveyParticipantResponse> getMyParticipations(Long userId, FormType formType, int page, int size) {
         User user = getUser(userId);
+        if (formType != null) {
+            return PageResponse.from(surveyParticipantRepository.findByUserAndSurvey_FormTypeOrderByCreatedAtDesc(user, formType, PageRequest.of(page, size)).map(mapper::toParticipantResponse));
+        }
+
         return PageResponse.from(surveyParticipantRepository.findByUserOrderByCreatedAtDesc(user, PageRequest.of(page, size)).map(mapper::toParticipantResponse));
     }
     @Transactional

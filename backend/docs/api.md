@@ -1083,6 +1083,16 @@ Request:
 GET /api/v1/surveys/my-participations
 ```
 
+Query:
+
+```text
+formType
+page
+size
+```
+
+Response item includes `formType` so clients can distinguish survey participation from meetup applications.
+
 ## 13.6 신청 취소
 
 ```http

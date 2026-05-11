@@ -47,8 +47,9 @@ public class SurveyController {
 
     @GetMapping("/surveys/my-participations")
     public ApiResponse<PageResponse<SurveyParticipantResponse>> getMyParticipations(@CurrentUser Long currentUserId,
+            @RequestParam(required = false) FormType formType,
             @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "20") int size) {
-        return ApiResponse.ok(surveyService.getMyParticipations(currentUserId, page, size));
+        return ApiResponse.ok(surveyService.getMyParticipations(currentUserId, formType, page, size));
     }
 
     @PostMapping("/surveys/{surveyId}/cancel")

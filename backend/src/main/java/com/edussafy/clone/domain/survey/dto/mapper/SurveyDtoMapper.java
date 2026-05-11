@@ -27,6 +27,6 @@ public class SurveyDtoMapper {
     }
     public SurveyParticipantResponse toParticipantResponse(SurveyParticipant participant) {
         return new SurveyParticipantResponse(participant.getId(), participant.getSurvey().getId(), participant.getSurvey().getTitle(),
-                participant.getAnswers(), participant.getParticipantStatus(), participant.getSubmittedAt(), participant.getCancelledAt(), participant.getCreatedAt());
+                participant.getAnswers(), participant.getSurvey().getFormType(), participant.getParticipantStatus(), participant.getSubmittedAt(), participant.getCancelledAt(), participant.getCreatedAt());
     }
 }
