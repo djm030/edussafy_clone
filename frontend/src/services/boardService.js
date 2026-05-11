@@ -28,14 +28,26 @@ function pageItems(page) {
   return page?.content || page?.items || page?.data || []
 }
 
+function normalizePostId(value) {
+  if (value === null || value === undefined || value === '') return ''
+  return String(value)
+}
+
+function matchPostId(item, postId) {
+  const target = normalizePostId(postId)
+  return normalizePostId(item.id) === target || normalizePostId(item.postId) === target
+}
+
 function formatDate(value) {
   if (!value) return ''
   return String(value).split('T')[0].replaceAll('-', '.')
 }
 
 function normalizePost(item) {
+  const postId = normalizePostId(item.id ?? item.postId)
   return {
-    id: item.id,
+    id: postId,
+    postId,
     category: item.categoryName || item.category?.name || item.category || '일반',
     title: item.title,
     author: item.displayName || item.authorName || item.author || '익명',
@@ -86,7 +98,7 @@ function normalizePostDetail(item, fallback) {
 }
 
 async function fetchBoardItems(boardCode) {
-  const page = await boardsApi.posts(boardCode, { page: 0, size: 10 }).catch(() => null)
+  const page = await boardsApi.posts(boardCode, { page: 0, size: 10 })
   return pageItems(page)
 }
 
@@ -95,20 +107,21 @@ async function loadBoardPosts(key) {
   if (!isApiEnabled) return fallback
 
   const items = await fetchBoardItems(boardCodeByKey[key] || boardCodeByKey.open)
-  const posts = items.map(normalizePost)
-  return posts.length ? posts : fallback
+  return items.map(normalizePost)
 }
 
 async function fetchBoardDetail(key, postId) {
   const fallback = fallbackPosts[key] || fallbackPosts.open
-  const fallbackPost = fallback.find((item) => String(item.id) === String(postId)) || fallback[0]
+  const fallbackPost = fallback.find((item) => matchPostId(item, postId)) || fallback[0]
   if (!isApiEnabled) return normalizePostDetail(fallbackPost, fallbackPost)
 
   const boardCode = boardCodeByKey[key] || boardCodeByKey.open
-  const post = await boardsApi.post(boardCode, postId).catch(() => null)
-  if (post) return normalizePostDetail(post, fallbackPost)
+  const post = await boardsApi.post(boardCode, postId)
+  if (!post) {
+    throw new Error('게시글을 찾을 수 없습니다.')
+  }
 
-  return normalizePostDetail(fallbackPost, fallbackPost)
+  return normalizePostDetail(post, fallbackPost)
 }
 
 async function resolveCategoryId(boardCode, categoryName) {
@@ -121,7 +134,7 @@ async function resolveCategoryId(boardCode, categoryName) {
 
 async function createBoardPost(key, form) {
   const boardCode = boardCodeByKey[key] || boardCodeByKey.open
-  if (!isApiEnabled) return { id: 'mock-created', ...form }
+  if (!isApiEnabled) return { id: 'mock-created', postId: 'mock-created', ...form }
 
   const categoryId = await resolveCategoryId(boardCode, form.category || '일반')
   if (!categoryId) {
