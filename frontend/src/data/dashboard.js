@@ -2,11 +2,11 @@ export const dashboardData = {
   user: {
     id: 1,
     email: 'student@edussafy.local',
-    name: '김샤피',
+    name: '김싸피',
     studentNo: '1300001',
     generation: 13,
     region: '서울',
-    classNo: 1,
+    classNo: 6,
     role: 'STUDENT',
     status: 'ACTIVE'
   },
@@ -16,7 +16,7 @@ export const dashboardData = {
     checkInAt: '08:51',
     checkOutAt: '18:04',
     status: 'NORMAL',
-    message: '오늘의 출석이 정상 처리되었습니다.'
+    message: '오늘 출석이 정상 처리되었습니다.'
   },
   pointSummary: {
     scholarshipPoint: 120,
@@ -38,7 +38,7 @@ export const dashboardData = {
   ],
   learningPreview: [
     { id: 1, title: 'Spring Boot API Smoke Test', contentType: 'VIDEO', duration: '30분', required: true },
-    { id: 2, title: 'Docker Compose 운영 힌트', contentType: 'FILE', duration: 'PDF', required: false },
+    { id: 2, title: 'Docker Compose 운영 노트', contentType: 'FILE', duration: 'PDF', required: false },
     { id: 3, title: 'SSAFY EDU 이용 가이드', contentType: 'LINK', duration: '외부 링크', required: false }
   ],
   notifications: [
@@ -47,9 +47,9 @@ export const dashboardData = {
     { id: 3, title: '출석 확인', content: '오늘의 출결 현황을 확인할 수 있습니다.', notificationType: 'ATTENDANCE', isRead: true, createdAt: '2026-05-09' }
   ],
   freeBoardPosts: [
-    { id: 1, categoryName: '일반', title: 'Vue 화면 구현 체크리스트 공유', displayName: '김샤피', viewCount: 24, commentCount: 3, createdAt: '2026-05-11' },
-    { id: 2, categoryName: '일반', title: '오늘 학습 자료 정리', displayName: '이멘토', viewCount: 18, commentCount: 1, createdAt: '2026-05-10' },
-    { id: 3, categoryName: '일반', title: '프로젝트 환경 실행 팁', displayName: '박운영', viewCount: 31, commentCount: 4, createdAt: '2026-05-09' }
+    { id: 1, categoryName: '일반', title: 'Vue 화면 구현 체크리스트 공유', displayName: '김싸피', viewCount: 24, commentCount: 3, createdAt: '2026-05-11' },
+    { id: 2, categoryName: '일반', title: '오늘 학습 자료 정리', displayName: '이싸피', viewCount: 18, commentCount: 1, createdAt: '2026-05-10' },
+    { id: 3, categoryName: '일반', title: '프로젝트 환경 실행 팁', displayName: '박싸피', viewCount: 31, commentCount: 4, createdAt: '2026-05-09' }
   ],
   notices: [
     { id: 1, categoryName: '공지', title: 'SSAFY EDU 클론 데모 공지', displayName: '운영자', viewCount: 12, createdAt: '2026-05-11', isNotice: true },

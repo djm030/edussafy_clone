@@ -154,3 +154,18 @@
   background: var(--color-primary);
 }
 
+.dashboard-state {
+  margin: 0 0 18px;
+  padding: 12px 16px;
+  color: var(--color-primary-deep);
+  font-weight: 700;
+  border: 1px solid rgb(47 147 232 / 22%);
+  border-radius: var(--radius-default);
+  background: #f5fbff;
+}
+
+.dashboard-state.warning {
+  color: var(--color-text-secondary);
+  border-color: var(--color-border);
+  background: var(--color-surface);
+}

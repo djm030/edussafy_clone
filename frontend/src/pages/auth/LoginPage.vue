@@ -5,7 +5,7 @@
         <span class="brand-mark">SS</span>
         <div>
           <strong>SSAFY EDU</strong>
-          <p>SAMSUNG SW?AI ACADEMY FOR YOUTH</p>
+          <p>SAMSUNG SW·AI ACADEMY FOR YOUTH</p>
         </div>
       </div>
 
@@ -29,13 +29,24 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { setAccessToken } from '../../api/client'
+import { isApiEnabled, setAccessToken } from '../../api/client'
+import { authApi } from '../../api/modules'
 
 const router = useRouter()
 const email = ref('student@ssafy.com')
 const password = ref('0000')
 
-function login() {
+async function login() {
+  if (isApiEnabled) {
+    try {
+      await authApi.login({ email: email.value, password: password.value })
+      router.push('/dashboard')
+      return
+    } catch (error) {
+      console.warn('Login API fallback:', error)
+    }
+  }
+
   setAccessToken(`demo-token:${email.value}:${password.value.length}`)
   router.push('/dashboard')
 }

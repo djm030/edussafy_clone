@@ -26,6 +26,7 @@
           알림
         </RouterLink>
         <span class="profile-chip">김싸피</span>
+        <RouterLink class="logout-link" to="/login" @click="logout">로그아웃</RouterLink>
       </div>
     </div>
 
@@ -45,5 +46,10 @@
 </template>
 
 <script setup>
+import { clearAccessToken } from '../../api/client'
 import { primaryNavigation, serviceLinks } from '../../constants/navigation'
+
+function logout() {
+  clearAccessToken()
+}
 </script>

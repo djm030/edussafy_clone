@@ -2,6 +2,8 @@ import axios from 'axios'
 
 const ACCESS_TOKEN_KEY = 'edussafy.accessToken'
 
+export const isApiEnabled = import.meta.env.VITE_USE_API === 'true'
+
 export function getAccessToken() {
   return window.localStorage.getItem(ACCESS_TOKEN_KEY)
 }

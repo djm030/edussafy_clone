@@ -1,13 +1,29 @@
 <script setup>
+import { onMounted, ref } from 'vue'
 import DashboardCard from '../components/ui/DashboardCard.vue'
 import StatusBadge from '../components/ui/StatusBadge.vue'
 import { dashboardData } from '../data/dashboard'
+import { loadDashboardData } from '../services/dashboardService'
 
-const data = dashboardData
+const data = ref(dashboardData)
+const isLoading = ref(false)
+const loadError = ref('')
 
 function formatCount(value) {
-  return new Intl.NumberFormat('ko-KR').format(value)
+  return new Intl.NumberFormat('ko-KR').format(value || 0)
 }
+
+onMounted(async () => {
+  isLoading.value = true
+  try {
+    data.value = await loadDashboardData()
+  } catch (error) {
+    loadError.value = '대시보드 데이터를 불러오지 못해 데모 데이터를 표시합니다.'
+    console.warn(error)
+  } finally {
+    isLoading.value = false
+  }
+})
 </script>
 
 <template>
@@ -15,10 +31,13 @@ function formatCount(value) {
     <div class="dashboard-heading">
       <div>
         <p class="eyebrow-text">SSAFY EDU Clone</p>
-        <h1>{{ data.user.name }}의 학습 현황</h1>
+        <h1>{{ data.user.name }}님의 학습 현황</h1>
       </div>
       <p>{{ data.user.generation }}기 {{ data.user.region }} {{ data.user.classNo }}반 · {{ data.pointSummary.levelName }}</p>
     </div>
+
+    <p v-if="isLoading" class="dashboard-state">최신 대시보드 정보를 확인하고 있습니다.</p>
+    <p v-else-if="loadError" class="dashboard-state warning">{{ loadError }}</p>
 
     <div class="dashboard-top-grid">
       <DashboardCard class="attendance-card" title="출석 체크" action-label="상세" action-to="/mycampus/attendance">
