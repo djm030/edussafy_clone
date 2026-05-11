@@ -3,6 +3,9 @@
   <SectionTabs :items="classroomTabs" aria-label="Classroom navigation" />
 
   <section class="classroom-page page-container">
+    <p v-if="isLoading" class="dashboard-state">커리큘럼을 확인하고 있습니다.</p>
+    <p v-else-if="loadError" class="dashboard-state warning">{{ loadError }}</p>
+
     <div class="phase-stepper" aria-label="Semester phases">
       <div v-for="phase in classroomPhases" :key="phase.label" :class="['phase-step', { active: phase.active }]">
         <span class="phase-icon">{{ phase.active ? '▦' : '▣' }}</span>
@@ -61,8 +64,35 @@
 </template>
 
 <script setup>
+import { onMounted, ref } from 'vue'
 import PageHero from '../../components/ui/PageHero.vue'
 import SectionTabs from '../../components/ui/SectionTabs.vue'
 import { classroomTabs } from '../../constants/navigation'
-import { classroomPhases, curriculumWeeks, curriculumDays } from '../../data/classroom'
+import {
+  classroomPhases as mockClassroomPhases,
+  curriculumDays as mockCurriculumDays,
+  curriculumWeeks as mockCurriculumWeeks
+} from '../../data/classroom'
+import { loadCurriculumData } from '../../services/classroomService'
+
+const classroomPhases = ref(mockClassroomPhases)
+const curriculumWeeks = ref(mockCurriculumWeeks)
+const curriculumDays = ref(mockCurriculumDays)
+const isLoading = ref(false)
+const loadError = ref('')
+
+onMounted(async () => {
+  isLoading.value = true
+  try {
+    const data = await loadCurriculumData()
+    classroomPhases.value = data.classroomPhases
+    curriculumWeeks.value = data.curriculumWeeks
+    curriculumDays.value = data.curriculumDays
+  } catch (error) {
+    loadError.value = '커리큘럼을 불러오지 못해 데모 데이터를 표시합니다.'
+    console.warn(error)
+  } finally {
+    isLoading.value = false
+  }
+})
 </script>
