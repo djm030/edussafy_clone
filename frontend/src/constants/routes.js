@@ -1,4 +1,5 @@
 export const routePaths = {
+  login: '/login',
   dashboard: '/dashboard',
   mycampusLevelPoints: '/mycampus/level-points',
   mycampusAttendance: '/mycampus/attendance',

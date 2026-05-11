@@ -1,5 +1,19 @@
 import axios from 'axios'
 
+const ACCESS_TOKEN_KEY = 'edussafy.accessToken'
+
+export function getAccessToken() {
+  return window.localStorage.getItem(ACCESS_TOKEN_KEY)
+}
+
+export function setAccessToken(token) {
+  window.localStorage.setItem(ACCESS_TOKEN_KEY, token)
+}
+
+export function clearAccessToken() {
+  window.localStorage.removeItem(ACCESS_TOKEN_KEY)
+}
+
 export const healthClient = axios.create({
   baseURL: '/api',
   timeout: 10000
@@ -11,7 +25,7 @@ export const apiClient = axios.create({
 })
 
 apiClient.interceptors.request.use((config) => {
-  const token = window.localStorage.getItem('edussafy.accessToken')
+  const token = getAccessToken()
   if (token) {
     config.headers.Authorization = `Bearer ${token}`
   }

@@ -31,19 +31,14 @@ import PasswordPage from '../pages/mycampus/PasswordPage.vue'
 import PledgesPage from '../pages/mycampus/PledgesPage.vue'
 import ProfilePage from '../pages/mycampus/ProfilePage.vue'
 import NotificationsPage from '../pages/notifications/NotificationsPage.vue'
+import LoginPage from '../pages/auth/LoginPage.vue'
 import PostDetailPage from '../pages/shared/PostDetailPage.vue'
 import ErrorPage from '../pages/errors/ErrorPage.vue'
-import PlaceholderPage from '../pages/PlaceholderPage.vue'
 import { routePaths } from '../constants/routes'
 
-function placeholder(title) {
-  return {
-    component: PlaceholderPage,
-    props: { title }
-  }
-}
 
 const routes = [
+  { path: routePaths.login, name: 'login', component: LoginPage, meta: { layout: 'auth' } },
   { path: '/', redirect: routePaths.dashboard },
   { path: routePaths.dashboard, name: 'dashboard', component: DashboardPage },
   { path: routePaths.mycampusLevelPoints, name: 'mycampus-level-points', component: LevelPointsPage },
