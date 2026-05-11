@@ -3,6 +3,9 @@
     <PageHero title="커뮤니티" />
     <SectionTabs :items="communityTabs" aria-label="Community sections" />
     <main class="page-container board-page">
+      <p v-if="isLoading" class="dashboard-state">게시글을 확인하고 있습니다.</p>
+      <p v-else-if="loadError" class="dashboard-state warning">{{ loadError }}</p>
+
       <div class="board-page-title board-page-title-row">
         <div>
           <p class="eyebrow-text">Board</p>
@@ -20,7 +23,7 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, ref, watch } from 'vue'
 import PageHero from '../../components/ui/PageHero.vue'
 import SectionTabs from '../../components/ui/SectionTabs.vue'
 import SearchFilterBar from '../../components/ui/SearchFilterBar.vue'
@@ -28,6 +31,7 @@ import BoardTable from '../../components/ui/BoardTable.vue'
 import PaginationBar from '../../components/ui/PaginationBar.vue'
 import { communityTabs } from '../../constants/navigation'
 import { anonymousPosts, openBoardPosts } from '../../data/boards'
+import { loadCommunityPosts } from '../../services/boardService'
 
 const props = defineProps({
   variant: {
@@ -44,8 +48,28 @@ const columns = [
   { key: 'views', label: '조회', width: '80px' }
 ]
 
-const items = computed(() => props.variant === 'anonymous' ? anonymousPosts : openBoardPosts)
+const items = ref(props.variant === 'anonymous' ? anonymousPosts : openBoardPosts)
+const isLoading = ref(false)
+const loadError = ref('')
 const pageTitle = computed(() => props.variant === 'anonymous' ? '익명 게시판' : '열린 게시판')
 const description = computed(() => props.variant === 'anonymous' ? '교육생 의견을 부담 없이 공유하는 익명 공간입니다.' : '정보 공유와 질문을 위한 공개 게시판입니다.')
 const detailBase = computed(() => props.variant === 'anonymous' ? '/community/boards/anonymous' : '/community/boards/open')
+
+watch(
+  () => props.variant,
+  async (variant) => {
+    isLoading.value = true
+    loadError.value = ''
+    try {
+      items.value = await loadCommunityPosts(variant)
+    } catch (error) {
+      loadError.value = '게시글을 불러오지 못해 데모 데이터를 표시합니다.'
+      items.value = variant === 'anonymous' ? anonymousPosts : openBoardPosts
+      console.warn(error)
+    } finally {
+      isLoading.value = false
+    }
+  },
+  { immediate: true }
+)
 </script>
