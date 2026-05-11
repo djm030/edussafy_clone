@@ -21,6 +21,16 @@ import MentoringBoardPage from '../pages/mentoring/MentoringBoardPage.vue'
 import MeetupApplyPage from '../pages/mentoring/MeetupApplyPage.vue'
 import MeetupInfoPage from '../pages/mentoring/MeetupInfoPage.vue'
 import MeetupReviewWritePage from '../pages/mentoring/MeetupReviewWritePage.vue'
+import AttendancePage from '../pages/mycampus/AttendancePage.vue'
+import DocumentWritePage from '../pages/mycampus/DocumentWritePage.vue'
+import DocumentsPage from '../pages/mycampus/DocumentsPage.vue'
+import EducationStatusPage from '../pages/mycampus/EducationStatusPage.vue'
+import LevelPointsPage from '../pages/mycampus/LevelPointsPage.vue'
+import MyCampusEmptyPage from '../pages/mycampus/MyCampusEmptyPage.vue'
+import PasswordPage from '../pages/mycampus/PasswordPage.vue'
+import PledgesPage from '../pages/mycampus/PledgesPage.vue'
+import ProfilePage from '../pages/mycampus/ProfilePage.vue'
+import NotificationsPage from '../pages/notifications/NotificationsPage.vue'
 import PostDetailPage from '../pages/shared/PostDetailPage.vue'
 import ErrorPage from '../pages/errors/ErrorPage.vue'
 import PlaceholderPage from '../pages/PlaceholderPage.vue'
@@ -36,16 +46,16 @@ function placeholder(title) {
 const routes = [
   { path: '/', redirect: routePaths.dashboard },
   { path: routePaths.dashboard, name: 'dashboard', component: DashboardPage },
-  { path: routePaths.mycampusLevelPoints, name: 'mycampus-level-points', ...placeholder('MyCampus Level & Points') },
-  { path: routePaths.mycampusAttendance, name: 'mycampus-attendance', ...placeholder('MyCampus Attendance') },
-  { path: routePaths.mycampusElearning, name: 'mycampus-elearning', ...placeholder('MyCampus Elearning') },
-  { path: routePaths.mycampusBookmarks, name: 'mycampus-bookmarks', ...placeholder('MyCampus Bookmarks') },
-  { path: routePaths.mycampusDocuments, name: 'mycampus-documents', ...placeholder('MyCampus Documents') },
-  { path: routePaths.mycampusDocumentWrite, name: 'mycampus-document-write', ...placeholder('Document Submission') },
-  { path: routePaths.mycampusPledges, name: 'mycampus-pledges', ...placeholder('Student Pledges') },
-  { path: routePaths.mycampusEducationStatus, name: 'mycampus-education-status', ...placeholder('Education Status') },
-  { path: routePaths.mycampusProfile, name: 'mycampus-profile', ...placeholder('Profile') },
-  { path: routePaths.mycampusPassword, name: 'mycampus-password', ...placeholder('Password') },
+  { path: routePaths.mycampusLevelPoints, name: 'mycampus-level-points', component: LevelPointsPage },
+  { path: routePaths.mycampusAttendance, name: 'mycampus-attendance', component: AttendancePage },
+  { path: routePaths.mycampusElearning, name: 'mycampus-elearning', component: MyCampusEmptyPage, props: { title: '학습중 이러닝', message: '학습중인 이러닝이 없습니다.', description: '배정된 이러닝 과정이 생기면 이 영역에서 진행 상태를 확인할 수 있습니다.' } },
+  { path: routePaths.mycampusBookmarks, name: 'mycampus-bookmarks', component: MyCampusEmptyPage, props: { title: '찜한 목록', message: '찜한 학습자료가 없습니다.', description: '학습자료 상세에서 찜한 콘텐츠를 모아볼 수 있습니다.' } },
+  { path: routePaths.mycampusDocuments, name: 'mycampus-documents', component: DocumentsPage },
+  { path: routePaths.mycampusDocumentWrite, name: 'mycampus-document-write', component: DocumentWritePage },
+  { path: routePaths.mycampusPledges, name: 'mycampus-pledges', component: PledgesPage },
+  { path: routePaths.mycampusEducationStatus, name: 'mycampus-education-status', component: EducationStatusPage },
+  { path: routePaths.mycampusProfile, name: 'mycampus-profile', component: ProfilePage },
+  { path: routePaths.mycampusPassword, name: 'mycampus-password', component: PasswordPage },
   { path: routePaths.classroomMyReplays, name: 'classroom-my-replays', component: LectureReplayPage, props: { variant: 'my' } },
   { path: routePaths.classroomAllReplays, name: 'classroom-all-replays', component: LectureReplayPage, props: { variant: 'all' } },
   { path: routePaths.classroomCurriculum, name: 'classroom-curriculum', component: ClassroomCurriculumPage },
@@ -79,7 +89,7 @@ const routes = [
   { path: routePaths.mentoringMeetupReviews, name: 'mentoring-meetup-reviews', component: MentoringBoardPage, props: { variant: 'reviews' } },
   { path: '/mentoring/meetups/reviews/:id', name: 'mentoring-meetup-review-detail', component: PostDetailPage, props: { source: 'reviews' } },
   { path: routePaths.mentoringMeetupReviewWrite, name: 'mentoring-meetup-review-write', component: MeetupReviewWritePage },
-  { path: routePaths.notifications, name: 'notifications', ...placeholder('Notifications') },
+  { path: routePaths.notifications, name: 'notifications', component: NotificationsPage },
   { path: routePaths.forbidden, name: 'forbidden', component: ErrorPage, props: { code: '403 Forbidden', message: 'You do not have permission to access this content.' } },
   { path: '/:pathMatch(.*)*', name: 'not-found', component: ErrorPage, props: { code: '404 Not Found', message: 'The requested page could not be found.' } }
 ]
