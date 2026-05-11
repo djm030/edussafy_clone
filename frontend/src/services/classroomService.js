@@ -40,6 +40,7 @@ function dayLabel(value) {
 function normalizeQuest(item) {
   const status = item.status === 'OPEN' || item.status === 'PENDING' ? '예정' : '완료'
   const result = item.resultStatus || item.myResultStatus || item.result || (status === '예정' ? '시험기간' : '제출완료')
+  const answerData = item.answerData || item.myAnswerData || {}
 
   return {
     id: item.id || item.taskId,
@@ -51,7 +52,20 @@ function normalizeQuest(item) {
     reward: item.rewardExp ?? item.reward ?? 0,
     result,
     score: item.score ?? item.myScore ?? null,
-    pass: item.passStatus || item.pass || null
+    pass: item.passStatus || item.pass || null,
+    submittedAt: formatDateTime(item.submittedAt || item.mySubmittedAt || item.updatedAt),
+    answer: answerData.answer || item.answer || ''
+  }
+}
+
+function normalizeQuestSubmission(item = {}) {
+  const answerData = item.answerData || item.myAnswerData || {}
+  return {
+    result: item.resultStatus || item.myResultStatus || item.result || item.status || '제출완료',
+    score: item.score ?? item.myScore ?? null,
+    pass: item.passStatus || item.pass || null,
+    submittedAt: formatDateTime(item.submittedAt || item.mySubmittedAt || item.updatedAt || new Date().toISOString()),
+    answer: answerData.answer || item.answer || ''
   }
 }
 
@@ -138,6 +152,29 @@ export async function loadQuestItems() {
   const page = await tasksApi.my({ page: 0, size: 10 }).catch(() => null)
   const items = pageItems(page).map(normalizeQuest)
   return items.length ? items : questItems
+}
+
+export async function loadQuestDetail(taskId) {
+  const fallback = questItems.find((item) => String(item.id) === String(taskId)) || questItems[0]
+  if (!isApiEnabled) return fallback
+
+  const [detail, myResult] = await Promise.all([
+    tasksApi.detail(taskId).catch(() => null),
+    tasksApi.myResult(taskId).catch(() => null)
+  ])
+
+  return normalizeQuest({ ...fallback, ...detail, ...myResult })
+}
+
+export async function submitQuestAnswer(taskId, answer) {
+  const payload = { answerData: { answer } }
+  if (!isApiEnabled) {
+    return normalizeQuestSubmission({ answerData: payload.answerData, submittedAt: new Date().toISOString() })
+  }
+
+  const submitted = await tasksApi.submit(taskId, payload)
+  const result = await tasksApi.myResult(taskId).catch(() => submitted)
+  return normalizeQuestSubmission(result || submitted)
 }
 
 export async function loadLearningResources({ required = false } = {}) {
