@@ -1,5 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import DashboardPage from '../pages/DashboardPage.vue'
+import ClassroomCurriculumPage from '../pages/classroom/ClassroomCurriculumPage.vue'
+import ClassroomQuestDetailPage from '../pages/classroom/ClassroomQuestDetailPage.vue'
+import ClassroomQuestListPage from '../pages/classroom/ClassroomQuestListPage.vue'
+import ClassroomResourceDetailPage from '../pages/classroom/ClassroomResourceDetailPage.vue'
+import ClassroomResourcesPage from '../pages/classroom/ClassroomResourcesPage.vue'
+import LectureReplayPage from '../pages/classroom/LectureReplayPage.vue'
+import RequiredLearningPage from '../pages/classroom/RequiredLearningPage.vue'
 import ErrorPage from '../pages/errors/ErrorPage.vue'
 import PlaceholderPage from '../pages/PlaceholderPage.vue'
 import { routePaths } from '../constants/routes'
@@ -24,14 +31,14 @@ const routes = [
   { path: routePaths.mycampusEducationStatus, name: 'mycampus-education-status', ...placeholder('Education Status') },
   { path: routePaths.mycampusProfile, name: 'mycampus-profile', ...placeholder('Profile') },
   { path: routePaths.mycampusPassword, name: 'mycampus-password', ...placeholder('Password') },
-  { path: routePaths.classroomMyReplays, name: 'classroom-my-replays', ...placeholder('My Lecture Replays') },
-  { path: routePaths.classroomAllReplays, name: 'classroom-all-replays', ...placeholder('All Lecture Replays') },
-  { path: routePaths.classroomCurriculum, name: 'classroom-curriculum', ...placeholder('Weekly Curriculum') },
-  { path: routePaths.classroomQuests, name: 'classroom-quests', ...placeholder('Quest & Evaluation') },
-  { path: '/classroom/quests/:id', name: 'classroom-quest-detail', ...placeholder('Quest Detail') },
-  { path: routePaths.classroomRequiredLearning, name: 'classroom-required-learning', ...placeholder('Required Learning') },
-  { path: routePaths.classroomResources, name: 'classroom-resources', ...placeholder('Learning Resources') },
-  { path: '/classroom/resources/:id', name: 'classroom-resource-detail', ...placeholder('Learning Resource Detail') },
+  { path: routePaths.classroomMyReplays, name: 'classroom-my-replays', component: LectureReplayPage, props: { variant: 'my' } },
+  { path: routePaths.classroomAllReplays, name: 'classroom-all-replays', component: LectureReplayPage, props: { variant: 'all' } },
+  { path: routePaths.classroomCurriculum, name: 'classroom-curriculum', component: ClassroomCurriculumPage },
+  { path: routePaths.classroomQuests, name: 'classroom-quests', component: ClassroomQuestListPage },
+  { path: '/classroom/quests/:id', name: 'classroom-quest-detail', component: ClassroomQuestDetailPage },
+  { path: routePaths.classroomRequiredLearning, name: 'classroom-required-learning', component: RequiredLearningPage },
+  { path: routePaths.classroomResources, name: 'classroom-resources', component: ClassroomResourcesPage },
+  { path: '/classroom/resources/:id', name: 'classroom-resource-detail', component: ClassroomResourceDetailPage },
   { path: routePaths.communitySurveys, name: 'community-surveys', ...placeholder('Community Surveys') },
   { path: routePaths.communityOpenBoard, name: 'community-open-board', ...placeholder('Open Board') },
   { path: routePaths.communityOpenBoardWrite, name: 'community-open-board-write', ...placeholder('Open Board Write') },

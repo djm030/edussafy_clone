@@ -16,3 +16,4 @@ yarn-error.log*
 !.omx/shared/
 !.omx/shared/**
 !.omx/README.md
+.vite/

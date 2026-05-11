@@ -13,3 +13,12 @@ export const serviceLinks = [
   { label: 'SSAFY GIT', tone: 'blue', url: 'https://project.ssafy.com' },
   { label: 'Meeting! SSAFY', tone: 'green', url: 'https://meeting.ssafy.com' }
 ]
+
+export const classroomTabs = [
+  { label: '내강의 다시보기', path: routePaths.classroomMyReplays },
+  { label: '전체강의 다시보기', path: routePaths.classroomAllReplays },
+  { label: '주차별 커리큘럼', path: routePaths.classroomCurriculum },
+  { label: 'Quest/평가', path: routePaths.classroomQuests },
+  { label: '필수학습', path: routePaths.classroomRequiredLearning },
+  { label: '학습자료', path: routePaths.classroomResources }
+]

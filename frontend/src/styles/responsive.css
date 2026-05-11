@@ -72,3 +72,88 @@
   }
 }
 
+
+
+@media (max-width: 1100px) {
+  .section-tabs {
+    display: flex;
+    overflow-x: auto;
+  }
+
+  .section-tab {
+    min-width: 180px;
+  }
+
+  .phase-stepper,
+  .quest-evaluation-card,
+  .resource-result-item,
+  .detail-grid,
+  .replay-item {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .quest-evaluation-card {
+    padding: 24px;
+  }
+
+  .curriculum-day {
+    grid-template-columns: 130px 28px 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .classroom-page {
+    padding-top: 36px;
+  }
+
+  .page-hero h1 {
+    font-size: 24px;
+  }
+
+  .phase-stepper,
+  .curriculum-day,
+  .quest-evaluation-card,
+  .resource-result-item,
+  .detail-grid,
+  .replay-item {
+    grid-template-columns: 1fr;
+  }
+
+  .phase-stepper::before,
+  .day-line {
+    display: none;
+  }
+
+  .phase-step strong,
+  .phase-step small {
+    margin-top: 0;
+  }
+
+  .curriculum-toolbar,
+  .list-toolbar,
+  .replay-toolbar,
+  .curriculum-card,
+  .detail-header {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .category-legend,
+  .week-selector,
+  .list-toolbar > div {
+    flex-wrap: wrap;
+  }
+
+  .curriculum-actions {
+    min-width: 0;
+    justify-content: flex-start;
+  }
+
+  .resource-image {
+    min-height: 140px;
+  }
+
+  .replay-banner {
+    padding-left: 24px;
+  }
+}
