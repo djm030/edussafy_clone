@@ -24,7 +24,7 @@ import { ref } from 'vue'
 import PageHero from '../../components/ui/PageHero.vue'
 import SectionTabs from '../../components/ui/SectionTabs.vue'
 import FormTable from '../../components/ui/FormTable.vue'
-import { getAccessToken, isApiEnabled } from '../../api/client'
+import { getAccessToken, getApiErrorMessage, isApiEnabled } from '../../api/client'
 import { mycampusTabs } from '../../data/mycampus'
 import { changePasswordData } from '../../services/mycampusService'
 
@@ -63,7 +63,7 @@ async function changePassword() {
     message.value = '비밀번호가 변경되었습니다.'
     messageTone.value = ''
   } catch (error) {
-    message.value = '비밀번호를 변경하지 못했습니다.'
+    message.value = getApiErrorMessage(error, '비밀번호를 변경하지 못했습니다.')
     messageTone.value = 'warning'
     console.warn(error)
   } finally {

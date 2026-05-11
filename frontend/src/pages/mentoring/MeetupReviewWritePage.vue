@@ -24,12 +24,15 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import PageHero from '../../components/ui/PageHero.vue'
 import SectionTabs from '../../components/ui/SectionTabs.vue'
 import FormTable from '../../components/ui/FormTable.vue'
-import { getAccessToken, isApiEnabled } from '../../api/client'
+import { getAccessToken, getApiErrorMessage, isApiEnabled } from '../../api/client'
 import { mentoringTabs } from '../../constants/navigation'
 import { createMentoringReviewPost } from '../../services/boardService'
+
+const router = useRouter()
 
 const fields = [
   { label: '간담회', name: 'meetup', type: 'select', options: ['백엔드 개발자 커리어 간담회', '금융권 IT 직무 이해하기', '프로젝트 코드리뷰 실전'] },
@@ -58,14 +61,14 @@ async function submitReview() {
 
   isSubmitting.value = true
   try {
-    await createMentoringReviewPost({
+    const created = await createMentoringReviewPost({
       ...form.value
     })
     form.value = { meetup: fields[0].options[0], title: '', content: '', file: null }
-    message.value = '간담회 후기가 등록되었습니다.'
-    messageTone.value = ''
+    const createdId = created?.id || created?.postId
+    router.push(createdId ? `/mentoring/meetups/reviews/${createdId}` : '/mentoring/meetups/reviews')
   } catch (error) {
-    message.value = '간담회 후기를 등록하지 못했습니다.'
+    message.value = getApiErrorMessage(error, '간담회 후기를 등록하지 못했습니다.')
     messageTone.value = 'warning'
     console.warn(error)
   } finally {

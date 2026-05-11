@@ -25,12 +25,13 @@ import SectionTabs from '../../components/ui/SectionTabs.vue'
 import SearchFilterBar from '../../components/ui/SearchFilterBar.vue'
 import BoardTable from '../../components/ui/BoardTable.vue'
 import PaginationBar from '../../components/ui/PaginationBar.vue'
+import { getApiErrorMessage, isApiEnabled } from '../../api/client'
 import { helpTabs } from '../../constants/navigation'
 import { notices as mockNotices } from '../../data/boards'
 import { loadHelpNoticePosts } from '../../services/boardService'
 import { matchesText, pageNumbers, paginateItems } from '../../utils/listControls'
 
-const notices = ref(mockNotices)
+const notices = ref(isApiEnabled ? [] : mockNotices)
 const isLoading = ref(false)
 const loadError = ref('')
 const searchQuery = ref('')
@@ -57,7 +58,13 @@ onMounted(async () => {
   try {
     notices.value = await loadHelpNoticePosts()
   } catch (error) {
-    loadError.value = '공지사항을 불러오지 못해 데모 데이터를 표시합니다.'
+    if (isApiEnabled) {
+      notices.value = []
+      loadError.value = getApiErrorMessage(error, '공지사항을 불러오지 못했습니다.')
+    } else {
+      notices.value = mockNotices
+      loadError.value = '공지사항을 불러오지 못해 데모 데이터를 표시합니다.'
+    }
     console.warn(error)
   } finally {
     isLoading.value = false

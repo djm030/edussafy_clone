@@ -21,33 +21,28 @@ function normalizeNotification(item) {
 export async function loadDashboardData() {
   if (!isApiEnabled) return dashboardData
 
-  try {
-    const [me, campusSummary, pointSummary, notificationsPage] = await Promise.all([
-      authApi.me().catch(() => dashboardData.user),
-      usersApi.campusSummary().catch(() => null),
-      pointsApi.summary().catch(() => dashboardData.pointSummary),
-      notificationsApi.my({ page: 0, size: 3 }).catch(() => dashboardData.notifications)
-    ])
+  const [me, campusSummary, pointSummary, notificationsPage] = await Promise.all([
+    authApi.me(),
+    usersApi.campusSummary(),
+    pointsApi.summary(),
+    notificationsApi.my({ page: 0, size: 3 })
+  ])
 
-    const summaryUser = campusSummary?.user || me || dashboardData.user
-    const stat = campusSummary?.stat || pointSummary || dashboardData.pointSummary
-    const notifications = pageItems(notificationsPage).slice(0, 3).map(normalizeNotification)
+  const summaryUser = campusSummary?.user || me || dashboardData.user
+  const stat = campusSummary?.stat || pointSummary || dashboardData.pointSummary
+  const notifications = pageItems(notificationsPage).slice(0, 3).map(normalizeNotification)
 
-    return {
-      ...dashboardData,
-      user: {
-        ...dashboardData.user,
-        ...summaryUser
-      },
-      pointSummary: {
-        ...dashboardData.pointSummary,
-        ...stat,
-        unreadNotificationCount: stat.unreadNotificationCount ?? dashboardData.pointSummary.unreadNotificationCount
-      },
-      notifications: notifications.length ? notifications : dashboardData.notifications
-    }
-  } catch (error) {
-    console.warn('Dashboard API fallback:', error)
-    return dashboardData
+  return {
+    ...dashboardData,
+    user: {
+      ...dashboardData.user,
+      ...summaryUser
+    },
+    pointSummary: {
+      ...dashboardData.pointSummary,
+      ...stat,
+      unreadNotificationCount: stat.unreadNotificationCount ?? dashboardData.pointSummary.unreadNotificationCount
+    },
+    notifications
   }
 }

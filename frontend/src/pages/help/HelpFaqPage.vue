@@ -23,6 +23,7 @@
 
 <script setup>
 import { computed, onMounted, ref } from 'vue'
+import { getApiErrorMessage, isApiEnabled } from '../../api/client'
 import PageHero from '../../components/ui/PageHero.vue'
 import SectionTabs from '../../components/ui/SectionTabs.vue'
 import SearchFilterBar from '../../components/ui/SearchFilterBar.vue'
@@ -31,7 +32,7 @@ import { faqs as mockFaqs } from '../../data/boards'
 import { loadHelpFaqs } from '../../services/boardService'
 import { matchesText } from '../../utils/listControls'
 
-const faqs = ref(mockFaqs)
+const faqs = ref(isApiEnabled ? [] : mockFaqs)
 const isLoading = ref(false)
 const loadError = ref('')
 const searchQuery = ref('')
@@ -42,17 +43,22 @@ const filteredFaqs = computed(() => faqs.value.filter((faq) => {
   const matchesCategory = searchFilter.value === '전체' || faq.category === searchFilter.value
   return matchesCategory && matchesText(faq, ['question', 'answer', 'category'], searchQuery.value)
 }))
-</script>
-
 
 onMounted(async () => {
   isLoading.value = true
   try {
     faqs.value = await loadHelpFaqs()
   } catch (error) {
-    loadError.value = 'FAQ를 불러오지 못해 데모 데이터를 표시합니다.'
+    if (isApiEnabled) {
+      faqs.value = []
+      loadError.value = getApiErrorMessage(error, 'FAQ를 불러오지 못했습니다.')
+    } else {
+      faqs.value = mockFaqs
+      loadError.value = 'FAQ를 불러오지 못해 데모 데이터를 표시합니다.'
+    }
     console.warn(error)
   } finally {
     isLoading.value = false
   }
 })
+</script>

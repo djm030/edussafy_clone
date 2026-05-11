@@ -73,11 +73,12 @@ import {
   curriculumDays as mockCurriculumDays,
   curriculumWeeks as mockCurriculumWeeks
 } from '../../data/classroom'
+import { getApiErrorMessage, isApiEnabled } from '../../api/client'
 import { loadCurriculumData } from '../../services/classroomService'
 
-const classroomPhases = ref(mockClassroomPhases)
-const curriculumWeeks = ref(mockCurriculumWeeks)
-const curriculumDays = ref(mockCurriculumDays)
+const classroomPhases = ref(isApiEnabled ? [] : mockClassroomPhases)
+const curriculumWeeks = ref(isApiEnabled ? [] : mockCurriculumWeeks)
+const curriculumDays = ref(isApiEnabled ? [] : mockCurriculumDays)
 const isLoading = ref(false)
 const loadError = ref('')
 
@@ -89,7 +90,17 @@ onMounted(async () => {
     curriculumWeeks.value = data.curriculumWeeks
     curriculumDays.value = data.curriculumDays
   } catch (error) {
-    loadError.value = '커리큘럼을 불러오지 못해 데모 데이터를 표시합니다.'
+    if (isApiEnabled) {
+      classroomPhases.value = []
+      curriculumWeeks.value = []
+      curriculumDays.value = []
+      loadError.value = getApiErrorMessage(error, '커리큘럼을 불러오지 못했습니다.')
+    } else {
+      classroomPhases.value = mockClassroomPhases
+      curriculumWeeks.value = mockCurriculumWeeks
+      curriculumDays.value = mockCurriculumDays
+      loadError.value = '커리큘럼을 불러오지 못해 데모 데이터를 표시합니다.'
+    }
     console.warn(error)
   } finally {
     isLoading.value = false

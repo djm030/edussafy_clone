@@ -24,12 +24,15 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import PageHero from '../../components/ui/PageHero.vue'
 import SectionTabs from '../../components/ui/SectionTabs.vue'
 import FormTable from '../../components/ui/FormTable.vue'
 import { helpTabs } from '../../constants/navigation'
 import { createInquiry } from '../../services/userListService'
-import { getAccessToken, isApiEnabled } from '../../api/client'
+import { getAccessToken, getApiErrorMessage, isApiEnabled } from '../../api/client'
+
+const router = useRouter()
 
 const fields = [
   { label: '문의유형', name: 'category', type: 'select', options: ['출결', '시스템', '학사', '기타'] },
@@ -59,12 +62,12 @@ async function submitInquiry() {
 
   isSubmitting.value = true
   try {
-    await createInquiry(form.value)
+    const created = await createInquiry(form.value)
     form.value = { category: fields[0].options[0], title: '', content: '', file: null }
-    message.value = '문의가 등록되었습니다.'
-    messageTone.value = ''
+    const createdId = created?.id || created?.inquiryId
+    router.push(createdId ? `/help/inquiries/${createdId}` : '/help/inquiries')
   } catch (error) {
-    message.value = '문의를 등록하지 못했습니다.'
+    message.value = getApiErrorMessage(error, '문의를 등록하지 못했습니다.')
     messageTone.value = 'warning'
     console.warn(error)
   } finally {

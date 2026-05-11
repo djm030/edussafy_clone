@@ -32,11 +32,12 @@
 import { onMounted, ref } from 'vue'
 import PageHero from '../../components/ui/PageHero.vue'
 import SectionTabs from '../../components/ui/SectionTabs.vue'
+import { getApiErrorMessage, isApiEnabled } from '../../api/client'
 import { mentoringTabs } from '../../constants/navigation'
 import { meetups as mockMeetups } from '../../data/boards'
 import { loadMeetupApplications, submitMeetupApplication } from '../../services/surveyService'
 
-const meetups = ref(mockMeetups)
+const meetups = ref(isApiEnabled ? [] : mockMeetups)
 const isLoading = ref(false)
 const isSubmitting = ref(null)
 const message = ref('')
@@ -47,7 +48,13 @@ onMounted(async () => {
   try {
     meetups.value = await loadMeetupApplications()
   } catch (error) {
-    message.value = '간담회 신청 목록을 불러오지 못해 예시 데이터를 표시합니다.'
+    if (isApiEnabled) {
+      meetups.value = []
+      message.value = getApiErrorMessage(error, '간담회 신청 목록을 불러오지 못했습니다.')
+    } else {
+      meetups.value = mockMeetups
+      message.value = '간담회 신청 목록을 불러오지 못해 예시 데이터를 표시합니다.'
+    }
     messageTone.value = 'warning'
     console.warn(error)
   } finally {
@@ -63,7 +70,7 @@ async function applyMeetup(meetup) {
     message.value = `${meetup.title} 신청이 접수되었습니다.`
     messageTone.value = ''
   } catch (error) {
-    message.value = '간담회 신청을 접수하지 못했습니다.'
+    message.value = getApiErrorMessage(error, '간담회 신청을 접수하지 못했습니다.')
     messageTone.value = 'warning'
     console.warn(error)
   } finally {

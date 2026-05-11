@@ -149,9 +149,8 @@ function normalizeCurriculumDays(items) {
 export async function loadQuestItems() {
   if (!isApiEnabled) return questItems
 
-  const page = await tasksApi.my({ page: 0, size: 10 }).catch(() => null)
-  const items = pageItems(page).map(normalizeQuest)
-  return items.length ? items : questItems
+  const page = await tasksApi.my({ page: 0, size: 10 })
+  return pageItems(page).map(normalizeQuest)
 }
 
 export async function loadQuestDetail(taskId) {
@@ -159,11 +158,11 @@ export async function loadQuestDetail(taskId) {
   if (!isApiEnabled) return fallback
 
   const [detail, myResult] = await Promise.all([
-    tasksApi.detail(taskId).catch(() => null),
+    tasksApi.detail(taskId),
     tasksApi.myResult(taskId).catch(() => null)
   ])
 
-  return normalizeQuest({ ...fallback, ...detail, ...myResult })
+  return normalizeQuest({ ...detail, ...(myResult || {}) })
 }
 
 export async function submitQuestAnswer(taskId, answer) {
@@ -181,54 +180,52 @@ export async function loadLearningResources({ required = false } = {}) {
   if (!isApiEnabled) return required ? requiredLearningFallback() : learningResources
 
   const page = required
-    ? await learningApi.required({ page: 0, size: 10 }).catch(() => null)
-    : await learningApi.openLearning({ page: 0, size: 10 }).catch(() => null)
-  const items = pageItems(page).map(normalizeLearningResource)
-  return items.length ? items : (required ? requiredLearningFallback() : learningResources)
+    ? await learningApi.required({ page: 0, size: 10 })
+    : await learningApi.openLearning({ page: 0, size: 10 })
+  return pageItems(page).map(normalizeLearningResource)
 }
 
 export async function loadLearningResourceDetail(resourceId) {
   const fallback = learningResources.find((item) => String(item.id) === String(resourceId)) || learningResources[0]
   if (!isApiEnabled) return fallback
 
-  const resource = await learningApi.content(resourceId).catch(() => null)
-  return resource ? normalizeLearningResource(resource) : fallback
+  const resource = await learningApi.content(resourceId)
+  return normalizeLearningResource(resource)
 }
 
 export async function loadReplayItems() {
   if (!isApiEnabled) return allReplayItems
 
-  const page = await classroomApi.replays({ page: 0, size: 10 }).catch(() => null)
-  const items = pageItems(page).map(normalizeReplay)
-  return items.length ? items : allReplayItems
+  const page = await classroomApi.replays({ page: 0, size: 10 })
+  return pageItems(page).map(normalizeReplay)
 }
 
 export async function loadCurriculumData() {
   if (!isApiEnabled) return { classroomPhases, curriculumWeeks, curriculumDays }
 
-  const coursesPage = await classroomApi.myCourses().catch(() => null)
+  const coursesPage = await classroomApi.myCourses()
   const course = pageItems(coursesPage)[0]
   const courseId = course?.id || course?.courseId
-  if (!courseId) return { classroomPhases, curriculumWeeks, curriculumDays }
+  if (!courseId) return { classroomPhases: [], curriculumWeeks: [], curriculumDays: [] }
 
-  const weeksPage = await classroomApi.weeks(courseId).catch(() => null)
+  const weeksPage = await classroomApi.weeks(courseId)
   const weeks = pageItems(weeksPage).map(normalizeWeek)
   const activeWeek = pageItems(weeksPage).find((week) => week.active || week.isCurrent) || pageItems(weeksPage)[0]
   const weekId = activeWeek?.id || activeWeek?.weekId
   if (!weekId) {
     return {
       classroomPhases,
-      curriculumWeeks: weeks.length ? weeks : curriculumWeeks,
-      curriculumDays
+      curriculumWeeks: weeks,
+      curriculumDays: []
     }
   }
 
-  const sessionsPage = await classroomApi.sessions(courseId, weekId).catch(() => null)
+  const sessionsPage = await classroomApi.sessions(courseId, weekId)
   const days = normalizeCurriculumDays(pageItems(sessionsPage))
 
   return {
     classroomPhases,
-    curriculumWeeks: weeks.length ? weeks : curriculumWeeks,
-    curriculumDays: days.length ? days : curriculumDays
+    curriculumWeeks: weeks,
+    curriculumDays: days
   }
 }

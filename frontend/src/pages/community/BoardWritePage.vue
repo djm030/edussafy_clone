@@ -24,12 +24,15 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import PageHero from '../../components/ui/PageHero.vue'
 import SectionTabs from '../../components/ui/SectionTabs.vue'
 import FormTable from '../../components/ui/FormTable.vue'
 import { communityTabs } from '../../constants/navigation'
 import { createCommunityPost } from '../../services/boardService'
-import { getAccessToken, isApiEnabled } from '../../api/client'
+import { getAccessToken, getApiErrorMessage, isApiEnabled } from '../../api/client'
+
+const router = useRouter()
 
 const fields = [
   { label: '분류', name: 'category', type: 'select', options: ['일반'] },
@@ -59,12 +62,16 @@ async function submitPost() {
 
   isSubmitting.value = true
   try {
-    await createCommunityPost(form.value)
+    const created = await createCommunityPost(form.value)
     form.value = { category: fields[0].options[0], title: '', content: '', file: null }
-    message.value = '게시글이 등록되었습니다.'
-    messageTone.value = ''
+    const createdId = created?.id || created?.postId
+    if (createdId) {
+      router.push(`/community/boards/open/${createdId}`)
+    } else {
+      router.push('/community/boards/open')
+    }
   } catch (error) {
-    message.value = '게시글을 등록하지 못했습니다.'
+    message.value = getApiErrorMessage(error, '게시글을 등록하지 못했습니다.')
     messageTone.value = 'warning'
     console.warn(error)
   } finally {

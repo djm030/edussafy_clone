@@ -29,12 +29,13 @@ import { computed, onMounted, ref } from 'vue'
 import PageHero from '../../components/ui/PageHero.vue'
 import SectionTabs from '../../components/ui/SectionTabs.vue'
 import SearchFilterBar from '../../components/ui/SearchFilterBar.vue'
+import { getApiErrorMessage, isApiEnabled } from '../../api/client'
 import { communityTabs } from '../../constants/navigation'
 import { classMembers as mockClassMembers } from '../../data/boards'
 import { loadClassMembers } from '../../services/userListService'
 import { matchesText } from '../../utils/listControls'
 
-const classMembers = ref(mockClassMembers)
+const classMembers = ref(isApiEnabled ? [] : mockClassMembers)
 const isLoading = ref(false)
 const loadError = ref('')
 const searchQuery = ref('')
@@ -51,7 +52,13 @@ onMounted(async () => {
   try {
     classMembers.value = await loadClassMembers()
   } catch (error) {
-    loadError.value = '교육생 목록을 불러오지 못해 데모 데이터를 표시합니다.'
+    if (isApiEnabled) {
+      classMembers.value = []
+      loadError.value = getApiErrorMessage(error, '교육생 목록을 불러오지 못했습니다.')
+    } else {
+      classMembers.value = mockClassMembers
+      loadError.value = '교육생 목록을 불러오지 못해 데모 데이터를 표시합니다.'
+    }
     console.warn(error)
   } finally {
     isLoading.value = false

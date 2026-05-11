@@ -28,9 +28,10 @@
 import { onMounted, ref } from 'vue'
 import PageHero from '../../components/ui/PageHero.vue'
 import { notifications as mockNotifications } from '../../data/mycampus'
+import { getApiErrorMessage, isApiEnabled } from '../../api/client'
 import { loadNotifications } from '../../services/notificationsService'
 
-const notifications = ref(mockNotifications)
+const notifications = ref(isApiEnabled ? [] : mockNotifications)
 const isLoading = ref(false)
 const loadError = ref('')
 
@@ -39,7 +40,8 @@ onMounted(async () => {
   try {
     notifications.value = await loadNotifications()
   } catch (error) {
-    loadError.value = '알림 데이터를 불러오지 못해 데모 데이터를 표시합니다.'
+    loadError.value = getApiErrorMessage(error, '알림 데이터를 불러오지 못했습니다.')
+    if (isApiEnabled) notifications.value = []
     console.warn(error)
   } finally {
     isLoading.value = false

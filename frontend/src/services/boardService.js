@@ -1,5 +1,5 @@
 import { isApiEnabled } from '../api/client'
-import { boardsApi } from '../api/modules'
+import { boardsApi, filesApi } from '../api/modules'
 import { anonymousPosts, faqs, mentoringPosts, notices, openBoardPosts, ruleCategories } from '../data/boards'
 import { boardCodes as canonicalBoardCodes } from '../constants/boardCodes'
 
@@ -44,7 +44,7 @@ function formatDate(value) {
 }
 
 function normalizePost(item) {
-  const postId = normalizePostId(item.id ?? item.postId)
+  const postId = normalizePostId(item.postId ?? item.id)
   return {
     id: postId,
     postId,
@@ -132,6 +132,19 @@ async function resolveCategoryId(boardCode, categoryName) {
   return category?.id || category?.categoryId || fallbackCategory?.id || fallbackCategory?.categoryId || null
 }
 
+
+async function uploadBoardFile(file) {
+  if (!file) return null
+
+  const formData = new FormData()
+  formData.append('file', file)
+  formData.append('targetType', 'BOARD_POST')
+  formData.append('fileRole', 'ATTACHMENT')
+
+  const uploaded = await filesApi.upload(formData)
+  return uploaded?.id || uploaded?.fileId || null
+}
+
 async function createBoardPost(key, form) {
   const boardCode = boardCodeByKey[key] || boardCodeByKey.open
   if (!isApiEnabled) return { id: 'mock-created', postId: 'mock-created', ...form }
@@ -141,6 +154,8 @@ async function createBoardPost(key, form) {
     throw new Error(`Missing board category for ${boardCode}`)
   }
 
+  const fileId = await uploadBoardFile(form.file)
+
   return boardsApi.createPost(boardCode, {
     categoryId,
     title: form.title,
@@ -148,7 +163,7 @@ async function createBoardPost(key, form) {
     contentText: form.content,
     contentHtml: null,
     contentJson: null,
-    fileIds: []
+    fileIds: fileId ? [fileId] : []
   })
 }
 
@@ -190,15 +205,13 @@ export function createMentoringReviewPost(form) {
 export async function loadHelpFaqs() {
   if (!isApiEnabled) return faqs
 
-  const page = await boardsApi.posts(canonicalBoardCodes.faq, { page: 0, size: 20 }).catch(() => null)
-  const items = pageItems(page).map(normalizeFaq).filter((item) => item.question || item.answer)
-  return items.length ? items : faqs
+  const page = await boardsApi.posts(canonicalBoardCodes.faq, { page: 0, size: 20 })
+  return pageItems(page).map(normalizeFaq).filter((item) => item.question || item.answer)
 }
 
 export async function loadHelpRules() {
   if (!isApiEnabled) return ruleCategories
 
-  const page = await boardsApi.posts(canonicalBoardCodes.rule, { page: 0, size: 20 }).catch(() => null)
-  const items = pageItems(page).map(normalizeRule).filter((item) => item.title || item.body)
-  return items.length ? items : ruleCategories
+  const page = await boardsApi.posts(canonicalBoardCodes.rule, { page: 0, size: 20 })
+  return pageItems(page).map(normalizeRule).filter((item) => item.title || item.body)
 }

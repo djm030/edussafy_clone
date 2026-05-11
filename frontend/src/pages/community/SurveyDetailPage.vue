@@ -45,7 +45,7 @@ import { onMounted, reactive, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import PageHero from '../../components/ui/PageHero.vue'
 import SectionTabs from '../../components/ui/SectionTabs.vue'
-import { getAccessToken, isApiEnabled } from '../../api/client'
+import { getAccessToken, getApiErrorMessage, isApiEnabled } from '../../api/client'
 import { communityTabs } from '../../constants/navigation'
 import { loadSurveyDetail, submitSurveyAnswers } from '../../services/surveyService'
 
@@ -65,7 +65,7 @@ onMounted(async () => {
       answers[question.id] = ''
     })
   } catch (error) {
-    message.value = '설문 정보를 불러오지 못했습니다.'
+    message.value = getApiErrorMessage(error, '설문 정보를 불러오지 못했습니다.')
     messageTone.value = 'warning'
     console.warn(error)
   } finally {
@@ -99,7 +99,7 @@ async function submitSurvey() {
     message.value = '설문 응답이 제출되었습니다.'
     messageTone.value = ''
   } catch (error) {
-    message.value = '설문 응답을 제출하지 못했습니다.'
+    message.value = getApiErrorMessage(error, '설문 응답을 제출하지 못했습니다.')
     messageTone.value = 'warning'
     console.warn(error)
   } finally {

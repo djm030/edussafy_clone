@@ -25,14 +25,13 @@ function normalizeNotification(item) {
 export async function loadNotifications() {
   if (!isApiEnabled) return mockNotifications
 
-  const page = await notificationsApi.my({ page: 0, size: 10 }).catch(() => null)
-  const items = pageItems(page).map(normalizeNotification)
-  return items.length ? items : mockNotifications
+  const page = await notificationsApi.my({ page: 0, size: 10 })
+  return pageItems(page).map(normalizeNotification)
 }
 
 export async function loadUnreadNotificationCount() {
   if (!isApiEnabled) return mockNotifications.filter((item) => item.unread).length
 
-  const data = await notificationsApi.unreadCount().catch(() => null)
+  const data = await notificationsApi.unreadCount()
   return data?.count ?? data?.unreadCount ?? (Number(data) || 0)
 }

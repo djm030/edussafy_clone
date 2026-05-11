@@ -60,7 +60,8 @@ const tabs = computed(() => current.value.tabs)
 const backPath = computed(() => current.value.back)
 
 function fallbackPost() {
-  return current.value.items.find((item) => String(item.id) === String(route.params.id)) || current.value.items[0]
+  const targetPostId = String(route.params.id)
+  return current.value.items.find((item) => String(item.id) === targetPostId || String(item.postId) === targetPostId) || current.value.items[0]
 }
 
 async function loadPost() {

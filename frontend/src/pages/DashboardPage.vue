@@ -3,6 +3,7 @@ import { onMounted, ref } from 'vue'
 import DashboardCard from '../components/ui/DashboardCard.vue'
 import StatusBadge from '../components/ui/StatusBadge.vue'
 import { dashboardData } from '../data/dashboard'
+import { getApiErrorMessage, isApiEnabled } from '../api/client'
 import { loadDashboardData } from '../services/dashboardService'
 
 const data = ref(dashboardData)
@@ -18,7 +19,7 @@ onMounted(async () => {
   try {
     data.value = await loadDashboardData()
   } catch (error) {
-    loadError.value = '대시보드 데이터를 불러오지 못해 데모 데이터를 표시합니다.'
+    loadError.value = getApiErrorMessage(error, '대시보드 데이터를 불러오지 못했습니다.')
     console.warn(error)
   } finally {
     isLoading.value = false

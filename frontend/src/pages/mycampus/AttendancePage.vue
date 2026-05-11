@@ -26,10 +26,12 @@ import PageHero from '../../components/ui/PageHero.vue'
 import SectionTabs from '../../components/ui/SectionTabs.vue'
 import BoardTable from '../../components/ui/BoardTable.vue'
 import { attendanceDays as mockAttendanceDays, attendanceSummary as mockAttendanceSummary, mycampusTabs } from '../../data/mycampus'
+import { getApiErrorMessage, isApiEnabled } from '../../api/client'
 import { loadAttendanceData } from '../../services/mycampusService'
 
-const attendanceSummary = ref(mockAttendanceSummary)
-const attendanceDays = ref(mockAttendanceDays)
+const emptyAttendanceSummary = mockAttendanceSummary.map((item) => ({ ...item, value: 0 }))
+const attendanceSummary = ref(isApiEnabled ? emptyAttendanceSummary : mockAttendanceSummary)
+const attendanceDays = ref(isApiEnabled ? [] : mockAttendanceDays)
 const isLoading = ref(false)
 const loadError = ref('')
 
@@ -48,7 +50,11 @@ onMounted(async () => {
     attendanceSummary.value = data.attendanceSummary
     attendanceDays.value = data.attendanceDays
   } catch (error) {
-    loadError.value = '출석 데이터를 불러오지 못해 데모 데이터를 표시합니다.'
+    loadError.value = getApiErrorMessage(error, '출석 데이터를 불러오지 못했습니다.')
+    if (isApiEnabled) {
+      attendanceSummary.value = emptyAttendanceSummary
+      attendanceDays.value = []
+    }
     console.warn(error)
   } finally {
     isLoading.value = false

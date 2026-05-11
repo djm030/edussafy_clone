@@ -30,10 +30,11 @@ import BoardTable from '../../components/ui/BoardTable.vue'
 import PaginationBar from '../../components/ui/PaginationBar.vue'
 import { helpTabs } from '../../constants/navigation'
 import { inquiries as mockInquiries } from '../../data/boards'
+import { getApiErrorMessage, isApiEnabled } from '../../api/client'
 import { loadInquiries } from '../../services/userListService'
 import { matchesText, pageNumbers, paginateItems } from '../../utils/listControls'
 
-const inquiries = ref(mockInquiries)
+const inquiries = ref(isApiEnabled ? [] : mockInquiries)
 const isLoading = ref(false)
 const loadError = ref('')
 const searchQuery = ref('')
@@ -59,7 +60,8 @@ onMounted(async () => {
   try {
     inquiries.value = await loadInquiries()
   } catch (error) {
-    loadError.value = '문의 목록을 불러오지 못해 데모 데이터를 표시합니다.'
+    loadError.value = getApiErrorMessage(error, '문의 목록을 불러오지 못했습니다.')
+    if (isApiEnabled) inquiries.value = []
     console.warn(error)
   } finally {
     isLoading.value = false

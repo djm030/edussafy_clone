@@ -8,6 +8,10 @@ export function getAccessToken() {
   return window.localStorage.getItem(ACCESS_TOKEN_KEY)
 }
 
+export function hasAccessToken() {
+  return Boolean(getAccessToken())
+}
+
 export function setAccessToken(token) {
   window.localStorage.setItem(ACCESS_TOKEN_KEY, token)
 }
@@ -33,6 +37,33 @@ apiClient.interceptors.request.use((config) => {
   }
   return config
 })
+
+apiClient.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error?.response?.status === 401) {
+      clearAccessToken()
+    }
+    return Promise.reject(error)
+  }
+)
+
+export function getApiErrorStatus(error) {
+  return error?.response?.status || null
+}
+
+export function getApiErrorCode(error) {
+  return error?.response?.data?.errorCode || error?.response?.data?.code || null
+}
+
+export function getApiErrorMessage(error, fallback = '요청 처리 중 오류가 발생했습니다.') {
+  return error?.response?.data?.message || getApiErrorCode(error) || error?.message || fallback
+}
+
+export function isApiAuthError(error) {
+  const status = getApiErrorStatus(error)
+  return status === 401 || status === 403
+}
 
 export function unwrapApiResponse(response) {
   if (response.data && Object.prototype.hasOwnProperty.call(response.data, 'success')) {

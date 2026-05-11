@@ -31,6 +31,7 @@ import BoardTable from '../../components/ui/BoardTable.vue'
 import PaginationBar from '../../components/ui/PaginationBar.vue'
 import { communityTabs } from '../../constants/navigation'
 import { anonymousPosts, openBoardPosts } from '../../data/boards'
+import { getApiErrorMessage, isApiEnabled } from '../../api/client'
 import { loadCommunityPosts } from '../../services/boardService'
 import { filterByOption, pageNumbers, paginateItems } from '../../utils/listControls'
 
@@ -49,7 +50,7 @@ const columns = [
   { key: 'views', label: '조회', width: '80px' }
 ]
 
-const items = ref(props.variant === 'anonymous' ? anonymousPosts : openBoardPosts)
+const items = ref(isApiEnabled ? [] : normalizeIds(props.variant === 'anonymous' ? anonymousPosts : openBoardPosts))
 const isLoading = ref(false)
 const loadError = ref('')
 const searchQuery = ref('')
@@ -59,6 +60,13 @@ const pageSize = 10
 const pageTitle = computed(() => props.variant === 'anonymous' ? '익명 게시판' : '열린 게시판')
 const description = computed(() => props.variant === 'anonymous' ? '교육생 의견을 부담 없이 공유하는 익명 공간입니다.' : '정보 공유와 질문을 위한 공개 게시판입니다.')
 const detailBase = computed(() => props.variant === 'anonymous' ? '/community/boards/anonymous' : '/community/boards/open')
+function normalizeIds(rows) {
+  return rows.map((item) => ({
+    ...item,
+    id: String(item.postId ?? item.id ?? ''),
+    postId: String(item.postId ?? item.id ?? '')
+  }))
+}
 const filteredItems = computed(() => filterByOption(items.value, searchFilter.value, searchQuery.value, {
   제목: ['title'],
   작성자: ['author'],
@@ -77,11 +85,11 @@ watch(
     isLoading.value = true
     loadError.value = ''
     try {
-      items.value = await loadCommunityPosts(variant)
+      items.value = normalizeIds(await loadCommunityPosts(variant))
       currentPage.value = 1
     } catch (error) {
-      loadError.value = '게시글을 불러오지 못해 데모 데이터를 표시합니다.'
-      items.value = variant === 'anonymous' ? anonymousPosts : openBoardPosts
+      loadError.value = getApiErrorMessage(error, '게시글을 불러오지 못했습니다.')
+      items.value = isApiEnabled ? [] : normalizeIds(variant === 'anonymous' ? anonymousPosts : openBoardPosts)
       console.warn(error)
     } finally {
       isLoading.value = false

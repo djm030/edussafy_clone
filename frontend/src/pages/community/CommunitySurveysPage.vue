@@ -36,10 +36,11 @@ import SectionTabs from '../../components/ui/SectionTabs.vue'
 import SearchFilterBar from '../../components/ui/SearchFilterBar.vue'
 import { communityTabs } from '../../constants/navigation'
 import { surveys as mockSurveys } from '../../data/boards'
+import { getApiErrorMessage, isApiEnabled } from '../../api/client'
 import { loadSurveys } from '../../services/surveyService'
 import { matchesText } from '../../utils/listControls'
 
-const surveys = ref(mockSurveys)
+const surveys = ref(isApiEnabled ? [] : mockSurveys)
 const isLoading = ref(false)
 const loadError = ref('')
 const searchQuery = ref('')
@@ -54,7 +55,8 @@ onMounted(async () => {
   try {
     surveys.value = await loadSurveys()
   } catch (error) {
-    loadError.value = '설문 목록을 불러오지 못해 데모 데이터를 표시합니다.'
+    loadError.value = getApiErrorMessage(error, '설문 목록을 불러오지 못했습니다.')
+    if (isApiEnabled) surveys.value = []
     console.warn(error)
   } finally {
     isLoading.value = false

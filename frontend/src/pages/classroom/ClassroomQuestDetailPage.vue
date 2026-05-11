@@ -4,13 +4,13 @@ import { useRoute } from 'vue-router'
 import PageHero from '../../components/ui/PageHero.vue'
 import SectionTabs from '../../components/ui/SectionTabs.vue'
 import StatusBadge from '../../components/ui/StatusBadge.vue'
-import { getAccessToken, isApiEnabled } from '../../api/client'
+import { getAccessToken, getApiErrorMessage, isApiEnabled } from '../../api/client'
 import { classroomTabs } from '../../constants/navigation'
 import { questItems } from '../../data/classroom'
 import { loadQuestDetail, submitQuestAnswer } from '../../services/classroomService'
 
 const route = useRoute()
-const quest = ref(questItems[0])
+const quest = ref(isApiEnabled ? null : questItems[0])
 const answer = ref('')
 const isLoading = ref(false)
 const isSubmitting = ref(false)
@@ -25,9 +25,15 @@ async function loadQuest() {
     quest.value = await loadQuestDetail(route.params.id)
     answer.value = quest.value.answer || ''
   } catch (error) {
-    quest.value = questItems.find((item) => String(item.id) === String(route.params.id)) || questItems[0]
-    answer.value = quest.value.answer || ''
-    loadError.value = 'Quest/평가 상세를 불러오지 못해 데모 데이터를 표시합니다.'
+    if (isApiEnabled) {
+      quest.value = null
+      answer.value = ''
+      loadError.value = getApiErrorMessage(error, 'Quest/평가 상세를 불러오지 못했습니다.')
+    } else {
+      quest.value = questItems.find((item) => String(item.id) === String(route.params.id)) || questItems[0]
+      answer.value = quest.value.answer || ''
+      loadError.value = 'Quest/평가 상세를 불러오지 못해 데모 데이터를 표시합니다.'
+    }
     console.warn(error)
   } finally {
     isLoading.value = false
@@ -51,7 +57,7 @@ async function submitAnswer() {
     quest.value = { ...quest.value, ...result }
     submitMessage.value = `제출이 완료되었습니다.${result.submittedAt ? ` (${result.submittedAt})` : ''}`
   } catch (error) {
-    submitMessage.value = '제출에 실패했습니다. 로그인 상태와 네트워크를 확인하세요.'
+    submitMessage.value = getApiErrorMessage(error, '제출에 실패했습니다. 로그인 상태와 네트워크를 확인하세요.')
     console.warn(error)
   } finally {
     isSubmitting.value = false
@@ -70,7 +76,7 @@ watch(() => route.params.id, loadQuest)
     <p v-if="isLoading" class="dashboard-state">Quest/평가 상세를 확인하고 있습니다.</p>
     <p v-if="loadError" class="dashboard-state warning">{{ loadError }}</p>
 
-    <article v-if="!isLoading" class="detail-panel">
+    <article v-if="!isLoading && quest" class="detail-panel">
       <div class="detail-header">
         <div>
           <p class="eyebrow-text">{{ quest.type }}</p>

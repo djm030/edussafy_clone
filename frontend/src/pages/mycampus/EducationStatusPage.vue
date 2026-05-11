@@ -27,9 +27,10 @@ import { onMounted, ref } from 'vue'
 import PageHero from '../../components/ui/PageHero.vue'
 import SectionTabs from '../../components/ui/SectionTabs.vue'
 import { educationStatus as mockEducationStatus, mycampusTabs } from '../../data/mycampus'
+import { getApiErrorMessage, isApiEnabled } from '../../api/client'
 import { loadEducationStatusData } from '../../services/mycampusService'
 
-const educationStatus = ref(mockEducationStatus)
+const educationStatus = ref(isApiEnabled ? [] : mockEducationStatus)
 const isLoading = ref(false)
 const loadError = ref('')
 
@@ -38,7 +39,8 @@ onMounted(async () => {
   try {
     educationStatus.value = await loadEducationStatusData()
   } catch (error) {
-    loadError.value = '교육현황 데이터를 불러오지 못해 데모 데이터를 표시합니다.'
+    loadError.value = getApiErrorMessage(error, '교육현황 데이터를 불러오지 못했습니다.')
+    if (isApiEnabled) educationStatus.value = []
     console.warn(error)
   } finally {
     isLoading.value = false

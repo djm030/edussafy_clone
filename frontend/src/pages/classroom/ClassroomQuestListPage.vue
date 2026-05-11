@@ -38,10 +38,11 @@ import PaginationBar from '../../components/ui/PaginationBar.vue'
 import SectionTabs from '../../components/ui/SectionTabs.vue'
 import { classroomTabs } from '../../constants/navigation'
 import { questItems as mockQuestItems } from '../../data/classroom'
+import { getApiErrorMessage, isApiEnabled } from '../../api/client'
 import { loadQuestItems } from '../../services/classroomService'
 import { pageNumbers, paginateItems } from '../../utils/listControls'
 
-const questItems = ref(mockQuestItems)
+const questItems = ref(isApiEnabled ? [] : mockQuestItems)
 const isLoading = ref(false)
 const loadError = ref('')
 const currentPage = ref(1)
@@ -58,7 +59,13 @@ onMounted(async () => {
   try {
     questItems.value = await loadQuestItems()
   } catch (error) {
-    loadError.value = 'Quest/평가 목록을 불러오지 못해 데모 데이터를 표시합니다.'
+    if (isApiEnabled) {
+      questItems.value = []
+      loadError.value = getApiErrorMessage(error, 'Quest/평가 목록을 불러오지 못했습니다.')
+    } else {
+      questItems.value = mockQuestItems
+      loadError.value = 'Quest/평가 목록을 불러오지 못해 데모 데이터를 표시합니다.'
+    }
     console.warn(error)
   } finally {
     isLoading.value = false

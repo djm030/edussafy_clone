@@ -44,9 +44,10 @@ import EmptyState from '../../components/ui/EmptyState.vue'
 import PageHero from '../../components/ui/PageHero.vue'
 import SectionTabs from '../../components/ui/SectionTabs.vue'
 import { bookmarkedLearningItems as mockBookmarkedItems, mycampusTabs } from '../../data/mycampus'
+import { getApiErrorMessage, isApiEnabled } from '../../api/client'
 import { loadBookmarkData } from '../../services/mycampusService'
 
-const bookmarkedItems = ref(mockBookmarkedItems)
+const bookmarkedItems = ref(isApiEnabled ? [] : mockBookmarkedItems)
 const isLoading = ref(false)
 const loadError = ref('')
 
@@ -55,7 +56,8 @@ onMounted(async () => {
   try {
     bookmarkedItems.value = await loadBookmarkData()
   } catch (error) {
-    loadError.value = '찜한 학습자료를 불러오지 못해 예시 데이터를 표시합니다.'
+    loadError.value = getApiErrorMessage(error, '찜한 학습자료를 불러오지 못했습니다.')
+    if (isApiEnabled) bookmarkedItems.value = []
     console.warn(error)
   } finally {
     isLoading.value = false

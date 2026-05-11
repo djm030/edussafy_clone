@@ -116,7 +116,14 @@ function normalizeAttendanceDay(item) {
 }
 
 function summarizeAttendance(days) {
-  if (!days.length) return attendanceSummary
+  if (!days.length) {
+    return [
+      { label: '출석', value: 0, tone: 'blue' },
+      { label: '지각', value: 0, tone: 'slate' },
+      { label: '외출', value: 0, tone: 'green' },
+      { label: '결석', value: 0, tone: 'slate' }
+    ]
+  }
 
   const counts = days.reduce(
     (acc, item) => {
@@ -255,8 +262,8 @@ function buildEducationStatus(summary, campusSummary) {
 export async function loadProfileData() {
   if (!isApiEnabled) return profileInfo
 
-  const user = await usersApi.me().catch(() => null)
-  return user ? normalizeProfile(user) : profileInfo
+  const user = await usersApi.me()
+  return normalizeProfile(user)
 }
 
 export async function saveProfileData(profile) {
@@ -281,49 +288,49 @@ export async function loadLevelPointsData() {
   if (!isApiEnabled) return { pointSummary, pointHistory }
 
   const [summary, campusSummary, transactionsPage] = await Promise.all([
-    pointsApi.summary().catch(() => null),
-    usersApi.campusSummary().catch(() => null),
-    pointsApi.transactions({ page: 0, size: 5 }).catch(() => null)
+    pointsApi.summary(),
+    usersApi.campusSummary(),
+    pointsApi.transactions({ page: 0, size: 5 })
   ])
   const transactions = pageItems(transactionsPage).map(normalizePointTransaction)
 
   return {
     pointSummary: normalizePointSummary(summary, campusSummary),
-    pointHistory: transactions.length ? transactions : pointHistory
+    pointHistory: transactions
   }
 }
 
 export async function loadAttendanceData() {
   if (!isApiEnabled) return { attendanceSummary, attendanceDays }
 
-  const page = await attendanceApi.my({ page: 0, size: 7 }).catch(() => null)
+  const page = await attendanceApi.my({ page: 0, size: 7 })
   const days = pageItems(page).map(normalizeAttendanceDay)
 
   return {
     attendanceSummary: summarizeAttendance(days),
-    attendanceDays: days.length ? days : attendanceDays
+    attendanceDays: days
   }
 }
 
 export async function loadPledgesData() {
   if (!isApiEnabled) return pledges
 
-  const myAgreements = await agreementsApi.my().catch(() => null)
+  const myAgreements = await agreementsApi.my()
   const items = pageItems(myAgreements).map(normalizeAgreement)
 
   if (items.length) return items
 
-  const requiredAgreements = await agreementsApi.list({ requiredOnly: true }).catch(() => null)
+  const requiredAgreements = await agreementsApi.list({ requiredOnly: true })
   const requiredItems = pageItems(requiredAgreements).map(normalizeAgreement)
-  return requiredItems.length ? requiredItems : pledges
+  return requiredItems
 }
 
 export async function loadEducationStatusData() {
   if (!isApiEnabled) return educationStatus
 
   const [summary, campusSummary] = await Promise.all([
-    pointsApi.summary().catch(() => null),
-    usersApi.campusSummary().catch(() => null)
+    pointsApi.summary(),
+    usersApi.campusSummary()
   ])
 
   return buildEducationStatus(summary, campusSummary)
@@ -332,29 +339,27 @@ export async function loadEducationStatusData() {
 export async function loadElearningData() {
   if (!isApiEnabled) return eLearningItems
 
-  const page = await learningApi.myProgress({ page: 0, size: 10 }).catch(() => null)
-  const items = pageItems(page).map(normalizeLearningItem)
-  return items.length ? items : eLearningItems
+  const page = await learningApi.myProgress({ page: 0, size: 10 })
+  return pageItems(page).map(normalizeLearningItem)
 }
 
 export async function loadBookmarkData() {
   if (!isApiEnabled) return bookmarkedLearningItems
 
-  const bookmarkPage = await bookmarksApi.my({ targetType: 'LEARNING_CONTENT', page: 0, size: 10 }).catch(() => null)
+  const bookmarkPage = await bookmarksApi.my({ targetType: 'LEARNING_CONTENT', page: 0, size: 10 })
   const bookmarkItems = pageItems(bookmarkPage).map(normalizeBookmarkedLearningItem)
   if (bookmarkItems.length) return bookmarkItems
 
-  const selectedPage = await learningApi.mySelected({ page: 0, size: 10 }).catch(() => null)
+  const selectedPage = await learningApi.mySelected({ page: 0, size: 10 })
   const selectedItems = pageItems(selectedPage).map(normalizeBookmarkedLearningItem)
-  return selectedItems.length ? selectedItems : bookmarkedLearningItems
+  return selectedItems
 }
 
 export async function loadDocumentsData() {
   if (!isApiEnabled) return documents
 
-  const page = await boardsApi.posts(boardCodes.documents, { page: 0, size: 10 }).catch(() => null)
-  const items = pageItems(page).map(normalizeDocumentSubmission)
-  return items.length ? items : documents
+  const page = await boardsApi.posts(boardCodes.documents, { page: 0, size: 10 })
+  return pageItems(page).map(normalizeDocumentSubmission)
 }
 
 export async function submitDocumentData(form) {

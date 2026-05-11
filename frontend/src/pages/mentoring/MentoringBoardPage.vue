@@ -28,6 +28,7 @@ import SectionTabs from '../../components/ui/SectionTabs.vue'
 import SearchFilterBar from '../../components/ui/SearchFilterBar.vue'
 import BoardTable from '../../components/ui/BoardTable.vue'
 import PaginationBar from '../../components/ui/PaginationBar.vue'
+import { getApiErrorMessage, isApiEnabled } from '../../api/client'
 import { mentoringTabs } from '../../constants/navigation'
 import { mentoringPosts } from '../../data/boards'
 import { loadMentoringPosts } from '../../services/boardService'
@@ -59,7 +60,7 @@ const currentMeta = computed(() => meta[props.variant] || meta.stories)
 const pageTitle = computed(() => currentMeta.value.title)
 const description = computed(() => currentMeta.value.description)
 const detailBase = computed(() => currentMeta.value.base)
-const items = ref(mentoringPosts[props.variant] || mentoringPosts.stories)
+const items = ref(isApiEnabled ? [] : mentoringPosts[props.variant] || mentoringPosts.stories)
 const isLoading = ref(false)
 const loadError = ref('')
 const searchQuery = ref('')
@@ -87,8 +88,13 @@ watch(
       items.value = await loadMentoringPosts(variant)
       currentPage.value = 1
     } catch (error) {
-      loadError.value = '멘토링 게시글을 불러오지 못해 데모 데이터를 표시합니다.'
-      items.value = mentoringPosts[variant] || mentoringPosts.stories
+      if (isApiEnabled) {
+        items.value = []
+        loadError.value = getApiErrorMessage(error, '멘토링 게시글을 불러오지 못했습니다.')
+      } else {
+        items.value = mentoringPosts[variant] || mentoringPosts.stories
+        loadError.value = '멘토링 게시글을 불러오지 못해 데모 데이터를 표시합니다.'
+      }
       console.warn(error)
     } finally {
       isLoading.value = false

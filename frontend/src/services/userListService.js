@@ -1,5 +1,5 @@
 import { isApiEnabled } from '../api/client'
-import { inquiriesApi, usersApi } from '../api/modules'
+import { filesApi, inquiriesApi, usersApi } from '../api/modules'
 import { classMembers, inquiries as mockInquiries } from '../data/boards'
 
 function pageItems(page) {
@@ -63,34 +63,48 @@ function normalizeStudent(item) {
 export async function loadInquiries() {
   if (!isApiEnabled) return mockInquiries
 
-  const page = await inquiriesApi.my({ page: 0, size: 10 }).catch(() => null)
-  const items = pageItems(page).map(normalizeInquiry)
-  return items.length ? items : mockInquiries
+  const page = await inquiriesApi.my({ page: 0, size: 10 })
+  return pageItems(page).map(normalizeInquiry)
 }
 
 export async function loadInquiryDetail(inquiryId) {
   const fallback = mockInquiries.find((item) => String(item.id) === String(inquiryId)) || mockInquiries[0]
   if (!isApiEnabled) return normalizeInquiryDetail(fallback, fallback)
 
-  const inquiry = await inquiriesApi.detail(inquiryId).catch(() => null)
+  const inquiry = await inquiriesApi.detail(inquiryId)
   return normalizeInquiryDetail(inquiry, fallback)
 }
 
 export async function loadClassMembers() {
   if (!isApiEnabled) return classMembers
 
-  const page = await usersApi.students({ page: 0, size: 12 }).catch(() => null)
+  const page = await usersApi.students({ page: 0, size: 12 })
   const items = pageItems(page).map(normalizeStudent)
-  return items.length ? items : classMembers
+  return items.length ? items : []
+}
+
+
+async function uploadInquiryFile(file) {
+  if (!file) return null
+
+  const formData = new FormData()
+  formData.append('file', file)
+  formData.append('targetType', 'INQUIRY')
+  formData.append('fileRole', 'ATTACHMENT')
+
+  const uploaded = await filesApi.upload(formData)
+  return uploaded?.id || uploaded?.fileId || null
 }
 
 export async function createInquiry(form) {
   if (!isApiEnabled) return { id: 'mock-created', ...form }
 
+  const fileId = await uploadInquiryFile(form.file)
+
   return inquiriesApi.create({
     category: form.category,
     title: form.title,
     content: form.content,
-    fileIds: []
+    fileIds: fileId ? [fileId] : []
   })
 }

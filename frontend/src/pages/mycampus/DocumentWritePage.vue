@@ -24,12 +24,15 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import PageHero from '../../components/ui/PageHero.vue'
 import SectionTabs from '../../components/ui/SectionTabs.vue'
 import FormTable from '../../components/ui/FormTable.vue'
 import { mycampusTabs } from '../../data/mycampus'
 import { submitDocumentData } from '../../services/mycampusService'
-import { getAccessToken, isApiEnabled } from '../../api/client'
+import { getAccessToken, getApiErrorMessage, isApiEnabled } from '../../api/client'
+
+const router = useRouter()
 
 const fields = [
   { label: '서류유형', name: 'category', type: 'select', options: ['증빙', '서류', '기타'] },
@@ -61,10 +64,9 @@ async function submitDocument() {
   try {
     await submitDocumentData(form.value)
     form.value = { category: fields[0].options[0], title: '', content: '', file: null }
-    message.value = '서류가 제출되었습니다.'
-    messageTone.value = ''
+    router.push('/mycampus/documents')
   } catch (error) {
-    message.value = '서류를 제출하지 못했습니다.'
+    message.value = getApiErrorMessage(error, '서류를 제출하지 못했습니다.')
     messageTone.value = 'warning'
     console.warn(error)
   } finally {

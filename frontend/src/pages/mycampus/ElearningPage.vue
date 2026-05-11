@@ -44,9 +44,10 @@ import EmptyState from '../../components/ui/EmptyState.vue'
 import PageHero from '../../components/ui/PageHero.vue'
 import SectionTabs from '../../components/ui/SectionTabs.vue'
 import { eLearningItems as mockElearningItems, mycampusTabs } from '../../data/mycampus'
+import { getApiErrorMessage, isApiEnabled } from '../../api/client'
 import { loadElearningData } from '../../services/mycampusService'
 
-const eLearningItems = ref(mockElearningItems)
+const eLearningItems = ref(isApiEnabled ? [] : mockElearningItems)
 const isLoading = ref(false)
 const loadError = ref('')
 
@@ -55,7 +56,8 @@ onMounted(async () => {
   try {
     eLearningItems.value = await loadElearningData()
   } catch (error) {
-    loadError.value = '이러닝 학습 목록을 불러오지 못해 예시 데이터를 표시합니다.'
+    loadError.value = getApiErrorMessage(error, '이러닝 학습 목록을 불러오지 못했습니다.')
+    if (isApiEnabled) eLearningItems.value = []
     console.warn(error)
   } finally {
     isLoading.value = false

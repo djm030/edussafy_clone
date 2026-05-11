@@ -25,9 +25,10 @@ import PageHero from '../../components/ui/PageHero.vue'
 import SectionTabs from '../../components/ui/SectionTabs.vue'
 import BoardTable from '../../components/ui/BoardTable.vue'
 import { documents as mockDocuments, mycampusTabs } from '../../data/mycampus'
+import { getApiErrorMessage, isApiEnabled } from '../../api/client'
 import { loadDocumentsData } from '../../services/mycampusService'
 
-const documents = ref(mockDocuments)
+const documents = ref(isApiEnabled ? [] : mockDocuments)
 const isLoading = ref(false)
 const loadError = ref('')
 
@@ -43,7 +44,8 @@ onMounted(async () => {
   try {
     documents.value = await loadDocumentsData()
   } catch (error) {
-    loadError.value = '서류 제출 내역을 불러오지 못해 데모 데이터를 표시합니다.'
+    loadError.value = getApiErrorMessage(error, '서류 제출 내역을 불러오지 못했습니다.')
+    if (isApiEnabled) documents.value = []
     console.warn(error)
   } finally {
     isLoading.value = false

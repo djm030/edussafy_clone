@@ -28,7 +28,7 @@ import { onMounted, ref } from 'vue'
 import PageHero from '../../components/ui/PageHero.vue'
 import SectionTabs from '../../components/ui/SectionTabs.vue'
 import FormTable from '../../components/ui/FormTable.vue'
-import { getAccessToken, isApiEnabled } from '../../api/client'
+import { getAccessToken, getApiErrorMessage, isApiEnabled } from '../../api/client'
 import { mycampusTabs, profileInfo } from '../../data/mycampus'
 import { loadProfileData, saveProfileData } from '../../services/mycampusService'
 
@@ -50,7 +50,7 @@ onMounted(async () => {
   try {
     profile.value = await loadProfileData()
   } catch (error) {
-    message.value = '회원 정보를 불러오지 못해 예시 데이터를 표시합니다.'
+    message.value = getApiErrorMessage(error, '회원 정보를 불러오지 못했습니다.')
     messageTone.value = 'warning'
     console.warn(error)
   } finally {
@@ -72,7 +72,7 @@ async function saveProfile() {
     message.value = '회원 정보가 저장되었습니다.'
     messageTone.value = ''
   } catch (error) {
-    message.value = '회원 정보를 저장하지 못했습니다.'
+    message.value = getApiErrorMessage(error, '회원 정보를 저장하지 못했습니다.')
     messageTone.value = 'warning'
     console.warn(error)
   } finally {

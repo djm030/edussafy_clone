@@ -3,6 +3,7 @@ import { computed, ref, watch } from 'vue'
 import PageHero from '../../components/ui/PageHero.vue'
 import SectionTabs from '../../components/ui/SectionTabs.vue'
 import { useRoute } from 'vue-router'
+import { getApiErrorMessage, isApiEnabled } from '../../api/client'
 import { classroomTabs } from '../../constants/navigation'
 import { allReplayItems as mockAllReplayItems, replayGroups } from '../../data/classroom'
 import { loadReplayItems } from '../../services/classroomService'
@@ -15,7 +16,7 @@ const props = defineProps({
 })
 
 const route = useRoute()
-const allReplayItems = ref(mockAllReplayItems)
+const allReplayItems = ref(isApiEnabled ? [] : mockAllReplayItems)
 const isLoading = ref(false)
 const loadError = ref('')
 const selectedSessionId = computed(() => typeof route.query.sessionId === 'string' ? route.query.sessionId : '')
@@ -35,7 +36,13 @@ watch(
     try {
       allReplayItems.value = await loadReplayItems()
     } catch (error) {
-      loadError.value = '강의 다시보기 목록을 불러오지 못해 데모 데이터를 표시합니다.'
+      if (isApiEnabled) {
+        allReplayItems.value = []
+        loadError.value = getApiErrorMessage(error, '강의 다시보기 목록을 불러오지 못했습니다.')
+      } else {
+        allReplayItems.value = mockAllReplayItems
+        loadError.value = '강의 다시보기 목록을 불러오지 못해 데모 데이터를 표시합니다.'
+      }
       console.warn(error)
     } finally {
       isLoading.value = false

@@ -41,10 +41,12 @@ import PageHero from '../../components/ui/PageHero.vue'
 import SectionTabs from '../../components/ui/SectionTabs.vue'
 import BoardTable from '../../components/ui/BoardTable.vue'
 import { mycampusTabs, pointHistory as mockPointHistory, pointSummary as mockPointSummary } from '../../data/mycampus'
+import { getApiErrorMessage, isApiEnabled } from '../../api/client'
 import { loadLevelPointsData } from '../../services/mycampusService'
 
-const pointSummary = ref(mockPointSummary)
-const pointHistory = ref(mockPointHistory)
+const emptyPointSummary = { ...mockPointSummary, level: '-', rank: '-', totalPoints: 0, scholarshipPoints: 0, nextLevel: 0 }
+const pointSummary = ref(isApiEnabled ? emptyPointSummary : mockPointSummary)
+const pointHistory = ref(isApiEnabled ? [] : mockPointHistory)
 const isLoading = ref(false)
 const loadError = ref('')
 
@@ -62,7 +64,11 @@ onMounted(async () => {
     pointSummary.value = data.pointSummary
     pointHistory.value = data.pointHistory
   } catch (error) {
-    loadError.value = '포인트 데이터를 불러오지 못해 데모 데이터를 표시합니다.'
+    loadError.value = getApiErrorMessage(error, '포인트 데이터를 불러오지 못했습니다.')
+    if (isApiEnabled) {
+      pointSummary.value = emptyPointSummary
+      pointHistory.value = []
+    }
     console.warn(error)
   } finally {
     isLoading.value = false

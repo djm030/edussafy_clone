@@ -24,11 +24,12 @@
 import { onMounted, ref } from 'vue'
 import PageHero from '../../components/ui/PageHero.vue'
 import SectionTabs from '../../components/ui/SectionTabs.vue'
+import { getApiErrorMessage, isApiEnabled } from '../../api/client'
 import { helpTabs } from '../../constants/navigation'
 import { ruleCategories as mockRuleCategories } from '../../data/boards'
 import { loadHelpRules } from '../../services/boardService'
 
-const ruleCategories = ref(mockRuleCategories)
+const ruleCategories = ref(isApiEnabled ? [] : mockRuleCategories)
 const isLoading = ref(false)
 const loadError = ref('')
 
@@ -37,7 +38,13 @@ onMounted(async () => {
   try {
     ruleCategories.value = await loadHelpRules()
   } catch (error) {
-    loadError.value = '학사규정을 불러오지 못해 데모 데이터를 표시합니다.'
+    if (isApiEnabled) {
+      ruleCategories.value = []
+      loadError.value = getApiErrorMessage(error, '학사규정을 불러오지 못했습니다.')
+    } else {
+      ruleCategories.value = mockRuleCategories
+      loadError.value = '학사규정을 불러오지 못해 데모 데이터를 표시합니다.'
+    }
     console.warn(error)
   } finally {
     isLoading.value = false

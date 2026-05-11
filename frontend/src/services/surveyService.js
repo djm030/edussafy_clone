@@ -103,23 +103,21 @@ function mockSurveyDetail(surveyId) {
 export async function loadSurveys() {
   if (!isApiEnabled) return mockSurveys
 
-  const page = await surveysApi.list({ page: 0, size: 12 }).catch(() => null)
-  const items = pageItems(page).map(normalizeSurvey)
-  return items.length ? items : mockSurveys
+  const page = await surveysApi.list({ page: 0, size: 12 })
+  return pageItems(page).map(normalizeSurvey)
 }
 
 export async function loadMeetupApplications() {
   if (!isApiEnabled) return mockMeetups
 
-  const page = await surveysApi.list({ formType: 'MEETUP_APPLICATION', page: 0, size: 12 }).catch(() => null)
-  const items = pageItems(page).map(normalizeMeetup)
-  return items.length ? items : mockMeetups
+  const page = await surveysApi.list({ formType: 'MEETUP_APPLICATION', page: 0, size: 12 })
+  return pageItems(page).map(normalizeMeetup)
 }
 
 export async function loadMyMeetupParticipations() {
   if (!isApiEnabled) return []
 
-  const page = await surveysApi.myParticipations({ formType: 'MEETUP_APPLICATION', page: 0, size: 12 }).catch(() => null)
+  const page = await surveysApi.myParticipations({ formType: 'MEETUP_APPLICATION', page: 0, size: 12 })
   return pageItems(page).map(normalizeMeetupParticipation)
 }
 
@@ -132,8 +130,8 @@ export async function submitMeetupApplication(meetupId) {
 export async function loadSurveyDetail(surveyId) {
   if (!isApiEnabled) return mockSurveyDetail(surveyId)
 
-  const survey = await surveysApi.detail(surveyId).catch(() => null)
-  return survey ? normalizeSurveyDetail(survey) : mockSurveyDetail(surveyId)
+  const survey = await surveysApi.detail(surveyId)
+  return normalizeSurveyDetail(survey)
 }
 
 export async function submitSurveyAnswers(surveyId, answers) {

@@ -45,16 +45,17 @@
 
 <script setup>
 import { computed, onMounted, ref, watch } from 'vue'
+import { useRoute } from 'vue-router'
+import { getApiErrorMessage, isApiEnabled } from '../../api/client'
 import PageHero from '../../components/ui/PageHero.vue'
 import SectionTabs from '../../components/ui/SectionTabs.vue'
-import { useRoute } from 'vue-router'
 import { classroomTabs } from '../../constants/navigation'
 import { learningResources as mockLearningResources } from '../../data/classroom'
 import { loadLearningResources } from '../../services/classroomService'
 import { matchesText } from '../../utils/listControls'
 
 const route = useRoute()
-const learningResources = ref(mockLearningResources)
+const learningResources = ref(isApiEnabled ? [] : mockLearningResources)
 const isLoading = ref(false)
 const loadError = ref('')
 const searchQuery = ref('')
@@ -71,7 +72,7 @@ const categoryOptions = computed(() => ['전체', ...new Set(learningResources.v
 const filteredResources = computed(() => learningResources.value.filter((item) => {
   const matchesCategory = selectedCategory.value === '전체' || item.breadcrumb[0] === selectedCategory.value
   const matchesTextbook = !textbookOnly.value || item.textbook
-  return matchesCategory && matchesTextbook && matchesText(item, ['title', 'description', 'label'], searchQuery.value)
+  return matchesCategory && matchesText(item, ['title', 'description', 'label'], searchQuery.value)
 }))
 
 onMounted(async () => {
@@ -80,13 +81,18 @@ onMounted(async () => {
   try {
     learningResources.value = await loadLearningResources()
   } catch (error) {
-    loadError.value = '학습자료를 불러오지 못해 데모 데이터를 표시합니다.'
+    if (isApiEnabled) {
+      learningResources.value = []
+      loadError.value = getApiErrorMessage(error, '학습자료를 불러오지 못했습니다.')
+    } else {
+      learningResources.value = mockLearningResources
+      loadError.value = '학습자료를 불러오지 못해 데모 데이터를 표시합니다.'
+    }
     console.warn(error)
   } finally {
     isLoading.value = false
   }
 })
-</script>
-
 
 watch(() => route.query, applyRouteQuery)
+</script>
