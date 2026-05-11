@@ -1,0 +1,39 @@
+{
+  "generatedAt": "2026-05-11T16:14:39.505Z",
+  "task": "task-5 NO_SCREENSHOT dynamic route smoke evidence",
+  "verificationMethod": "Static contract/router-source smoke plus production Vite build. Vue router route records were checked from frontend/src/router/index.js and route constants from frontend/src/constants/routes.js without editing app code.",
+  "sourceInventory": "frontend/docs/design/app-vue/contract-inventory.json",
+  "assignedWriteScope": [
+    "frontend/docs/design/app-vue/verification-pack/api/dynamic-route-smoke/",
+    "frontend/docs/design/app-vue/verification-pack/visual/no-screenshot/"
+  ],
+  "apiCompleteClaim": false,
+  "visualParityClaim": false,
+  "rows": [
+    {
+      "routePath": "/login",
+      "routeName": "login",
+      "routeKind": "page",
+      "status": "NO_SCREENSHOT",
+      "samplePath": "/login",
+      "sampleId": null,
+      "routePatternFound": true,
+      "smokeStatus": "PASS",
+      "screenshotStatus": "NO_SCREENSHOT",
+      "noScreenshotReason": "No primary screenshot mapped in frontend/docs/design/app-vue/05-screenshot-reference-map.md / canonical contract; this task preserves NO_SCREENSHOT rather than claiming visual parity.",
+      "sourceDataEvidence": "static page route; login form has no screenshot reference",
+      "apiEndpoints": [
+        "POST /api/v1/auth/login",
+        "GET /api/v1/auth/me"
+      ],
+      "boardCodes": [],
+      "expectedDataShape": "form submit response or auth/session object",
+      "evidenceApiPath": "verification-pack/api/phase-0/login.json",
+      "checkedSources": [
+        "frontend/docs/design/app-vue/contract-inventory.json",
+        "frontend/src/router/index.js",
+        "frontend/src/constants/routes.js"
+      ]
+    }
+  ]
+}
