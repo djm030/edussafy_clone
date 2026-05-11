@@ -11,9 +11,9 @@
         <h1>우리반 보기</h1>
         <p>캠퍼스와 반 기준으로 교육생 정보를 확인합니다.</p>
       </div>
-      <SearchFilterBar :options="['서울 6반', '서울 전체', '전국 전체']" placeholder="이름을 입력하세요." />
+      <SearchFilterBar v-model="searchQuery" v-model:filter="searchFilter" :options="['서울 6반', '서울 전체', '전국 전체']" placeholder="이름을 입력하세요." />
       <section class="roster-grid" aria-label="Class roster">
-        <article v-for="member in classMembers" :key="member.id" class="roster-card">
+        <article v-for="member in filteredClassMembers" :key="member.id" class="roster-card">
           <div class="avatar-badge">{{ member.name.slice(0, 1) }}</div>
           <h2>{{ member.name }}</h2>
           <p>{{ member.track }}</p>
@@ -25,17 +25,26 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import PageHero from '../../components/ui/PageHero.vue'
 import SectionTabs from '../../components/ui/SectionTabs.vue'
 import SearchFilterBar from '../../components/ui/SearchFilterBar.vue'
 import { communityTabs } from '../../constants/navigation'
 import { classMembers as mockClassMembers } from '../../data/boards'
 import { loadClassMembers } from '../../services/userListService'
+import { matchesText } from '../../utils/listControls'
 
 const classMembers = ref(mockClassMembers)
 const isLoading = ref(false)
 const loadError = ref('')
+const searchQuery = ref('')
+const searchFilter = ref('서울 6반')
+const filteredClassMembers = computed(() => classMembers.value.filter((member) => {
+  const matchesScope = searchFilter.value === '전국 전체'
+    || (searchFilter.value === '서울 전체' && member.campus === '서울')
+    || (`${member.campus} ${member.className}` === searchFilter.value)
+  return matchesScope && matchesText(member, ['name', 'track', 'role', 'campus', 'className'], searchQuery.value)
+}))
 
 onMounted(async () => {
   isLoading.value = true

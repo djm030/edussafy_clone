@@ -14,15 +14,15 @@
         </div>
         <RouterLink class="button-primary" to="/help/inquiries/write">문의하기</RouterLink>
       </div>
-      <SearchFilterBar :options="['전체', '접수', '처리중', '답변완료']" placeholder="문의 제목을 검색하세요." />
-      <BoardTable :columns="columns" :items="inquiries" detail-base="/help/inquiries" />
-      <PaginationBar />
+      <SearchFilterBar v-model="searchQuery" v-model:filter="searchFilter" :options="['전체', '접수', '처리중', '답변완료']" placeholder="문의 제목을 검색하세요." @submit="currentPage = 1" />
+      <BoardTable :columns="columns" :items="pagedInquiries" detail-base="/help/inquiries" />
+      <PaginationBar v-model:active="currentPage" :pages="pages" />
     </main>
   </div>
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 import PageHero from '../../components/ui/PageHero.vue'
 import SectionTabs from '../../components/ui/SectionTabs.vue'
 import SearchFilterBar from '../../components/ui/SearchFilterBar.vue'
@@ -31,10 +31,21 @@ import PaginationBar from '../../components/ui/PaginationBar.vue'
 import { helpTabs } from '../../constants/navigation'
 import { inquiries as mockInquiries } from '../../data/boards'
 import { loadInquiries } from '../../services/userListService'
+import { matchesText, pageNumbers, paginateItems } from '../../utils/listControls'
 
 const inquiries = ref(mockInquiries)
 const isLoading = ref(false)
 const loadError = ref('')
+const searchQuery = ref('')
+const searchFilter = ref('전체')
+const currentPage = ref(1)
+const pageSize = 10
+const filteredInquiries = computed(() => inquiries.value.filter((inquiry) => {
+  const matchesStatus = searchFilter.value === '전체' || inquiry.status === searchFilter.value
+  return matchesStatus && matchesText(inquiry, ['title', 'category', 'status'], searchQuery.value)
+}))
+const pages = computed(() => pageNumbers(filteredInquiries.value, pageSize))
+const pagedInquiries = computed(() => paginateItems(filteredInquiries.value, currentPage.value, pageSize))
 
 const columns = [
   { key: 'category', label: '구분', width: '90px' },
@@ -53,5 +64,9 @@ onMounted(async () => {
   } finally {
     isLoading.value = false
   }
+})
+
+watch([searchQuery, searchFilter], () => {
+  currentPage.value = 1
 })
 </script>

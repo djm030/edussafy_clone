@@ -15,9 +15,9 @@
         <RouterLink v-if="variant === 'open'" class="button-primary" to="/community/boards/open/write">글쓰기</RouterLink>
       </div>
 
-      <SearchFilterBar :options="['전체', '제목', '작성자', '내용']" placeholder="검색어를 입력하세요." />
-      <BoardTable :columns="columns" :items="items" :detail-base="detailBase" />
-      <PaginationBar />
+      <SearchFilterBar v-model="searchQuery" v-model:filter="searchFilter" :options="['전체', '제목', '작성자', '내용']" placeholder="검색어를 입력하세요." @submit="currentPage = 1" />
+      <BoardTable :columns="columns" :items="pagedItems" :detail-base="detailBase" />
+      <PaginationBar v-model:active="currentPage" :pages="pages" />
     </main>
   </div>
 </template>
@@ -32,6 +32,7 @@ import PaginationBar from '../../components/ui/PaginationBar.vue'
 import { communityTabs } from '../../constants/navigation'
 import { anonymousPosts, openBoardPosts } from '../../data/boards'
 import { loadCommunityPosts } from '../../services/boardService'
+import { filterByOption, pageNumbers, paginateItems } from '../../utils/listControls'
 
 const props = defineProps({
   variant: {
@@ -51,9 +52,24 @@ const columns = [
 const items = ref(props.variant === 'anonymous' ? anonymousPosts : openBoardPosts)
 const isLoading = ref(false)
 const loadError = ref('')
+const searchQuery = ref('')
+const searchFilter = ref('전체')
+const currentPage = ref(1)
+const pageSize = 10
 const pageTitle = computed(() => props.variant === 'anonymous' ? '익명 게시판' : '열린 게시판')
 const description = computed(() => props.variant === 'anonymous' ? '교육생 의견을 부담 없이 공유하는 익명 공간입니다.' : '정보 공유와 질문을 위한 공개 게시판입니다.')
 const detailBase = computed(() => props.variant === 'anonymous' ? '/community/boards/anonymous' : '/community/boards/open')
+const filteredItems = computed(() => filterByOption(items.value, searchFilter.value, searchQuery.value, {
+  제목: ['title'],
+  작성자: ['author'],
+  내용: ['title', 'category']
+}, ['title', 'author', 'category']))
+const pages = computed(() => pageNumbers(filteredItems.value, pageSize))
+const pagedItems = computed(() => paginateItems(filteredItems.value, currentPage.value, pageSize))
+
+watch([searchQuery, searchFilter], () => {
+  currentPage.value = 1
+})
 
 watch(
   () => props.variant,
@@ -62,6 +78,7 @@ watch(
     loadError.value = ''
     try {
       items.value = await loadCommunityPosts(variant)
+      currentPage.value = 1
     } catch (error) {
       loadError.value = '게시글을 불러오지 못해 데모 데이터를 표시합니다.'
       items.value = variant === 'anonymous' ? anonymousPosts : openBoardPosts

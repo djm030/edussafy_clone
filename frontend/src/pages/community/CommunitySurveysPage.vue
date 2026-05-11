@@ -12,10 +12,10 @@
         <p>교육 운영과 프로젝트 진행에 필요한 의견을 빠르게 확인합니다.</p>
       </div>
 
-      <SearchFilterBar :options="['전체', '진행중', '완료', '결과공개']" placeholder="설문명을 입력하세요." />
+      <SearchFilterBar v-model="searchQuery" v-model:filter="searchFilter" :options="['전체', '진행중', '완료', '결과공개']" placeholder="설문명을 입력하세요." />
 
       <section class="survey-grid" aria-label="Survey list">
-        <article v-for="survey in surveys" :key="survey.id" class="survey-card">
+        <article v-for="survey in filteredSurveys" :key="survey.id" class="survey-card">
           <span :class="['table-status', survey.statusTone]">{{ survey.status }}</span>
           <h2>{{ survey.title }}</h2>
           <dl>
@@ -30,17 +30,24 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import PageHero from '../../components/ui/PageHero.vue'
 import SectionTabs from '../../components/ui/SectionTabs.vue'
 import SearchFilterBar from '../../components/ui/SearchFilterBar.vue'
 import { communityTabs } from '../../constants/navigation'
 import { surveys as mockSurveys } from '../../data/boards'
 import { loadSurveys } from '../../services/surveyService'
+import { matchesText } from '../../utils/listControls'
 
 const surveys = ref(mockSurveys)
 const isLoading = ref(false)
 const loadError = ref('')
+const searchQuery = ref('')
+const searchFilter = ref('전체')
+const filteredSurveys = computed(() => surveys.value.filter((survey) => {
+  const matchesStatus = searchFilter.value === '전체' || survey.status === searchFilter.value
+  return matchesStatus && matchesText(survey, ['title', 'target', 'status'], searchQuery.value)
+}))
 
 onMounted(async () => {
   isLoading.value = true

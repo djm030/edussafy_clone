@@ -11,15 +11,15 @@
         <h1>공지사항</h1>
         <p>교육 운영과 시스템 공지를 확인합니다.</p>
       </div>
-      <SearchFilterBar :options="['전체', '공통', '학사', '시스템']" placeholder="공지 제목을 검색하세요." />
-      <BoardTable :columns="columns" :items="notices" detail-base="/help/notice" />
-      <PaginationBar />
+      <SearchFilterBar v-model="searchQuery" v-model:filter="searchFilter" :options="['전체', '공통', '학사', '시스템']" placeholder="공지 제목을 검색하세요." @submit="currentPage = 1" />
+      <BoardTable :columns="columns" :items="pagedNotices" detail-base="/help/notice" />
+      <PaginationBar v-model:active="currentPage" :pages="pages" />
     </main>
   </div>
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 import PageHero from '../../components/ui/PageHero.vue'
 import SectionTabs from '../../components/ui/SectionTabs.vue'
 import SearchFilterBar from '../../components/ui/SearchFilterBar.vue'
@@ -28,10 +28,21 @@ import PaginationBar from '../../components/ui/PaginationBar.vue'
 import { helpTabs } from '../../constants/navigation'
 import { notices as mockNotices } from '../../data/boards'
 import { loadHelpNoticePosts } from '../../services/boardService'
+import { matchesText, pageNumbers, paginateItems } from '../../utils/listControls'
 
 const notices = ref(mockNotices)
 const isLoading = ref(false)
 const loadError = ref('')
+const searchQuery = ref('')
+const searchFilter = ref('전체')
+const currentPage = ref(1)
+const pageSize = 10
+const filteredNotices = computed(() => notices.value.filter((notice) => {
+  const matchesCategory = searchFilter.value === '전체' || notice.category === searchFilter.value
+  return matchesCategory && matchesText(notice, ['title', 'category', 'author'], searchQuery.value)
+}))
+const pages = computed(() => pageNumbers(filteredNotices.value, pageSize))
+const pagedNotices = computed(() => paginateItems(filteredNotices.value, currentPage.value, pageSize))
 
 const columns = [
   { key: 'category', label: '구분', width: '90px' },
@@ -51,5 +62,9 @@ onMounted(async () => {
   } finally {
     isLoading.value = false
   }
+})
+
+watch([searchQuery, searchFilter], () => {
+  currentPage.value = 1
 })
 </script>

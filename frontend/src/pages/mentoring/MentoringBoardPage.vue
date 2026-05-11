@@ -14,9 +14,9 @@
         </div>
         <RouterLink v-if="variant === 'reviews'" class="button-primary" to="/mentoring/meetups/reviews/write">후기 작성</RouterLink>
       </div>
-      <SearchFilterBar :options="['전체', '제목', '작성자', '내용']" placeholder="검색어를 입력하세요." />
-      <BoardTable :columns="columns" :items="items" :detail-base="detailBase" />
-      <PaginationBar />
+      <SearchFilterBar v-model="searchQuery" v-model:filter="searchFilter" :options="['전체', '제목', '작성자', '내용']" placeholder="검색어를 입력하세요." @submit="currentPage = 1" />
+      <BoardTable :columns="columns" :items="pagedItems" :detail-base="detailBase" />
+      <PaginationBar v-model:active="currentPage" :pages="pages" />
     </main>
   </div>
 </template>
@@ -31,6 +31,7 @@ import PaginationBar from '../../components/ui/PaginationBar.vue'
 import { mentoringTabs } from '../../constants/navigation'
 import { mentoringPosts } from '../../data/boards'
 import { loadMentoringPosts } from '../../services/boardService'
+import { filterByOption, pageNumbers, paginateItems } from '../../utils/listControls'
 
 const props = defineProps({
   variant: {
@@ -61,6 +62,21 @@ const detailBase = computed(() => currentMeta.value.base)
 const items = ref(mentoringPosts[props.variant] || mentoringPosts.stories)
 const isLoading = ref(false)
 const loadError = ref('')
+const searchQuery = ref('')
+const searchFilter = ref('전체')
+const currentPage = ref(1)
+const pageSize = 10
+const filteredItems = computed(() => filterByOption(items.value, searchFilter.value, searchQuery.value, {
+  제목: ['title'],
+  작성자: ['author'],
+  내용: ['title', 'category']
+}, ['title', 'author', 'category']))
+const pages = computed(() => pageNumbers(filteredItems.value, pageSize))
+const pagedItems = computed(() => paginateItems(filteredItems.value, currentPage.value, pageSize))
+
+watch([searchQuery, searchFilter], () => {
+  currentPage.value = 1
+})
 
 watch(
   () => props.variant,
@@ -69,6 +85,7 @@ watch(
     loadError.value = ''
     try {
       items.value = await loadMentoringPosts(variant)
+      currentPage.value = 1
     } catch (error) {
       loadError.value = '멘토링 게시글을 불러오지 못해 데모 데이터를 표시합니다.'
       items.value = mentoringPosts[variant] || mentoringPosts.stories
