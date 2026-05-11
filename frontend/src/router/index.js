@@ -11,6 +11,7 @@ import BoardListPage from '../pages/community/BoardListPage.vue'
 import BoardWritePage from '../pages/community/BoardWritePage.vue'
 import ClassRosterPage from '../pages/community/ClassRosterPage.vue'
 import CommunitySurveysPage from '../pages/community/CommunitySurveysPage.vue'
+import SurveyDetailPage from '../pages/community/SurveyDetailPage.vue'
 import HelpFaqPage from '../pages/help/HelpFaqPage.vue'
 import HelpInquiriesPage from '../pages/help/HelpInquiriesPage.vue'
 import HelpInquiryWritePage from '../pages/help/HelpInquiryWritePage.vue'
@@ -61,6 +62,7 @@ const routes = [
   { path: routePaths.classroomResources, name: 'classroom-resources', component: ClassroomResourcesPage },
   { path: '/classroom/resources/:id', name: 'classroom-resource-detail', component: ClassroomResourceDetailPage },
   { path: routePaths.communitySurveys, name: 'community-surveys', component: CommunitySurveysPage },
+  { path: '/community/surveys/:id', name: 'community-survey-detail', component: SurveyDetailPage },
   { path: routePaths.communityOpenBoard, name: 'community-open-board', component: BoardListPage, props: { variant: 'open' } },
   { path: routePaths.communityOpenBoardWrite, name: 'community-open-board-write', component: BoardWritePage },
   { path: '/community/boards/open/:id', name: 'community-open-board-detail', component: PostDetailPage, props: { source: 'open' } },

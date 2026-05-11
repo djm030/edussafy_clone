@@ -63,6 +63,43 @@ function normalizeMeetupParticipation(item) {
   }
 }
 
+
+function normalizeSurveyQuestion(question, index) {
+  return {
+    id: question.id || question.questionId || index + 1,
+    questionNo: question.questionNo || index + 1,
+    questionText: question.questionText || question.title || question.label || `질문 ${index + 1}`,
+    questionType: question.questionType || question.type || 'TEXT',
+    options: Array.isArray(question.options) ? question.options : [],
+    isRequired: question.isRequired ?? question.required ?? false
+  }
+}
+
+function normalizeSurveyDetail(item) {
+  const summary = normalizeSurvey(item)
+  const questions = (item.questions || item.surveyQuestions || []).map(normalizeSurveyQuestion)
+
+  return {
+    ...summary,
+    description: item.description || '설문 내용을 확인한 뒤 응답을 제출하세요.',
+    formType: item.formType,
+    questions
+  }
+}
+
+function mockSurveyDetail(surveyId) {
+  const survey = mockSurveys.find((item) => String(item.id) === String(surveyId)) || mockSurveys[0]
+
+  return {
+    ...survey,
+    description: '교육 운영 개선을 위한 의견을 남겨 주세요.',
+    formType: 'SURVEY',
+    questions: [
+      { id: 'satisfaction', questionNo: 1, questionText: '이번 교육 운영에 대한 의견을 입력하세요.', questionType: 'TEXT', options: [], isRequired: true }
+    ]
+  }
+}
+
 export async function loadSurveys() {
   if (!isApiEnabled) return mockSurveys
 
@@ -90,4 +127,17 @@ export async function submitMeetupApplication(meetupId) {
   if (!isApiEnabled) return { id: meetupId, status: '신청완료' }
 
   return surveysApi.submit(meetupId, { answers: {} })
+}
+
+export async function loadSurveyDetail(surveyId) {
+  if (!isApiEnabled) return mockSurveyDetail(surveyId)
+
+  const survey = await surveysApi.detail(surveyId).catch(() => null)
+  return survey ? normalizeSurveyDetail(survey) : mockSurveyDetail(surveyId)
+}
+
+export async function submitSurveyAnswers(surveyId, answers) {
+  if (!isApiEnabled) return { id: surveyId, participantStatus: 'SUBMITTED' }
+
+  return surveysApi.submit(surveyId, { answers })
 }
