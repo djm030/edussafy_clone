@@ -6,8 +6,8 @@
     <p v-if="isLoading" class="dashboard-state">Quest/평가 목록을 확인하고 있습니다.</p>
     <p v-else-if="loadError" class="dashboard-state warning">{{ loadError }}</p>
 
-    <div class="quest-evaluation-list">
-      <RouterLink v-for="item in questItems" :key="item.id" class="quest-evaluation-card" :to="`/classroom/quests/${item.id}`">
+    <div v-if="visibleQuestItems.length" class="quest-evaluation-list">
+      <RouterLink v-for="item in visibleQuestItems" :key="item.id" class="quest-evaluation-card" :to="`/classroom/quests/${item.id}`">
         <strong class="quest-type">{{ item.type }}</strong>
         <span :class="['status-circle', item.status === '예정' ? 'pending' : 'done']">{{ item.status }}</span>
         <div class="quest-main">
@@ -25,30 +25,33 @@
         </div>
       </RouterLink>
     </div>
+    <p v-else class="dashboard-state">표시할 Quest/평가 항목이 없습니다.</p>
 
-    <div class="pagination-row" aria-label="Pagination">
-      <button type="button" disabled>‹‹</button>
-      <button type="button" disabled>‹</button>
-      <button class="active" type="button">1</button>
-      <button type="button">2</button>
-      <button type="button">3</button>
-      <button type="button">›</button>
-      <button type="button">››</button>
-    </div>
+    <PaginationBar v-model:active="currentPage" :pages="pages" />
   </section>
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 import PageHero from '../../components/ui/PageHero.vue'
+import PaginationBar from '../../components/ui/PaginationBar.vue'
 import SectionTabs from '../../components/ui/SectionTabs.vue'
 import { classroomTabs } from '../../constants/navigation'
 import { questItems as mockQuestItems } from '../../data/classroom'
 import { loadQuestItems } from '../../services/classroomService'
+import { pageNumbers, paginateItems } from '../../utils/listControls'
 
 const questItems = ref(mockQuestItems)
 const isLoading = ref(false)
 const loadError = ref('')
+const currentPage = ref(1)
+const pageSize = 5
+const pages = computed(() => pageNumbers(questItems.value.length, pageSize))
+const visibleQuestItems = computed(() => paginateItems(questItems.value, currentPage.value, pageSize))
+
+watch(questItems, () => {
+  currentPage.value = 1
+})
 
 onMounted(async () => {
   isLoading.value = true
