@@ -3,6 +3,9 @@
     <PageHero title="멘토링 게시판" />
     <SectionTabs :items="mentoringTabs" aria-label="Mentoring sections" />
     <main class="page-container board-page">
+      <p v-if="isLoading" class="dashboard-state">멘토링 게시글을 확인하고 있습니다.</p>
+      <p v-else-if="loadError" class="dashboard-state warning">{{ loadError }}</p>
+
       <div class="board-page-title board-page-title-row">
         <div>
           <p class="eyebrow-text">Mentoring</p>
@@ -19,7 +22,7 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, ref, watch } from 'vue'
 import PageHero from '../../components/ui/PageHero.vue'
 import SectionTabs from '../../components/ui/SectionTabs.vue'
 import SearchFilterBar from '../../components/ui/SearchFilterBar.vue'
@@ -27,6 +30,7 @@ import BoardTable from '../../components/ui/BoardTable.vue'
 import PaginationBar from '../../components/ui/PaginationBar.vue'
 import { mentoringTabs } from '../../constants/navigation'
 import { mentoringPosts } from '../../data/boards'
+import { loadMentoringPosts } from '../../services/boardService'
 
 const props = defineProps({
   variant: {
@@ -54,5 +58,25 @@ const currentMeta = computed(() => meta[props.variant] || meta.stories)
 const pageTitle = computed(() => currentMeta.value.title)
 const description = computed(() => currentMeta.value.description)
 const detailBase = computed(() => currentMeta.value.base)
-const items = computed(() => mentoringPosts[props.variant] || mentoringPosts.stories)
+const items = ref(mentoringPosts[props.variant] || mentoringPosts.stories)
+const isLoading = ref(false)
+const loadError = ref('')
+
+watch(
+  () => props.variant,
+  async (variant) => {
+    isLoading.value = true
+    loadError.value = ''
+    try {
+      items.value = await loadMentoringPosts(variant)
+    } catch (error) {
+      loadError.value = '멘토링 게시글을 불러오지 못해 데모 데이터를 표시합니다.'
+      items.value = mentoringPosts[variant] || mentoringPosts.stories
+      console.warn(error)
+    } finally {
+      isLoading.value = false
+    }
+  },
+  { immediate: true }
+)
 </script>

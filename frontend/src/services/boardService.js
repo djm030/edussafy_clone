@@ -1,14 +1,24 @@
 import { isApiEnabled } from '../api/client'
 import { boardsApi } from '../api/modules'
-import { anonymousPosts, openBoardPosts } from '../data/boards'
+import { anonymousPosts, mentoringPosts, notices, openBoardPosts } from '../data/boards'
 
 const boardCodes = {
   anonymous: ['anonymity', 'ANONYMOUS'],
+  helpNotice: ['notice', 'NOTICE'],
+  mentoringNotice: ['mento-notice', 'MENTO_NOTICE'],
+  mentoringQna: ['mento-qna', 'MENTO_QNA'],
+  mentoringReviews: ['mento-review', 'MENTO_REVIEW'],
+  mentoringStories: ['mento-story', 'MENTO_STORY'],
   open: ['free', 'FREE']
 }
 
 const fallbackPosts = {
   anonymous: anonymousPosts,
+  helpNotice: notices,
+  mentoringNotice: mentoringPosts.notice,
+  mentoringQna: mentoringPosts.qna,
+  mentoringReviews: mentoringPosts.reviews,
+  mentoringStories: mentoringPosts.stories,
   open: openBoardPosts
 }
 
@@ -42,11 +52,24 @@ async function fetchFirstAvailableBoard(codeCandidates) {
   return []
 }
 
-export async function loadCommunityPosts(variant) {
-  const fallback = fallbackPosts[variant] || fallbackPosts.open
+async function loadBoardPosts(key) {
+  const fallback = fallbackPosts[key] || fallbackPosts.open
   if (!isApiEnabled) return fallback
 
-  const items = await fetchFirstAvailableBoard(boardCodes[variant] || boardCodes.open)
+  const items = await fetchFirstAvailableBoard(boardCodes[key] || boardCodes.open)
   const posts = items.map(normalizePost)
   return posts.length ? posts : fallback
+}
+
+export function loadCommunityPosts(variant) {
+  return loadBoardPosts(variant)
+}
+
+export function loadHelpNoticePosts() {
+  return loadBoardPosts('helpNotice')
+}
+
+export function loadMentoringPosts(variant) {
+  const key = `mentoring${variant.charAt(0).toUpperCase()}${variant.slice(1)}`
+  return loadBoardPosts(key)
 }
