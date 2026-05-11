@@ -11,7 +11,7 @@
 
       <form class="login-form" @submit.prevent="login">
         <h1>로그인</h1>
-        <p>교육생 포털 화면 확인을 위한 demo login입니다.</p>
+        <p>API 로그인 우선, 로컬 미리보기에서는 데모 토큰으로 입장합니다.</p>
         <label>
           <span>이메일</span>
           <input v-model="email" type="email" autocomplete="username" />
