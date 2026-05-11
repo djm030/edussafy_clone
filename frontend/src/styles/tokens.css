@@ -1,0 +1,25 @@
+:root {
+  --font-family-base: Pretendard, 'Noto Sans KR', 'Apple SD Gothic Neo', Inter, system-ui, sans-serif;
+  --color-canvas: #ffffff;
+  --color-surface: #f5f7fa;
+  --color-timeline-ice: #f4f9fd;
+  --color-border: #d9e0e6;
+  --color-divider: #edf1f5;
+  --color-text-primary: #222222;
+  --color-text-secondary: #5f6f7f;
+  --color-text-muted: #8a97a5;
+  --color-primary: #2f93e8;
+  --color-primary-deep: #1f7fd1;
+  --color-navy: #24384a;
+  --color-navy-deep: #1f3448;
+  --color-footer: #202629;
+  --color-danger: #e43d30;
+  --color-success: #27b46e;
+  --color-attendance: #ffd84d;
+  --color-status-slate: #8d9dad;
+  --shadow-card: 0 2px 8px rgb(20 40 60 / 8%);
+  --shadow-floating: 0 8px 18px rgb(0 0 0 / 22%);
+  --radius-default: 4px;
+  --container-width: 1180px;
+  --header-height: 92px;
+}
