@@ -1,0 +1,20 @@
+{
+  "generatedAt": "2026-05-11T16:14:54.657Z",
+  "command": "node /tmp/visual-runtime-capture.mjs with Vite dev server at http://127.0.0.1:5173 and Chrome headless CLI",
+  "scope": [
+    "frontend/docs/design/app-vue/verification-pack/visual/runtime/",
+    "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/"
+  ],
+  "routeSource": "frontend/docs/design/app-vue/canonical-contract.md READY rows with primary reference screenshots and static route paths",
+  "visualComplete": false,
+  "pixelParityComplete": false,
+  "parityMethod": "Runtime capture plus reference/runtime dimension metadata. Pixel parity is not asserted because this repo has no existing pixel-diff dependency/tooling and task forbids adding dependencies.",
+  "viewport": {
+    "width": 1440,
+    "height": 1000
+  },
+  "totalRoutes": 0,
+  "capturedRoutes": 0,
+  "blockedRoutes": 0,
+  "results": []
+}
