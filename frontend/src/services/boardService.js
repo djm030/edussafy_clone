@@ -43,6 +43,29 @@ function normalizePost(item) {
   }
 }
 
+function plainText(value) {
+  return value ? String(value).replace(/<[^>]*>/g, '').trim() : ''
+}
+
+function fallbackBody(post) {
+  if (!post) return ''
+  return `${post.title}에 대한 상세 내용입니다. SSAFY EDU 화면 흐름과 동일하게 제목, 작성자, 등록일, 본문 영역을 확인할 수 있습니다.`
+}
+
+function normalizePostDetail(item, fallback) {
+  const base = item || fallback || {}
+  return {
+    ...normalizePost(base),
+    category: base.categoryName || base.category?.name || base.category || fallback?.category || '일반',
+    title: base.title || fallback?.title || '',
+    author: base.displayName || base.authorName || base.author || fallback?.author || '익명',
+    date: formatDate(base.createdAt || base.date || fallback?.date),
+    views: base.viewCount ?? base.views ?? fallback?.views ?? 0,
+    body: base.contentText || base.content || base.body || plainText(base.contentHtml) || fallback?.body || fallbackBody(fallback || base),
+    files: base.files || []
+  }
+}
+
 async function fetchFirstAvailableBoard(codeCandidates) {
   for (const code of codeCandidates) {
     const page = await boardsApi.posts(code, { page: 0, size: 10 }).catch(() => null)
@@ -59,6 +82,19 @@ async function loadBoardPosts(key) {
   const items = await fetchFirstAvailableBoard(boardCodes[key] || boardCodes.open)
   const posts = items.map(normalizePost)
   return posts.length ? posts : fallback
+}
+
+async function fetchBoardDetail(key, postId) {
+  const fallback = fallbackPosts[key] || fallbackPosts.open
+  const fallbackPost = fallback.find((item) => String(item.id) === String(postId)) || fallback[0]
+  if (!isApiEnabled) return normalizePostDetail(fallbackPost, fallbackPost)
+
+  for (const boardCode of boardCodes[key] || boardCodes.open) {
+    const post = await boardsApi.post(boardCode, postId).catch(() => null)
+    if (post) return normalizePostDetail(post, fallbackPost)
+  }
+
+  return normalizePostDetail(fallbackPost, fallbackPost)
 }
 
 async function resolveCategoryId(boardCode, categoryName) {
@@ -93,13 +129,26 @@ export function loadCommunityPosts(variant) {
   return loadBoardPosts(variant)
 }
 
+export function loadCommunityPostDetail(variant, postId) {
+  return fetchBoardDetail(variant, postId)
+}
+
 export function loadHelpNoticePosts() {
   return loadBoardPosts('helpNotice')
+}
+
+export function loadHelpNoticeDetail(postId) {
+  return fetchBoardDetail('helpNotice', postId)
 }
 
 export function loadMentoringPosts(variant) {
   const key = `mentoring${variant.charAt(0).toUpperCase()}${variant.slice(1)}`
   return loadBoardPosts(key)
+}
+
+export function loadMentoringPostDetail(variant, postId) {
+  const key = `mentoring${variant.charAt(0).toUpperCase()}${variant.slice(1)}`
+  return fetchBoardDetail(key, postId)
 }
 
 export function createCommunityPost(form) {

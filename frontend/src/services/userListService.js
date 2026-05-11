@@ -31,6 +31,24 @@ function normalizeInquiry(item) {
   }
 }
 
+function normalizeInquiryDetail(item, fallback) {
+  const base = item || fallback || {}
+  const status = base.statusLabel || base.status || fallback?.status || '접수'
+
+  return {
+    id: base.id || fallback?.id,
+    category: base.categoryName || base.category || fallback?.category || '문의',
+    title: base.title || fallback?.title || '',
+    status,
+    statusTone: base.statusTone || fallback?.statusTone || inquiryTone(status),
+    date: formatDate(base.createdAt || base.date || fallback?.date),
+    content: base.content || base.body || fallback?.content || '문의 상세 내용입니다.',
+    answerContent: base.answerContent || base.answer || '',
+    answeredByName: base.answeredByName || '',
+    answeredAt: formatDate(base.answeredAt)
+  }
+}
+
 function normalizeStudent(item) {
   return {
     id: item.id || item.userId,
@@ -48,6 +66,14 @@ export async function loadInquiries() {
   const page = await inquiriesApi.my({ page: 0, size: 10 }).catch(() => null)
   const items = pageItems(page).map(normalizeInquiry)
   return items.length ? items : mockInquiries
+}
+
+export async function loadInquiryDetail(inquiryId) {
+  const fallback = mockInquiries.find((item) => String(item.id) === String(inquiryId)) || mockInquiries[0]
+  if (!isApiEnabled) return normalizeInquiryDetail(fallback, fallback)
+
+  const inquiry = await inquiriesApi.detail(inquiryId).catch(() => null)
+  return normalizeInquiryDetail(inquiry, fallback)
 }
 
 export async function loadClassMembers() {

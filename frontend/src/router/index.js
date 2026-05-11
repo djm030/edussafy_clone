@@ -14,6 +14,7 @@ import CommunitySurveysPage from '../pages/community/CommunitySurveysPage.vue'
 import SurveyDetailPage from '../pages/community/SurveyDetailPage.vue'
 import HelpFaqPage from '../pages/help/HelpFaqPage.vue'
 import HelpInquiriesPage from '../pages/help/HelpInquiriesPage.vue'
+import HelpInquiryDetailPage from '../pages/help/HelpInquiryDetailPage.vue'
 import HelpInquiryWritePage from '../pages/help/HelpInquiryWritePage.vue'
 import HelpNoticeDetailPage from '../pages/help/HelpNoticeDetailPage.vue'
 import HelpNoticePage from '../pages/help/HelpNoticePage.vue'
@@ -73,7 +74,7 @@ const routes = [
   { path: '/help/notice/:id', name: 'help-notice-detail', component: HelpNoticeDetailPage },
   { path: routePaths.helpFaq, name: 'help-faq', component: HelpFaqPage },
   { path: routePaths.helpInquiries, name: 'help-inquiries', component: HelpInquiriesPage },
-  { path: '/help/inquiries/:id', name: 'help-inquiry-detail', component: HelpInquiriesPage },
+  { path: '/help/inquiries/:id', name: 'help-inquiry-detail', component: HelpInquiryDetailPage },
   { path: routePaths.helpInquiryWrite, name: 'help-inquiry-write', component: HelpInquiryWritePage },
   { path: routePaths.helpRules, name: 'help-rules', component: HelpRulesPage },
   { path: routePaths.mentoringStories, name: 'mentoring-stories', component: MentoringBoardPage, props: { variant: 'stories' } },
