@@ -1,0 +1,638 @@
+{
+  "capturedAt": "2026-05-11T15:41:49.711Z",
+  "command": "node frontend/docs/design/app-vue/scripts/build-verification-pack.mjs",
+  "sourceInventory": "frontend/docs/design/app-vue/contract-inventory.json",
+  "apiCompletionClaim": false,
+  "visualParityClaim": false,
+  "summary": {
+    "routes": 51,
+    "ready": 32,
+    "noScreenshot": 19,
+    "partial": 0,
+    "blocked": 0
+  },
+  "rows": [
+    {
+      "routePath": "/login",
+      "routeName": "login",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "status": "NO_SCREENSHOT",
+      "screenshotPath": "NO_SCREENSHOT",
+      "apiEndpoints": [
+        "POST /api/v1/auth/login",
+        "GET /api/v1/auth/me"
+      ],
+      "blocker": "PARTIAL: API endpoint listed, but runtime API was not exercised in Phase 6."
+    },
+    {
+      "routePath": "/",
+      "routeName": "",
+      "routeKind": "redirect",
+      "sourceOfTruth": "router-only",
+      "status": "READY",
+      "screenshotPath": "NO_SCREENSHOT",
+      "apiEndpoints": [],
+      "blocker": null
+    },
+    {
+      "routePath": "/dashboard",
+      "routeName": "dashboard",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "status": "READY",
+      "screenshotPath": "../../edu_screnshot/01_home_dashboard.png",
+      "apiEndpoints": [
+        "GET /api/v1/auth/me",
+        "GET /api/v1/users/me/campus-summary",
+        "GET /api/v1/points/my/summary",
+        "GET /api/v1/notifications/my"
+      ],
+      "blocker": "PARTIAL: API endpoint listed, but runtime API was not exercised in Phase 6."
+    },
+    {
+      "routePath": "/mycampus/level-points",
+      "routeName": "mycampus-level-points",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "status": "READY",
+      "screenshotPath": "../../edu_screnshot/25_mycampus_level_points_dashboard.png",
+      "apiEndpoints": [
+        "GET /api/v1/points/my/summary",
+        "GET /api/v1/users/me/campus-summary",
+        "GET /api/v1/points/my/transactions"
+      ],
+      "blocker": "PARTIAL: API endpoint listed, but runtime API was not exercised in Phase 6."
+    },
+    {
+      "routePath": "/mycampus/attendance",
+      "routeName": "mycampus-attendance",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "status": "READY",
+      "screenshotPath": "../../edu_screnshot/26_mycampus_attendance_status.png",
+      "apiEndpoints": [
+        "GET /api/v1/attendance/my"
+      ],
+      "blocker": "PARTIAL: API endpoint listed, but runtime API was not exercised in Phase 6."
+    },
+    {
+      "routePath": "/mycampus/elearning",
+      "routeName": "mycampus-elearning",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "status": "READY",
+      "screenshotPath": "../../edu_screnshot/27_mycampus_learning_elearning_empty.png",
+      "apiEndpoints": [
+        "GET /api/v1/learning/progress/my"
+      ],
+      "blocker": "PARTIAL: API endpoint listed, but runtime API was not exercised in Phase 6."
+    },
+    {
+      "routePath": "/mycampus/bookmarks",
+      "routeName": "mycampus-bookmarks",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "status": "READY",
+      "screenshotPath": "../../edu_screnshot/28_mycampus_bookmarks_empty.png",
+      "apiEndpoints": [
+        "GET /api/v1/bookmarks/my",
+        "GET /api/v1/learning/contents/my-selected"
+      ],
+      "blocker": "PARTIAL: API endpoint listed, but runtime API was not exercised in Phase 6."
+    },
+    {
+      "routePath": "/mycampus/documents",
+      "routeName": "mycampus-documents",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "status": "READY",
+      "screenshotPath": "../../edu_screnshot/29_mycampus_document_submission_empty.png",
+      "apiEndpoints": [
+        "GET /api/v1/boards/doc-req/posts"
+      ],
+      "blocker": "PARTIAL: API endpoint listed, but runtime API was not exercised in Phase 6."
+    },
+    {
+      "routePath": "/mycampus/documents/write",
+      "routeName": "mycampus-document-write",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "status": "NO_SCREENSHOT",
+      "screenshotPath": "NO_SCREENSHOT",
+      "apiEndpoints": [
+        "GET /api/v1/boards/doc-req/categories",
+        "POST /api/v1/files",
+        "POST /api/v1/boards/doc-req/posts"
+      ],
+      "blocker": "PARTIAL: API endpoint listed, but runtime API was not exercised in Phase 6."
+    },
+    {
+      "routePath": "/mycampus/pledges",
+      "routeName": "mycampus-pledges",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "status": "READY",
+      "screenshotPath": "../../edu_screnshot/31_mycampus_student_pledge_list.png",
+      "apiEndpoints": [
+        "GET /api/v1/agreements/my",
+        "GET /api/v1/agreements"
+      ],
+      "blocker": "PARTIAL: API endpoint listed, but runtime API was not exercised in Phase 6."
+    },
+    {
+      "routePath": "/mycampus/education-status",
+      "routeName": "mycampus-education-status",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "status": "READY",
+      "screenshotPath": "../../edu_screnshot/32_mycampus_education_status.png",
+      "apiEndpoints": [
+        "GET /api/v1/points/my/summary",
+        "GET /api/v1/users/me/campus-summary"
+      ],
+      "blocker": "PARTIAL: API endpoint listed, but runtime API was not exercised in Phase 6."
+    },
+    {
+      "routePath": "/mycampus/profile",
+      "routeName": "mycampus-profile",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "status": "NO_SCREENSHOT",
+      "screenshotPath": "NO_SCREENSHOT",
+      "apiEndpoints": [
+        "GET /api/v1/users/me",
+        "PATCH /api/v1/users/me"
+      ],
+      "blocker": "PARTIAL: API endpoint listed, but runtime API was not exercised in Phase 6."
+    },
+    {
+      "routePath": "/mycampus/password",
+      "routeName": "mycampus-password",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "status": "NO_SCREENSHOT",
+      "screenshotPath": "NO_SCREENSHOT",
+      "apiEndpoints": [
+        "PATCH /api/v1/auth/password"
+      ],
+      "blocker": "PARTIAL: API endpoint listed, but runtime API was not exercised in Phase 6."
+    },
+    {
+      "routePath": "/classroom/my-replays",
+      "routeName": "classroom-my-replays",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "status": "READY",
+      "screenshotPath": "../../edu_screnshot/13_classroom_my_lecture_replay.png",
+      "apiEndpoints": [
+        "GET /api/v1/course-sessions/replays"
+      ],
+      "blocker": "PARTIAL: API endpoint listed, but runtime API was not exercised in Phase 6."
+    },
+    {
+      "routePath": "/classroom/all-replays",
+      "routeName": "classroom-all-replays",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "status": "READY",
+      "screenshotPath": "../../edu_screnshot/14_classroom_all_lecture_replay.png",
+      "apiEndpoints": [
+        "GET /api/v1/course-sessions/replays"
+      ],
+      "blocker": "PARTIAL: API endpoint listed, but runtime API was not exercised in Phase 6."
+    },
+    {
+      "routePath": "/classroom/curriculum",
+      "routeName": "classroom-curriculum",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "status": "READY",
+      "screenshotPath": "../../edu_screnshot/02_classroom_weekly_curriculum.png",
+      "apiEndpoints": [
+        "GET /api/v1/courses/my",
+        "GET /api/v1/courses/{courseId}/weeks",
+        "GET /api/v1/courses/{courseId}/weeks/{weekId}/sessions"
+      ],
+      "blocker": "PARTIAL: API endpoint listed, but runtime API was not exercised in Phase 6."
+    },
+    {
+      "routePath": "/classroom/quests",
+      "routeName": "classroom-quests",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "status": "READY",
+      "screenshotPath": "../../edu_screnshot/03_quest_evaluation_list.png",
+      "apiEndpoints": [
+        "GET /api/v1/tasks/my"
+      ],
+      "blocker": "PARTIAL: API endpoint listed, but runtime API was not exercised in Phase 6."
+    },
+    {
+      "routePath": "/classroom/quests/:id",
+      "routeName": "classroom-quest-detail",
+      "routeKind": "dynamic-page",
+      "sourceOfTruth": "router-only",
+      "status": "NO_SCREENSHOT",
+      "screenshotPath": "NO_SCREENSHOT",
+      "apiEndpoints": [
+        "GET /api/v1/tasks/{taskId}",
+        "GET /api/v1/tasks/{taskId}/my-result"
+      ],
+      "blocker": "PARTIAL: API endpoint listed, but runtime API was not exercised in Phase 6."
+    },
+    {
+      "routePath": "/classroom/required-learning",
+      "routeName": "classroom-required-learning",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "status": "READY",
+      "screenshotPath": "../../edu_screnshot/15_classroom_required_learning_empty.png",
+      "apiEndpoints": [
+        "GET /api/v1/learning/contents/required"
+      ],
+      "blocker": "PARTIAL: API endpoint listed, but runtime API was not exercised in Phase 6."
+    },
+    {
+      "routePath": "/classroom/resources",
+      "routeName": "classroom-resources",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "status": "READY",
+      "screenshotPath": "../../edu_screnshot/04_learning_resources.png",
+      "apiEndpoints": [
+        "GET /api/v1/learning/categories",
+        "GET /api/v1/learning/contents"
+      ],
+      "blocker": "PARTIAL: API endpoint listed, but runtime API was not exercised in Phase 6."
+    },
+    {
+      "routePath": "/classroom/resources/:id",
+      "routeName": "classroom-resource-detail",
+      "routeKind": "dynamic-page",
+      "sourceOfTruth": "router-only",
+      "status": "NO_SCREENSHOT",
+      "screenshotPath": "NO_SCREENSHOT",
+      "apiEndpoints": [
+        "GET /api/v1/learning/contents/{contentId}"
+      ],
+      "blocker": "PARTIAL: API endpoint listed, but runtime API was not exercised in Phase 6."
+    },
+    {
+      "routePath": "/community/surveys",
+      "routeName": "community-surveys",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "status": "READY",
+      "screenshotPath": "../../edu_screnshot/05_community_survey.png",
+      "apiEndpoints": [
+        "GET /api/v1/survey-categories",
+        "GET /api/v1/surveys"
+      ],
+      "blocker": "PARTIAL: API endpoint listed, but runtime API was not exercised in Phase 6."
+    },
+    {
+      "routePath": "/community/surveys/:id",
+      "routeName": "community-survey-detail",
+      "routeKind": "dynamic-page",
+      "sourceOfTruth": "router-only",
+      "status": "NO_SCREENSHOT",
+      "screenshotPath": "NO_SCREENSHOT",
+      "apiEndpoints": [
+        "GET /api/v1/surveys/{surveyId}"
+      ],
+      "blocker": "PARTIAL: API endpoint listed, but runtime API was not exercised in Phase 6."
+    },
+    {
+      "routePath": "/community/boards/open",
+      "routeName": "community-open-board",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "status": "READY",
+      "screenshotPath": "../../edu_screnshot/06_open_board.png",
+      "apiEndpoints": [
+        "GET /api/v1/boards/free/posts"
+      ],
+      "blocker": "PARTIAL: API endpoint listed, but runtime API was not exercised in Phase 6."
+    },
+    {
+      "routePath": "/community/boards/open/write",
+      "routeName": "community-open-board-write",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "status": "NO_SCREENSHOT",
+      "screenshotPath": "NO_SCREENSHOT",
+      "apiEndpoints": [
+        "GET /api/v1/boards/free/categories",
+        "POST /api/v1/boards/free/posts"
+      ],
+      "blocker": "PARTIAL: API endpoint listed, but runtime API was not exercised in Phase 6."
+    },
+    {
+      "routePath": "/community/boards/open/:id",
+      "routeName": "community-open-board-detail",
+      "routeKind": "dynamic-page",
+      "sourceOfTruth": "router-only",
+      "status": "NO_SCREENSHOT",
+      "screenshotPath": "NO_SCREENSHOT",
+      "apiEndpoints": [
+        "GET /api/v1/boards/free/posts/{postId}"
+      ],
+      "blocker": "PARTIAL: API endpoint listed, but runtime API was not exercised in Phase 6."
+    },
+    {
+      "routePath": "/community/boards/anonymous",
+      "routeName": "community-anonymous-board",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "status": "READY",
+      "screenshotPath": "../../edu_screnshot/16_community_anonymous_board.png",
+      "apiEndpoints": [
+        "GET /api/v1/boards/anonymity/posts"
+      ],
+      "blocker": "PARTIAL: API endpoint listed, but runtime API was not exercised in Phase 6."
+    },
+    {
+      "routePath": "/community/boards/anonymous/:id",
+      "routeName": "community-anonymous-board-detail",
+      "routeKind": "dynamic-page",
+      "sourceOfTruth": "router-only",
+      "status": "NO_SCREENSHOT",
+      "screenshotPath": "NO_SCREENSHOT",
+      "apiEndpoints": [
+        "GET /api/v1/boards/anonymity/posts/{postId}"
+      ],
+      "blocker": "PARTIAL: API endpoint listed, but runtime API was not exercised in Phase 6."
+    },
+    {
+      "routePath": "/community/class-roster",
+      "routeName": "community-class-roster",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "status": "READY",
+      "screenshotPath": "../../edu_screnshot/17_community_class_roster.png",
+      "apiEndpoints": [
+        "GET /api/v1/users/students"
+      ],
+      "blocker": "PARTIAL: API endpoint listed, but runtime API was not exercised in Phase 6."
+    },
+    {
+      "routePath": "/help/notice",
+      "routeName": "help-notice",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "status": "READY",
+      "screenshotPath": "../../edu_screnshot/07_helpdesk_notice.png",
+      "apiEndpoints": [
+        "GET /api/v1/boards/notice/posts"
+      ],
+      "blocker": "PARTIAL: API endpoint listed, but runtime API was not exercised in Phase 6."
+    },
+    {
+      "routePath": "/help/notice/:id",
+      "routeName": "help-notice-detail",
+      "routeKind": "dynamic-page",
+      "sourceOfTruth": "router-only",
+      "status": "NO_SCREENSHOT",
+      "screenshotPath": "NO_SCREENSHOT",
+      "apiEndpoints": [
+        "GET /api/v1/boards/notice/posts/{postId}"
+      ],
+      "blocker": "PARTIAL: API endpoint listed, but runtime API was not exercised in Phase 6."
+    },
+    {
+      "routePath": "/help/faq",
+      "routeName": "help-faq",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "status": "READY",
+      "screenshotPath": "../../edu_screnshot/08_helpdesk_faq_empty.png",
+      "apiEndpoints": [
+        "GET /api/v1/boards/faq/posts"
+      ],
+      "blocker": "PARTIAL: API endpoint listed, but runtime API was not exercised in Phase 6."
+    },
+    {
+      "routePath": "/help/inquiries",
+      "routeName": "help-inquiries",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "status": "READY",
+      "screenshotPath": "../../edu_screnshot/09_helpdesk_inquiry_empty.png",
+      "apiEndpoints": [
+        "GET /api/v1/inquiries/my"
+      ],
+      "blocker": "PARTIAL: API endpoint listed, but runtime API was not exercised in Phase 6."
+    },
+    {
+      "routePath": "/help/inquiries/:id",
+      "routeName": "help-inquiry-detail",
+      "routeKind": "dynamic-page",
+      "sourceOfTruth": "router-only",
+      "status": "NO_SCREENSHOT",
+      "screenshotPath": "NO_SCREENSHOT",
+      "apiEndpoints": [
+        "GET /api/v1/inquiries/{inquiryId}"
+      ],
+      "blocker": "PARTIAL: API endpoint listed, but runtime API was not exercised in Phase 6."
+    },
+    {
+      "routePath": "/help/inquiries/write",
+      "routeName": "help-inquiry-write",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "status": "NO_SCREENSHOT",
+      "screenshotPath": "NO_SCREENSHOT",
+      "apiEndpoints": [
+        "POST /api/v1/inquiries"
+      ],
+      "blocker": "PARTIAL: API endpoint listed, but runtime API was not exercised in Phase 6."
+    },
+    {
+      "routePath": "/help/rules",
+      "routeName": "help-rules",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "status": "READY",
+      "screenshotPath": "../../edu_screnshot/18_helpdesk_academic_rules.png",
+      "apiEndpoints": [
+        "GET /api/v1/boards/rule/posts"
+      ],
+      "blocker": "PARTIAL: API endpoint listed, but runtime API was not exercised in Phase 6."
+    },
+    {
+      "routePath": "/mentoring/stories",
+      "routeName": "mentoring-stories",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "status": "READY",
+      "screenshotPath": "../../edu_screnshot/11_mentoring_story_board.png",
+      "apiEndpoints": [
+        "GET /api/v1/boards/mento-state/posts"
+      ],
+      "blocker": "PARTIAL: API endpoint listed, but runtime API was not exercised in Phase 6."
+    },
+    {
+      "routePath": "/mentoring/stories/:id",
+      "routeName": "mentoring-story-detail",
+      "routeKind": "dynamic-page",
+      "sourceOfTruth": "router-only",
+      "status": "NO_SCREENSHOT",
+      "screenshotPath": "NO_SCREENSHOT",
+      "apiEndpoints": [
+        "GET /api/v1/boards/mento-state/posts/{postId}"
+      ],
+      "blocker": "PARTIAL: API endpoint listed, but runtime API was not exercised in Phase 6."
+    },
+    {
+      "routePath": "/mentoring/qna",
+      "routeName": "mentoring-qna",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "status": "READY",
+      "screenshotPath": "../../edu_screnshot/19_mentoring_qna_board.png",
+      "apiEndpoints": [
+        "GET /api/v1/boards/mento-qna/posts"
+      ],
+      "blocker": "PARTIAL: API endpoint listed, but runtime API was not exercised in Phase 6."
+    },
+    {
+      "routePath": "/mentoring/qna/:id",
+      "routeName": "mentoring-qna-detail",
+      "routeKind": "dynamic-page",
+      "sourceOfTruth": "router-only",
+      "status": "NO_SCREENSHOT",
+      "screenshotPath": "NO_SCREENSHOT",
+      "apiEndpoints": [
+        "GET /api/v1/boards/mento-qna/posts/{postId}"
+      ],
+      "blocker": "PARTIAL: API endpoint listed, but runtime API was not exercised in Phase 6."
+    },
+    {
+      "routePath": "/mentoring/notice",
+      "routeName": "mentoring-notice",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "status": "READY",
+      "screenshotPath": "../../edu_screnshot/20_mentoring_notice_board.png",
+      "apiEndpoints": [
+        "GET /api/v1/boards/mento-notice/posts"
+      ],
+      "blocker": "PARTIAL: API endpoint listed, but runtime API was not exercised in Phase 6."
+    },
+    {
+      "routePath": "/mentoring/notice/:id",
+      "routeName": "mentoring-notice-detail",
+      "routeKind": "dynamic-page",
+      "sourceOfTruth": "router-only",
+      "status": "NO_SCREENSHOT",
+      "screenshotPath": "NO_SCREENSHOT",
+      "apiEndpoints": [
+        "GET /api/v1/boards/mento-notice/posts/{postId}"
+      ],
+      "blocker": "PARTIAL: API endpoint listed, but runtime API was not exercised in Phase 6."
+    },
+    {
+      "routePath": "/mentoring/meetups/apply",
+      "routeName": "mentoring-meetup-apply",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "status": "READY",
+      "screenshotPath": "../../edu_screnshot/21_mentoring_meetup_apply.png",
+      "apiEndpoints": [],
+      "blocker": null
+    },
+    {
+      "routePath": "/mentoring/meetups/info",
+      "routeName": "mentoring-meetup-info",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "status": "READY",
+      "screenshotPath": "../../edu_screnshot/22_mentoring_meetup_info_empty.png",
+      "apiEndpoints": [
+        "GET /api/v1/boards/meeting-info/posts"
+      ],
+      "blocker": "PARTIAL: API endpoint listed, but runtime API was not exercised in Phase 6."
+    },
+    {
+      "routePath": "/mentoring/meetups/reviews",
+      "routeName": "mentoring-meetup-reviews",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "status": "READY",
+      "screenshotPath": "../../edu_screnshot/23_mentoring_meetup_review_board.png",
+      "apiEndpoints": [
+        "GET /api/v1/boards/mento-review/posts"
+      ],
+      "blocker": "PARTIAL: API endpoint listed, but runtime API was not exercised in Phase 6."
+    },
+    {
+      "routePath": "/mentoring/meetups/reviews/:id",
+      "routeName": "mentoring-meetup-review-detail",
+      "routeKind": "dynamic-page",
+      "sourceOfTruth": "router-only",
+      "status": "NO_SCREENSHOT",
+      "screenshotPath": "NO_SCREENSHOT",
+      "apiEndpoints": [
+        "GET /api/v1/boards/mento-review/posts/{postId}"
+      ],
+      "blocker": "PARTIAL: API endpoint listed, but runtime API was not exercised in Phase 6."
+    },
+    {
+      "routePath": "/mentoring/meetups/reviews/write",
+      "routeName": "mentoring-meetup-review-write",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "status": "NO_SCREENSHOT",
+      "screenshotPath": "NO_SCREENSHOT",
+      "apiEndpoints": [
+        "GET /api/v1/boards/mento-review/categories",
+        "POST /api/v1/boards/mento-review/posts"
+      ],
+      "blocker": "PARTIAL: API endpoint listed, but runtime API was not exercised in Phase 6."
+    },
+    {
+      "routePath": "/notifications",
+      "routeName": "notifications",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "status": "READY",
+      "screenshotPath": "../../edu_screnshot/36_notification_inbox.png",
+      "apiEndpoints": [
+        "GET /api/v1/notifications/my",
+        "GET /api/v1/notifications/my/unread-count"
+      ],
+      "blocker": "PARTIAL: API endpoint listed, but runtime API was not exercised in Phase 6."
+    },
+    {
+      "routePath": "/403",
+      "routeName": "forbidden",
+      "routeKind": "error",
+      "sourceOfTruth": "routes+router",
+      "status": "READY",
+      "screenshotPath": "../../edu_screnshot/39_mycampus_ebook_403_forbidden.png",
+      "apiEndpoints": [],
+      "blocker": null
+    },
+    {
+      "routePath": "/404",
+      "routeName": "not-found",
+      "routeKind": "error",
+      "sourceOfTruth": "routes+router",
+      "status": "NO_SCREENSHOT",
+      "screenshotPath": "NO_SCREENSHOT",
+      "apiEndpoints": [],
+      "blocker": null
+    },
+    {
+      "routePath": "/:pathMatch(.*)*",
+      "routeName": "not-found-wildcard",
+      "routeKind": "redirect",
+      "sourceOfTruth": "router-only",
+      "status": "READY",
+      "screenshotPath": "NO_SCREENSHOT",
+      "apiEndpoints": [],
+      "blocker": null
+    }
+  ]
+}

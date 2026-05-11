@@ -1,0 +1,15 @@
+{
+  "routePath": "SHARED_SHELL_NAVIGATION",
+  "routeKind": "static-route-smoke",
+  "endpoint": "N/A",
+  "method": "N/A",
+  "statusCode": null,
+  "success": true,
+  "dataShapeSummary": "Shared shell and navigation hardened: profile chip links to /mycampus/profile, floating inquiry action links to /help/inquiries/write, /404 is an explicit route, wildcard redirects to /404, and external service links remain target=_blank rel=noreferrer.",
+  "usedMockFallback": null,
+  "redactedRequest": {},
+  "redactedResponseSample": {},
+  "capturedAt": "2026-05-11T15:36:00.000Z",
+  "command": "node frontend/docs/design/app-vue/scripts/build-contract-inventory.mjs && npm run build",
+  "blocker": null
+}

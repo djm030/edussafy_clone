@@ -1,5 +1,5 @@
 <template>
-  <button class="floating-action" type="button" aria-label="Quick action">
+  <RouterLink class="floating-action" to="/help/inquiries/write" aria-label="Open inquiry form">
     상담
-  </button>
+  </RouterLink>
 </template>

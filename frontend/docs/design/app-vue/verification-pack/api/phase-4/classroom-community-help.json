@@ -1,0 +1,15 @@
+{
+  "routePath": "CLASSROOM_COMMUNITY_HELP_SCOPE",
+  "routeKind": "feature-static-build",
+  "endpoint": "GET /api/v1/boards/faq/posts; GET /api/v1/boards/rule/posts; classroom query routes",
+  "method": "GET",
+  "statusCode": null,
+  "success": true,
+  "dataShapeSummary": "Help FAQ and Rules now load through boardService with canonical faq/rule board codes and demo fallback. Classroom replay/resources pages consume canonical query parameters sessionId, type, keyword, and category for routed filtering context.",
+  "usedMockFallback": null,
+  "redactedRequest": {},
+  "redactedResponseSample": {},
+  "capturedAt": "2026-05-11T15:40:00.000Z",
+  "command": "npm run build && node frontend/docs/design/app-vue/scripts/build-contract-inventory.mjs",
+  "blocker": "API runtime was not exercised here; no API-complete claim is made."
+}

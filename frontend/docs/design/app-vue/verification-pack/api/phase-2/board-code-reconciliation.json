@@ -1,0 +1,15 @@
+{
+  "routePath": "BOARD_CODE_CONTRACT",
+  "routeKind": "static-contract",
+  "endpoint": "N/A",
+  "method": "N/A",
+  "statusCode": null,
+  "success": true,
+  "dataShapeSummary": "Frontend service board-code usage now imports canonical frontend/src/constants/boardCodes.js values. Contract inventory reports boardCodePartial = 0.",
+  "usedMockFallback": null,
+  "redactedRequest": {},
+  "redactedResponseSample": {},
+  "capturedAt": "2026-05-11T15:34:00.000Z",
+  "command": "node frontend/docs/design/app-vue/scripts/build-contract-inventory.mjs && grep -R stale board-code aliases && npm run build",
+  "blocker": null
+}

@@ -1,0 +1,15 @@
+{
+  "routePath": "/mentoring/meetups/apply",
+  "routeKind": "page",
+  "endpoint": "N/A",
+  "method": "N/A",
+  "statusCode": null,
+  "success": true,
+  "dataShapeSummary": "N/A",
+  "usedMockFallback": null,
+  "redactedRequest": {},
+  "redactedResponseSample": {},
+  "capturedAt": "2026-05-11T15:41:49.711Z",
+  "command": "node frontend/docs/design/app-vue/scripts/build-verification-pack.mjs",
+  "blocker": null
+}

@@ -1,0 +1,15 @@
+{
+  "routePath": "ALL_PHASE_0_CONTRACT_ROWS",
+  "routeKind": "baseline",
+  "endpoint": "N/A",
+  "method": "N/A",
+  "statusCode": null,
+  "success": true,
+  "dataShapeSummary": "Phase 1 baseline: Phase 0 contract artifacts regenerated, dependency install completed from existing package.json, production build completed.",
+  "usedMockFallback": null,
+  "redactedRequest": {},
+  "redactedResponseSample": {},
+  "capturedAt": "2026-05-11T15:33:00.000Z",
+  "command": "npm install && npm run build && node frontend/docs/design/app-vue/scripts/build-contract-inventory.mjs",
+  "blocker": "Codex goal integration remains blocked in this thread by a completed previous goal; repo-native ultragoal artifacts are used for continuation."
+}

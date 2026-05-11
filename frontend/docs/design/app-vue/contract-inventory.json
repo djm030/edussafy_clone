@@ -1,0 +1,2926 @@
+{
+  "generatedAt": "2026-05-11T15:41:49.683Z",
+  "generator": "frontend/docs/design/app-vue/scripts/build-contract-inventory.mjs",
+  "constraints": {
+    "noVisualDomainImplementationBeforePhase0Artifacts": true,
+    "routeAuthority": [
+      "frontend/src/constants/routes.js",
+      "frontend/src/router/index.js"
+    ],
+    "screenshotReferenceIsEvidenceMapNotRouteAuthority": true,
+    "frontendBoardCodeSourceOfTruthAfterPhase0": "frontend/src/constants/boardCodes.js"
+  },
+  "summary": {
+    "canonicalRows": 54,
+    "readyRows": 35,
+    "partialRows": 0,
+    "noScreenshotRows": 19,
+    "blockedRows": 0,
+    "screenshotAliasesResolved": 9,
+    "unmappedScreenshotRoutes": 0,
+    "boardCodePartial": 0
+  },
+  "routePathConstants": [
+    {
+      "key": "login",
+      "path": "/login",
+      "source": "routes.js",
+      "line": 2
+    },
+    {
+      "key": "dashboard",
+      "path": "/dashboard",
+      "source": "routes.js",
+      "line": 3
+    },
+    {
+      "key": "mycampusLevelPoints",
+      "path": "/mycampus/level-points",
+      "source": "routes.js",
+      "line": 4
+    },
+    {
+      "key": "mycampusAttendance",
+      "path": "/mycampus/attendance",
+      "source": "routes.js",
+      "line": 5
+    },
+    {
+      "key": "mycampusElearning",
+      "path": "/mycampus/elearning",
+      "source": "routes.js",
+      "line": 6
+    },
+    {
+      "key": "mycampusBookmarks",
+      "path": "/mycampus/bookmarks",
+      "source": "routes.js",
+      "line": 7
+    },
+    {
+      "key": "mycampusDocuments",
+      "path": "/mycampus/documents",
+      "source": "routes.js",
+      "line": 8
+    },
+    {
+      "key": "mycampusDocumentWrite",
+      "path": "/mycampus/documents/write",
+      "source": "routes.js",
+      "line": 9
+    },
+    {
+      "key": "mycampusPledges",
+      "path": "/mycampus/pledges",
+      "source": "routes.js",
+      "line": 10
+    },
+    {
+      "key": "mycampusEducationStatus",
+      "path": "/mycampus/education-status",
+      "source": "routes.js",
+      "line": 11
+    },
+    {
+      "key": "mycampusProfile",
+      "path": "/mycampus/profile",
+      "source": "routes.js",
+      "line": 12
+    },
+    {
+      "key": "mycampusPassword",
+      "path": "/mycampus/password",
+      "source": "routes.js",
+      "line": 13
+    },
+    {
+      "key": "classroomMyReplays",
+      "path": "/classroom/my-replays",
+      "source": "routes.js",
+      "line": 14
+    },
+    {
+      "key": "classroomAllReplays",
+      "path": "/classroom/all-replays",
+      "source": "routes.js",
+      "line": 15
+    },
+    {
+      "key": "classroomCurriculum",
+      "path": "/classroom/curriculum",
+      "source": "routes.js",
+      "line": 16
+    },
+    {
+      "key": "classroomQuests",
+      "path": "/classroom/quests",
+      "source": "routes.js",
+      "line": 17
+    },
+    {
+      "key": "classroomRequiredLearning",
+      "path": "/classroom/required-learning",
+      "source": "routes.js",
+      "line": 18
+    },
+    {
+      "key": "classroomResources",
+      "path": "/classroom/resources",
+      "source": "routes.js",
+      "line": 19
+    },
+    {
+      "key": "communitySurveys",
+      "path": "/community/surveys",
+      "source": "routes.js",
+      "line": 20
+    },
+    {
+      "key": "communityOpenBoard",
+      "path": "/community/boards/open",
+      "source": "routes.js",
+      "line": 21
+    },
+    {
+      "key": "communityOpenBoardWrite",
+      "path": "/community/boards/open/write",
+      "source": "routes.js",
+      "line": 22
+    },
+    {
+      "key": "communityAnonymousBoard",
+      "path": "/community/boards/anonymous",
+      "source": "routes.js",
+      "line": 23
+    },
+    {
+      "key": "communityClassRoster",
+      "path": "/community/class-roster",
+      "source": "routes.js",
+      "line": 24
+    },
+    {
+      "key": "helpNotice",
+      "path": "/help/notice",
+      "source": "routes.js",
+      "line": 25
+    },
+    {
+      "key": "helpFaq",
+      "path": "/help/faq",
+      "source": "routes.js",
+      "line": 26
+    },
+    {
+      "key": "helpInquiries",
+      "path": "/help/inquiries",
+      "source": "routes.js",
+      "line": 27
+    },
+    {
+      "key": "helpInquiryWrite",
+      "path": "/help/inquiries/write",
+      "source": "routes.js",
+      "line": 28
+    },
+    {
+      "key": "helpRules",
+      "path": "/help/rules",
+      "source": "routes.js",
+      "line": 29
+    },
+    {
+      "key": "mentoringStories",
+      "path": "/mentoring/stories",
+      "source": "routes.js",
+      "line": 30
+    },
+    {
+      "key": "mentoringQna",
+      "path": "/mentoring/qna",
+      "source": "routes.js",
+      "line": 31
+    },
+    {
+      "key": "mentoringNotice",
+      "path": "/mentoring/notice",
+      "source": "routes.js",
+      "line": 32
+    },
+    {
+      "key": "mentoringMeetupApply",
+      "path": "/mentoring/meetups/apply",
+      "source": "routes.js",
+      "line": 33
+    },
+    {
+      "key": "mentoringMeetupInfo",
+      "path": "/mentoring/meetups/info",
+      "source": "routes.js",
+      "line": 34
+    },
+    {
+      "key": "mentoringMeetupReviews",
+      "path": "/mentoring/meetups/reviews",
+      "source": "routes.js",
+      "line": 35
+    },
+    {
+      "key": "mentoringMeetupReviewWrite",
+      "path": "/mentoring/meetups/reviews/write",
+      "source": "routes.js",
+      "line": 36
+    },
+    {
+      "key": "notifications",
+      "path": "/notifications",
+      "source": "routes.js",
+      "line": 37
+    },
+    {
+      "key": "forbidden",
+      "path": "/403",
+      "source": "routes.js",
+      "line": 38
+    },
+    {
+      "key": "notFound",
+      "path": "/404",
+      "source": "routes.js",
+      "line": 39
+    }
+  ],
+  "routerRoutes": [
+    {
+      "pathExpression": "routePaths.login",
+      "path": "/login",
+      "name": "login",
+      "redirect": "",
+      "component": "LoginPage",
+      "props": "",
+      "source": "router/index.js",
+      "line": 44
+    },
+    {
+      "pathExpression": "'/'",
+      "path": "/",
+      "name": "",
+      "redirect": "/dashboard",
+      "component": "",
+      "props": "",
+      "source": "router/index.js",
+      "line": 45
+    },
+    {
+      "pathExpression": "routePaths.dashboard",
+      "path": "/dashboard",
+      "name": "dashboard",
+      "redirect": "",
+      "component": "DashboardPage",
+      "props": "",
+      "source": "router/index.js",
+      "line": 46
+    },
+    {
+      "pathExpression": "routePaths.mycampusLevelPoints",
+      "path": "/mycampus/level-points",
+      "name": "mycampus-level-points",
+      "redirect": "",
+      "component": "LevelPointsPage",
+      "props": "",
+      "source": "router/index.js",
+      "line": 47
+    },
+    {
+      "pathExpression": "routePaths.mycampusAttendance",
+      "path": "/mycampus/attendance",
+      "name": "mycampus-attendance",
+      "redirect": "",
+      "component": "AttendancePage",
+      "props": "",
+      "source": "router/index.js",
+      "line": 48
+    },
+    {
+      "pathExpression": "routePaths.mycampusElearning",
+      "path": "/mycampus/elearning",
+      "name": "mycampus-elearning",
+      "redirect": "",
+      "component": "ElearningPage",
+      "props": "",
+      "source": "router/index.js",
+      "line": 49
+    },
+    {
+      "pathExpression": "routePaths.mycampusBookmarks",
+      "path": "/mycampus/bookmarks",
+      "name": "mycampus-bookmarks",
+      "redirect": "",
+      "component": "BookmarksPage",
+      "props": "",
+      "source": "router/index.js",
+      "line": 50
+    },
+    {
+      "pathExpression": "routePaths.mycampusDocuments",
+      "path": "/mycampus/documents",
+      "name": "mycampus-documents",
+      "redirect": "",
+      "component": "DocumentsPage",
+      "props": "",
+      "source": "router/index.js",
+      "line": 51
+    },
+    {
+      "pathExpression": "routePaths.mycampusDocumentWrite",
+      "path": "/mycampus/documents/write",
+      "name": "mycampus-document-write",
+      "redirect": "",
+      "component": "DocumentWritePage",
+      "props": "",
+      "source": "router/index.js",
+      "line": 52
+    },
+    {
+      "pathExpression": "routePaths.mycampusPledges",
+      "path": "/mycampus/pledges",
+      "name": "mycampus-pledges",
+      "redirect": "",
+      "component": "PledgesPage",
+      "props": "",
+      "source": "router/index.js",
+      "line": 53
+    },
+    {
+      "pathExpression": "routePaths.mycampusEducationStatus",
+      "path": "/mycampus/education-status",
+      "name": "mycampus-education-status",
+      "redirect": "",
+      "component": "EducationStatusPage",
+      "props": "",
+      "source": "router/index.js",
+      "line": 54
+    },
+    {
+      "pathExpression": "routePaths.mycampusProfile",
+      "path": "/mycampus/profile",
+      "name": "mycampus-profile",
+      "redirect": "",
+      "component": "ProfilePage",
+      "props": "",
+      "source": "router/index.js",
+      "line": 55
+    },
+    {
+      "pathExpression": "routePaths.mycampusPassword",
+      "path": "/mycampus/password",
+      "name": "mycampus-password",
+      "redirect": "",
+      "component": "PasswordPage",
+      "props": "",
+      "source": "router/index.js",
+      "line": 56
+    },
+    {
+      "pathExpression": "routePaths.classroomMyReplays",
+      "path": "/classroom/my-replays",
+      "name": "classroom-my-replays",
+      "redirect": "",
+      "component": "LectureReplayPage",
+      "props": "{ variant: 'my' }",
+      "source": "router/index.js",
+      "line": 57
+    },
+    {
+      "pathExpression": "routePaths.classroomAllReplays",
+      "path": "/classroom/all-replays",
+      "name": "classroom-all-replays",
+      "redirect": "",
+      "component": "LectureReplayPage",
+      "props": "{ variant: 'all' }",
+      "source": "router/index.js",
+      "line": 58
+    },
+    {
+      "pathExpression": "routePaths.classroomCurriculum",
+      "path": "/classroom/curriculum",
+      "name": "classroom-curriculum",
+      "redirect": "",
+      "component": "ClassroomCurriculumPage",
+      "props": "",
+      "source": "router/index.js",
+      "line": 59
+    },
+    {
+      "pathExpression": "routePaths.classroomQuests",
+      "path": "/classroom/quests",
+      "name": "classroom-quests",
+      "redirect": "",
+      "component": "ClassroomQuestListPage",
+      "props": "",
+      "source": "router/index.js",
+      "line": 60
+    },
+    {
+      "pathExpression": "'/classroom/quests/:id'",
+      "path": "/classroom/quests/:id",
+      "name": "classroom-quest-detail",
+      "redirect": "",
+      "component": "ClassroomQuestDetailPage",
+      "props": "",
+      "source": "router/index.js",
+      "line": 61
+    },
+    {
+      "pathExpression": "routePaths.classroomRequiredLearning",
+      "path": "/classroom/required-learning",
+      "name": "classroom-required-learning",
+      "redirect": "",
+      "component": "RequiredLearningPage",
+      "props": "",
+      "source": "router/index.js",
+      "line": 62
+    },
+    {
+      "pathExpression": "routePaths.classroomResources",
+      "path": "/classroom/resources",
+      "name": "classroom-resources",
+      "redirect": "",
+      "component": "ClassroomResourcesPage",
+      "props": "",
+      "source": "router/index.js",
+      "line": 63
+    },
+    {
+      "pathExpression": "'/classroom/resources/:id'",
+      "path": "/classroom/resources/:id",
+      "name": "classroom-resource-detail",
+      "redirect": "",
+      "component": "ClassroomResourceDetailPage",
+      "props": "",
+      "source": "router/index.js",
+      "line": 64
+    },
+    {
+      "pathExpression": "routePaths.communitySurveys",
+      "path": "/community/surveys",
+      "name": "community-surveys",
+      "redirect": "",
+      "component": "CommunitySurveysPage",
+      "props": "",
+      "source": "router/index.js",
+      "line": 65
+    },
+    {
+      "pathExpression": "'/community/surveys/:id'",
+      "path": "/community/surveys/:id",
+      "name": "community-survey-detail",
+      "redirect": "",
+      "component": "SurveyDetailPage",
+      "props": "",
+      "source": "router/index.js",
+      "line": 66
+    },
+    {
+      "pathExpression": "routePaths.communityOpenBoard",
+      "path": "/community/boards/open",
+      "name": "community-open-board",
+      "redirect": "",
+      "component": "BoardListPage",
+      "props": "{ variant: 'open' }",
+      "source": "router/index.js",
+      "line": 67
+    },
+    {
+      "pathExpression": "routePaths.communityOpenBoardWrite",
+      "path": "/community/boards/open/write",
+      "name": "community-open-board-write",
+      "redirect": "",
+      "component": "BoardWritePage",
+      "props": "",
+      "source": "router/index.js",
+      "line": 68
+    },
+    {
+      "pathExpression": "'/community/boards/open/:id'",
+      "path": "/community/boards/open/:id",
+      "name": "community-open-board-detail",
+      "redirect": "",
+      "component": "PostDetailPage",
+      "props": "{ source: 'open' }",
+      "source": "router/index.js",
+      "line": 69
+    },
+    {
+      "pathExpression": "routePaths.communityAnonymousBoard",
+      "path": "/community/boards/anonymous",
+      "name": "community-anonymous-board",
+      "redirect": "",
+      "component": "BoardListPage",
+      "props": "{ variant: 'anonymous' }",
+      "source": "router/index.js",
+      "line": 70
+    },
+    {
+      "pathExpression": "'/community/boards/anonymous/:id'",
+      "path": "/community/boards/anonymous/:id",
+      "name": "community-anonymous-board-detail",
+      "redirect": "",
+      "component": "PostDetailPage",
+      "props": "{ source: 'anonymous' }",
+      "source": "router/index.js",
+      "line": 71
+    },
+    {
+      "pathExpression": "routePaths.communityClassRoster",
+      "path": "/community/class-roster",
+      "name": "community-class-roster",
+      "redirect": "",
+      "component": "ClassRosterPage",
+      "props": "",
+      "source": "router/index.js",
+      "line": 72
+    },
+    {
+      "pathExpression": "routePaths.helpNotice",
+      "path": "/help/notice",
+      "name": "help-notice",
+      "redirect": "",
+      "component": "HelpNoticePage",
+      "props": "",
+      "source": "router/index.js",
+      "line": 73
+    },
+    {
+      "pathExpression": "'/help/notice/:id'",
+      "path": "/help/notice/:id",
+      "name": "help-notice-detail",
+      "redirect": "",
+      "component": "HelpNoticeDetailPage",
+      "props": "",
+      "source": "router/index.js",
+      "line": 74
+    },
+    {
+      "pathExpression": "routePaths.helpFaq",
+      "path": "/help/faq",
+      "name": "help-faq",
+      "redirect": "",
+      "component": "HelpFaqPage",
+      "props": "",
+      "source": "router/index.js",
+      "line": 75
+    },
+    {
+      "pathExpression": "routePaths.helpInquiries",
+      "path": "/help/inquiries",
+      "name": "help-inquiries",
+      "redirect": "",
+      "component": "HelpInquiriesPage",
+      "props": "",
+      "source": "router/index.js",
+      "line": 76
+    },
+    {
+      "pathExpression": "'/help/inquiries/:id'",
+      "path": "/help/inquiries/:id",
+      "name": "help-inquiry-detail",
+      "redirect": "",
+      "component": "HelpInquiryDetailPage",
+      "props": "",
+      "source": "router/index.js",
+      "line": 77
+    },
+    {
+      "pathExpression": "routePaths.helpInquiryWrite",
+      "path": "/help/inquiries/write",
+      "name": "help-inquiry-write",
+      "redirect": "",
+      "component": "HelpInquiryWritePage",
+      "props": "",
+      "source": "router/index.js",
+      "line": 78
+    },
+    {
+      "pathExpression": "routePaths.helpRules",
+      "path": "/help/rules",
+      "name": "help-rules",
+      "redirect": "",
+      "component": "HelpRulesPage",
+      "props": "",
+      "source": "router/index.js",
+      "line": 79
+    },
+    {
+      "pathExpression": "routePaths.mentoringStories",
+      "path": "/mentoring/stories",
+      "name": "mentoring-stories",
+      "redirect": "",
+      "component": "MentoringBoardPage",
+      "props": "{ variant: 'stories' }",
+      "source": "router/index.js",
+      "line": 80
+    },
+    {
+      "pathExpression": "'/mentoring/stories/:id'",
+      "path": "/mentoring/stories/:id",
+      "name": "mentoring-story-detail",
+      "redirect": "",
+      "component": "PostDetailPage",
+      "props": "{ source: 'stories' }",
+      "source": "router/index.js",
+      "line": 81
+    },
+    {
+      "pathExpression": "routePaths.mentoringQna",
+      "path": "/mentoring/qna",
+      "name": "mentoring-qna",
+      "redirect": "",
+      "component": "MentoringBoardPage",
+      "props": "{ variant: 'qna' }",
+      "source": "router/index.js",
+      "line": 82
+    },
+    {
+      "pathExpression": "'/mentoring/qna/:id'",
+      "path": "/mentoring/qna/:id",
+      "name": "mentoring-qna-detail",
+      "redirect": "",
+      "component": "PostDetailPage",
+      "props": "{ source: 'qna' }",
+      "source": "router/index.js",
+      "line": 83
+    },
+    {
+      "pathExpression": "routePaths.mentoringNotice",
+      "path": "/mentoring/notice",
+      "name": "mentoring-notice",
+      "redirect": "",
+      "component": "MentoringBoardPage",
+      "props": "{ variant: 'notice' }",
+      "source": "router/index.js",
+      "line": 84
+    },
+    {
+      "pathExpression": "'/mentoring/notice/:id'",
+      "path": "/mentoring/notice/:id",
+      "name": "mentoring-notice-detail",
+      "redirect": "",
+      "component": "PostDetailPage",
+      "props": "{ source: 'notice' }",
+      "source": "router/index.js",
+      "line": 85
+    },
+    {
+      "pathExpression": "routePaths.mentoringMeetupApply",
+      "path": "/mentoring/meetups/apply",
+      "name": "mentoring-meetup-apply",
+      "redirect": "",
+      "component": "MeetupApplyPage",
+      "props": "",
+      "source": "router/index.js",
+      "line": 86
+    },
+    {
+      "pathExpression": "routePaths.mentoringMeetupInfo",
+      "path": "/mentoring/meetups/info",
+      "name": "mentoring-meetup-info",
+      "redirect": "",
+      "component": "MeetupInfoPage",
+      "props": "",
+      "source": "router/index.js",
+      "line": 87
+    },
+    {
+      "pathExpression": "routePaths.mentoringMeetupReviews",
+      "path": "/mentoring/meetups/reviews",
+      "name": "mentoring-meetup-reviews",
+      "redirect": "",
+      "component": "MentoringBoardPage",
+      "props": "{ variant: 'reviews' }",
+      "source": "router/index.js",
+      "line": 88
+    },
+    {
+      "pathExpression": "'/mentoring/meetups/reviews/:id'",
+      "path": "/mentoring/meetups/reviews/:id",
+      "name": "mentoring-meetup-review-detail",
+      "redirect": "",
+      "component": "PostDetailPage",
+      "props": "{ source: 'reviews' }",
+      "source": "router/index.js",
+      "line": 89
+    },
+    {
+      "pathExpression": "routePaths.mentoringMeetupReviewWrite",
+      "path": "/mentoring/meetups/reviews/write",
+      "name": "mentoring-meetup-review-write",
+      "redirect": "",
+      "component": "MeetupReviewWritePage",
+      "props": "",
+      "source": "router/index.js",
+      "line": 90
+    },
+    {
+      "pathExpression": "routePaths.notifications",
+      "path": "/notifications",
+      "name": "notifications",
+      "redirect": "",
+      "component": "NotificationsPage",
+      "props": "",
+      "source": "router/index.js",
+      "line": 91
+    },
+    {
+      "pathExpression": "routePaths.forbidden",
+      "path": "/403",
+      "name": "forbidden",
+      "redirect": "",
+      "component": "ErrorPage",
+      "props": "",
+      "source": "router/index.js",
+      "line": 92
+    },
+    {
+      "pathExpression": "routePaths.notFound",
+      "path": "/404",
+      "name": "not-found",
+      "redirect": "",
+      "component": "ErrorPage",
+      "props": "",
+      "source": "router/index.js",
+      "line": 93
+    },
+    {
+      "pathExpression": "'/:pathMatch(.*)*'",
+      "path": "/:pathMatch(.*)*",
+      "name": "not-found-wildcard",
+      "redirect": "/404",
+      "component": "",
+      "props": "",
+      "source": "router/index.js",
+      "line": 94
+    }
+  ],
+  "frameRoutes": [
+    {
+      "routePath": "/Users/baeggwan-yeol/Desktop/DESIGN.md",
+      "line": 4
+    },
+    {
+      "routePath": "/Users/baeggwan-yeol/Desktop/edu_screnshot",
+      "line": 5
+    },
+    {
+      "routePath": "/dashboard",
+      "line": 946
+    },
+    {
+      "routePath": "/mycampus/level-points",
+      "line": 950
+    },
+    {
+      "routePath": "/mycampus/attendance",
+      "line": 951
+    },
+    {
+      "routePath": "/mycampus/elearning",
+      "line": 952
+    },
+    {
+      "routePath": "/mycampus/bookmarks",
+      "line": 953
+    },
+    {
+      "routePath": "/mycampus/documents",
+      "line": 954
+    },
+    {
+      "routePath": "/mycampus/documents/write",
+      "line": 955
+    },
+    {
+      "routePath": "/mycampus/pledges",
+      "line": 956
+    },
+    {
+      "routePath": "/mycampus/education-status",
+      "line": 957
+    },
+    {
+      "routePath": "/mycampus/profile",
+      "line": 958
+    },
+    {
+      "routePath": "/mycampus/password",
+      "line": 959
+    },
+    {
+      "routePath": "/classroom/my-replays",
+      "line": 963
+    },
+    {
+      "routePath": "/classroom/all-replays",
+      "line": 964
+    },
+    {
+      "routePath": "/classroom/curriculum",
+      "line": 965
+    },
+    {
+      "routePath": "/classroom/quests",
+      "line": 966
+    },
+    {
+      "routePath": "/classroom/quests/:id",
+      "line": 967
+    },
+    {
+      "routePath": "/classroom/required-learning",
+      "line": 968
+    },
+    {
+      "routePath": "/classroom/resources",
+      "line": 969
+    },
+    {
+      "routePath": "/classroom/resources/:id",
+      "line": 970
+    },
+    {
+      "routePath": "/community/surveys",
+      "line": 974
+    },
+    {
+      "routePath": "/community/boards/open",
+      "line": 975
+    },
+    {
+      "routePath": "/community/boards/open/write",
+      "line": 976
+    },
+    {
+      "routePath": "/community/boards/anonymous",
+      "line": 977
+    },
+    {
+      "routePath": "/community/class-roster",
+      "line": 978
+    },
+    {
+      "routePath": "/help/notice",
+      "line": 982
+    },
+    {
+      "routePath": "/help/notice/:id",
+      "line": 983
+    },
+    {
+      "routePath": "/help/faq",
+      "line": 984
+    },
+    {
+      "routePath": "/help/inquiries",
+      "line": 985
+    },
+    {
+      "routePath": "/help/inquiries/write",
+      "line": 986
+    },
+    {
+      "routePath": "/help/rules",
+      "line": 987
+    },
+    {
+      "routePath": "/mentoring/stories",
+      "line": 991
+    },
+    {
+      "routePath": "/mentoring/qna",
+      "line": 992
+    },
+    {
+      "routePath": "/mentoring/notice",
+      "line": 993
+    },
+    {
+      "routePath": "/mentoring/meetups/apply",
+      "line": 994
+    },
+    {
+      "routePath": "/mentoring/meetups/info",
+      "line": 995
+    },
+    {
+      "routePath": "/mentoring/meetups/reviews",
+      "line": 996
+    },
+    {
+      "routePath": "/mentoring/meetups/reviews/write",
+      "line": 997
+    },
+    {
+      "routePath": "/notifications",
+      "line": 1001
+    },
+    {
+      "routePath": "/403",
+      "line": 1002
+    },
+    {
+      "routePath": "/404",
+      "line": 1003
+    }
+  ],
+  "screenshotRoutes": [
+    {
+      "routePath": "/dashboard",
+      "section": "Dashboard",
+      "primary": "../../edu_screnshot/01_home_dashboard.png",
+      "secondary": [
+        "../../edu_screnshot/40_attendance_detail_from_home_more.png"
+      ],
+      "line": 27
+    },
+    {
+      "routePath": "/classroom/curriculum",
+      "section": "Classroom",
+      "primary": "../../edu_screnshot/02_classroom_weekly_curriculum.png",
+      "secondary": [
+        "../../edu_screnshot/12_classroom_curriculum_week_toggle_attempt.png"
+      ],
+      "line": 47
+    },
+    {
+      "routePath": "/classroom/quests",
+      "section": "Classroom",
+      "primary": "../../edu_screnshot/03_quest_evaluation_list.png",
+      "secondary": [
+        "../../edu_screnshot/38_classroom_quest_detail_completed.png"
+      ],
+      "line": 63
+    },
+    {
+      "routePath": "/classroom/resources",
+      "section": "Classroom",
+      "primary": "../../edu_screnshot/04_learning_resources.png",
+      "secondary": [],
+      "line": 78
+    },
+    {
+      "routePath": "/classroom/my-replays",
+      "section": "Classroom",
+      "primary": "../../edu_screnshot/13_classroom_my_lecture_replay.png",
+      "secondary": [],
+      "line": 88
+    },
+    {
+      "routePath": "/classroom/all-replays",
+      "section": "Classroom",
+      "primary": "../../edu_screnshot/14_classroom_all_lecture_replay.png",
+      "secondary": [],
+      "line": 93
+    },
+    {
+      "routePath": "/classroom/required-learning",
+      "section": "Classroom",
+      "primary": "../../edu_screnshot/15_classroom_required_learning_empty.png",
+      "secondary": [],
+      "line": 98
+    },
+    {
+      "routePath": "/community/survey",
+      "section": "Community",
+      "primary": "../../edu_screnshot/05_community_survey.png",
+      "secondary": [],
+      "line": 109
+    },
+    {
+      "routePath": "/community/open-board",
+      "section": "Community",
+      "primary": "../../edu_screnshot/06_open_board.png",
+      "secondary": [
+        "../../edu_screnshot/35_community_open_board_write_form.png"
+      ],
+      "line": 114
+    },
+    {
+      "routePath": "/community/anonymous-board",
+      "section": "Community",
+      "primary": "../../edu_screnshot/16_community_anonymous_board.png",
+      "secondary": [],
+      "line": 128
+    },
+    {
+      "routePath": "/community/class-roster",
+      "section": "Community",
+      "primary": "../../edu_screnshot/17_community_class_roster.png",
+      "secondary": [],
+      "line": 133
+    },
+    {
+      "routePath": "/help/notice",
+      "section": "Helpdesk",
+      "primary": "../../edu_screnshot/07_helpdesk_notice.png",
+      "secondary": [
+        "../../edu_screnshot/33_helpdesk_notice_detail.png"
+      ],
+      "line": 140
+    },
+    {
+      "routePath": "/help/faq",
+      "section": "Helpdesk",
+      "primary": "../../edu_screnshot/08_helpdesk_faq_empty.png",
+      "secondary": [],
+      "line": 152
+    },
+    {
+      "routePath": "/help/inquiries",
+      "section": "Helpdesk",
+      "primary": "../../edu_screnshot/09_helpdesk_inquiry_empty.png",
+      "secondary": [
+        "../../edu_screnshot/10_helpdesk_inquiry_form.png"
+      ],
+      "line": 161
+    },
+    {
+      "routePath": "/help/rules",
+      "section": "Helpdesk",
+      "primary": "../../edu_screnshot/18_helpdesk_academic_rules.png",
+      "secondary": [
+        "../../edu_screnshot/34_helpdesk_academic_rules_expanded_attendance.png"
+      ],
+      "line": 174
+    },
+    {
+      "routePath": "/mentoring/qna",
+      "section": "Mentoring",
+      "primary": "../../edu_screnshot/19_mentoring_qna_board.png",
+      "secondary": [],
+      "line": 188
+    },
+    {
+      "routePath": "/mentoring/story",
+      "section": "Mentoring",
+      "primary": "../../edu_screnshot/11_mentoring_story_board.png",
+      "secondary": [],
+      "line": 193
+    },
+    {
+      "routePath": "/mentoring/notice",
+      "section": "Mentoring",
+      "primary": "../../edu_screnshot/20_mentoring_notice_board.png",
+      "secondary": [],
+      "line": 198
+    },
+    {
+      "routePath": "/mentoring/meetup/apply",
+      "section": "Mentoring",
+      "primary": "../../edu_screnshot/21_mentoring_meetup_apply.png",
+      "secondary": [],
+      "line": 203
+    },
+    {
+      "routePath": "/mentoring/meetup/info",
+      "section": "Mentoring",
+      "primary": "../../edu_screnshot/22_mentoring_meetup_info_empty.png",
+      "secondary": [],
+      "line": 208
+    },
+    {
+      "routePath": "/mentoring/meetup/reviews",
+      "section": "Mentoring",
+      "primary": "../../edu_screnshot/23_mentoring_meetup_review_board.png",
+      "secondary": [
+        "../../edu_screnshot/24_mentoring_meetup_review_write_form.png"
+      ],
+      "line": 213
+    },
+    {
+      "routePath": "/mycampus/level-points",
+      "section": "MyCampus",
+      "primary": "../../edu_screnshot/25_mycampus_level_points_dashboard.png",
+      "secondary": [],
+      "line": 228
+    },
+    {
+      "routePath": "/mycampus/attendance",
+      "section": "MyCampus",
+      "primary": "../../edu_screnshot/26_mycampus_attendance_status.png",
+      "secondary": [],
+      "line": 237
+    },
+    {
+      "routePath": "/mycampus/learning/elearning",
+      "section": "MyCampus",
+      "primary": "../../edu_screnshot/27_mycampus_learning_elearning_empty.png",
+      "secondary": [],
+      "line": 242
+    },
+    {
+      "routePath": "/mycampus/bookmarks",
+      "section": "MyCampus",
+      "primary": "../../edu_screnshot/28_mycampus_bookmarks_empty.png",
+      "secondary": [],
+      "line": 247
+    },
+    {
+      "routePath": "/mycampus/documents",
+      "section": "MyCampus",
+      "primary": "../../edu_screnshot/29_mycampus_document_submission_empty.png",
+      "secondary": [
+        "../../edu_screnshot/30_mycampus_document_submission_write_form.png"
+      ],
+      "line": 252
+    },
+    {
+      "routePath": "/mycampus/pledge",
+      "section": "MyCampus",
+      "primary": "../../edu_screnshot/31_mycampus_student_pledge_list.png",
+      "secondary": [],
+      "line": 260
+    },
+    {
+      "routePath": "/mycampus/education-status",
+      "section": "MyCampus",
+      "primary": "../../edu_screnshot/32_mycampus_education_status.png",
+      "secondary": [],
+      "line": 265
+    },
+    {
+      "routePath": "/notifications",
+      "section": "Notifications / profile / error",
+      "primary": "../../edu_screnshot/36_notification_inbox.png",
+      "secondary": [
+        "../../edu_screnshot/37_profile_click_no_dropdown_notification_page.png"
+      ],
+      "line": 272
+    },
+    {
+      "routePath": "/403",
+      "section": "Notifications / profile / error",
+      "primary": "../../edu_screnshot/39_mycampus_ebook_403_forbidden.png",
+      "secondary": [],
+      "line": 284
+    }
+  ],
+  "actualScreenshots": [
+    "../../edu_screnshot/01_home_dashboard.png",
+    "../../edu_screnshot/02_classroom_weekly_curriculum.png",
+    "../../edu_screnshot/03_quest_evaluation_list.png",
+    "../../edu_screnshot/04_learning_resources.png",
+    "../../edu_screnshot/05_community_survey.png",
+    "../../edu_screnshot/06_open_board.png",
+    "../../edu_screnshot/07_helpdesk_notice.png",
+    "../../edu_screnshot/08_helpdesk_faq_empty.png",
+    "../../edu_screnshot/09_helpdesk_inquiry_empty.png",
+    "../../edu_screnshot/10_helpdesk_inquiry_form.png",
+    "../../edu_screnshot/11_mentoring_story_board.png",
+    "../../edu_screnshot/12_classroom_curriculum_week_toggle_attempt.png",
+    "../../edu_screnshot/13_classroom_my_lecture_replay.png",
+    "../../edu_screnshot/14_classroom_all_lecture_replay.png",
+    "../../edu_screnshot/15_classroom_required_learning_empty.png",
+    "../../edu_screnshot/16_community_anonymous_board.png",
+    "../../edu_screnshot/17_community_class_roster.png",
+    "../../edu_screnshot/18_helpdesk_academic_rules.png",
+    "../../edu_screnshot/19_mentoring_qna_board.png",
+    "../../edu_screnshot/20_mentoring_notice_board.png",
+    "../../edu_screnshot/21_mentoring_meetup_apply.png",
+    "../../edu_screnshot/22_mentoring_meetup_info_empty.png",
+    "../../edu_screnshot/23_mentoring_meetup_review_board.png",
+    "../../edu_screnshot/24_mentoring_meetup_review_write_form.png",
+    "../../edu_screnshot/25_mycampus_level_points_dashboard.png",
+    "../../edu_screnshot/26_mycampus_attendance_status.png",
+    "../../edu_screnshot/27_mycampus_learning_elearning_empty.png",
+    "../../edu_screnshot/28_mycampus_bookmarks_empty.png",
+    "../../edu_screnshot/29_mycampus_document_submission_empty.png",
+    "../../edu_screnshot/30_mycampus_document_submission_write_form.png",
+    "../../edu_screnshot/31_mycampus_student_pledge_list.png",
+    "../../edu_screnshot/32_mycampus_education_status.png",
+    "../../edu_screnshot/33_helpdesk_notice_detail.png",
+    "../../edu_screnshot/34_helpdesk_academic_rules_expanded_attendance.png",
+    "../../edu_screnshot/35_community_open_board_write_form.png",
+    "../../edu_screnshot/36_notification_inbox.png",
+    "../../edu_screnshot/37_profile_click_no_dropdown_notification_page.png",
+    "../../edu_screnshot/38_classroom_quest_detail_completed.png",
+    "../../edu_screnshot/39_mycampus_ebook_403_forbidden.png",
+    "../../edu_screnshot/40_attendance_detail_from_home_more.png"
+  ],
+  "frontendBoardCodes": [
+    {
+      "key": "notice",
+      "code": "notice",
+      "source": "frontend/src/constants/boardCodes.js",
+      "line": 2
+    },
+    {
+      "key": "faq",
+      "code": "faq",
+      "source": "frontend/src/constants/boardCodes.js",
+      "line": 3
+    },
+    {
+      "key": "rule",
+      "code": "rule",
+      "source": "frontend/src/constants/boardCodes.js",
+      "line": 4
+    },
+    {
+      "key": "free",
+      "code": "free",
+      "source": "frontend/src/constants/boardCodes.js",
+      "line": 5
+    },
+    {
+      "key": "anonymity",
+      "code": "anonymity",
+      "source": "frontend/src/constants/boardCodes.js",
+      "line": 6
+    },
+    {
+      "key": "documents",
+      "code": "doc-req",
+      "source": "frontend/src/constants/boardCodes.js",
+      "line": 7
+    },
+    {
+      "key": "mentoringStory",
+      "code": "mento-state",
+      "source": "frontend/src/constants/boardCodes.js",
+      "line": 8
+    },
+    {
+      "key": "mentoringQna",
+      "code": "mento-qna",
+      "source": "frontend/src/constants/boardCodes.js",
+      "line": 9
+    },
+    {
+      "key": "mentoringNotice",
+      "code": "mento-notice",
+      "source": "frontend/src/constants/boardCodes.js",
+      "line": 10
+    },
+    {
+      "key": "meetupInfo",
+      "code": "meeting-info",
+      "source": "frontend/src/constants/boardCodes.js",
+      "line": 11
+    },
+    {
+      "key": "meetupReview",
+      "code": "mento-review",
+      "source": "frontend/src/constants/boardCodes.js",
+      "line": 12
+    }
+  ],
+  "backendBoardCodes": [
+    {
+      "name": "공지사항",
+      "code": "notice",
+      "boardType": "NOTICE",
+      "description": "HELP DESK 공지사항",
+      "source": "backend V1__init_schema.sql",
+      "line": 852
+    },
+    {
+      "name": "FAQ",
+      "code": "faq",
+      "boardType": "FAQ",
+      "description": "자주 묻는 질문",
+      "source": "backend V1__init_schema.sql",
+      "line": 852
+    },
+    {
+      "name": "학사규정",
+      "code": "rule",
+      "boardType": "ACADEMIC_RULE",
+      "description": "학사규정 게시판",
+      "source": "backend V1__init_schema.sql",
+      "line": 853
+    },
+    {
+      "name": "자유게시판",
+      "code": "free",
+      "boardType": "NORMAL",
+      "description": "교육생 자유게시판",
+      "source": "backend V1__init_schema.sql",
+      "line": 854
+    },
+    {
+      "name": "익명게시판",
+      "code": "anonymity",
+      "boardType": "ANONYMOUS",
+      "description": "익명 게시판",
+      "source": "backend V1__init_schema.sql",
+      "line": 855
+    },
+    {
+      "name": "서류 제출 안내",
+      "code": "doc-req",
+      "boardType": "NOTICE",
+      "description": "서류 제출 안내 및 첨부파일 게시판",
+      "source": "backend V1__init_schema.sql",
+      "line": 856
+    },
+    {
+      "name": "멘토 현황",
+      "code": "mento-state",
+      "boardType": "MENTORING",
+      "description": "멘토 현황 게시판",
+      "source": "backend V1__init_schema.sql",
+      "line": 857
+    },
+    {
+      "name": "멘토 Q&A",
+      "code": "mento-qna",
+      "boardType": "MENTORING",
+      "description": "멘토 Q&A 게시판",
+      "source": "backend V1__init_schema.sql",
+      "line": 858
+    },
+    {
+      "name": "멘토링 공지사항",
+      "code": "mento-notice",
+      "boardType": "MENTORING",
+      "description": "멘토링 공지사항",
+      "source": "backend V1__init_schema.sql",
+      "line": 859
+    },
+    {
+      "name": "간담회 정보",
+      "code": "meeting-info",
+      "boardType": "MEETUP_INFO",
+      "description": "간담회 신청 및 결과 안내 게시판",
+      "source": "backend V1__init_schema.sql",
+      "line": 860
+    },
+    {
+      "name": "간담회 후기",
+      "code": "mento-review",
+      "boardType": "MEETUP_REVIEW",
+      "description": "간담회 후기 게시판",
+      "source": "backend V1__init_schema.sql",
+      "line": 862
+    }
+  ],
+  "boardCodeAudit": [
+    {
+      "code": "anonymity",
+      "inFrontendConstants": true,
+      "inBackendSeed": true,
+      "serviceUsages": [],
+      "status": "OK",
+      "notes": []
+    },
+    {
+      "code": "doc-req",
+      "inFrontendConstants": true,
+      "inBackendSeed": true,
+      "serviceUsages": [],
+      "status": "OK",
+      "notes": []
+    },
+    {
+      "code": "faq",
+      "inFrontendConstants": true,
+      "inBackendSeed": true,
+      "serviceUsages": [],
+      "status": "OK",
+      "notes": []
+    },
+    {
+      "code": "free",
+      "inFrontendConstants": true,
+      "inBackendSeed": true,
+      "serviceUsages": [],
+      "status": "OK",
+      "notes": []
+    },
+    {
+      "code": "meeting-info",
+      "inFrontendConstants": true,
+      "inBackendSeed": true,
+      "serviceUsages": [],
+      "status": "OK",
+      "notes": []
+    },
+    {
+      "code": "mento-notice",
+      "inFrontendConstants": true,
+      "inBackendSeed": true,
+      "serviceUsages": [],
+      "status": "OK",
+      "notes": []
+    },
+    {
+      "code": "mento-qna",
+      "inFrontendConstants": true,
+      "inBackendSeed": true,
+      "serviceUsages": [],
+      "status": "OK",
+      "notes": []
+    },
+    {
+      "code": "mento-review",
+      "inFrontendConstants": true,
+      "inBackendSeed": true,
+      "serviceUsages": [],
+      "status": "OK",
+      "notes": []
+    },
+    {
+      "code": "mento-state",
+      "inFrontendConstants": true,
+      "inBackendSeed": true,
+      "serviceUsages": [],
+      "status": "OK",
+      "notes": []
+    },
+    {
+      "code": "notice",
+      "inFrontendConstants": true,
+      "inBackendSeed": true,
+      "serviceUsages": [],
+      "status": "OK",
+      "notes": []
+    },
+    {
+      "code": "rule",
+      "inFrontendConstants": true,
+      "inBackendSeed": true,
+      "serviceUsages": [],
+      "status": "OK",
+      "notes": []
+    }
+  ],
+  "serviceBoardUsages": [],
+  "canonicalRows": [
+    {
+      "routePath": "/login",
+      "routeName": "login",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "aliasOrLegacyPath": [],
+      "frameSection": "FRAME.md §19 Route 제안",
+      "screenshotKey": "",
+      "screenshotPath": "",
+      "secondaryScreenshotPaths": [],
+      "apiEndpoints": [
+        "POST /api/v1/auth/login",
+        "GET /api/v1/auth/me"
+      ],
+      "boardCodes": [],
+      "expectedDataShape": "form submit response or auth/session object",
+      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "evidenceApiPath": "verification-pack/api/phase-0/login.json",
+      "evidenceScreenshotPath": "NO_SCREENSHOT",
+      "owner": "frontend-phase-0-contract-lock",
+      "status": "NO_SCREENSHOT",
+      "notes": [
+        "NO_SCREENSHOT: no primary screenshot mapped in 05-screenshot-reference-map.md"
+      ]
+    },
+    {
+      "routePath": "/",
+      "routeName": "",
+      "routeKind": "redirect",
+      "sourceOfTruth": "router-only",
+      "aliasOrLegacyPath": [],
+      "frameSection": "FRAME.md §5 홈 대시보드 프레임",
+      "screenshotKey": "",
+      "screenshotPath": "",
+      "secondaryScreenshotPaths": [],
+      "apiEndpoints": [],
+      "boardCodes": [],
+      "expectedDataShape": "N/A",
+      "mockAllowed": "n/a",
+      "evidenceApiPath": "N/A",
+      "evidenceScreenshotPath": "NO_SCREENSHOT",
+      "owner": "frontend-phase-0-contract-lock",
+      "status": "READY",
+      "notes": [
+        "redirects to /dashboard"
+      ]
+    },
+    {
+      "routePath": "/dashboard",
+      "routeName": "dashboard",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "aliasOrLegacyPath": [],
+      "frameSection": "FRAME.md §5 홈 대시보드 프레임",
+      "screenshotKey": "01_home_dashboard.png",
+      "screenshotPath": "../../edu_screnshot/01_home_dashboard.png",
+      "secondaryScreenshotPaths": [
+        "../../edu_screnshot/40_attendance_detail_from_home_more.png"
+      ],
+      "apiEndpoints": [
+        "GET /api/v1/auth/me",
+        "GET /api/v1/users/me/campus-summary",
+        "GET /api/v1/points/my/summary",
+        "GET /api/v1/notifications/my"
+      ],
+      "boardCodes": [],
+      "expectedDataShape": "summary cards, preview lists, notifications, user/campus summary",
+      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "evidenceApiPath": "verification-pack/api/phase-0/dashboard.json",
+      "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/dashboard.png",
+      "owner": "frontend-phase-0-contract-lock",
+      "status": "READY",
+      "notes": []
+    },
+    {
+      "routePath": "/mycampus/level-points",
+      "routeName": "mycampus-level-points",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "aliasOrLegacyPath": [],
+      "frameSection": "FRAME.md §16 마이캠퍼스 프레임",
+      "screenshotKey": "25_mycampus_level_points_dashboard.png",
+      "screenshotPath": "../../edu_screnshot/25_mycampus_level_points_dashboard.png",
+      "secondaryScreenshotPaths": [],
+      "apiEndpoints": [
+        "GET /api/v1/points/my/summary",
+        "GET /api/v1/users/me/campus-summary",
+        "GET /api/v1/points/my/transactions"
+      ],
+      "boardCodes": [],
+      "expectedDataShape": "page-specific DTO or paged list normalized by frontend service",
+      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "evidenceApiPath": "verification-pack/api/phase-0/mycampus-level-points.json",
+      "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/mycampus-level-points.png",
+      "owner": "frontend-phase-0-contract-lock",
+      "status": "READY",
+      "notes": []
+    },
+    {
+      "routePath": "/mycampus/attendance",
+      "routeName": "mycampus-attendance",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "aliasOrLegacyPath": [],
+      "frameSection": "FRAME.md §16 마이캠퍼스 프레임",
+      "screenshotKey": "26_mycampus_attendance_status.png",
+      "screenshotPath": "../../edu_screnshot/26_mycampus_attendance_status.png",
+      "secondaryScreenshotPaths": [],
+      "apiEndpoints": [
+        "GET /api/v1/attendance/my"
+      ],
+      "boardCodes": [],
+      "expectedDataShape": "page-specific DTO or paged list normalized by frontend service",
+      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "evidenceApiPath": "verification-pack/api/phase-0/mycampus-attendance.json",
+      "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/mycampus-attendance.png",
+      "owner": "frontend-phase-0-contract-lock",
+      "status": "READY",
+      "notes": []
+    },
+    {
+      "routePath": "/mycampus/elearning",
+      "routeName": "mycampus-elearning",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "aliasOrLegacyPath": [
+        "/mycampus/learning/elearning"
+      ],
+      "frameSection": "FRAME.md §16 마이캠퍼스 프레임",
+      "screenshotKey": "27_mycampus_learning_elearning_empty.png",
+      "screenshotPath": "../../edu_screnshot/27_mycampus_learning_elearning_empty.png",
+      "secondaryScreenshotPaths": [],
+      "apiEndpoints": [
+        "GET /api/v1/learning/progress/my"
+      ],
+      "boardCodes": [],
+      "expectedDataShape": "page-specific DTO or paged list normalized by frontend service",
+      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "evidenceApiPath": "verification-pack/api/phase-0/mycampus-elearning.json",
+      "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/mycampus-elearning.png",
+      "owner": "frontend-phase-0-contract-lock",
+      "status": "READY",
+      "notes": []
+    },
+    {
+      "routePath": "/mycampus/bookmarks",
+      "routeName": "mycampus-bookmarks",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "aliasOrLegacyPath": [],
+      "frameSection": "FRAME.md §16 마이캠퍼스 프레임",
+      "screenshotKey": "28_mycampus_bookmarks_empty.png",
+      "screenshotPath": "../../edu_screnshot/28_mycampus_bookmarks_empty.png",
+      "secondaryScreenshotPaths": [],
+      "apiEndpoints": [
+        "GET /api/v1/bookmarks/my",
+        "GET /api/v1/learning/contents/my-selected"
+      ],
+      "boardCodes": [],
+      "expectedDataShape": "page-specific DTO or paged list normalized by frontend service",
+      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "evidenceApiPath": "verification-pack/api/phase-0/mycampus-bookmarks.json",
+      "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/mycampus-bookmarks.png",
+      "owner": "frontend-phase-0-contract-lock",
+      "status": "READY",
+      "notes": []
+    },
+    {
+      "routePath": "/mycampus/documents",
+      "routeName": "mycampus-documents",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "aliasOrLegacyPath": [],
+      "frameSection": "FRAME.md §16 마이캠퍼스 프레임",
+      "screenshotKey": "29_mycampus_document_submission_empty.png",
+      "screenshotPath": "../../edu_screnshot/29_mycampus_document_submission_empty.png",
+      "secondaryScreenshotPaths": [
+        "../../edu_screnshot/30_mycampus_document_submission_write_form.png"
+      ],
+      "apiEndpoints": [
+        "GET /api/v1/boards/doc-req/posts"
+      ],
+      "boardCodes": [
+        "doc-req"
+      ],
+      "expectedDataShape": "page-specific DTO or paged list normalized by frontend service",
+      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "evidenceApiPath": "verification-pack/api/phase-0/mycampus-documents.json",
+      "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/mycampus-documents.png",
+      "owner": "frontend-phase-0-contract-lock",
+      "status": "READY",
+      "notes": []
+    },
+    {
+      "routePath": "/mycampus/documents/write",
+      "routeName": "mycampus-document-write",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "aliasOrLegacyPath": [],
+      "frameSection": "FRAME.md §16 마이캠퍼스 프레임",
+      "screenshotKey": "",
+      "screenshotPath": "",
+      "secondaryScreenshotPaths": [],
+      "apiEndpoints": [
+        "GET /api/v1/boards/doc-req/categories",
+        "POST /api/v1/files",
+        "POST /api/v1/boards/doc-req/posts"
+      ],
+      "boardCodes": [
+        "doc-req"
+      ],
+      "expectedDataShape": "form submit response or auth/session object",
+      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "evidenceApiPath": "verification-pack/api/phase-0/mycampus-documents-write.json",
+      "evidenceScreenshotPath": "NO_SCREENSHOT",
+      "owner": "frontend-phase-0-contract-lock",
+      "status": "NO_SCREENSHOT",
+      "notes": [
+        "NO_SCREENSHOT: no primary screenshot mapped in 05-screenshot-reference-map.md"
+      ]
+    },
+    {
+      "routePath": "/mycampus/pledges",
+      "routeName": "mycampus-pledges",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "aliasOrLegacyPath": [
+        "/mycampus/pledge"
+      ],
+      "frameSection": "FRAME.md §16 마이캠퍼스 프레임",
+      "screenshotKey": "31_mycampus_student_pledge_list.png",
+      "screenshotPath": "../../edu_screnshot/31_mycampus_student_pledge_list.png",
+      "secondaryScreenshotPaths": [],
+      "apiEndpoints": [
+        "GET /api/v1/agreements/my",
+        "GET /api/v1/agreements"
+      ],
+      "boardCodes": [],
+      "expectedDataShape": "page-specific DTO or paged list normalized by frontend service",
+      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "evidenceApiPath": "verification-pack/api/phase-0/mycampus-pledges.json",
+      "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/mycampus-pledges.png",
+      "owner": "frontend-phase-0-contract-lock",
+      "status": "READY",
+      "notes": []
+    },
+    {
+      "routePath": "/mycampus/education-status",
+      "routeName": "mycampus-education-status",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "aliasOrLegacyPath": [],
+      "frameSection": "FRAME.md §16 마이캠퍼스 프레임",
+      "screenshotKey": "32_mycampus_education_status.png",
+      "screenshotPath": "../../edu_screnshot/32_mycampus_education_status.png",
+      "secondaryScreenshotPaths": [],
+      "apiEndpoints": [
+        "GET /api/v1/points/my/summary",
+        "GET /api/v1/users/me/campus-summary"
+      ],
+      "boardCodes": [],
+      "expectedDataShape": "page-specific DTO or paged list normalized by frontend service",
+      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "evidenceApiPath": "verification-pack/api/phase-0/mycampus-education-status.json",
+      "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/mycampus-education-status.png",
+      "owner": "frontend-phase-0-contract-lock",
+      "status": "READY",
+      "notes": []
+    },
+    {
+      "routePath": "/mycampus/profile",
+      "routeName": "mycampus-profile",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "aliasOrLegacyPath": [],
+      "frameSection": "FRAME.md §16 마이캠퍼스 프레임",
+      "screenshotKey": "",
+      "screenshotPath": "",
+      "secondaryScreenshotPaths": [],
+      "apiEndpoints": [
+        "GET /api/v1/users/me",
+        "PATCH /api/v1/users/me"
+      ],
+      "boardCodes": [],
+      "expectedDataShape": "page-specific DTO or paged list normalized by frontend service",
+      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "evidenceApiPath": "verification-pack/api/phase-0/mycampus-profile.json",
+      "evidenceScreenshotPath": "NO_SCREENSHOT",
+      "owner": "frontend-phase-0-contract-lock",
+      "status": "NO_SCREENSHOT",
+      "notes": [
+        "NO_SCREENSHOT: no primary screenshot mapped in 05-screenshot-reference-map.md"
+      ]
+    },
+    {
+      "routePath": "/mycampus/password",
+      "routeName": "mycampus-password",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "aliasOrLegacyPath": [],
+      "frameSection": "FRAME.md §16 마이캠퍼스 프레임",
+      "screenshotKey": "",
+      "screenshotPath": "",
+      "secondaryScreenshotPaths": [],
+      "apiEndpoints": [
+        "PATCH /api/v1/auth/password"
+      ],
+      "boardCodes": [],
+      "expectedDataShape": "form submit response or auth/session object",
+      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "evidenceApiPath": "verification-pack/api/phase-0/mycampus-password.json",
+      "evidenceScreenshotPath": "NO_SCREENSHOT",
+      "owner": "frontend-phase-0-contract-lock",
+      "status": "NO_SCREENSHOT",
+      "notes": [
+        "NO_SCREENSHOT: no primary screenshot mapped in 05-screenshot-reference-map.md"
+      ]
+    },
+    {
+      "routePath": "/classroom/my-replays",
+      "routeName": "classroom-my-replays",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "aliasOrLegacyPath": [],
+      "frameSection": "FRAME.md §9 강의실 — 강의 다시보기 / 필수학습 프레임",
+      "screenshotKey": "13_classroom_my_lecture_replay.png",
+      "screenshotPath": "../../edu_screnshot/13_classroom_my_lecture_replay.png",
+      "secondaryScreenshotPaths": [],
+      "apiEndpoints": [
+        "GET /api/v1/course-sessions/replays"
+      ],
+      "boardCodes": [],
+      "expectedDataShape": "page-specific DTO or paged list normalized by frontend service",
+      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "evidenceApiPath": "verification-pack/api/phase-0/classroom-my-replays.json",
+      "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/classroom-my-replays.png",
+      "owner": "frontend-phase-0-contract-lock",
+      "status": "READY",
+      "notes": []
+    },
+    {
+      "routePath": "/classroom/all-replays",
+      "routeName": "classroom-all-replays",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "aliasOrLegacyPath": [],
+      "frameSection": "FRAME.md §9 강의실 — 강의 다시보기 / 필수학습 프레임",
+      "screenshotKey": "14_classroom_all_lecture_replay.png",
+      "screenshotPath": "../../edu_screnshot/14_classroom_all_lecture_replay.png",
+      "secondaryScreenshotPaths": [],
+      "apiEndpoints": [
+        "GET /api/v1/course-sessions/replays"
+      ],
+      "boardCodes": [],
+      "expectedDataShape": "page-specific DTO or paged list normalized by frontend service",
+      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "evidenceApiPath": "verification-pack/api/phase-0/classroom-all-replays.json",
+      "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/classroom-all-replays.png",
+      "owner": "frontend-phase-0-contract-lock",
+      "status": "READY",
+      "notes": []
+    },
+    {
+      "routePath": "/classroom/curriculum",
+      "routeName": "classroom-curriculum",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "aliasOrLegacyPath": [],
+      "frameSection": "FRAME.md §6 강의실 — 주차별 커리큘럼 프레임",
+      "screenshotKey": "02_classroom_weekly_curriculum.png",
+      "screenshotPath": "../../edu_screnshot/02_classroom_weekly_curriculum.png",
+      "secondaryScreenshotPaths": [
+        "../../edu_screnshot/12_classroom_curriculum_week_toggle_attempt.png"
+      ],
+      "apiEndpoints": [
+        "GET /api/v1/courses/my",
+        "GET /api/v1/courses/{courseId}/weeks",
+        "GET /api/v1/courses/{courseId}/weeks/{weekId}/sessions"
+      ],
+      "boardCodes": [],
+      "expectedDataShape": "page-specific DTO or paged list normalized by frontend service",
+      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "evidenceApiPath": "verification-pack/api/phase-0/classroom-curriculum.json",
+      "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/classroom-curriculum.png",
+      "owner": "frontend-phase-0-contract-lock",
+      "status": "READY",
+      "notes": []
+    },
+    {
+      "routePath": "/classroom/quests",
+      "routeName": "classroom-quests",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "aliasOrLegacyPath": [],
+      "frameSection": "FRAME.md §7 강의실 — Quest/평가 프레임",
+      "screenshotKey": "03_quest_evaluation_list.png",
+      "screenshotPath": "../../edu_screnshot/03_quest_evaluation_list.png",
+      "secondaryScreenshotPaths": [
+        "../../edu_screnshot/38_classroom_quest_detail_completed.png"
+      ],
+      "apiEndpoints": [
+        "GET /api/v1/tasks/my"
+      ],
+      "boardCodes": [],
+      "expectedDataShape": "page-specific DTO or paged list normalized by frontend service",
+      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "evidenceApiPath": "verification-pack/api/phase-0/classroom-quests.json",
+      "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/classroom-quests.png",
+      "owner": "frontend-phase-0-contract-lock",
+      "status": "READY",
+      "notes": []
+    },
+    {
+      "routePath": "/classroom/quests/:id",
+      "routeName": "classroom-quest-detail",
+      "routeKind": "dynamic-page",
+      "sourceOfTruth": "router-only",
+      "aliasOrLegacyPath": [],
+      "frameSection": "FRAME.md §7 강의실 — Quest/평가 프레임",
+      "screenshotKey": "",
+      "screenshotPath": "",
+      "secondaryScreenshotPaths": [],
+      "apiEndpoints": [
+        "GET /api/v1/tasks/{taskId}",
+        "GET /api/v1/tasks/{taskId}/my-result"
+      ],
+      "boardCodes": [],
+      "expectedDataShape": "detail object; route param id must map to API id",
+      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "evidenceApiPath": "verification-pack/api/phase-0/classroom-quests-id.json",
+      "evidenceScreenshotPath": "NO_SCREENSHOT",
+      "owner": "frontend-phase-0-contract-lock",
+      "status": "NO_SCREENSHOT",
+      "notes": [
+        "NO_SCREENSHOT: no primary screenshot mapped in 05-screenshot-reference-map.md"
+      ]
+    },
+    {
+      "routePath": "/classroom/required-learning",
+      "routeName": "classroom-required-learning",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "aliasOrLegacyPath": [],
+      "frameSection": "FRAME.md §9 강의실 — 강의 다시보기 / 필수학습 프레임",
+      "screenshotKey": "15_classroom_required_learning_empty.png",
+      "screenshotPath": "../../edu_screnshot/15_classroom_required_learning_empty.png",
+      "secondaryScreenshotPaths": [],
+      "apiEndpoints": [
+        "GET /api/v1/learning/contents/required"
+      ],
+      "boardCodes": [],
+      "expectedDataShape": "page-specific DTO or paged list normalized by frontend service",
+      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "evidenceApiPath": "verification-pack/api/phase-0/classroom-required-learning.json",
+      "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/classroom-required-learning.png",
+      "owner": "frontend-phase-0-contract-lock",
+      "status": "READY",
+      "notes": []
+    },
+    {
+      "routePath": "/classroom/resources",
+      "routeName": "classroom-resources",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "aliasOrLegacyPath": [],
+      "frameSection": "FRAME.md §8 강의실 — 학습자료 프레임",
+      "screenshotKey": "04_learning_resources.png",
+      "screenshotPath": "../../edu_screnshot/04_learning_resources.png",
+      "secondaryScreenshotPaths": [],
+      "apiEndpoints": [
+        "GET /api/v1/learning/categories",
+        "GET /api/v1/learning/contents"
+      ],
+      "boardCodes": [],
+      "expectedDataShape": "page-specific DTO or paged list normalized by frontend service",
+      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "evidenceApiPath": "verification-pack/api/phase-0/classroom-resources.json",
+      "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/classroom-resources.png",
+      "owner": "frontend-phase-0-contract-lock",
+      "status": "READY",
+      "notes": []
+    },
+    {
+      "routePath": "/classroom/resources/:id",
+      "routeName": "classroom-resource-detail",
+      "routeKind": "dynamic-page",
+      "sourceOfTruth": "router-only",
+      "aliasOrLegacyPath": [],
+      "frameSection": "FRAME.md §8 강의실 — 학습자료 프레임",
+      "screenshotKey": "",
+      "screenshotPath": "",
+      "secondaryScreenshotPaths": [],
+      "apiEndpoints": [
+        "GET /api/v1/learning/contents/{contentId}"
+      ],
+      "boardCodes": [],
+      "expectedDataShape": "detail object; route param id must map to API id",
+      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "evidenceApiPath": "verification-pack/api/phase-0/classroom-resources-id.json",
+      "evidenceScreenshotPath": "NO_SCREENSHOT",
+      "owner": "frontend-phase-0-contract-lock",
+      "status": "NO_SCREENSHOT",
+      "notes": [
+        "NO_SCREENSHOT: no primary screenshot mapped in 05-screenshot-reference-map.md"
+      ]
+    },
+    {
+      "routePath": "/community/surveys",
+      "routeName": "community-surveys",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "aliasOrLegacyPath": [
+        "/community/survey"
+      ],
+      "frameSection": "FRAME.md §10 커뮤니티 — 설문조사 프레임",
+      "screenshotKey": "05_community_survey.png",
+      "screenshotPath": "../../edu_screnshot/05_community_survey.png",
+      "secondaryScreenshotPaths": [],
+      "apiEndpoints": [
+        "GET /api/v1/survey-categories",
+        "GET /api/v1/surveys"
+      ],
+      "boardCodes": [],
+      "expectedDataShape": "page-specific DTO or paged list normalized by frontend service",
+      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "evidenceApiPath": "verification-pack/api/phase-0/community-surveys.json",
+      "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/community-surveys.png",
+      "owner": "frontend-phase-0-contract-lock",
+      "status": "READY",
+      "notes": []
+    },
+    {
+      "routePath": "/community/surveys/:id",
+      "routeName": "community-survey-detail",
+      "routeKind": "dynamic-page",
+      "sourceOfTruth": "router-only",
+      "aliasOrLegacyPath": [],
+      "frameSection": "FRAME.md §10 커뮤니티 — 설문조사 프레임",
+      "screenshotKey": "",
+      "screenshotPath": "",
+      "secondaryScreenshotPaths": [],
+      "apiEndpoints": [
+        "GET /api/v1/surveys/{surveyId}"
+      ],
+      "boardCodes": [],
+      "expectedDataShape": "detail object; route param id must map to API id",
+      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "evidenceApiPath": "verification-pack/api/phase-0/community-surveys-id.json",
+      "evidenceScreenshotPath": "NO_SCREENSHOT",
+      "owner": "frontend-phase-0-contract-lock",
+      "status": "NO_SCREENSHOT",
+      "notes": [
+        "NO_SCREENSHOT: no primary screenshot mapped in 05-screenshot-reference-map.md"
+      ]
+    },
+    {
+      "routePath": "/community/boards/open",
+      "routeName": "community-open-board",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "aliasOrLegacyPath": [
+        "/community/open-board"
+      ],
+      "frameSection": "FRAME.md §11 커뮤니티 — 열린 게시판 / 익명 게시판 프레임",
+      "screenshotKey": "06_open_board.png",
+      "screenshotPath": "../../edu_screnshot/06_open_board.png",
+      "secondaryScreenshotPaths": [
+        "../../edu_screnshot/35_community_open_board_write_form.png"
+      ],
+      "apiEndpoints": [
+        "GET /api/v1/boards/free/posts"
+      ],
+      "boardCodes": [
+        "free"
+      ],
+      "expectedDataShape": "paged board posts: content/items/data with id, title, category, author, date, views",
+      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "evidenceApiPath": "verification-pack/api/phase-0/community-boards-open.json",
+      "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/community-boards-open.png",
+      "owner": "frontend-phase-0-contract-lock",
+      "status": "READY",
+      "notes": []
+    },
+    {
+      "routePath": "/community/boards/open/write",
+      "routeName": "community-open-board-write",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "aliasOrLegacyPath": [],
+      "frameSection": "FRAME.md §11 커뮤니티 — 열린 게시판 / 익명 게시판 프레임",
+      "screenshotKey": "",
+      "screenshotPath": "",
+      "secondaryScreenshotPaths": [],
+      "apiEndpoints": [
+        "GET /api/v1/boards/free/categories",
+        "POST /api/v1/boards/free/posts"
+      ],
+      "boardCodes": [
+        "free"
+      ],
+      "expectedDataShape": "form submit response or auth/session object",
+      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "evidenceApiPath": "verification-pack/api/phase-0/community-boards-open-write.json",
+      "evidenceScreenshotPath": "NO_SCREENSHOT",
+      "owner": "frontend-phase-0-contract-lock",
+      "status": "NO_SCREENSHOT",
+      "notes": [
+        "NO_SCREENSHOT: no primary screenshot mapped in 05-screenshot-reference-map.md"
+      ]
+    },
+    {
+      "routePath": "/community/boards/open/:id",
+      "routeName": "community-open-board-detail",
+      "routeKind": "dynamic-page",
+      "sourceOfTruth": "router-only",
+      "aliasOrLegacyPath": [],
+      "frameSection": "FRAME.md §11 커뮤니티 — 열린 게시판 / 익명 게시판 프레임",
+      "screenshotKey": "",
+      "screenshotPath": "",
+      "secondaryScreenshotPaths": [],
+      "apiEndpoints": [
+        "GET /api/v1/boards/free/posts/{postId}"
+      ],
+      "boardCodes": [
+        "free"
+      ],
+      "expectedDataShape": "detail object; route param id must map to API id",
+      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "evidenceApiPath": "verification-pack/api/phase-0/community-boards-open-id.json",
+      "evidenceScreenshotPath": "NO_SCREENSHOT",
+      "owner": "frontend-phase-0-contract-lock",
+      "status": "NO_SCREENSHOT",
+      "notes": [
+        "NO_SCREENSHOT: no primary screenshot mapped in 05-screenshot-reference-map.md"
+      ]
+    },
+    {
+      "routePath": "/community/boards/anonymous",
+      "routeName": "community-anonymous-board",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "aliasOrLegacyPath": [
+        "/community/anonymous-board"
+      ],
+      "frameSection": "FRAME.md §11 커뮤니티 — 열린 게시판 / 익명 게시판 프레임",
+      "screenshotKey": "16_community_anonymous_board.png",
+      "screenshotPath": "../../edu_screnshot/16_community_anonymous_board.png",
+      "secondaryScreenshotPaths": [],
+      "apiEndpoints": [
+        "GET /api/v1/boards/anonymity/posts"
+      ],
+      "boardCodes": [
+        "anonymity"
+      ],
+      "expectedDataShape": "paged board posts: content/items/data with id, title, category, author, date, views",
+      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "evidenceApiPath": "verification-pack/api/phase-0/community-boards-anonymous.json",
+      "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/community-boards-anonymous.png",
+      "owner": "frontend-phase-0-contract-lock",
+      "status": "READY",
+      "notes": []
+    },
+    {
+      "routePath": "/community/boards/anonymous/:id",
+      "routeName": "community-anonymous-board-detail",
+      "routeKind": "dynamic-page",
+      "sourceOfTruth": "router-only",
+      "aliasOrLegacyPath": [],
+      "frameSection": "FRAME.md §11 커뮤니티 — 열린 게시판 / 익명 게시판 프레임",
+      "screenshotKey": "",
+      "screenshotPath": "",
+      "secondaryScreenshotPaths": [],
+      "apiEndpoints": [
+        "GET /api/v1/boards/anonymity/posts/{postId}"
+      ],
+      "boardCodes": [
+        "anonymity"
+      ],
+      "expectedDataShape": "detail object; route param id must map to API id",
+      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "evidenceApiPath": "verification-pack/api/phase-0/community-boards-anonymous-id.json",
+      "evidenceScreenshotPath": "NO_SCREENSHOT",
+      "owner": "frontend-phase-0-contract-lock",
+      "status": "NO_SCREENSHOT",
+      "notes": [
+        "NO_SCREENSHOT: no primary screenshot mapped in 05-screenshot-reference-map.md"
+      ]
+    },
+    {
+      "routePath": "/community/class-roster",
+      "routeName": "community-class-roster",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "aliasOrLegacyPath": [],
+      "frameSection": "FRAME.md §12 커뮤니티 — 우리반 보기 프레임",
+      "screenshotKey": "17_community_class_roster.png",
+      "screenshotPath": "../../edu_screnshot/17_community_class_roster.png",
+      "secondaryScreenshotPaths": [],
+      "apiEndpoints": [
+        "GET /api/v1/users/students"
+      ],
+      "boardCodes": [],
+      "expectedDataShape": "page-specific DTO or paged list normalized by frontend service",
+      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "evidenceApiPath": "verification-pack/api/phase-0/community-class-roster.json",
+      "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/community-class-roster.png",
+      "owner": "frontend-phase-0-contract-lock",
+      "status": "READY",
+      "notes": []
+    },
+    {
+      "routePath": "/help/notice",
+      "routeName": "help-notice",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "aliasOrLegacyPath": [],
+      "frameSection": "FRAME.md §13 HELP DESK — 공지사항 프레임",
+      "screenshotKey": "07_helpdesk_notice.png",
+      "screenshotPath": "../../edu_screnshot/07_helpdesk_notice.png",
+      "secondaryScreenshotPaths": [
+        "../../edu_screnshot/33_helpdesk_notice_detail.png"
+      ],
+      "apiEndpoints": [
+        "GET /api/v1/boards/notice/posts"
+      ],
+      "boardCodes": [
+        "notice"
+      ],
+      "expectedDataShape": "paged board posts: content/items/data with id, title, category, author, date, views",
+      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "evidenceApiPath": "verification-pack/api/phase-0/help-notice.json",
+      "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/help-notice.png",
+      "owner": "frontend-phase-0-contract-lock",
+      "status": "READY",
+      "notes": []
+    },
+    {
+      "routePath": "/help/notice/:id",
+      "routeName": "help-notice-detail",
+      "routeKind": "dynamic-page",
+      "sourceOfTruth": "router-only",
+      "aliasOrLegacyPath": [],
+      "frameSection": "FRAME.md §13 HELP DESK — 공지사항 프레임",
+      "screenshotKey": "",
+      "screenshotPath": "",
+      "secondaryScreenshotPaths": [],
+      "apiEndpoints": [
+        "GET /api/v1/boards/notice/posts/{postId}"
+      ],
+      "boardCodes": [
+        "notice"
+      ],
+      "expectedDataShape": "detail object; route param id must map to API id",
+      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "evidenceApiPath": "verification-pack/api/phase-0/help-notice-id.json",
+      "evidenceScreenshotPath": "NO_SCREENSHOT",
+      "owner": "frontend-phase-0-contract-lock",
+      "status": "NO_SCREENSHOT",
+      "notes": [
+        "NO_SCREENSHOT: no primary screenshot mapped in 05-screenshot-reference-map.md"
+      ]
+    },
+    {
+      "routePath": "/help/faq",
+      "routeName": "help-faq",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "aliasOrLegacyPath": [],
+      "frameSection": "FRAME.md §14 HELP DESK — FAQ / 1:1 문의 / 학사규정 프레임",
+      "screenshotKey": "08_helpdesk_faq_empty.png",
+      "screenshotPath": "../../edu_screnshot/08_helpdesk_faq_empty.png",
+      "secondaryScreenshotPaths": [],
+      "apiEndpoints": [
+        "GET /api/v1/boards/faq/posts"
+      ],
+      "boardCodes": [
+        "faq"
+      ],
+      "expectedDataShape": "page-specific DTO or paged list normalized by frontend service",
+      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "evidenceApiPath": "verification-pack/api/phase-0/help-faq.json",
+      "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/help-faq.png",
+      "owner": "frontend-phase-0-contract-lock",
+      "status": "READY",
+      "notes": []
+    },
+    {
+      "routePath": "/help/inquiries",
+      "routeName": "help-inquiries",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "aliasOrLegacyPath": [],
+      "frameSection": "FRAME.md §14 HELP DESK — FAQ / 1:1 문의 / 학사규정 프레임",
+      "screenshotKey": "09_helpdesk_inquiry_empty.png",
+      "screenshotPath": "../../edu_screnshot/09_helpdesk_inquiry_empty.png",
+      "secondaryScreenshotPaths": [
+        "../../edu_screnshot/10_helpdesk_inquiry_form.png"
+      ],
+      "apiEndpoints": [
+        "GET /api/v1/inquiries/my"
+      ],
+      "boardCodes": [],
+      "expectedDataShape": "page-specific DTO or paged list normalized by frontend service",
+      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "evidenceApiPath": "verification-pack/api/phase-0/help-inquiries.json",
+      "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/help-inquiries.png",
+      "owner": "frontend-phase-0-contract-lock",
+      "status": "READY",
+      "notes": []
+    },
+    {
+      "routePath": "/help/inquiries/:id",
+      "routeName": "help-inquiry-detail",
+      "routeKind": "dynamic-page",
+      "sourceOfTruth": "router-only",
+      "aliasOrLegacyPath": [],
+      "frameSection": "FRAME.md §14 HELP DESK — FAQ / 1:1 문의 / 학사규정 프레임",
+      "screenshotKey": "",
+      "screenshotPath": "",
+      "secondaryScreenshotPaths": [],
+      "apiEndpoints": [
+        "GET /api/v1/inquiries/{inquiryId}"
+      ],
+      "boardCodes": [],
+      "expectedDataShape": "detail object; route param id must map to API id",
+      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "evidenceApiPath": "verification-pack/api/phase-0/help-inquiries-id.json",
+      "evidenceScreenshotPath": "NO_SCREENSHOT",
+      "owner": "frontend-phase-0-contract-lock",
+      "status": "NO_SCREENSHOT",
+      "notes": [
+        "NO_SCREENSHOT: no primary screenshot mapped in 05-screenshot-reference-map.md"
+      ]
+    },
+    {
+      "routePath": "/help/inquiries/write",
+      "routeName": "help-inquiry-write",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "aliasOrLegacyPath": [],
+      "frameSection": "FRAME.md §14 HELP DESK — FAQ / 1:1 문의 / 학사규정 프레임",
+      "screenshotKey": "",
+      "screenshotPath": "",
+      "secondaryScreenshotPaths": [],
+      "apiEndpoints": [
+        "POST /api/v1/inquiries"
+      ],
+      "boardCodes": [],
+      "expectedDataShape": "form submit response or auth/session object",
+      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "evidenceApiPath": "verification-pack/api/phase-0/help-inquiries-write.json",
+      "evidenceScreenshotPath": "NO_SCREENSHOT",
+      "owner": "frontend-phase-0-contract-lock",
+      "status": "NO_SCREENSHOT",
+      "notes": [
+        "NO_SCREENSHOT: no primary screenshot mapped in 05-screenshot-reference-map.md"
+      ]
+    },
+    {
+      "routePath": "/help/rules",
+      "routeName": "help-rules",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "aliasOrLegacyPath": [],
+      "frameSection": "FRAME.md §14 HELP DESK — FAQ / 1:1 문의 / 학사규정 프레임",
+      "screenshotKey": "18_helpdesk_academic_rules.png",
+      "screenshotPath": "../../edu_screnshot/18_helpdesk_academic_rules.png",
+      "secondaryScreenshotPaths": [
+        "../../edu_screnshot/34_helpdesk_academic_rules_expanded_attendance.png"
+      ],
+      "apiEndpoints": [
+        "GET /api/v1/boards/rule/posts"
+      ],
+      "boardCodes": [
+        "rule"
+      ],
+      "expectedDataShape": "page-specific DTO or paged list normalized by frontend service",
+      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "evidenceApiPath": "verification-pack/api/phase-0/help-rules.json",
+      "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/help-rules.png",
+      "owner": "frontend-phase-0-contract-lock",
+      "status": "READY",
+      "notes": []
+    },
+    {
+      "routePath": "/mentoring/stories",
+      "routeName": "mentoring-stories",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "aliasOrLegacyPath": [
+        "/mentoring/story"
+      ],
+      "frameSection": "FRAME.md §15 멘토링 게시판 프레임",
+      "screenshotKey": "11_mentoring_story_board.png",
+      "screenshotPath": "../../edu_screnshot/11_mentoring_story_board.png",
+      "secondaryScreenshotPaths": [],
+      "apiEndpoints": [
+        "GET /api/v1/boards/mento-state/posts"
+      ],
+      "boardCodes": [
+        "mento-state"
+      ],
+      "expectedDataShape": "paged board posts: content/items/data with id, title, category, author, date, views",
+      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "evidenceApiPath": "verification-pack/api/phase-0/mentoring-stories.json",
+      "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/mentoring-stories.png",
+      "owner": "frontend-phase-0-contract-lock",
+      "status": "READY",
+      "notes": []
+    },
+    {
+      "routePath": "/mentoring/stories/:id",
+      "routeName": "mentoring-story-detail",
+      "routeKind": "dynamic-page",
+      "sourceOfTruth": "router-only",
+      "aliasOrLegacyPath": [],
+      "frameSection": "FRAME.md §15 멘토링 게시판 프레임",
+      "screenshotKey": "",
+      "screenshotPath": "",
+      "secondaryScreenshotPaths": [],
+      "apiEndpoints": [
+        "GET /api/v1/boards/mento-state/posts/{postId}"
+      ],
+      "boardCodes": [
+        "mento-state"
+      ],
+      "expectedDataShape": "detail object; route param id must map to API id",
+      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "evidenceApiPath": "verification-pack/api/phase-0/mentoring-stories-id.json",
+      "evidenceScreenshotPath": "NO_SCREENSHOT",
+      "owner": "frontend-phase-0-contract-lock",
+      "status": "NO_SCREENSHOT",
+      "notes": [
+        "NO_SCREENSHOT: no primary screenshot mapped in 05-screenshot-reference-map.md"
+      ]
+    },
+    {
+      "routePath": "/mentoring/qna",
+      "routeName": "mentoring-qna",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "aliasOrLegacyPath": [],
+      "frameSection": "FRAME.md §15 멘토링 게시판 프레임",
+      "screenshotKey": "19_mentoring_qna_board.png",
+      "screenshotPath": "../../edu_screnshot/19_mentoring_qna_board.png",
+      "secondaryScreenshotPaths": [],
+      "apiEndpoints": [
+        "GET /api/v1/boards/mento-qna/posts"
+      ],
+      "boardCodes": [
+        "mento-qna"
+      ],
+      "expectedDataShape": "paged board posts: content/items/data with id, title, category, author, date, views",
+      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "evidenceApiPath": "verification-pack/api/phase-0/mentoring-qna.json",
+      "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/mentoring-qna.png",
+      "owner": "frontend-phase-0-contract-lock",
+      "status": "READY",
+      "notes": []
+    },
+    {
+      "routePath": "/mentoring/qna/:id",
+      "routeName": "mentoring-qna-detail",
+      "routeKind": "dynamic-page",
+      "sourceOfTruth": "router-only",
+      "aliasOrLegacyPath": [],
+      "frameSection": "FRAME.md §15 멘토링 게시판 프레임",
+      "screenshotKey": "",
+      "screenshotPath": "",
+      "secondaryScreenshotPaths": [],
+      "apiEndpoints": [
+        "GET /api/v1/boards/mento-qna/posts/{postId}"
+      ],
+      "boardCodes": [
+        "mento-qna"
+      ],
+      "expectedDataShape": "detail object; route param id must map to API id",
+      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "evidenceApiPath": "verification-pack/api/phase-0/mentoring-qna-id.json",
+      "evidenceScreenshotPath": "NO_SCREENSHOT",
+      "owner": "frontend-phase-0-contract-lock",
+      "status": "NO_SCREENSHOT",
+      "notes": [
+        "NO_SCREENSHOT: no primary screenshot mapped in 05-screenshot-reference-map.md"
+      ]
+    },
+    {
+      "routePath": "/mentoring/notice",
+      "routeName": "mentoring-notice",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "aliasOrLegacyPath": [],
+      "frameSection": "FRAME.md §15 멘토링 게시판 프레임",
+      "screenshotKey": "20_mentoring_notice_board.png",
+      "screenshotPath": "../../edu_screnshot/20_mentoring_notice_board.png",
+      "secondaryScreenshotPaths": [],
+      "apiEndpoints": [
+        "GET /api/v1/boards/mento-notice/posts"
+      ],
+      "boardCodes": [
+        "mento-notice"
+      ],
+      "expectedDataShape": "paged board posts: content/items/data with id, title, category, author, date, views",
+      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "evidenceApiPath": "verification-pack/api/phase-0/mentoring-notice.json",
+      "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/mentoring-notice.png",
+      "owner": "frontend-phase-0-contract-lock",
+      "status": "READY",
+      "notes": []
+    },
+    {
+      "routePath": "/mentoring/notice/:id",
+      "routeName": "mentoring-notice-detail",
+      "routeKind": "dynamic-page",
+      "sourceOfTruth": "router-only",
+      "aliasOrLegacyPath": [],
+      "frameSection": "FRAME.md §15 멘토링 게시판 프레임",
+      "screenshotKey": "",
+      "screenshotPath": "",
+      "secondaryScreenshotPaths": [],
+      "apiEndpoints": [
+        "GET /api/v1/boards/mento-notice/posts/{postId}"
+      ],
+      "boardCodes": [
+        "mento-notice"
+      ],
+      "expectedDataShape": "detail object; route param id must map to API id",
+      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "evidenceApiPath": "verification-pack/api/phase-0/mentoring-notice-id.json",
+      "evidenceScreenshotPath": "NO_SCREENSHOT",
+      "owner": "frontend-phase-0-contract-lock",
+      "status": "NO_SCREENSHOT",
+      "notes": [
+        "NO_SCREENSHOT: no primary screenshot mapped in 05-screenshot-reference-map.md"
+      ]
+    },
+    {
+      "routePath": "/mentoring/meetups/apply",
+      "routeName": "mentoring-meetup-apply",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "aliasOrLegacyPath": [
+        "/mentoring/meetup/apply"
+      ],
+      "frameSection": "FRAME.md §15 멘토링 게시판 프레임",
+      "screenshotKey": "21_mentoring_meetup_apply.png",
+      "screenshotPath": "../../edu_screnshot/21_mentoring_meetup_apply.png",
+      "secondaryScreenshotPaths": [],
+      "apiEndpoints": [],
+      "boardCodes": [],
+      "expectedDataShape": "N/A",
+      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "evidenceApiPath": "N/A",
+      "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/mentoring-meetups-apply.png",
+      "owner": "frontend-phase-0-contract-lock",
+      "status": "READY",
+      "notes": []
+    },
+    {
+      "routePath": "/mentoring/meetups/info",
+      "routeName": "mentoring-meetup-info",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "aliasOrLegacyPath": [
+        "/mentoring/meetup/info"
+      ],
+      "frameSection": "FRAME.md §15 멘토링 게시판 프레임",
+      "screenshotKey": "22_mentoring_meetup_info_empty.png",
+      "screenshotPath": "../../edu_screnshot/22_mentoring_meetup_info_empty.png",
+      "secondaryScreenshotPaths": [],
+      "apiEndpoints": [
+        "GET /api/v1/boards/meeting-info/posts"
+      ],
+      "boardCodes": [
+        "meeting-info"
+      ],
+      "expectedDataShape": "page-specific DTO or paged list normalized by frontend service",
+      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "evidenceApiPath": "verification-pack/api/phase-0/mentoring-meetups-info.json",
+      "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/mentoring-meetups-info.png",
+      "owner": "frontend-phase-0-contract-lock",
+      "status": "READY",
+      "notes": []
+    },
+    {
+      "routePath": "/mentoring/meetups/reviews",
+      "routeName": "mentoring-meetup-reviews",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "aliasOrLegacyPath": [
+        "/mentoring/meetup/reviews"
+      ],
+      "frameSection": "FRAME.md §15 멘토링 게시판 프레임",
+      "screenshotKey": "23_mentoring_meetup_review_board.png",
+      "screenshotPath": "../../edu_screnshot/23_mentoring_meetup_review_board.png",
+      "secondaryScreenshotPaths": [
+        "../../edu_screnshot/24_mentoring_meetup_review_write_form.png"
+      ],
+      "apiEndpoints": [
+        "GET /api/v1/boards/mento-review/posts"
+      ],
+      "boardCodes": [
+        "mento-review"
+      ],
+      "expectedDataShape": "paged board posts: content/items/data with id, title, category, author, date, views",
+      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "evidenceApiPath": "verification-pack/api/phase-0/mentoring-meetups-reviews.json",
+      "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/mentoring-meetups-reviews.png",
+      "owner": "frontend-phase-0-contract-lock",
+      "status": "READY",
+      "notes": []
+    },
+    {
+      "routePath": "/mentoring/meetups/reviews/:id",
+      "routeName": "mentoring-meetup-review-detail",
+      "routeKind": "dynamic-page",
+      "sourceOfTruth": "router-only",
+      "aliasOrLegacyPath": [],
+      "frameSection": "FRAME.md §15 멘토링 게시판 프레임",
+      "screenshotKey": "",
+      "screenshotPath": "",
+      "secondaryScreenshotPaths": [],
+      "apiEndpoints": [
+        "GET /api/v1/boards/mento-review/posts/{postId}"
+      ],
+      "boardCodes": [
+        "mento-review"
+      ],
+      "expectedDataShape": "detail object; route param id must map to API id",
+      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "evidenceApiPath": "verification-pack/api/phase-0/mentoring-meetups-reviews-id.json",
+      "evidenceScreenshotPath": "NO_SCREENSHOT",
+      "owner": "frontend-phase-0-contract-lock",
+      "status": "NO_SCREENSHOT",
+      "notes": [
+        "NO_SCREENSHOT: no primary screenshot mapped in 05-screenshot-reference-map.md"
+      ]
+    },
+    {
+      "routePath": "/mentoring/meetups/reviews/write",
+      "routeName": "mentoring-meetup-review-write",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "aliasOrLegacyPath": [],
+      "frameSection": "FRAME.md §15 멘토링 게시판 프레임",
+      "screenshotKey": "",
+      "screenshotPath": "",
+      "secondaryScreenshotPaths": [],
+      "apiEndpoints": [
+        "GET /api/v1/boards/mento-review/categories",
+        "POST /api/v1/boards/mento-review/posts"
+      ],
+      "boardCodes": [
+        "mento-review"
+      ],
+      "expectedDataShape": "form submit response or auth/session object",
+      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "evidenceApiPath": "verification-pack/api/phase-0/mentoring-meetups-reviews-write.json",
+      "evidenceScreenshotPath": "NO_SCREENSHOT",
+      "owner": "frontend-phase-0-contract-lock",
+      "status": "NO_SCREENSHOT",
+      "notes": [
+        "NO_SCREENSHOT: no primary screenshot mapped in 05-screenshot-reference-map.md"
+      ]
+    },
+    {
+      "routePath": "/notifications",
+      "routeName": "notifications",
+      "routeKind": "page",
+      "sourceOfTruth": "routes+router",
+      "aliasOrLegacyPath": [],
+      "frameSection": "FRAME.md §17 알림 / 프로필 / 오류 프레임",
+      "screenshotKey": "36_notification_inbox.png",
+      "screenshotPath": "../../edu_screnshot/36_notification_inbox.png",
+      "secondaryScreenshotPaths": [
+        "../../edu_screnshot/37_profile_click_no_dropdown_notification_page.png"
+      ],
+      "apiEndpoints": [
+        "GET /api/v1/notifications/my",
+        "GET /api/v1/notifications/my/unread-count"
+      ],
+      "boardCodes": [],
+      "expectedDataShape": "page-specific DTO or paged list normalized by frontend service",
+      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "evidenceApiPath": "verification-pack/api/phase-0/notifications.json",
+      "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/notifications.png",
+      "owner": "frontend-phase-0-contract-lock",
+      "status": "READY",
+      "notes": []
+    },
+    {
+      "routePath": "/403",
+      "routeName": "forbidden",
+      "routeKind": "error",
+      "sourceOfTruth": "routes+router",
+      "aliasOrLegacyPath": [],
+      "frameSection": "FRAME.md §17 알림 / 프로필 / 오류 프레임",
+      "screenshotKey": "39_mycampus_ebook_403_forbidden.png",
+      "screenshotPath": "../../edu_screnshot/39_mycampus_ebook_403_forbidden.png",
+      "secondaryScreenshotPaths": [],
+      "apiEndpoints": [],
+      "boardCodes": [],
+      "expectedDataShape": "N/A",
+      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "evidenceApiPath": "N/A",
+      "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/403.png",
+      "owner": "frontend-phase-0-contract-lock",
+      "status": "READY",
+      "notes": []
+    },
+    {
+      "routePath": "/404",
+      "routeName": "not-found",
+      "routeKind": "error",
+      "sourceOfTruth": "routes+router",
+      "aliasOrLegacyPath": [],
+      "frameSection": "FRAME.md §17 알림 / 프로필 / 오류 프레임",
+      "screenshotKey": "",
+      "screenshotPath": "",
+      "secondaryScreenshotPaths": [],
+      "apiEndpoints": [],
+      "boardCodes": [],
+      "expectedDataShape": "N/A",
+      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "evidenceApiPath": "N/A",
+      "evidenceScreenshotPath": "NO_SCREENSHOT",
+      "owner": "frontend-phase-0-contract-lock",
+      "status": "NO_SCREENSHOT",
+      "notes": [
+        "NO_SCREENSHOT: no primary screenshot mapped in 05-screenshot-reference-map.md"
+      ]
+    },
+    {
+      "routePath": "/:pathMatch(.*)*",
+      "routeName": "not-found-wildcard",
+      "routeKind": "redirect",
+      "sourceOfTruth": "router-only",
+      "aliasOrLegacyPath": [],
+      "frameSection": "FRAME.md §17 알림 / 프로필 / 오류 프레임",
+      "screenshotKey": "",
+      "screenshotPath": "",
+      "secondaryScreenshotPaths": [],
+      "apiEndpoints": [],
+      "boardCodes": [],
+      "expectedDataShape": "N/A",
+      "mockAllowed": "n/a",
+      "evidenceApiPath": "N/A",
+      "evidenceScreenshotPath": "NO_SCREENSHOT",
+      "owner": "frontend-phase-0-contract-lock",
+      "status": "READY",
+      "notes": [
+        "redirects to /404"
+      ]
+    },
+    {
+      "routePath": "https://job.ssafy.com",
+      "routeName": "JOB SSAFY",
+      "routeKind": "external",
+      "sourceOfTruth": "external",
+      "aliasOrLegacyPath": [],
+      "frameSection": "navigation.js serviceLinks",
+      "screenshotKey": "",
+      "screenshotPath": "",
+      "secondaryScreenshotPaths": [],
+      "apiEndpoints": [],
+      "boardCodes": [],
+      "expectedDataShape": "N/A",
+      "mockAllowed": "n/a",
+      "evidenceApiPath": "N/A",
+      "evidenceScreenshotPath": "NO_SCREENSHOT",
+      "owner": "frontend-phase-0-contract-lock",
+      "status": "READY",
+      "notes": []
+    },
+    {
+      "routePath": "https://project.ssafy.com",
+      "routeName": "SSAFY GIT",
+      "routeKind": "external",
+      "sourceOfTruth": "external",
+      "aliasOrLegacyPath": [],
+      "frameSection": "navigation.js serviceLinks",
+      "screenshotKey": "",
+      "screenshotPath": "",
+      "secondaryScreenshotPaths": [],
+      "apiEndpoints": [],
+      "boardCodes": [],
+      "expectedDataShape": "N/A",
+      "mockAllowed": "n/a",
+      "evidenceApiPath": "N/A",
+      "evidenceScreenshotPath": "NO_SCREENSHOT",
+      "owner": "frontend-phase-0-contract-lock",
+      "status": "READY",
+      "notes": []
+    },
+    {
+      "routePath": "https://meeting.ssafy.com",
+      "routeName": "Meeting! SSAFY",
+      "routeKind": "external",
+      "sourceOfTruth": "external",
+      "aliasOrLegacyPath": [],
+      "frameSection": "navigation.js serviceLinks",
+      "screenshotKey": "",
+      "screenshotPath": "",
+      "secondaryScreenshotPaths": [],
+      "apiEndpoints": [],
+      "boardCodes": [],
+      "expectedDataShape": "N/A",
+      "mockAllowed": "n/a",
+      "evidenceApiPath": "N/A",
+      "evidenceScreenshotPath": "NO_SCREENSHOT",
+      "owner": "frontend-phase-0-contract-lock",
+      "status": "READY",
+      "notes": []
+    }
+  ],
+  "drift": {
+    "routeOnlyConstants": [],
+    "routerOnlyRoutes": [
+      {
+        "routePath": "/",
+        "routeKind": "redirect",
+        "status": "READY",
+        "notes": "intentional redirect route; route-smoke evidence required only"
+      },
+      {
+        "routePath": "/classroom/quests/:id",
+        "routeKind": "dynamic-page",
+        "status": "PARTIAL",
+        "notes": "dynamic route intentionally router-only; representative sample URL required in verification"
+      },
+      {
+        "routePath": "/classroom/resources/:id",
+        "routeKind": "dynamic-page",
+        "status": "PARTIAL",
+        "notes": "dynamic route intentionally router-only; representative sample URL required in verification"
+      },
+      {
+        "routePath": "/community/surveys/:id",
+        "routeKind": "dynamic-page",
+        "status": "PARTIAL",
+        "notes": "dynamic route intentionally router-only; representative sample URL required in verification"
+      },
+      {
+        "routePath": "/community/boards/open/:id",
+        "routeKind": "dynamic-page",
+        "status": "PARTIAL",
+        "notes": "dynamic route intentionally router-only; representative sample URL required in verification"
+      },
+      {
+        "routePath": "/community/boards/anonymous/:id",
+        "routeKind": "dynamic-page",
+        "status": "PARTIAL",
+        "notes": "dynamic route intentionally router-only; representative sample URL required in verification"
+      },
+      {
+        "routePath": "/help/notice/:id",
+        "routeKind": "dynamic-page",
+        "status": "PARTIAL",
+        "notes": "dynamic route intentionally router-only; representative sample URL required in verification"
+      },
+      {
+        "routePath": "/help/inquiries/:id",
+        "routeKind": "dynamic-page",
+        "status": "PARTIAL",
+        "notes": "dynamic route intentionally router-only; representative sample URL required in verification"
+      },
+      {
+        "routePath": "/mentoring/stories/:id",
+        "routeKind": "dynamic-page",
+        "status": "PARTIAL",
+        "notes": "dynamic route intentionally router-only; representative sample URL required in verification"
+      },
+      {
+        "routePath": "/mentoring/qna/:id",
+        "routeKind": "dynamic-page",
+        "status": "PARTIAL",
+        "notes": "dynamic route intentionally router-only; representative sample URL required in verification"
+      },
+      {
+        "routePath": "/mentoring/notice/:id",
+        "routeKind": "dynamic-page",
+        "status": "PARTIAL",
+        "notes": "dynamic route intentionally router-only; representative sample URL required in verification"
+      },
+      {
+        "routePath": "/mentoring/meetups/reviews/:id",
+        "routeKind": "dynamic-page",
+        "status": "PARTIAL",
+        "notes": "dynamic route intentionally router-only; representative sample URL required in verification"
+      },
+      {
+        "routePath": "/:pathMatch(.*)*",
+        "routeKind": "redirect",
+        "status": "READY",
+        "notes": "intentional redirect route; route-smoke evidence required only"
+      }
+    ],
+    "screenshotAliases": [
+      {
+        "legacyPath": "/community/survey",
+        "canonicalPath": "/community/surveys",
+        "source": "05-screenshot-reference-map.md",
+        "line": 109,
+        "status": "RESOLVED_ALIAS"
+      },
+      {
+        "legacyPath": "/community/open-board",
+        "canonicalPath": "/community/boards/open",
+        "source": "05-screenshot-reference-map.md",
+        "line": 114,
+        "status": "RESOLVED_ALIAS"
+      },
+      {
+        "legacyPath": "/community/anonymous-board",
+        "canonicalPath": "/community/boards/anonymous",
+        "source": "05-screenshot-reference-map.md",
+        "line": 128,
+        "status": "RESOLVED_ALIAS"
+      },
+      {
+        "legacyPath": "/mentoring/story",
+        "canonicalPath": "/mentoring/stories",
+        "source": "05-screenshot-reference-map.md",
+        "line": 193,
+        "status": "RESOLVED_ALIAS"
+      },
+      {
+        "legacyPath": "/mentoring/meetup/apply",
+        "canonicalPath": "/mentoring/meetups/apply",
+        "source": "05-screenshot-reference-map.md",
+        "line": 203,
+        "status": "RESOLVED_ALIAS"
+      },
+      {
+        "legacyPath": "/mentoring/meetup/info",
+        "canonicalPath": "/mentoring/meetups/info",
+        "source": "05-screenshot-reference-map.md",
+        "line": 208,
+        "status": "RESOLVED_ALIAS"
+      },
+      {
+        "legacyPath": "/mentoring/meetup/reviews",
+        "canonicalPath": "/mentoring/meetups/reviews",
+        "source": "05-screenshot-reference-map.md",
+        "line": 213,
+        "status": "RESOLVED_ALIAS"
+      },
+      {
+        "legacyPath": "/mycampus/learning/elearning",
+        "canonicalPath": "/mycampus/elearning",
+        "source": "05-screenshot-reference-map.md",
+        "line": 242,
+        "status": "RESOLVED_ALIAS"
+      },
+      {
+        "legacyPath": "/mycampus/pledge",
+        "canonicalPath": "/mycampus/pledges",
+        "source": "05-screenshot-reference-map.md",
+        "line": 260,
+        "status": "RESOLVED_ALIAS"
+      }
+    ],
+    "unmappedScreenshotRoutes": [],
+    "missingScreenshotFiles": [],
+    "extraScreenshotFiles": [],
+    "boardCodePartial": []
+  }
+}

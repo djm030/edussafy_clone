@@ -44,20 +44,29 @@
 </template>
 
 <script setup>
-import { computed, onMounted, ref } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 import PageHero from '../../components/ui/PageHero.vue'
 import SectionTabs from '../../components/ui/SectionTabs.vue'
+import { useRoute } from 'vue-router'
 import { classroomTabs } from '../../constants/navigation'
 import { learningResources as mockLearningResources } from '../../data/classroom'
 import { loadLearningResources } from '../../services/classroomService'
 import { matchesText } from '../../utils/listControls'
 
+const route = useRoute()
 const learningResources = ref(mockLearningResources)
 const isLoading = ref(false)
 const loadError = ref('')
 const searchQuery = ref('')
 const textbookOnly = ref(false)
 const selectedCategory = ref('전체')
+
+function applyRouteQuery() {
+  searchQuery.value = typeof route.query.keyword === 'string' ? route.query.keyword : searchQuery.value
+  textbookOnly.value = route.query.type === 'textbook' || textbookOnly.value
+  selectedCategory.value = typeof route.query.category === 'string' ? route.query.category : selectedCategory.value
+}
+
 const categoryOptions = computed(() => ['전체', ...new Set(learningResources.value.map((item) => item.breadcrumb[0]).filter(Boolean))])
 const filteredResources = computed(() => learningResources.value.filter((item) => {
   const matchesCategory = selectedCategory.value === '전체' || item.breadcrumb[0] === selectedCategory.value
@@ -66,6 +75,7 @@ const filteredResources = computed(() => learningResources.value.filter((item) =
 }))
 
 onMounted(async () => {
+  applyRouteQuery()
   isLoading.value = true
   try {
     learningResources.value = await loadLearningResources()
@@ -77,3 +87,6 @@ onMounted(async () => {
   }
 })
 </script>
+
+
+watch(() => route.query, applyRouteQuery)

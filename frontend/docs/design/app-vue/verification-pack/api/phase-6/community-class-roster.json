@@ -1,0 +1,15 @@
+{
+  "routePath": "/community/class-roster",
+  "routeKind": "page",
+  "endpoint": "GET /api/v1/users/students",
+  "method": "MIXED",
+  "statusCode": null,
+  "success": true,
+  "dataShapeSummary": "page-specific DTO or paged list normalized by frontend service",
+  "usedMockFallback": null,
+  "redactedRequest": {},
+  "redactedResponseSample": {},
+  "capturedAt": "2026-05-11T15:41:49.711Z",
+  "command": "node frontend/docs/design/app-vue/scripts/build-verification-pack.mjs",
+  "blocker": "PARTIAL: static contract evidence only. API runtime was not exercised, so this is not an API-complete claim."
+}

@@ -25,7 +25,7 @@
           <span class="notification-dot">{{ notificationCount }}</span>
           알림
         </RouterLink>
-        <span class="profile-chip">김싸피</span>
+        <RouterLink class="profile-chip" to="/mycampus/profile">김싸피</RouterLink>
         <RouterLink class="logout-link" to="/login" @click="logout">로그아웃</RouterLink>
       </div>
     </div>

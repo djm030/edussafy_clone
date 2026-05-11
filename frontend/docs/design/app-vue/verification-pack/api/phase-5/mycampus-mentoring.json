@@ -1,0 +1,15 @@
+{
+  "routePath": "MYCAMPUS_MENTORING_SCOPE",
+  "routeKind": "feature-static-build",
+  "endpoint": "GET/PATCH /api/v1/users/me and mentoring board endpoints as listed in canonical-contract.md",
+  "method": "MIXED",
+  "statusCode": null,
+  "success": true,
+  "dataShapeSummary": "MyCampus profile now exposes a direct password-change route action. MyCampus and Mentoring canonical routes remain backed by concrete components and canonical board-code services after Phase 2 reconciliation.",
+  "usedMockFallback": null,
+  "redactedRequest": {},
+  "redactedResponseSample": {},
+  "capturedAt": "2026-05-11T15:40:00.000Z",
+  "command": "npm run build && node frontend/docs/design/app-vue/scripts/build-contract-inventory.mjs",
+  "blocker": "API runtime was not exercised here; no API-complete claim is made. NO_SCREENSHOT routes remain marked in the canonical contract."
+}

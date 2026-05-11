@@ -1,5 +1,6 @@
 import { isApiEnabled } from '../api/client'
 import { agreementsApi, attendanceApi, authApi, boardsApi, bookmarksApi, filesApi, learningApi, pointsApi, usersApi } from '../api/modules'
+import { boardCodes } from '../constants/boardCodes'
 import {
   attendanceDays,
   attendanceSummary,
@@ -194,7 +195,7 @@ function normalizeDocumentSubmission(item) {
 }
 
 async function resolveDocumentCategoryId(categoryName) {
-  const categories = await boardsApi.categories('doc-req').catch(() => [])
+  const categories = await boardsApi.categories(boardCodes.documents).catch(() => [])
   const items = pageItems(categories)
   const category = items.find((item) => item.name === categoryName || item.label === categoryName || item.categoryName === categoryName || item.code === categoryName)
   const fallback = items[0]
@@ -351,7 +352,7 @@ export async function loadBookmarkData() {
 export async function loadDocumentsData() {
   if (!isApiEnabled) return documents
 
-  const page = await boardsApi.posts('doc-req', { page: 0, size: 10 }).catch(() => null)
+  const page = await boardsApi.posts(boardCodes.documents, { page: 0, size: 10 }).catch(() => null)
   const items = pageItems(page).map(normalizeDocumentSubmission)
   return items.length ? items : documents
 }
@@ -375,7 +376,7 @@ export async function submitDocumentData(form) {
 
   const fileId = await uploadDocumentFile(form.file)
 
-  return boardsApi.createPost('doc-req', {
+  return boardsApi.createPost(boardCodes.documents, {
     categoryId,
     title: form.title,
     contentType: 'TEXT',

@@ -14,7 +14,10 @@
 
       <form @submit.prevent="saveProfile">
         <FormTable v-model="profile" :disabled="isSaving || isLoading" :fields="fields" />
-        <div class="form-actions"><button class="button-primary" :disabled="isSaving || isLoading" type="submit">저장</button></div>
+        <div class="form-actions">
+          <RouterLink class="outline-button blue" to="/mycampus/password">비밀번호 변경</RouterLink>
+          <button class="button-primary" :disabled="isSaving || isLoading" type="submit">저장</button>
+        </div>
       </form>
     </main>
   </div>

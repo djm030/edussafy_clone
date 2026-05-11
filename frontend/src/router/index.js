@@ -90,7 +90,8 @@ const routes = [
   { path: routePaths.mentoringMeetupReviewWrite, name: 'mentoring-meetup-review-write', component: MeetupReviewWritePage },
   { path: routePaths.notifications, name: 'notifications', component: NotificationsPage },
   { path: routePaths.forbidden, name: 'forbidden', component: ErrorPage, props: { code: '403 Forbidden', message: 'You do not have permission to access this content.' } },
-  { path: '/:pathMatch(.*)*', name: 'not-found', component: ErrorPage, props: { code: '404 Not Found', message: 'The requested page could not be found.' } }
+  { path: routePaths.notFound, name: 'not-found', component: ErrorPage, props: { code: '404 Not Found', message: 'The requested page could not be found.' } },
+  { path: '/:pathMatch(.*)*', name: 'not-found-wildcard', redirect: routePaths.notFound }
 ]
 
 export default createRouter({

@@ -1,7 +1,8 @@
 <script setup>
-import { ref, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 import PageHero from '../../components/ui/PageHero.vue'
 import SectionTabs from '../../components/ui/SectionTabs.vue'
+import { useRoute } from 'vue-router'
 import { classroomTabs } from '../../constants/navigation'
 import { allReplayItems as mockAllReplayItems, replayGroups } from '../../data/classroom'
 import { loadReplayItems } from '../../services/classroomService'
@@ -13,9 +14,16 @@ const props = defineProps({
   }
 })
 
+const route = useRoute()
 const allReplayItems = ref(mockAllReplayItems)
 const isLoading = ref(false)
 const loadError = ref('')
+const selectedSessionId = computed(() => typeof route.query.sessionId === 'string' ? route.query.sessionId : '')
+const visibleReplayItems = computed(() => {
+  if (!selectedSessionId.value) return allReplayItems.value
+  const exact = allReplayItems.value.filter((item) => String(item.id) === selectedSessionId.value)
+  return exact.length ? exact : allReplayItems.value
+})
 
 watch(
   () => props.variant,
@@ -47,6 +55,8 @@ watch(
 
     <div v-if="variant === 'my'" class="replay-banner">Java 전공 다시보기</div>
 
+    <p v-if="selectedSessionId" class="dashboard-state">선택한 세션 {{ selectedSessionId }} 기준으로 다시보기를 확인합니다.</p>
+
     <div class="replay-toolbar">
       <button type="button">최신강의 보러가기</button>
       <button type="button">⌄ 모두 펼치기</button>
@@ -60,7 +70,7 @@ watch(
     </div>
 
     <div v-else class="replay-list">
-      <article v-for="item in allReplayItems" :key="item.id" class="replay-item">
+      <article v-for="item in visibleReplayItems" :key="item.id" class="replay-item">
         <div class="replay-thumb">PLAY</div>
         <div>
           <h2>{{ item.title }}</h2>

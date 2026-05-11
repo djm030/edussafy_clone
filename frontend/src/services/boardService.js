@@ -1,15 +1,16 @@
 import { isApiEnabled } from '../api/client'
 import { boardsApi } from '../api/modules'
-import { anonymousPosts, mentoringPosts, notices, openBoardPosts } from '../data/boards'
+import { anonymousPosts, faqs, mentoringPosts, notices, openBoardPosts, ruleCategories } from '../data/boards'
+import { boardCodes as canonicalBoardCodes } from '../constants/boardCodes'
 
-const boardCodes = {
-  anonymous: ['anonymity', 'ANONYMOUS'],
-  helpNotice: ['notice', 'NOTICE'],
-  mentoringNotice: ['mento-notice', 'MENTO_NOTICE'],
-  mentoringQna: ['mento-qna', 'MENTO_QNA'],
-  mentoringReviews: ['mento-review', 'MENTO_REVIEW'],
-  mentoringStories: ['mento-story', 'MENTO_STORY'],
-  open: ['free', 'FREE']
+const boardCodeByKey = {
+  anonymous: canonicalBoardCodes.anonymity,
+  helpNotice: canonicalBoardCodes.notice,
+  mentoringNotice: canonicalBoardCodes.mentoringNotice,
+  mentoringQna: canonicalBoardCodes.mentoringQna,
+  mentoringReviews: canonicalBoardCodes.meetupReview,
+  mentoringStories: canonicalBoardCodes.mentoringStory,
+  open: canonicalBoardCodes.free
 }
 
 const fallbackPosts = {
@@ -47,6 +48,24 @@ function plainText(value) {
   return value ? String(value).replace(/<[^>]*>/g, '').trim() : ''
 }
 
+
+function normalizeFaq(item) {
+  return {
+    id: item.id,
+    category: item.categoryName || item.category?.name || item.category || 'FAQ',
+    question: item.title || item.question || 'FAQ',
+    answer: item.contentText || item.content || item.body || plainText(item.contentHtml) || item.answer || ''
+  }
+}
+
+function normalizeRule(item) {
+  return {
+    id: item.id,
+    title: item.title || item.categoryName || item.category?.name || '학사규정',
+    body: item.contentText || item.content || item.body || plainText(item.contentHtml) || item.description || ''
+  }
+}
+
 function fallbackBody(post) {
   if (!post) return ''
   return `${post.title}에 대한 상세 내용입니다. SSAFY EDU 화면 흐름과 동일하게 제목, 작성자, 등록일, 본문 영역을 확인할 수 있습니다.`
@@ -66,20 +85,16 @@ function normalizePostDetail(item, fallback) {
   }
 }
 
-async function fetchFirstAvailableBoard(codeCandidates) {
-  for (const code of codeCandidates) {
-    const page = await boardsApi.posts(code, { page: 0, size: 10 }).catch(() => null)
-    const items = pageItems(page)
-    if (items.length) return items
-  }
-  return []
+async function fetchBoardItems(boardCode) {
+  const page = await boardsApi.posts(boardCode, { page: 0, size: 10 }).catch(() => null)
+  return pageItems(page)
 }
 
 async function loadBoardPosts(key) {
   const fallback = fallbackPosts[key] || fallbackPosts.open
   if (!isApiEnabled) return fallback
 
-  const items = await fetchFirstAvailableBoard(boardCodes[key] || boardCodes.open)
+  const items = await fetchBoardItems(boardCodeByKey[key] || boardCodeByKey.open)
   const posts = items.map(normalizePost)
   return posts.length ? posts : fallback
 }
@@ -89,10 +104,9 @@ async function fetchBoardDetail(key, postId) {
   const fallbackPost = fallback.find((item) => String(item.id) === String(postId)) || fallback[0]
   if (!isApiEnabled) return normalizePostDetail(fallbackPost, fallbackPost)
 
-  for (const boardCode of boardCodes[key] || boardCodes.open) {
-    const post = await boardsApi.post(boardCode, postId).catch(() => null)
-    if (post) return normalizePostDetail(post, fallbackPost)
-  }
+  const boardCode = boardCodeByKey[key] || boardCodeByKey.open
+  const post = await boardsApi.post(boardCode, postId).catch(() => null)
+  if (post) return normalizePostDetail(post, fallbackPost)
 
   return normalizePostDetail(fallbackPost, fallbackPost)
 }
@@ -106,7 +120,7 @@ async function resolveCategoryId(boardCode, categoryName) {
 }
 
 async function createBoardPost(key, form) {
-  const boardCode = (boardCodes[key] || boardCodes.open)[0]
+  const boardCode = boardCodeByKey[key] || boardCodeByKey.open
   if (!isApiEnabled) return { id: 'mock-created', ...form }
 
   const categoryId = await resolveCategoryId(boardCode, form.category || '일반')
@@ -158,4 +172,20 @@ export function createCommunityPost(form) {
 export function createMentoringReviewPost(form) {
   const content = form.meetup ? `[간담회] ${form.meetup}\n\n${form.content}` : form.content
   return createBoardPost('mentoringReviews', { ...form, category: '일반', content })
+}
+
+export async function loadHelpFaqs() {
+  if (!isApiEnabled) return faqs
+
+  const page = await boardsApi.posts(canonicalBoardCodes.faq, { page: 0, size: 20 }).catch(() => null)
+  const items = pageItems(page).map(normalizeFaq).filter((item) => item.question || item.answer)
+  return items.length ? items : faqs
+}
+
+export async function loadHelpRules() {
+  if (!isApiEnabled) return ruleCategories
+
+  const page = await boardsApi.posts(canonicalBoardCodes.rule, { page: 0, size: 20 }).catch(() => null)
+  const items = pageItems(page).map(normalizeRule).filter((item) => item.title || item.body)
+  return items.length ? items : ruleCategories
 }
