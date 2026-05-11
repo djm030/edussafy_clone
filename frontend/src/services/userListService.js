@@ -57,3 +57,14 @@ export async function loadClassMembers() {
   const items = pageItems(page).map(normalizeStudent)
   return items.length ? items : classMembers
 }
+
+export async function createInquiry(form) {
+  if (!isApiEnabled) return { id: 'mock-created', ...form }
+
+  return inquiriesApi.create({
+    category: form.category,
+    title: form.title,
+    content: form.content,
+    fileIds: []
+  })
+}

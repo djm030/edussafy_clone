@@ -61,6 +61,34 @@ async function loadBoardPosts(key) {
   return posts.length ? posts : fallback
 }
 
+async function resolveCategoryId(boardCode, categoryName) {
+  const categories = await boardsApi.categories(boardCode).catch(() => [])
+  const items = pageItems(categories)
+  const category = items.find((item) => item.name === categoryName || item.label === categoryName || item.categoryName === categoryName || item.code === categoryName)
+  const fallbackCategory = items[0]
+  return category?.id || category?.categoryId || fallbackCategory?.id || fallbackCategory?.categoryId || null
+}
+
+async function createBoardPost(key, form) {
+  const boardCode = (boardCodes[key] || boardCodes.open)[0]
+  if (!isApiEnabled) return { id: 'mock-created', ...form }
+
+  const categoryId = await resolveCategoryId(boardCode, form.category || '일반')
+  if (!categoryId) {
+    throw new Error(`Missing board category for ${boardCode}`)
+  }
+
+  return boardsApi.createPost(boardCode, {
+    categoryId,
+    title: form.title,
+    contentType: 'TEXT',
+    contentText: form.content,
+    contentHtml: null,
+    contentJson: null,
+    fileIds: []
+  })
+}
+
 export function loadCommunityPosts(variant) {
   return loadBoardPosts(variant)
 }
@@ -72,4 +100,13 @@ export function loadHelpNoticePosts() {
 export function loadMentoringPosts(variant) {
   const key = `mentoring${variant.charAt(0).toUpperCase()}${variant.slice(1)}`
   return loadBoardPosts(key)
+}
+
+export function createCommunityPost(form) {
+  return createBoardPost('open', form)
+}
+
+export function createMentoringReviewPost(form) {
+  const content = form.meetup ? `[간담회] ${form.meetup}\n\n${form.content}` : form.content
+  return createBoardPost('mentoringReviews', { ...form, category: '일반', content })
 }
