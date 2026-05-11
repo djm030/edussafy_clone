@@ -1,0 +1,22 @@
+{
+  "routePath": "/mentoring/qna",
+  "url": "http://127.0.0.1:5174/mentoring/qna",
+  "referenceScreenshot": "../../edu_screnshot/19_mentoring_qna_board.png",
+  "referenceExists": true,
+  "referenceSize": {
+    "width": 1326,
+    "height": 2698,
+    "bytes": 379742
+  },
+  "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mentoring-qna.png",
+  "captured": true,
+  "capturedSize": {
+    "width": 1440,
+    "height": 1600,
+    "bytes": 195040
+  },
+  "chromeStatus": 0,
+  "stderr": "[68291:409004131:0512/011753.011240:ERROR:base/process/process_mac.cc:53] task_policy_set TASK_CATEGORY_POLICY: (os/kern) invalid argument (4)\n[68291:409004131:0512/011753.011258:ERROR:base/process/process_mac.cc:98] task_policy_set TASK_SUPPRESSION_POLICY: (os/kern) invalid argument (4)\n195040 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mentoring-qna.png\n",
+  "visualParityClaim": false,
+  "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+}

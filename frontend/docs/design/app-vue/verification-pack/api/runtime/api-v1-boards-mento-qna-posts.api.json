@@ -1,0 +1,16 @@
+{
+  "endpoint": "GET /api/v1/boards/mento-qna/posts",
+  "endpointPath": "/api/v1/boards/mento-qna/posts",
+  "method": "GET",
+  "statusCode": 200,
+  "success": true,
+  "dataShapeSummary": "content,page,size,totalElements,totalPages",
+  "redactedRequest": {
+    "headers": {
+      "Authorization": "Bearer <redacted>"
+    }
+  },
+  "redactedResponseSample": "content,page,size,totalElements,totalPages",
+  "errorCode": null,
+  "message": "요청이 성공했습니다."
+}

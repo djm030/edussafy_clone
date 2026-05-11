@@ -1,0 +1,12 @@
+{
+  "routePath": "/community/surveys/:id",
+  "samplePath": "/community/surveys/1",
+  "routeKind": "dynamic-page",
+  "canonicalStatus": "NO_SCREENSHOT",
+  "statusCode": 200,
+  "ok": true,
+  "contentType": "text/html",
+  "containsAppRoot": true,
+  "bodyBytes": 357,
+  "capturedAt": "2026-05-11T16:16:43.936Z"
+}

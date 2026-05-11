@@ -29,6 +29,7 @@ import SectionTabs from '../../components/ui/SectionTabs.vue'
 import FormTable from '../../components/ui/FormTable.vue'
 import { mycampusTabs } from '../../data/mycampus'
 import { submitDocumentData } from '../../services/mycampusService'
+import { getAccessToken, isApiEnabled } from '../../api/client'
 
 const fields = [
   { label: '서류유형', name: 'category', type: 'select', options: ['증빙', '서류', '기타'] },
@@ -46,6 +47,12 @@ async function submitDocument() {
   message.value = ''
   if (!form.value.title || !form.value.content) {
     message.value = '제목과 내용을 입력하세요.'
+    messageTone.value = 'warning'
+    return
+  }
+
+  if (isApiEnabled && !getAccessToken()) {
+    message.value = '로그인 후 서류를 제출할 수 있습니다.'
     messageTone.value = 'warning'
     return
   }

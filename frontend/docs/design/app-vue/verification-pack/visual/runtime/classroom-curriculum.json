@@ -1,0 +1,22 @@
+{
+  "routePath": "/classroom/curriculum",
+  "url": "http://127.0.0.1:5174/classroom/curriculum",
+  "referenceScreenshot": "../../edu_screnshot/02_classroom_weekly_curriculum.png",
+  "referenceExists": true,
+  "referenceSize": {
+    "width": 1326,
+    "height": 1981,
+    "bytes": 331976
+  },
+  "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/classroom-curriculum.png",
+  "captured": true,
+  "capturedSize": {
+    "width": 1440,
+    "height": 1600,
+    "bytes": 244612
+  },
+  "chromeStatus": 0,
+  "stderr": "244612 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/classroom-curriculum.png\n",
+  "visualParityClaim": false,
+  "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+}

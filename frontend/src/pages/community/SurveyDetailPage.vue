@@ -45,6 +45,7 @@ import { onMounted, reactive, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import PageHero from '../../components/ui/PageHero.vue'
 import SectionTabs from '../../components/ui/SectionTabs.vue'
+import { getAccessToken, isApiEnabled } from '../../api/client'
 import { communityTabs } from '../../constants/navigation'
 import { loadSurveyDetail, submitSurveyAnswers } from '../../services/surveyService'
 
@@ -87,6 +88,12 @@ function optionValue(option) {
 async function submitSurvey() {
   isSubmitting.value = true
   message.value = ''
+  if (isApiEnabled && !getAccessToken()) {
+    message.value = '로그인이 필요합니다. /login에서 계정으로 먼저 로그인하세요.'
+    messageTone.value = 'warning'
+    isSubmitting.value = false
+    return
+  }
   try {
     await submitSurveyAnswers(route.params.id, { ...answers })
     message.value = '설문 응답이 제출되었습니다.'

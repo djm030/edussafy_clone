@@ -1,0 +1,674 @@
+{
+  "capturedAt": "2026-05-11T16:18:14.289Z",
+  "command": "FRONTEND_BASE_URL=<url> node frontend/docs/design/app-vue/scripts/capture-visual-runtime.mjs",
+  "baseUrl": "http://127.0.0.1:5174",
+  "chromePath": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+  "visualCompleteClaim": false,
+  "reason": "Runtime screenshots were captured where possible and reference dimensions checked, but no pixel-diff dependency was added; parity remains evidence-backed PARTIAL unless manually reviewed.",
+  "totalReferenceRoutes": 30,
+  "attemptedRoutes": 30,
+  "capturedRoutes": 30,
+  "failedRoutes": 0,
+  "results": [
+    {
+      "routePath": "/dashboard",
+      "url": "http://127.0.0.1:5174/dashboard",
+      "referenceScreenshot": "../../edu_screnshot/01_home_dashboard.png",
+      "referenceExists": true,
+      "referenceSize": {
+        "width": 1326,
+        "height": 2254,
+        "bytes": 404573
+      },
+      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/dashboard.png",
+      "captured": true,
+      "capturedSize": {
+        "width": 1440,
+        "height": 1600,
+        "bytes": 158340
+      },
+      "chromeStatus": 0,
+      "stderr": "[26451:408936885:0512/011630.713081:ERROR:gpu/command_buffer/service/shared_image/shared_image_manager.cc:386] SharedImageManager::ProduceMemory: Trying to Produce a Memory representation from a non-existent mailbox.\n[26451:408936885:0512/011630.713524:ERROR:gpu/command_buffer/service/shared_image/shared_image_manager.cc:386] SharedImageManager::ProduceMemory: Trying to Produce a Memory representation from a non-existent mailbox.\n[26451:408936885:0512/011630.713530:ERROR:gpu/command_buffer/service/shared_image/shared_image_manager.cc:386] SharedImageManager::ProduceMemory: Trying to Produce a Memory representation from a non-existent mailbox.\n[26451:408936885:0512/011630.713533:ERROR:gpu/command_buffer/service/shared_image/shared_image_manager.cc:386] SharedImageManager::ProduceMemory: Trying to Produce a Memory representation from a non-existent mailbox.\n[26451:408936885:0512/011630.713535:ERROR:gpu/command_buffer/service/shared_image/shared_image_manager.cc:386] SharedImageManager::P",
+      "visualParityClaim": false,
+      "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+    },
+    {
+      "routePath": "/mycampus/level-points",
+      "url": "http://127.0.0.1:5174/mycampus/level-points",
+      "referenceScreenshot": "../../edu_screnshot/25_mycampus_level_points_dashboard.png",
+      "referenceExists": true,
+      "referenceSize": {
+        "width": 1326,
+        "height": 1770,
+        "bytes": 304516
+      },
+      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mycampus-level-points.png",
+      "captured": true,
+      "capturedSize": {
+        "width": 1440,
+        "height": 1600,
+        "bytes": 236894
+      },
+      "chromeStatus": 0,
+      "stderr": "236894 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mycampus-level-points.png\n",
+      "visualParityClaim": false,
+      "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+    },
+    {
+      "routePath": "/mycampus/attendance",
+      "url": "http://127.0.0.1:5174/mycampus/attendance",
+      "referenceScreenshot": "../../edu_screnshot/26_mycampus_attendance_status.png",
+      "referenceExists": true,
+      "referenceSize": {
+        "width": 1326,
+        "height": 2123,
+        "bytes": 328372
+      },
+      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mycampus-attendance.png",
+      "captured": true,
+      "capturedSize": {
+        "width": 1440,
+        "height": 1600,
+        "bytes": 202494
+      },
+      "chromeStatus": 0,
+      "stderr": "202494 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mycampus-attendance.png\n",
+      "visualParityClaim": false,
+      "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+    },
+    {
+      "routePath": "/mycampus/elearning",
+      "url": "http://127.0.0.1:5174/mycampus/elearning",
+      "referenceScreenshot": "../../edu_screnshot/27_mycampus_learning_elearning_empty.png",
+      "referenceExists": true,
+      "referenceSize": {
+        "width": 1326,
+        "height": 1105,
+        "bytes": 257024
+      },
+      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mycampus-elearning.png",
+      "captured": true,
+      "capturedSize": {
+        "width": 1440,
+        "height": 1600,
+        "bytes": 285251
+      },
+      "chromeStatus": 0,
+      "stderr": "285251 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mycampus-elearning.png\n",
+      "visualParityClaim": false,
+      "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+    },
+    {
+      "routePath": "/mycampus/bookmarks",
+      "url": "http://127.0.0.1:5174/mycampus/bookmarks",
+      "referenceScreenshot": "../../edu_screnshot/28_mycampus_bookmarks_empty.png",
+      "referenceExists": true,
+      "referenceSize": {
+        "width": 1326,
+        "height": 1060,
+        "bytes": 251372
+      },
+      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mycampus-bookmarks.png",
+      "captured": true,
+      "capturedSize": {
+        "width": 1440,
+        "height": 1600,
+        "bytes": 278941
+      },
+      "chromeStatus": 0,
+      "stderr": "278941 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mycampus-bookmarks.png\n",
+      "visualParityClaim": false,
+      "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+    },
+    {
+      "routePath": "/mycampus/documents",
+      "url": "http://127.0.0.1:5174/mycampus/documents",
+      "referenceScreenshot": "../../edu_screnshot/29_mycampus_document_submission_empty.png",
+      "referenceExists": true,
+      "referenceSize": {
+        "width": 1326,
+        "height": 1060,
+        "bytes": 248987
+      },
+      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mycampus-documents.png",
+      "captured": true,
+      "capturedSize": {
+        "width": 1440,
+        "height": 1600,
+        "bytes": 192367
+      },
+      "chromeStatus": 0,
+      "stderr": "192367 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mycampus-documents.png\n",
+      "visualParityClaim": false,
+      "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+    },
+    {
+      "routePath": "/mycampus/pledges",
+      "url": "http://127.0.0.1:5174/mycampus/pledges",
+      "referenceScreenshot": "../../edu_screnshot/31_mycampus_student_pledge_list.png",
+      "referenceExists": true,
+      "referenceSize": {
+        "width": 1326,
+        "height": 913,
+        "bytes": 250523
+      },
+      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mycampus-pledges.png",
+      "captured": true,
+      "capturedSize": {
+        "width": 1440,
+        "height": 1600,
+        "bytes": 195509
+      },
+      "chromeStatus": 0,
+      "stderr": "195509 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mycampus-pledges.png\n",
+      "visualParityClaim": false,
+      "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+    },
+    {
+      "routePath": "/mycampus/education-status",
+      "url": "http://127.0.0.1:5174/mycampus/education-status",
+      "referenceScreenshot": "../../edu_screnshot/32_mycampus_education_status.png",
+      "referenceExists": true,
+      "referenceSize": {
+        "width": 1326,
+        "height": 3283,
+        "bytes": 455437
+      },
+      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mycampus-education-status.png",
+      "captured": true,
+      "capturedSize": {
+        "width": 1440,
+        "height": 1600,
+        "bytes": 201320
+      },
+      "chromeStatus": 0,
+      "stderr": "201320 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mycampus-education-status.png\n",
+      "visualParityClaim": false,
+      "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+    },
+    {
+      "routePath": "/classroom/my-replays",
+      "url": "http://127.0.0.1:5174/classroom/my-replays",
+      "referenceScreenshot": "../../edu_screnshot/13_classroom_my_lecture_replay.png",
+      "referenceExists": true,
+      "referenceSize": {
+        "width": 1326,
+        "height": 2201,
+        "bytes": 418395
+      },
+      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/classroom-my-replays.png",
+      "captured": true,
+      "capturedSize": {
+        "width": 1440,
+        "height": 1600,
+        "bytes": 295363
+      },
+      "chromeStatus": 0,
+      "stderr": "295363 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/classroom-my-replays.png\n",
+      "visualParityClaim": false,
+      "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+    },
+    {
+      "routePath": "/classroom/all-replays",
+      "url": "http://127.0.0.1:5174/classroom/all-replays",
+      "referenceScreenshot": "../../edu_screnshot/14_classroom_all_lecture_replay.png",
+      "referenceExists": true,
+      "referenceSize": {
+        "width": 1326,
+        "height": 1901,
+        "bytes": 298099
+      },
+      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/classroom-all-replays.png",
+      "captured": true,
+      "capturedSize": {
+        "width": 1440,
+        "height": 1600,
+        "bytes": 204928
+      },
+      "chromeStatus": 0,
+      "stderr": "204928 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/classroom-all-replays.png\n",
+      "visualParityClaim": false,
+      "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+    },
+    {
+      "routePath": "/classroom/curriculum",
+      "url": "http://127.0.0.1:5174/classroom/curriculum",
+      "referenceScreenshot": "../../edu_screnshot/02_classroom_weekly_curriculum.png",
+      "referenceExists": true,
+      "referenceSize": {
+        "width": 1326,
+        "height": 1981,
+        "bytes": 331976
+      },
+      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/classroom-curriculum.png",
+      "captured": true,
+      "capturedSize": {
+        "width": 1440,
+        "height": 1600,
+        "bytes": 244612
+      },
+      "chromeStatus": 0,
+      "stderr": "244612 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/classroom-curriculum.png\n",
+      "visualParityClaim": false,
+      "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+    },
+    {
+      "routePath": "/classroom/quests",
+      "url": "http://127.0.0.1:5174/classroom/quests",
+      "referenceScreenshot": "../../edu_screnshot/03_quest_evaluation_list.png",
+      "referenceExists": true,
+      "referenceSize": {
+        "width": 1326,
+        "height": 2384,
+        "bytes": 457744
+      },
+      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/classroom-quests.png",
+      "captured": true,
+      "capturedSize": {
+        "width": 1440,
+        "height": 1600,
+        "bytes": 263074
+      },
+      "chromeStatus": 0,
+      "stderr": "263074 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/classroom-quests.png\n",
+      "visualParityClaim": false,
+      "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+    },
+    {
+      "routePath": "/classroom/required-learning",
+      "url": "http://127.0.0.1:5174/classroom/required-learning",
+      "referenceScreenshot": "../../edu_screnshot/15_classroom_required_learning_empty.png",
+      "referenceExists": true,
+      "referenceSize": {
+        "width": 1326,
+        "height": 1105,
+        "bytes": 252241
+      },
+      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/classroom-required-learning.png",
+      "captured": true,
+      "capturedSize": {
+        "width": 1440,
+        "height": 1600,
+        "bytes": 180662
+      },
+      "chromeStatus": 0,
+      "stderr": "180662 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/classroom-required-learning.png\n",
+      "visualParityClaim": false,
+      "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+    },
+    {
+      "routePath": "/classroom/resources",
+      "url": "http://127.0.0.1:5174/classroom/resources",
+      "referenceScreenshot": "../../edu_screnshot/04_learning_resources.png",
+      "referenceExists": true,
+      "referenceSize": {
+        "width": 1326,
+        "height": 3472,
+        "bytes": 876904
+      },
+      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/classroom-resources.png",
+      "captured": true,
+      "capturedSize": {
+        "width": 1440,
+        "height": 1600,
+        "bytes": 351489
+      },
+      "chromeStatus": 0,
+      "stderr": "351489 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/classroom-resources.png\n",
+      "visualParityClaim": false,
+      "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+    },
+    {
+      "routePath": "/community/surveys",
+      "url": "http://127.0.0.1:5174/community/surveys",
+      "referenceScreenshot": "../../edu_screnshot/05_community_survey.png",
+      "referenceExists": true,
+      "referenceSize": {
+        "width": 1326,
+        "height": 2366,
+        "bytes": 443670
+      },
+      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/community-surveys.png",
+      "captured": true,
+      "capturedSize": {
+        "width": 1440,
+        "height": 1600,
+        "bytes": 201225
+      },
+      "chromeStatus": 0,
+      "stderr": "201225 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/community-surveys.png\n",
+      "visualParityClaim": false,
+      "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+    },
+    {
+      "routePath": "/community/boards/open",
+      "url": "http://127.0.0.1:5174/community/boards/open",
+      "referenceScreenshot": "../../edu_screnshot/06_open_board.png",
+      "referenceExists": true,
+      "referenceSize": {
+        "width": 1326,
+        "height": 2343,
+        "bytes": 473040
+      },
+      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/community-boards-open.png",
+      "captured": true,
+      "capturedSize": {
+        "width": 1440,
+        "height": 1600,
+        "bytes": 206421
+      },
+      "chromeStatus": 0,
+      "stderr": "206421 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/community-boards-open.png\n",
+      "visualParityClaim": false,
+      "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+    },
+    {
+      "routePath": "/community/boards/anonymous",
+      "url": "http://127.0.0.1:5174/community/boards/anonymous",
+      "referenceScreenshot": "../../edu_screnshot/16_community_anonymous_board.png",
+      "referenceExists": true,
+      "referenceSize": {
+        "width": 1326,
+        "height": 2300,
+        "bytes": 386003
+      },
+      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/community-boards-anonymous.png",
+      "captured": true,
+      "capturedSize": {
+        "width": 1440,
+        "height": 1600,
+        "bytes": 197386
+      },
+      "chromeStatus": 0,
+      "stderr": "197386 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/community-boards-anonymous.png\n",
+      "visualParityClaim": false,
+      "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+    },
+    {
+      "routePath": "/community/class-roster",
+      "url": "http://127.0.0.1:5174/community/class-roster",
+      "referenceScreenshot": "../../edu_screnshot/17_community_class_roster.png",
+      "referenceExists": true,
+      "referenceSize": {
+        "width": 1326,
+        "height": 1648,
+        "bytes": 520495
+      },
+      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/community-class-roster.png",
+      "captured": true,
+      "capturedSize": {
+        "width": 1440,
+        "height": 1600,
+        "bytes": 198730
+      },
+      "chromeStatus": 0,
+      "stderr": "198730 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/community-class-roster.png\n",
+      "visualParityClaim": false,
+      "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+    },
+    {
+      "routePath": "/help/notice",
+      "url": "http://127.0.0.1:5174/help/notice",
+      "referenceScreenshot": "../../edu_screnshot/07_helpdesk_notice.png",
+      "referenceExists": true,
+      "referenceSize": {
+        "width": 1326,
+        "height": 1815,
+        "bytes": 336897
+      },
+      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/help-notice.png",
+      "captured": true,
+      "capturedSize": {
+        "width": 1440,
+        "height": 1600,
+        "bytes": 197989
+      },
+      "chromeStatus": 0,
+      "stderr": "[58978:408988871:0512/011735.830123:ERROR:gpu/command_buffer/service/shared_image/shared_image_manager.cc:386] SharedImageManager::ProduceMemory: Trying to Produce a Memory representation from a non-existent mailbox.\n[58978:408988871:0512/011735.830326:ERROR:gpu/command_buffer/service/shared_image/shared_image_manager.cc:386] SharedImageManager::ProduceMemory: Trying to Produce a Memory representation from a non-existent mailbox.\n[58978:408988871:0512/011735.830330:ERROR:gpu/command_buffer/service/shared_image/shared_image_manager.cc:386] SharedImageManager::ProduceMemory: Trying to Produce a Memory representation from a non-existent mailbox.\n[58978:408988871:0512/011735.830332:ERROR:gpu/command_buffer/service/shared_image/shared_image_manager.cc:386] SharedImageManager::ProduceMemory: Trying to Produce a Memory representation from a non-existent mailbox.\n[58978:408988871:0512/011735.830334:ERROR:gpu/command_buffer/service/shared_image/shared_image_manager.cc:386] SharedImageManager::P",
+      "visualParityClaim": false,
+      "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+    },
+    {
+      "routePath": "/help/faq",
+      "url": "http://127.0.0.1:5174/help/faq",
+      "referenceScreenshot": "../../edu_screnshot/08_helpdesk_faq_empty.png",
+      "referenceExists": true,
+      "referenceSize": {
+        "width": 1326,
+        "height": 1028,
+        "bytes": 246379
+      },
+      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/help-faq.png",
+      "captured": true,
+      "capturedSize": {
+        "width": 1440,
+        "height": 1600,
+        "bytes": 193691
+      },
+      "chromeStatus": 0,
+      "stderr": "193691 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/help-faq.png\n",
+      "visualParityClaim": false,
+      "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+    },
+    {
+      "routePath": "/help/inquiries",
+      "url": "http://127.0.0.1:5174/help/inquiries",
+      "referenceScreenshot": "../../edu_screnshot/09_helpdesk_inquiry_empty.png",
+      "referenceExists": true,
+      "referenceSize": {
+        "width": 1326,
+        "height": 963,
+        "bytes": 237095
+      },
+      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/help-inquiries.png",
+      "captured": true,
+      "capturedSize": {
+        "width": 1440,
+        "height": 1600,
+        "bytes": 196027
+      },
+      "chromeStatus": 0,
+      "stderr": "196027 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/help-inquiries.png\n",
+      "visualParityClaim": false,
+      "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+    },
+    {
+      "routePath": "/help/rules",
+      "url": "http://127.0.0.1:5174/help/rules",
+      "referenceScreenshot": "../../edu_screnshot/18_helpdesk_academic_rules.png",
+      "referenceExists": true,
+      "referenceSize": {
+        "width": 1326,
+        "height": 1181,
+        "bytes": 254182
+      },
+      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/help-rules.png",
+      "captured": true,
+      "capturedSize": {
+        "width": 1440,
+        "height": 1600,
+        "bytes": 199449
+      },
+      "chromeStatus": 0,
+      "stderr": "199449 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/help-rules.png\n",
+      "visualParityClaim": false,
+      "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+    },
+    {
+      "routePath": "/mentoring/stories",
+      "url": "http://127.0.0.1:5174/mentoring/stories",
+      "referenceScreenshot": "../../edu_screnshot/11_mentoring_story_board.png",
+      "referenceExists": true,
+      "referenceSize": {
+        "width": 1326,
+        "height": 2553,
+        "bytes": 368685
+      },
+      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mentoring-stories.png",
+      "captured": true,
+      "capturedSize": {
+        "width": 1440,
+        "height": 1600,
+        "bytes": 195231
+      },
+      "chromeStatus": 0,
+      "stderr": "195231 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mentoring-stories.png\n",
+      "visualParityClaim": false,
+      "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+    },
+    {
+      "routePath": "/mentoring/qna",
+      "url": "http://127.0.0.1:5174/mentoring/qna",
+      "referenceScreenshot": "../../edu_screnshot/19_mentoring_qna_board.png",
+      "referenceExists": true,
+      "referenceSize": {
+        "width": 1326,
+        "height": 2698,
+        "bytes": 379742
+      },
+      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mentoring-qna.png",
+      "captured": true,
+      "capturedSize": {
+        "width": 1440,
+        "height": 1600,
+        "bytes": 195040
+      },
+      "chromeStatus": 0,
+      "stderr": "[68291:409004131:0512/011753.011240:ERROR:base/process/process_mac.cc:53] task_policy_set TASK_CATEGORY_POLICY: (os/kern) invalid argument (4)\n[68291:409004131:0512/011753.011258:ERROR:base/process/process_mac.cc:98] task_policy_set TASK_SUPPRESSION_POLICY: (os/kern) invalid argument (4)\n195040 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mentoring-qna.png\n",
+      "visualParityClaim": false,
+      "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+    },
+    {
+      "routePath": "/mentoring/notice",
+      "url": "http://127.0.0.1:5174/mentoring/notice",
+      "referenceScreenshot": "../../edu_screnshot/20_mentoring_notice_board.png",
+      "referenceExists": true,
+      "referenceSize": {
+        "width": 1326,
+        "height": 2343,
+        "bytes": 310168
+      },
+      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mentoring-notice.png",
+      "captured": true,
+      "capturedSize": {
+        "width": 1440,
+        "height": 1600,
+        "bytes": 193573
+      },
+      "chromeStatus": 0,
+      "stderr": "193573 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mentoring-notice.png\n",
+      "visualParityClaim": false,
+      "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+    },
+    {
+      "routePath": "/mentoring/meetups/apply",
+      "url": "http://127.0.0.1:5174/mentoring/meetups/apply",
+      "referenceScreenshot": "../../edu_screnshot/21_mentoring_meetup_apply.png",
+      "referenceExists": true,
+      "referenceSize": {
+        "width": 1326,
+        "height": 944,
+        "bytes": 191904
+      },
+      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mentoring-meetups-apply.png",
+      "captured": true,
+      "capturedSize": {
+        "width": 1440,
+        "height": 1600,
+        "bytes": 203649
+      },
+      "chromeStatus": 0,
+      "stderr": "203649 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mentoring-meetups-apply.png\n",
+      "visualParityClaim": false,
+      "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+    },
+    {
+      "routePath": "/mentoring/meetups/info",
+      "url": "http://127.0.0.1:5174/mentoring/meetups/info",
+      "referenceScreenshot": "../../edu_screnshot/22_mentoring_meetup_info_empty.png",
+      "referenceExists": true,
+      "referenceSize": {
+        "width": 1326,
+        "height": 995,
+        "bytes": 180956
+      },
+      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mentoring-meetups-info.png",
+      "captured": true,
+      "capturedSize": {
+        "width": 1440,
+        "height": 1600,
+        "bytes": 190369
+      },
+      "chromeStatus": 0,
+      "stderr": "190369 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mentoring-meetups-info.png\n",
+      "visualParityClaim": false,
+      "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+    },
+    {
+      "routePath": "/mentoring/meetups/reviews",
+      "url": "http://127.0.0.1:5174/mentoring/meetups/reviews",
+      "referenceScreenshot": "../../edu_screnshot/23_mentoring_meetup_review_board.png",
+      "referenceExists": true,
+      "referenceSize": {
+        "width": 1326,
+        "height": 2300,
+        "bytes": 304651
+      },
+      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mentoring-meetups-reviews.png",
+      "captured": true,
+      "capturedSize": {
+        "width": 1440,
+        "height": 1600,
+        "bytes": 196071
+      },
+      "chromeStatus": 0,
+      "stderr": "196071 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mentoring-meetups-reviews.png\n",
+      "visualParityClaim": false,
+      "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+    },
+    {
+      "routePath": "/notifications",
+      "url": "http://127.0.0.1:5174/notifications",
+      "referenceScreenshot": "../../edu_screnshot/36_notification_inbox.png",
+      "referenceExists": true,
+      "referenceSize": {
+        "width": 1326,
+        "height": 1492,
+        "bytes": 272136
+      },
+      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/notifications.png",
+      "captured": true,
+      "capturedSize": {
+        "width": 1440,
+        "height": 1600,
+        "bytes": 199363
+      },
+      "chromeStatus": 0,
+      "stderr": "199363 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/notifications.png\n",
+      "visualParityClaim": false,
+      "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+    },
+    {
+      "routePath": "/403",
+      "url": "http://127.0.0.1:5174/403",
+      "referenceScreenshot": "../../edu_screnshot/39_mycampus_ebook_403_forbidden.png",
+      "referenceExists": true,
+      "referenceSize": {
+        "width": 800,
+        "height": 533,
+        "bytes": 10671
+      },
+      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/403.png",
+      "captured": true,
+      "capturedSize": {
+        "width": 1440,
+        "height": 1600,
+        "bytes": 50849
+      },
+      "chromeStatus": 0,
+      "stderr": "50849 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/403.png\n",
+      "visualParityClaim": false,
+      "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+    }
+  ]
+}

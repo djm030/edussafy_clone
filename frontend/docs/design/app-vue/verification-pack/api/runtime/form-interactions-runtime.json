@@ -1,0 +1,192 @@
+{
+  "capturedAt": "2026-05-11T16:18:20.030Z",
+  "rows": [
+    {
+      "name": "free category lookup",
+      "endpointPath": "/api/v1/boards/free/categories",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "array(1)",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "array(1)",
+      "errorCode": null,
+      "message": "요청이 성공했습니다.",
+      "categoryIdFound": true
+    },
+    {
+      "name": "community board write",
+      "endpointPath": "/api/v1/boards/free/posts",
+      "method": "POST",
+      "statusCode": 200,
+      "success": true,
+      "errorCode": null,
+      "message": "요청이 성공했습니다.",
+      "dataShapeSummary": "id",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>",
+          "Content-Type": "application/json"
+        },
+        "bodyShape": "categoryId,title,contentType,contentText,contentHtml,contentJson,fileIds"
+      }
+    },
+    {
+      "name": "doc-req category lookup",
+      "endpointPath": "/api/v1/boards/doc-req/categories",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "array(1)",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "array(1)",
+      "errorCode": null,
+      "message": "요청이 성공했습니다.",
+      "categoryIdFound": true
+    },
+    {
+      "name": "document submit without file",
+      "endpointPath": "/api/v1/boards/doc-req/posts",
+      "method": "POST",
+      "statusCode": 403,
+      "success": false,
+      "errorCode": "ACCESS_DENIED",
+      "message": "접근 권한이 없습니다.",
+      "dataShapeSummary": "success,data,errorCode,message",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>",
+          "Content-Type": "application/json"
+        },
+        "bodyShape": "categoryId,title,contentType,contentText,contentHtml,contentJson,fileIds"
+      }
+    },
+    {
+      "name": "inquiry write",
+      "endpointPath": "/api/v1/inquiries",
+      "method": "POST",
+      "statusCode": 200,
+      "success": true,
+      "errorCode": null,
+      "message": "요청이 성공했습니다.",
+      "dataShapeSummary": "id,category,title,content,status,answerContent,answeredById,answeredByName,answeredAt,createdAt,updatedAt",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>",
+          "Content-Type": "application/json"
+        },
+        "bodyShape": "category,title,content"
+      }
+    },
+    {
+      "name": "mento-review category lookup",
+      "endpointPath": "/api/v1/boards/mento-review/categories",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "array(1)",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "array(1)",
+      "errorCode": null,
+      "message": "요청이 성공했습니다.",
+      "categoryIdFound": true
+    },
+    {
+      "name": "mentoring review write",
+      "endpointPath": "/api/v1/boards/mento-review/posts",
+      "method": "POST",
+      "statusCode": 200,
+      "success": true,
+      "errorCode": null,
+      "message": "요청이 성공했습니다.",
+      "dataShapeSummary": "id",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>",
+          "Content-Type": "application/json"
+        },
+        "bodyShape": "categoryId,title,contentType,contentText,contentHtml,contentJson,fileIds"
+      }
+    },
+    {
+      "name": "profile save",
+      "endpointPath": "/api/v1/users/me",
+      "method": "PATCH",
+      "statusCode": 200,
+      "success": true,
+      "errorCode": null,
+      "message": "요청이 성공했습니다.",
+      "dataShapeSummary": "success,data,errorCode,message",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>",
+          "Content-Type": "application/json"
+        },
+        "bodyShape": "phoneNumber"
+      }
+    },
+    {
+      "name": "password save same password",
+      "endpointPath": "/api/v1/auth/password",
+      "method": "PATCH",
+      "statusCode": 200,
+      "success": true,
+      "errorCode": null,
+      "message": "요청이 성공했습니다.",
+      "dataShapeSummary": "success,data,errorCode,message",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>",
+          "Content-Type": "application/json"
+        },
+        "bodyShape": "currentPassword,newPassword"
+      }
+    },
+    {
+      "name": "survey submit sample",
+      "endpointPath": "/api/v1/surveys/1/submit",
+      "method": "POST",
+      "statusCode": 200,
+      "success": true,
+      "errorCode": null,
+      "message": "요청이 성공했습니다.",
+      "dataShapeSummary": "id,surveyId,surveyTitle,answers,participantStatus,submittedAt,cancelledAt,createdAt",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>",
+          "Content-Type": "application/json"
+        },
+        "bodyShape": "answers"
+      }
+    },
+    {
+      "name": "quest submit sample",
+      "endpointPath": "/api/v1/tasks/1/submit",
+      "method": "POST",
+      "statusCode": 200,
+      "success": true,
+      "errorCode": null,
+      "message": "요청이 성공했습니다.",
+      "dataShapeSummary": "id,taskId,resultStatus,score,originalScore,retakeScore,attemptCount,answerData,submittedAt,completedAt,updatedAt",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>",
+          "Content-Type": "application/json"
+        },
+        "bodyShape": "answerData"
+      }
+    }
+  ]
+}

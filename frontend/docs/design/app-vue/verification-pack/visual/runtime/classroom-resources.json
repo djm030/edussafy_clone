@@ -1,0 +1,22 @@
+{
+  "routePath": "/classroom/resources",
+  "url": "http://127.0.0.1:5174/classroom/resources",
+  "referenceScreenshot": "../../edu_screnshot/04_learning_resources.png",
+  "referenceExists": true,
+  "referenceSize": {
+    "width": 1326,
+    "height": 3472,
+    "bytes": 876904
+  },
+  "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/classroom-resources.png",
+  "captured": true,
+  "capturedSize": {
+    "width": 1440,
+    "height": 1600,
+    "bytes": 351489
+  },
+  "chromeStatus": 0,
+  "stderr": "351489 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/classroom-resources.png\n",
+  "visualParityClaim": false,
+  "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+}

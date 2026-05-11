@@ -1,0 +1,16 @@
+{
+  "endpoint": "GET /api/v1/auth/me",
+  "endpointPath": "/api/v1/auth/me",
+  "method": "GET",
+  "statusCode": 200,
+  "success": true,
+  "dataShapeSummary": "id,email,name,studentNo,generation,region,classNo,role,status",
+  "redactedRequest": {
+    "headers": {
+      "Authorization": "Bearer <redacted>"
+    }
+  },
+  "redactedResponseSample": "id,email,name,studentNo,generation,region,classNo,role,status",
+  "errorCode": null,
+  "message": "요청이 성공했습니다."
+}

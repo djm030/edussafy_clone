@@ -28,6 +28,7 @@ import { onMounted, ref } from 'vue'
 import PageHero from '../../components/ui/PageHero.vue'
 import SectionTabs from '../../components/ui/SectionTabs.vue'
 import FormTable from '../../components/ui/FormTable.vue'
+import { getAccessToken, isApiEnabled } from '../../api/client'
 import { mycampusTabs, profileInfo } from '../../data/mycampus'
 import { loadProfileData, saveProfileData } from '../../services/mycampusService'
 
@@ -58,6 +59,12 @@ onMounted(async () => {
 })
 
 async function saveProfile() {
+  if (isApiEnabled && !getAccessToken()) {
+    message.value = '로그인이 필요합니다. /login에서 계정으로 먼저 로그인하세요.'
+    messageTone.value = 'warning'
+    return
+  }
+
   isSaving.value = true
   message.value = ''
   try {

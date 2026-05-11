@@ -29,6 +29,7 @@ import SectionTabs from '../../components/ui/SectionTabs.vue'
 import FormTable from '../../components/ui/FormTable.vue'
 import { helpTabs } from '../../constants/navigation'
 import { createInquiry } from '../../services/userListService'
+import { getAccessToken, isApiEnabled } from '../../api/client'
 
 const fields = [
   { label: '문의유형', name: 'category', type: 'select', options: ['출결', '시스템', '학사', '기타'] },
@@ -46,6 +47,12 @@ async function submitInquiry() {
   message.value = ''
   if (!form.value.title || !form.value.content) {
     message.value = '제목과 내용을 입력하세요.'
+    messageTone.value = 'warning'
+    return
+  }
+
+  if (isApiEnabled && !getAccessToken()) {
+    message.value = '로그인 후 문의를 등록할 수 있습니다.'
     messageTone.value = 'warning'
     return
   }

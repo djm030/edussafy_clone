@@ -1,0 +1,22 @@
+{
+  "routePath": "/help/inquiries",
+  "url": "http://127.0.0.1:5174/help/inquiries",
+  "referenceScreenshot": "../../edu_screnshot/09_helpdesk_inquiry_empty.png",
+  "referenceExists": true,
+  "referenceSize": {
+    "width": 1326,
+    "height": 963,
+    "bytes": 237095
+  },
+  "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/help-inquiries.png",
+  "captured": true,
+  "capturedSize": {
+    "width": 1440,
+    "height": 1600,
+    "bytes": 196027
+  },
+  "chromeStatus": 0,
+  "stderr": "196027 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/help-inquiries.png\n",
+  "visualParityClaim": false,
+  "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+}

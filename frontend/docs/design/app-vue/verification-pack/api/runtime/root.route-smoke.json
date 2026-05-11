@@ -1,0 +1,12 @@
+{
+  "routePath": "/",
+  "samplePath": "/",
+  "routeKind": "redirect",
+  "canonicalStatus": "READY",
+  "statusCode": 200,
+  "ok": true,
+  "contentType": "text/html",
+  "containsAppRoot": true,
+  "bodyBytes": 357,
+  "capturedAt": "2026-05-11T16:16:43.872Z"
+}

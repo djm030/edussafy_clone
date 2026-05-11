@@ -1,0 +1,22 @@
+{
+  "routePath": "/help/faq",
+  "url": "http://127.0.0.1:5174/help/faq",
+  "referenceScreenshot": "../../edu_screnshot/08_helpdesk_faq_empty.png",
+  "referenceExists": true,
+  "referenceSize": {
+    "width": 1326,
+    "height": 1028,
+    "bytes": 246379
+  },
+  "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/help-faq.png",
+  "captured": true,
+  "capturedSize": {
+    "width": 1440,
+    "height": 1600,
+    "bytes": 193691
+  },
+  "chromeStatus": 0,
+  "stderr": "193691 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/help-faq.png\n",
+  "visualParityClaim": false,
+  "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+}

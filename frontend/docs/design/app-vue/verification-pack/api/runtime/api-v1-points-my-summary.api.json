@@ -1,0 +1,16 @@
+{
+  "endpoint": "GET /api/v1/points/my/summary",
+  "endpointPath": "/api/v1/points/my/summary",
+  "method": "GET",
+  "statusCode": 200,
+  "success": true,
+  "dataShapeSummary": "scholarshipPoint,totalExp,levelName,levelNo,attendanceRate,completedLearningCount",
+  "redactedRequest": {
+    "headers": {
+      "Authorization": "Bearer <redacted>"
+    }
+  },
+  "redactedResponseSample": "scholarshipPoint,totalExp,levelName,levelNo,attendanceRate,completedLearningCount",
+  "errorCode": null,
+  "message": "요청이 성공했습니다."
+}

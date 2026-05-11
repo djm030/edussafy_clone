@@ -1,0 +1,16 @@
+{
+  "endpoint": "GET /api/v1/tasks/{taskId}",
+  "endpointPath": "/api/v1/tasks/1",
+  "method": "GET",
+  "statusCode": 200,
+  "success": true,
+  "dataShapeSummary": "id,courseId,sessionId,surveyId,title,roundNo,taskType,description,openAt,closeAt,totalScore,isRequired",
+  "redactedRequest": {
+    "headers": {
+      "Authorization": "Bearer <redacted>"
+    }
+  },
+  "redactedResponseSample": "id,courseId,sessionId,surveyId,title,roundNo,taskType,description,openAt,closeAt,totalScore,isRequired",
+  "errorCode": null,
+  "message": "요청이 성공했습니다."
+}

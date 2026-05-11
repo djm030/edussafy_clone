@@ -1,0 +1,16 @@
+{
+  "endpoint": "GET /api/v1/learning/contents/{contentId}",
+  "endpointPath": "/api/v1/learning/contents/1",
+  "method": "GET",
+  "statusCode": 200,
+  "success": true,
+  "dataShapeSummary": "id,courseId,sessionId,categoryId,title,description,contentType,thumbnailUrl,contentUrl,durationSeconds,viewCount,likeCount",
+  "redactedRequest": {
+    "headers": {
+      "Authorization": "Bearer <redacted>"
+    }
+  },
+  "redactedResponseSample": "id,courseId,sessionId,categoryId,title,description,contentType,thumbnailUrl,contentUrl,durationSeconds,viewCount,likeCount",
+  "errorCode": null,
+  "message": "요청이 성공했습니다."
+}

@@ -29,6 +29,7 @@ import SectionTabs from '../../components/ui/SectionTabs.vue'
 import FormTable from '../../components/ui/FormTable.vue'
 import { communityTabs } from '../../constants/navigation'
 import { createCommunityPost } from '../../services/boardService'
+import { getAccessToken, isApiEnabled } from '../../api/client'
 
 const fields = [
   { label: '분류', name: 'category', type: 'select', options: ['일반'] },
@@ -46,6 +47,12 @@ async function submitPost() {
   message.value = ''
   if (!form.value.title || !form.value.content) {
     message.value = '제목과 내용을 입력하세요.'
+    messageTone.value = 'warning'
+    return
+  }
+
+  if (isApiEnabled && !getAccessToken()) {
+    message.value = '로그인 후 게시글을 등록할 수 있습니다.'
     messageTone.value = 'warning'
     return
   }

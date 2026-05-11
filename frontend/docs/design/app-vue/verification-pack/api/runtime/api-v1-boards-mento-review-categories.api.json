@@ -1,0 +1,16 @@
+{
+  "endpoint": "GET /api/v1/boards/mento-review/categories",
+  "endpointPath": "/api/v1/boards/mento-review/categories",
+  "method": "GET",
+  "statusCode": 200,
+  "success": true,
+  "dataShapeSummary": "array(1)",
+  "redactedRequest": {
+    "headers": {
+      "Authorization": "Bearer <redacted>"
+    }
+  },
+  "redactedResponseSample": "array(1)",
+  "errorCode": null,
+  "message": "요청이 성공했습니다."
+}

@@ -1,0 +1,22 @@
+{
+  "routePath": "/mycampus/bookmarks",
+  "url": "http://127.0.0.1:5174/mycampus/bookmarks",
+  "referenceScreenshot": "../../edu_screnshot/28_mycampus_bookmarks_empty.png",
+  "referenceExists": true,
+  "referenceSize": {
+    "width": 1326,
+    "height": 1060,
+    "bytes": 251372
+  },
+  "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mycampus-bookmarks.png",
+  "captured": true,
+  "capturedSize": {
+    "width": 1440,
+    "height": 1600,
+    "bytes": 278941
+  },
+  "chromeStatus": 0,
+  "stderr": "278941 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mycampus-bookmarks.png\n",
+  "visualParityClaim": false,
+  "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+}

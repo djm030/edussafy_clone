@@ -1,0 +1,22 @@
+{
+  "routePath": "/classroom/required-learning",
+  "url": "http://127.0.0.1:5174/classroom/required-learning",
+  "referenceScreenshot": "../../edu_screnshot/15_classroom_required_learning_empty.png",
+  "referenceExists": true,
+  "referenceSize": {
+    "width": 1326,
+    "height": 1105,
+    "bytes": 252241
+  },
+  "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/classroom-required-learning.png",
+  "captured": true,
+  "capturedSize": {
+    "width": 1440,
+    "height": 1600,
+    "bytes": 180662
+  },
+  "chromeStatus": 0,
+  "stderr": "180662 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/classroom-required-learning.png\n",
+  "visualParityClaim": false,
+  "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+}

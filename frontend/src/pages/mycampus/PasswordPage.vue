@@ -24,6 +24,7 @@ import { ref } from 'vue'
 import PageHero from '../../components/ui/PageHero.vue'
 import SectionTabs from '../../components/ui/SectionTabs.vue'
 import FormTable from '../../components/ui/FormTable.vue'
+import { getAccessToken, isApiEnabled } from '../../api/client'
 import { mycampusTabs } from '../../data/mycampus'
 import { changePasswordData } from '../../services/mycampusService'
 
@@ -46,6 +47,11 @@ async function changePassword() {
   message.value = ''
   if (passwords.value.newPassword !== passwords.value.confirmPassword) {
     message.value = '새 비밀번호가 일치하지 않습니다.'
+    messageTone.value = 'warning'
+    return
+  }
+  if (isApiEnabled && !getAccessToken()) {
+    message.value = '로그인이 필요합니다. /login에서 계정으로 먼저 로그인하세요.'
     messageTone.value = 'warning'
     return
   }

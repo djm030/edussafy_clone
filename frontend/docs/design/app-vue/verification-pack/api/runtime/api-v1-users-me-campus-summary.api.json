@@ -1,0 +1,16 @@
+{
+  "endpoint": "GET /api/v1/users/me/campus-summary",
+  "endpointPath": "/api/v1/users/me/campus-summary",
+  "method": "GET",
+  "statusCode": 200,
+  "success": true,
+  "dataShapeSummary": "user,scholarshipPoint,totalExp,levelName,levelNo,attendanceRate,completedLearningCount,unreadNotificationCount",
+  "redactedRequest": {
+    "headers": {
+      "Authorization": "Bearer <redacted>"
+    }
+  },
+  "redactedResponseSample": "user,scholarshipPoint,totalExp,levelName,levelNo,attendanceRate,completedLearningCount,unreadNotificationCount",
+  "errorCode": null,
+  "message": "요청이 성공했습니다."
+}

@@ -1,0 +1,1030 @@
+{
+  "capturedAt": "2026-05-11T16:18:20.030Z",
+  "command": "API_BASE_URL=<url> node frontend/docs/design/app-vue/scripts/run-api-runtime-check.mjs",
+  "apiBaseUrl": "http://127.0.0.1:8088",
+  "usedMockFallback": false,
+  "apiRuntimeExercised": true,
+  "apiCompleteClaim": false,
+  "login": {
+    "email": "student@edussafy.local",
+    "statusCode": 200,
+    "success": true,
+    "token": "<redacted>",
+    "errorCode": null,
+    "message": "요청이 성공했습니다."
+  },
+  "summary": {
+    "getEndpoints": 51,
+    "getEndpointSuccesses": 45,
+    "formChecks": 11,
+    "formCheckSuccesses": 10
+  },
+  "blocker": null,
+  "endpoints": [
+    {
+      "endpoint": "GET /api/v1/auth/me",
+      "endpointPath": "/api/v1/auth/me",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "id,email,name,studentNo,generation,region,classNo,role,status",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "id,email,name,studentNo,generation,region,classNo,role,status",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
+    },
+    {
+      "endpoint": "GET /api/v1/users/me/campus-summary",
+      "endpointPath": "/api/v1/users/me/campus-summary",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "user,scholarshipPoint,totalExp,levelName,levelNo,attendanceRate,completedLearningCount,unreadNotificationCount",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "user,scholarshipPoint,totalExp,levelName,levelNo,attendanceRate,completedLearningCount,unreadNotificationCount",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
+    },
+    {
+      "endpoint": "GET /api/v1/points/my/summary",
+      "endpointPath": "/api/v1/points/my/summary",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "scholarshipPoint,totalExp,levelName,levelNo,attendanceRate,completedLearningCount",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "scholarshipPoint,totalExp,levelName,levelNo,attendanceRate,completedLearningCount",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
+    },
+    {
+      "endpoint": "GET /api/v1/notifications/my",
+      "endpointPath": "/api/v1/notifications/my",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "content,page,size,totalElements,totalPages",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "content,page,size,totalElements,totalPages",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
+    },
+    {
+      "endpoint": "GET /api/v1/points/my/transactions",
+      "endpointPath": "/api/v1/points/my/transactions",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "content,page,size,totalElements,totalPages",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "content,page,size,totalElements,totalPages",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
+    },
+    {
+      "endpoint": "GET /api/v1/attendance/my",
+      "endpointPath": "/api/v1/attendance/my",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "content,page,size,totalElements,totalPages",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "content,page,size,totalElements,totalPages",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
+    },
+    {
+      "endpoint": "GET /api/v1/learning/progress/my",
+      "endpointPath": "/api/v1/learning/progress/my",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "content,page,size,totalElements,totalPages",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "content,page,size,totalElements,totalPages",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
+    },
+    {
+      "endpoint": "GET /api/v1/bookmarks/my",
+      "endpointPath": "/api/v1/bookmarks/my",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "content,page,size,totalElements,totalPages",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "content,page,size,totalElements,totalPages",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
+    },
+    {
+      "endpoint": "GET /api/v1/learning/contents/my-selected",
+      "endpointPath": "/api/v1/learning/contents/my-selected",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "content,page,size,totalElements,totalPages",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "content,page,size,totalElements,totalPages",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
+    },
+    {
+      "endpoint": "GET /api/v1/boards/doc-req/posts",
+      "endpointPath": "/api/v1/boards/doc-req/posts",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "content,page,size,totalElements,totalPages",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "content,page,size,totalElements,totalPages",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
+    },
+    {
+      "endpoint": "GET /api/v1/boards/doc-req/categories",
+      "endpointPath": "/api/v1/boards/doc-req/categories",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "array(1)",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "array(1)",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
+    },
+    {
+      "endpoint": "GET /api/v1/agreements/my",
+      "endpointPath": "/api/v1/agreements/my",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "content,page,size,totalElements,totalPages",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "content,page,size,totalElements,totalPages",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
+    },
+    {
+      "endpoint": "GET /api/v1/agreements",
+      "endpointPath": "/api/v1/agreements",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "array(6)",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "array(6)",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
+    },
+    {
+      "endpoint": "GET /api/v1/users/me",
+      "endpointPath": "/api/v1/users/me",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "id,email,name,studentNo,generation,region,classNo,role,status",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "id,email,name,studentNo,generation,region,classNo,role,status",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
+    },
+    {
+      "endpoint": "GET /api/v1/course-sessions/replays",
+      "endpointPath": "/api/v1/course-sessions/replays",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "content,page,size,totalElements,totalPages",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "content,page,size,totalElements,totalPages",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
+    },
+    {
+      "endpoint": "GET /api/v1/courses/my",
+      "endpointPath": "/api/v1/courses/my",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "array(1)",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "array(1)",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
+    },
+    {
+      "endpoint": "GET /api/v1/courses/{courseId}/weeks",
+      "endpointPath": "/api/v1/courses/1/weeks",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "array(1)",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "array(1)",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
+    },
+    {
+      "endpoint": "GET /api/v1/courses/{courseId}/weeks/{weekId}/sessions",
+      "endpointPath": "/api/v1/courses/1/weeks/1/sessions",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "content,page,size,totalElements,totalPages",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "content,page,size,totalElements,totalPages",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
+    },
+    {
+      "endpoint": "GET /api/v1/tasks/my",
+      "endpointPath": "/api/v1/tasks/my",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "content,page,size,totalElements,totalPages",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "content,page,size,totalElements,totalPages",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
+    },
+    {
+      "endpoint": "GET /api/v1/tasks/{taskId}",
+      "endpointPath": "/api/v1/tasks/1",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "id,courseId,sessionId,surveyId,title,roundNo,taskType,description,openAt,closeAt,totalScore,isRequired",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "id,courseId,sessionId,surveyId,title,roundNo,taskType,description,openAt,closeAt,totalScore,isRequired",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
+    },
+    {
+      "endpoint": "GET /api/v1/tasks/{taskId}/my-result",
+      "endpointPath": "/api/v1/tasks/1/my-result",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "id,taskId,resultStatus,score,originalScore,retakeScore,attemptCount,answerData,submittedAt,completedAt,updatedAt",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "id,taskId,resultStatus,score,originalScore,retakeScore,attemptCount,answerData,submittedAt,completedAt,updatedAt",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
+    },
+    {
+      "endpoint": "GET /api/v1/learning/contents/required",
+      "endpointPath": "/api/v1/learning/contents/required",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "content,page,size,totalElements,totalPages",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "content,page,size,totalElements,totalPages",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
+    },
+    {
+      "endpoint": "GET /api/v1/learning/categories",
+      "endpointPath": "/api/v1/learning/categories",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "array(7)",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "array(7)",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
+    },
+    {
+      "endpoint": "GET /api/v1/learning/contents",
+      "endpointPath": "/api/v1/learning/contents",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "content,page,size,totalElements,totalPages",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "content,page,size,totalElements,totalPages",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
+    },
+    {
+      "endpoint": "GET /api/v1/learning/contents/{contentId}",
+      "endpointPath": "/api/v1/learning/contents/1",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "id,courseId,sessionId,categoryId,title,description,contentType,thumbnailUrl,contentUrl,durationSeconds,viewCount,likeCount",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "id,courseId,sessionId,categoryId,title,description,contentType,thumbnailUrl,contentUrl,durationSeconds,viewCount,likeCount",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
+    },
+    {
+      "endpoint": "GET /api/v1/survey-categories",
+      "endpointPath": "/api/v1/survey-categories",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "array(4)",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "array(4)",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
+    },
+    {
+      "endpoint": "GET /api/v1/surveys",
+      "endpointPath": "/api/v1/surveys",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "content,page,size,totalElements,totalPages",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "content,page,size,totalElements,totalPages",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
+    },
+    {
+      "endpoint": "GET /api/v1/surveys/{surveyId}",
+      "endpointPath": "/api/v1/surveys/1",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "id,categoryId,categoryName,title,description,formType,openAt,closeAt,isRequired,eventType,location,capacity",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "id,categoryId,categoryName,title,description,formType,openAt,closeAt,isRequired,eventType,location,capacity",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
+    },
+    {
+      "endpoint": "GET /api/v1/boards/free/posts",
+      "endpointPath": "/api/v1/boards/free/posts",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "content,page,size,totalElements,totalPages",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "content,page,size,totalElements,totalPages",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
+    },
+    {
+      "endpoint": "GET /api/v1/boards/free/categories",
+      "endpointPath": "/api/v1/boards/free/categories",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "array(1)",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "array(1)",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
+    },
+    {
+      "endpoint": "GET /api/v1/boards/free/posts/{postId}",
+      "endpointPath": "/api/v1/boards/free/posts/1",
+      "method": "GET",
+      "statusCode": 404,
+      "success": false,
+      "dataShapeSummary": "success,data,errorCode,message",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "success,data,errorCode,message",
+      "errorCode": "BOARD_POST_NOT_FOUND",
+      "message": "게시글을 찾을 수 없습니다."
+    },
+    {
+      "endpoint": "GET /api/v1/boards/anonymity/posts",
+      "endpointPath": "/api/v1/boards/anonymity/posts",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "content,page,size,totalElements,totalPages",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "content,page,size,totalElements,totalPages",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
+    },
+    {
+      "endpoint": "GET /api/v1/boards/anonymity/posts/{postId}",
+      "endpointPath": "/api/v1/boards/anonymity/posts/1",
+      "method": "GET",
+      "statusCode": 404,
+      "success": false,
+      "dataShapeSummary": "success,data,errorCode,message",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "success,data,errorCode,message",
+      "errorCode": "BOARD_POST_NOT_FOUND",
+      "message": "게시글을 찾을 수 없습니다."
+    },
+    {
+      "endpoint": "GET /api/v1/users/students",
+      "endpointPath": "/api/v1/users/students",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "content,page,size,totalElements,totalPages",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "content,page,size,totalElements,totalPages",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
+    },
+    {
+      "endpoint": "GET /api/v1/boards/notice/posts",
+      "endpointPath": "/api/v1/boards/notice/posts",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "content,page,size,totalElements,totalPages",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "content,page,size,totalElements,totalPages",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
+    },
+    {
+      "endpoint": "GET /api/v1/boards/notice/posts/{postId}",
+      "endpointPath": "/api/v1/boards/notice/posts/1",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "id,categoryId,categoryName,title,contentType,contentText,contentHtml,contentJson,displayName,isMine,viewCount,likeCount",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "id,categoryId,categoryName,title,contentType,contentText,contentHtml,contentJson,displayName,isMine,viewCount,likeCount",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
+    },
+    {
+      "endpoint": "GET /api/v1/boards/faq/posts",
+      "endpointPath": "/api/v1/boards/faq/posts",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "content,page,size,totalElements,totalPages",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "content,page,size,totalElements,totalPages",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
+    },
+    {
+      "endpoint": "GET /api/v1/inquiries/my",
+      "endpointPath": "/api/v1/inquiries/my",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "content,page,size,totalElements,totalPages",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "content,page,size,totalElements,totalPages",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
+    },
+    {
+      "endpoint": "GET /api/v1/inquiries/{inquiryId}",
+      "endpointPath": "/api/v1/inquiries/1",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "id,category,title,content,status,answerContent,answeredById,answeredByName,answeredAt,createdAt,updatedAt",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "id,category,title,content,status,answerContent,answeredById,answeredByName,answeredAt,createdAt,updatedAt",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
+    },
+    {
+      "endpoint": "GET /api/v1/boards/rule/posts",
+      "endpointPath": "/api/v1/boards/rule/posts",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "content,page,size,totalElements,totalPages",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "content,page,size,totalElements,totalPages",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
+    },
+    {
+      "endpoint": "GET /api/v1/boards/mento-state/posts",
+      "endpointPath": "/api/v1/boards/mento-state/posts",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "content,page,size,totalElements,totalPages",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "content,page,size,totalElements,totalPages",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
+    },
+    {
+      "endpoint": "GET /api/v1/boards/mento-state/posts/{postId}",
+      "endpointPath": "/api/v1/boards/mento-state/posts/1",
+      "method": "GET",
+      "statusCode": 404,
+      "success": false,
+      "dataShapeSummary": "success,data,errorCode,message",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "success,data,errorCode,message",
+      "errorCode": "BOARD_POST_NOT_FOUND",
+      "message": "게시글을 찾을 수 없습니다."
+    },
+    {
+      "endpoint": "GET /api/v1/boards/mento-qna/posts",
+      "endpointPath": "/api/v1/boards/mento-qna/posts",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "content,page,size,totalElements,totalPages",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "content,page,size,totalElements,totalPages",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
+    },
+    {
+      "endpoint": "GET /api/v1/boards/mento-qna/posts/{postId}",
+      "endpointPath": "/api/v1/boards/mento-qna/posts/1",
+      "method": "GET",
+      "statusCode": 404,
+      "success": false,
+      "dataShapeSummary": "success,data,errorCode,message",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "success,data,errorCode,message",
+      "errorCode": "BOARD_POST_NOT_FOUND",
+      "message": "게시글을 찾을 수 없습니다."
+    },
+    {
+      "endpoint": "GET /api/v1/boards/mento-notice/posts",
+      "endpointPath": "/api/v1/boards/mento-notice/posts",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "content,page,size,totalElements,totalPages",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "content,page,size,totalElements,totalPages",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
+    },
+    {
+      "endpoint": "GET /api/v1/boards/mento-notice/posts/{postId}",
+      "endpointPath": "/api/v1/boards/mento-notice/posts/1",
+      "method": "GET",
+      "statusCode": 404,
+      "success": false,
+      "dataShapeSummary": "success,data,errorCode,message",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "success,data,errorCode,message",
+      "errorCode": "BOARD_POST_NOT_FOUND",
+      "message": "게시글을 찾을 수 없습니다."
+    },
+    {
+      "endpoint": "GET /api/v1/boards/meeting-info/posts",
+      "endpointPath": "/api/v1/boards/meeting-info/posts",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "content,page,size,totalElements,totalPages",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "content,page,size,totalElements,totalPages",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
+    },
+    {
+      "endpoint": "GET /api/v1/boards/mento-review/posts",
+      "endpointPath": "/api/v1/boards/mento-review/posts",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "content,page,size,totalElements,totalPages",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "content,page,size,totalElements,totalPages",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
+    },
+    {
+      "endpoint": "GET /api/v1/boards/mento-review/posts/{postId}",
+      "endpointPath": "/api/v1/boards/mento-review/posts/1",
+      "method": "GET",
+      "statusCode": 404,
+      "success": false,
+      "dataShapeSummary": "success,data,errorCode,message",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "success,data,errorCode,message",
+      "errorCode": "BOARD_POST_NOT_FOUND",
+      "message": "게시글을 찾을 수 없습니다."
+    },
+    {
+      "endpoint": "GET /api/v1/boards/mento-review/categories",
+      "endpointPath": "/api/v1/boards/mento-review/categories",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "array(1)",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "array(1)",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
+    },
+    {
+      "endpoint": "GET /api/v1/notifications/my/unread-count",
+      "endpointPath": "/api/v1/notifications/my/unread-count",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "number",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "number",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
+    }
+  ],
+  "formInteractions": [
+    {
+      "name": "free category lookup",
+      "endpointPath": "/api/v1/boards/free/categories",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "array(1)",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "array(1)",
+      "errorCode": null,
+      "message": "요청이 성공했습니다.",
+      "categoryIdFound": true
+    },
+    {
+      "name": "community board write",
+      "endpointPath": "/api/v1/boards/free/posts",
+      "method": "POST",
+      "statusCode": 200,
+      "success": true,
+      "errorCode": null,
+      "message": "요청이 성공했습니다.",
+      "dataShapeSummary": "id",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>",
+          "Content-Type": "application/json"
+        },
+        "bodyShape": "categoryId,title,contentType,contentText,contentHtml,contentJson,fileIds"
+      }
+    },
+    {
+      "name": "doc-req category lookup",
+      "endpointPath": "/api/v1/boards/doc-req/categories",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "array(1)",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "array(1)",
+      "errorCode": null,
+      "message": "요청이 성공했습니다.",
+      "categoryIdFound": true
+    },
+    {
+      "name": "document submit without file",
+      "endpointPath": "/api/v1/boards/doc-req/posts",
+      "method": "POST",
+      "statusCode": 403,
+      "success": false,
+      "errorCode": "ACCESS_DENIED",
+      "message": "접근 권한이 없습니다.",
+      "dataShapeSummary": "success,data,errorCode,message",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>",
+          "Content-Type": "application/json"
+        },
+        "bodyShape": "categoryId,title,contentType,contentText,contentHtml,contentJson,fileIds"
+      }
+    },
+    {
+      "name": "inquiry write",
+      "endpointPath": "/api/v1/inquiries",
+      "method": "POST",
+      "statusCode": 200,
+      "success": true,
+      "errorCode": null,
+      "message": "요청이 성공했습니다.",
+      "dataShapeSummary": "id,category,title,content,status,answerContent,answeredById,answeredByName,answeredAt,createdAt,updatedAt",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>",
+          "Content-Type": "application/json"
+        },
+        "bodyShape": "category,title,content"
+      }
+    },
+    {
+      "name": "mento-review category lookup",
+      "endpointPath": "/api/v1/boards/mento-review/categories",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "array(1)",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "array(1)",
+      "errorCode": null,
+      "message": "요청이 성공했습니다.",
+      "categoryIdFound": true
+    },
+    {
+      "name": "mentoring review write",
+      "endpointPath": "/api/v1/boards/mento-review/posts",
+      "method": "POST",
+      "statusCode": 200,
+      "success": true,
+      "errorCode": null,
+      "message": "요청이 성공했습니다.",
+      "dataShapeSummary": "id",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>",
+          "Content-Type": "application/json"
+        },
+        "bodyShape": "categoryId,title,contentType,contentText,contentHtml,contentJson,fileIds"
+      }
+    },
+    {
+      "name": "profile save",
+      "endpointPath": "/api/v1/users/me",
+      "method": "PATCH",
+      "statusCode": 200,
+      "success": true,
+      "errorCode": null,
+      "message": "요청이 성공했습니다.",
+      "dataShapeSummary": "success,data,errorCode,message",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>",
+          "Content-Type": "application/json"
+        },
+        "bodyShape": "phoneNumber"
+      }
+    },
+    {
+      "name": "password save same password",
+      "endpointPath": "/api/v1/auth/password",
+      "method": "PATCH",
+      "statusCode": 200,
+      "success": true,
+      "errorCode": null,
+      "message": "요청이 성공했습니다.",
+      "dataShapeSummary": "success,data,errorCode,message",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>",
+          "Content-Type": "application/json"
+        },
+        "bodyShape": "currentPassword,newPassword"
+      }
+    },
+    {
+      "name": "survey submit sample",
+      "endpointPath": "/api/v1/surveys/1/submit",
+      "method": "POST",
+      "statusCode": 200,
+      "success": true,
+      "errorCode": null,
+      "message": "요청이 성공했습니다.",
+      "dataShapeSummary": "id,surveyId,surveyTitle,answers,participantStatus,submittedAt,cancelledAt,createdAt",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>",
+          "Content-Type": "application/json"
+        },
+        "bodyShape": "answers"
+      }
+    },
+    {
+      "name": "quest submit sample",
+      "endpointPath": "/api/v1/tasks/1/submit",
+      "method": "POST",
+      "statusCode": 200,
+      "success": true,
+      "errorCode": null,
+      "message": "요청이 성공했습니다.",
+      "dataShapeSummary": "id,taskId,resultStatus,score,originalScore,retakeScore,attemptCount,answerData,submittedAt,completedAt,updatedAt",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>",
+          "Content-Type": "application/json"
+        },
+        "bodyShape": "answerData"
+      }
+    }
+  ]
+}

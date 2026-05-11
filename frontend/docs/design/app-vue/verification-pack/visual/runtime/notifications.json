@@ -1,0 +1,22 @@
+{
+  "routePath": "/notifications",
+  "url": "http://127.0.0.1:5174/notifications",
+  "referenceScreenshot": "../../edu_screnshot/36_notification_inbox.png",
+  "referenceExists": true,
+  "referenceSize": {
+    "width": 1326,
+    "height": 1492,
+    "bytes": 272136
+  },
+  "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/notifications.png",
+  "captured": true,
+  "capturedSize": {
+    "width": 1440,
+    "height": 1600,
+    "bytes": 199363
+  },
+  "chromeStatus": 0,
+  "stderr": "199363 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/notifications.png\n",
+  "visualParityClaim": false,
+  "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+}

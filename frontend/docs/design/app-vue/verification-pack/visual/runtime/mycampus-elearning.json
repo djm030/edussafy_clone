@@ -1,0 +1,22 @@
+{
+  "routePath": "/mycampus/elearning",
+  "url": "http://127.0.0.1:5174/mycampus/elearning",
+  "referenceScreenshot": "../../edu_screnshot/27_mycampus_learning_elearning_empty.png",
+  "referenceExists": true,
+  "referenceSize": {
+    "width": 1326,
+    "height": 1105,
+    "bytes": 257024
+  },
+  "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mycampus-elearning.png",
+  "captured": true,
+  "capturedSize": {
+    "width": 1440,
+    "height": 1600,
+    "bytes": 285251
+  },
+  "chromeStatus": 0,
+  "stderr": "285251 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mycampus-elearning.png\n",
+  "visualParityClaim": false,
+  "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+}

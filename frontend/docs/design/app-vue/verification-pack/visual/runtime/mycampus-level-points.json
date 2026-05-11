@@ -1,0 +1,22 @@
+{
+  "routePath": "/mycampus/level-points",
+  "url": "http://127.0.0.1:5174/mycampus/level-points",
+  "referenceScreenshot": "../../edu_screnshot/25_mycampus_level_points_dashboard.png",
+  "referenceExists": true,
+  "referenceSize": {
+    "width": 1326,
+    "height": 1770,
+    "bytes": 304516
+  },
+  "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mycampus-level-points.png",
+  "captured": true,
+  "capturedSize": {
+    "width": 1440,
+    "height": 1600,
+    "bytes": 236894
+  },
+  "chromeStatus": 0,
+  "stderr": "236894 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mycampus-level-points.png\n",
+  "visualParityClaim": false,
+  "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+}

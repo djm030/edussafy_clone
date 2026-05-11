@@ -4,6 +4,7 @@ import { useRoute } from 'vue-router'
 import PageHero from '../../components/ui/PageHero.vue'
 import SectionTabs from '../../components/ui/SectionTabs.vue'
 import StatusBadge from '../../components/ui/StatusBadge.vue'
+import { getAccessToken, isApiEnabled } from '../../api/client'
 import { classroomTabs } from '../../constants/navigation'
 import { questItems } from '../../data/classroom'
 import { loadQuestDetail, submitQuestAnswer } from '../../services/classroomService'
@@ -36,6 +37,10 @@ async function loadQuest() {
 async function submitAnswer() {
   if (!answer.value.trim()) {
     submitMessage.value = '제출할 답안을 입력하세요.'
+    return
+  }
+  if (isApiEnabled && !getAccessToken()) {
+    submitMessage.value = '로그인이 필요합니다. /login에서 계정으로 먼저 로그인하세요.'
     return
   }
 

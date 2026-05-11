@@ -1,0 +1,22 @@
+{
+  "routePath": "/mycampus/pledges",
+  "url": "http://127.0.0.1:5174/mycampus/pledges",
+  "referenceScreenshot": "../../edu_screnshot/31_mycampus_student_pledge_list.png",
+  "referenceExists": true,
+  "referenceSize": {
+    "width": 1326,
+    "height": 913,
+    "bytes": 250523
+  },
+  "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mycampus-pledges.png",
+  "captured": true,
+  "capturedSize": {
+    "width": 1440,
+    "height": 1600,
+    "bytes": 195509
+  },
+  "chromeStatus": 0,
+  "stderr": "195509 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mycampus-pledges.png\n",
+  "visualParityClaim": false,
+  "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+}

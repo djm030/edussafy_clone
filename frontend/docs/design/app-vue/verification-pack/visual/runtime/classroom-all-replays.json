@@ -1,0 +1,22 @@
+{
+  "routePath": "/classroom/all-replays",
+  "url": "http://127.0.0.1:5174/classroom/all-replays",
+  "referenceScreenshot": "../../edu_screnshot/14_classroom_all_lecture_replay.png",
+  "referenceExists": true,
+  "referenceSize": {
+    "width": 1326,
+    "height": 1901,
+    "bytes": 298099
+  },
+  "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/classroom-all-replays.png",
+  "captured": true,
+  "capturedSize": {
+    "width": 1440,
+    "height": 1600,
+    "bytes": 204928
+  },
+  "chromeStatus": 0,
+  "stderr": "204928 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/classroom-all-replays.png\n",
+  "visualParityClaim": false,
+  "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+}

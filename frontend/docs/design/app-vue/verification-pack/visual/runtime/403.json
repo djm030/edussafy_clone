@@ -1,0 +1,22 @@
+{
+  "routePath": "/403",
+  "url": "http://127.0.0.1:5174/403",
+  "referenceScreenshot": "../../edu_screnshot/39_mycampus_ebook_403_forbidden.png",
+  "referenceExists": true,
+  "referenceSize": {
+    "width": 800,
+    "height": 533,
+    "bytes": 10671
+  },
+  "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/403.png",
+  "captured": true,
+  "capturedSize": {
+    "width": 1440,
+    "height": 1600,
+    "bytes": 50849
+  },
+  "chromeStatus": 0,
+  "stderr": "50849 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/403.png\n",
+  "visualParityClaim": false,
+  "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+}

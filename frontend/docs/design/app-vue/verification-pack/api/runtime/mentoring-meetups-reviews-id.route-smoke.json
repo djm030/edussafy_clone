@@ -1,0 +1,12 @@
+{
+  "routePath": "/mentoring/meetups/reviews/:id",
+  "samplePath": "/mentoring/meetups/reviews/1",
+  "routeKind": "dynamic-page",
+  "canonicalStatus": "NO_SCREENSHOT",
+  "statusCode": 200,
+  "ok": true,
+  "contentType": "text/html",
+  "containsAppRoot": true,
+  "bodyBytes": 357,
+  "capturedAt": "2026-05-11T16:16:44.032Z"
+}

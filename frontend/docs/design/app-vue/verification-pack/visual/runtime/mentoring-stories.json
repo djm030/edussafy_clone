@@ -1,0 +1,22 @@
+{
+  "routePath": "/mentoring/stories",
+  "url": "http://127.0.0.1:5174/mentoring/stories",
+  "referenceScreenshot": "../../edu_screnshot/11_mentoring_story_board.png",
+  "referenceExists": true,
+  "referenceSize": {
+    "width": 1326,
+    "height": 2553,
+    "bytes": 368685
+  },
+  "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mentoring-stories.png",
+  "captured": true,
+  "capturedSize": {
+    "width": 1440,
+    "height": 1600,
+    "bytes": 195231
+  },
+  "chromeStatus": 0,
+  "stderr": "195231 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mentoring-stories.png\n",
+  "visualParityClaim": false,
+  "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+}

@@ -1,80 +1,137 @@
-# Edu SSAFY frontend clone completion report
+# Final verification report — Edu SSAFY frontend clone
 
-Generated at 2026-05-11T15:42:00.000Z.
+Generated at: 2026-05-11T16:24:44Z
 
-## Scope completed
+## Overall verdict
 
-This run continued after Phase 0 and completed the feasible frontend-only phase plan without backend changes and without adding unapproved dependencies.
+Status: PARTIAL, not fully complete.
 
-## Changed areas
+The remaining feasible frontend clone work was implemented, verified, or explicitly recorded as PARTIAL/NO_SCREENSHOT. The project is not marked fully complete because real API runtime verification still has backend data/permission failures and visual parity is screenshot-captured but not pixel-diff proven.
 
-- `frontend/src/services/boardService.js`
-  - Replaced service-local board-code aliases with canonical `frontend/src/constants/boardCodes.js` usage.
-  - Added API-aware FAQ and academic-rules loaders with demo fallback.
-- `frontend/src/services/mycampusService.js`
-  - Replaced hardcoded `doc-req` service usage with canonical board code constants.
-- `frontend/src/router/index.js`
-  - Added explicit `/404` route and made wildcard routing redirect to `/404`.
-- `frontend/src/components/layout/AppHeader.vue`
-  - Profile chip now links to `/mycampus/profile`.
-- `frontend/src/components/layout/FloatingQuickAction.vue`
-  - Floating action now links to `/help/inquiries/write`.
-- `frontend/src/pages/classroom/LectureReplayPage.vue`
-  - Reads `sessionId` route query and surfaces selected-session context.
-- `frontend/src/pages/classroom/ClassroomResourcesPage.vue`
-  - Reads `keyword`, `type=textbook`, and `category` route query for routed filtering context.
-- `frontend/src/pages/help/HelpFaqPage.vue`
-  - Loads FAQ data through service/API-aware flow instead of static-only data.
-- `frontend/src/pages/help/HelpRulesPage.vue`
-  - Loads academic rules through service/API-aware flow instead of static-only data.
-- `frontend/src/pages/mycampus/ProfilePage.vue`
-  - Adds direct password-change navigation.
-- `frontend/docs/design/app-vue/scripts/`
-  - Adds contract inventory and verification-pack generation scripts.
-- `frontend/docs/design/app-vue/verification-pack/`
-  - Adds phase evidence, route-smoke matrix, API-truth placeholders, visual evidence placeholders, and this final report.
-- `frontend/package-lock.json`
-  - Created by installing existing `package.json` dependencies to enable local build verification.
+Hard-rule confirmations:
+- Backend code changed: no.
+- New dependencies added: no.
+- Work scope: canonical-contract.md routes only.
+- Mock fallback claimed as API completion: no; runtime evidence used real API at `http://127.0.0.1:8088`.
+- Visual completion claimed without capture/compare evidence: no; capture evidence exists, parity remains PARTIAL because no pixel diff dependency was added.
 
-## Verification evidence
+## Team-mode reconciliation
 
-Commands run successfully:
+- Team: `edu-ssafy-frontend-cl-61b8334b`.
+- Team phase: `complete`.
+- Tasks: 8/8 completed, 0 failed, 0 blocked.
+- Workers: 5 total, 0 dead, 0 non-reporting.
+- Worker results were reconciled by the leader. Some worker auto-merge commits conflicted, so equivalent runtime evidence and frontend-only fixes were regenerated in the leader worktree rather than trusting unmerged artifacts.
 
-```bash
-npm install
-npm run build
-npm audit --omit=dev --json
-node frontend/docs/design/app-vue/scripts/build-contract-inventory.mjs
-node frontend/docs/design/app-vue/scripts/build-verification-pack.mjs
+## Canonical contract and inventory
+
+- Regeneration command: `node frontend/docs/design/app-vue/scripts/build-contract-inventory.mjs`.
+- Verification-pack regeneration command: `node frontend/docs/design/app-vue/scripts/build-verification-pack.mjs`.
+- Semantic drift: none detected; timestamp-only regenerated Phase 0/phase-6 placeholder churn was not retained.
+- Canonical rows: 54.
+- READY rows: 35.
+- NO_SCREENSHOT rows: 19.
+- BLOCKED rows: 0.
+- boardCode drift / partial rows: 0.
+
+Evidence paths:
+- `frontend/docs/design/app-vue/canonical-contract.md`
+- `frontend/docs/design/app-vue/contract-inventory.json`
+- `frontend/docs/design/app-vue/verification-pack/README.md`
+
+## Route smoke evidence
+
+- Command: `FRONTEND_BASE_URL=http://127.0.0.1:5174 node frontend/docs/design/app-vue/scripts/run-route-smoke.mjs`.
+- Complete claim: true.
+- Routes: 51/51 passed, 0 failed.
+- Evidence: `frontend/docs/design/app-vue/verification-pack/api/runtime/route-smoke-runtime-summary.json`.
+
+## API runtime evidence
+
+- Command: `API_BASE_URL=http://127.0.0.1:8088 node frontend/docs/design/app-vue/scripts/run-api-runtime-check.mjs`.
+- API base URL: `http://127.0.0.1:8088`.
+- Mock fallback used: false.
+- API runtime exercised: true.
+- API complete claim: false.
+- Login/session: `student@edussafy.local` returned HTTP 200; token redacted in evidence.
+- GET endpoints: 45/51 succeeded.
+- Form/runtime checks: 10/11 succeeded.
+- Evidence directory: `frontend/docs/design/app-vue/verification-pack/api/runtime/`.
+
+API failures kept as PARTIAL evidence:
+- `GET /api/v1/boards/free/posts/{postId}` -> HTTP 404 `BOARD_POST_NOT_FOUND`.
+- `GET /api/v1/boards/anonymity/posts/{postId}` -> HTTP 404 `BOARD_POST_NOT_FOUND`.
+- `GET /api/v1/boards/mento-state/posts/{postId}` -> HTTP 404 `BOARD_POST_NOT_FOUND`.
+- `GET /api/v1/boards/mento-qna/posts/{postId}` -> HTTP 404 `BOARD_POST_NOT_FOUND`.
+- `GET /api/v1/boards/mento-notice/posts/{postId}` -> HTTP 404 `BOARD_POST_NOT_FOUND`.
+- `GET /api/v1/boards/mento-review/posts/{postId}` -> HTTP 404 `BOARD_POST_NOT_FOUND`.
+
+Form/runtime failure kept as PARTIAL evidence:
+- `document submit without file` `POST /api/v1/boards/doc-req/posts` -> HTTP 403 `ACCESS_DENIED`.
+
+## Visual parity evidence
+
+- Command: `FRONTEND_BASE_URL=http://127.0.0.1:5174 node frontend/docs/design/app-vue/scripts/capture-visual-runtime.mjs`.
+- Visual complete claim: false.
+- Reference routes attempted: 30/30.
+- Screenshots captured: 30.
+- Capture failures: 0.
+- Evidence directory: `frontend/docs/design/app-vue/verification-pack/visual/runtime/`.
+- Screenshot directory: `frontend/docs/design/app-vue/verification-pack/screenshots/runtime/`.
+- Limitation: no new dependency was added, so screenshot capture and dimension/reference mapping are recorded but pixel-diff parity is not claimed.
+
+## NO_SCREENSHOT and dynamic-route evidence
+
+- NO_SCREENSHOT rows: 19.
+- Dynamic NO_SCREENSHOT rows: 11.
+- Static NO_SCREENSHOT rows: 8.
+- Smoke pass: 19.
+- Blocked: 0.
+- Evidence: `frontend/docs/design/app-vue/verification-pack/api/dynamic-route-smoke/dynamic-route-smoke-summary.json`.
+- Visual summary: `frontend/docs/design/app-vue/verification-pack/visual/no-screenshot/no-screenshot-summary.md`.
+
+## Form and interaction lane
+
+- Source audit evidence: `frontend/docs/design/app-vue/verification-pack/api/form-interactions/form-interaction-audit.json`.
+- Audit summary: 4 FEASIBLE, 4 PARTIAL, 0 BLOCKED.
+- Runtime form/API checks: 10/11 succeeded.
+- Implemented frontend-only API-mode token guards for write/save/submit flows so VITE_USE_API=true does not silently submit without a real session token.
+
+Runtime-successful form checks:
+- `free category lookup` `GET /api/v1/boards/free/categories` -> HTTP 200.
+- `community board write` `POST /api/v1/boards/free/posts` -> HTTP 200.
+- `doc-req category lookup` `GET /api/v1/boards/doc-req/categories` -> HTTP 200.
+- `inquiry write` `POST /api/v1/inquiries` -> HTTP 200.
+- `mento-review category lookup` `GET /api/v1/boards/mento-review/categories` -> HTTP 200.
+- `mentoring review write` `POST /api/v1/boards/mento-review/posts` -> HTTP 200.
+- `profile save` `PATCH /api/v1/users/me` -> HTTP 200.
+- `password save same password` `PATCH /api/v1/auth/password` -> HTTP 200.
+- `survey submit sample` `POST /api/v1/surveys/1/submit` -> HTTP 200.
+- `quest submit sample` `POST /api/v1/tasks/1/submit` -> HTTP 200.
+
+## Final command verification
+
+- `npm run build` in `frontend`: PASS.
+- `npm audit --omit=dev --json`: PASS, 0 total vulnerabilities.
+- `git diff -- backend`: empty.
+- Runtime scripts generated JSON evidence successfully.
+
+Audit summary:
+```json
+{
+  "critical": 0,
+  "high": 0,
+  "info": 0,
+  "low": 0,
+  "moderate": 0,
+  "total": 0
+}
 ```
 
-Observed verification:
+## Remaining risks and stop condition
 
-- Production build: PASS (`vite build`)
-- npm audit production dependencies: 0 total vulnerabilities, 0 critical
-- Backend changed files: none
-- Contract inventory:
-  - canonicalRows: 54
-  - readyRows: 35
-  - partialRows: 0
-  - noScreenshotRows: 19
-  - blockedRows: 0
-  - screenshotAliasesResolved: 9
-  - unmappedScreenshotRoutes: 0
-  - boardCodePartial: 0
-- Phase 6 route-smoke matrix:
-  - routes: 51 frontend routes, excluding external service URLs
-  - ready: 32
-  - noScreenshot: 19
-  - partial: 0
-  - blocked: 0
-  - apiCompletionClaim: false
-  - visualParityClaim: false
+The requested remaining feasible frontend work is stopped here because it is implemented, verified, or explicitly recorded as PARTIAL/NO_SCREENSHOT. Do not mark the clone fully complete until the following are resolved with fresh evidence:
 
-## Remaining risks and honest non-claims
-
-- Runtime backend API calls were not exercised with real credentials; no API-complete claim is made.
-- Browser screenshots and pixel-diff visual verdicts were not captured; no visual parity claim is made.
-- `NO_SCREENSHOT` canonical rows remain intentionally marked where the screenshot map has no primary reference.
-- Phase 6 evidence files are static contract/route evidence placeholders until a browser/API runtime harness is available.
-- Codex `/goal` integration for this same thread was blocked by a previously completed aggregate goal, so `.omx/ultragoal` was continued as repo-native durable state.
+1. API detail endpoints need representative existing backend IDs or seeded data for the six board detail 404s.
+2. Document submit needs backend permission/data alignment for `doc-req` POST, or a valid authorized account/role.
+3. Visual parity needs manual or automated pixel-diff comparison against the canonical reference screenshots. No dependency was added in this run.

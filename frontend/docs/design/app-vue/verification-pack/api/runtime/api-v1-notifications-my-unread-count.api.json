@@ -1,0 +1,16 @@
+{
+  "endpoint": "GET /api/v1/notifications/my/unread-count",
+  "endpointPath": "/api/v1/notifications/my/unread-count",
+  "method": "GET",
+  "statusCode": 200,
+  "success": true,
+  "dataShapeSummary": "number",
+  "redactedRequest": {
+    "headers": {
+      "Authorization": "Bearer <redacted>"
+    }
+  },
+  "redactedResponseSample": "number",
+  "errorCode": null,
+  "message": "요청이 성공했습니다."
+}

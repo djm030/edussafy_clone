@@ -1,0 +1,22 @@
+{
+  "routePath": "/mentoring/meetups/apply",
+  "url": "http://127.0.0.1:5174/mentoring/meetups/apply",
+  "referenceScreenshot": "../../edu_screnshot/21_mentoring_meetup_apply.png",
+  "referenceExists": true,
+  "referenceSize": {
+    "width": 1326,
+    "height": 944,
+    "bytes": 191904
+  },
+  "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mentoring-meetups-apply.png",
+  "captured": true,
+  "capturedSize": {
+    "width": 1440,
+    "height": 1600,
+    "bytes": 203649
+  },
+  "chromeStatus": 0,
+  "stderr": "203649 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mentoring-meetups-apply.png\n",
+  "visualParityClaim": false,
+  "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+}

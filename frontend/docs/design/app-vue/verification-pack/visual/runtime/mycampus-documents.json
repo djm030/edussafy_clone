@@ -1,0 +1,22 @@
+{
+  "routePath": "/mycampus/documents",
+  "url": "http://127.0.0.1:5174/mycampus/documents",
+  "referenceScreenshot": "../../edu_screnshot/29_mycampus_document_submission_empty.png",
+  "referenceExists": true,
+  "referenceSize": {
+    "width": 1326,
+    "height": 1060,
+    "bytes": 248987
+  },
+  "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mycampus-documents.png",
+  "captured": true,
+  "capturedSize": {
+    "width": 1440,
+    "height": 1600,
+    "bytes": 192367
+  },
+  "chromeStatus": 0,
+  "stderr": "192367 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mycampus-documents.png\n",
+  "visualParityClaim": false,
+  "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+}

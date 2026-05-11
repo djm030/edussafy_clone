@@ -27,6 +27,7 @@ import { ref } from 'vue'
 import PageHero from '../../components/ui/PageHero.vue'
 import SectionTabs from '../../components/ui/SectionTabs.vue'
 import FormTable from '../../components/ui/FormTable.vue'
+import { getAccessToken, isApiEnabled } from '../../api/client'
 import { mentoringTabs } from '../../constants/navigation'
 import { createMentoringReviewPost } from '../../services/boardService'
 
@@ -46,6 +47,11 @@ async function submitReview() {
   message.value = ''
   if (!form.value.title || !form.value.content) {
     message.value = '제목과 내용을 입력하세요.'
+    messageTone.value = 'warning'
+    return
+  }
+  if (isApiEnabled && !getAccessToken()) {
+    message.value = '로그인이 필요합니다. /login에서 계정으로 먼저 로그인하세요.'
     messageTone.value = 'warning'
     return
   }
