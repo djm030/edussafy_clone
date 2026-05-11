@@ -54,6 +54,67 @@ export const educationStatus = [
   { id: 4, title: '프로젝트 활동', value: '진행중', description: '공통 프로젝트 준비 단계' }
 ]
 
+export const eLearningItems = [
+  {
+    id: 101,
+    title: 'Spring Boot 핵심 개념 이러닝',
+    breadcrumb: ['이러닝', 'Framework(Back)'],
+    description: 'Framework(Back) 과정 복습을 위한 Spring Boot 핵심 개념 학습 콘텐츠입니다.',
+    progress: '65% 진행',
+    status: '학습중',
+    date: '2026.05.10',
+    views: 18,
+    likes: 3,
+    bookmarks: 1,
+    textbook: false,
+    label: 'E-LEARNING'
+  },
+  {
+    id: 102,
+    title: 'Vue Router 실습 다시보기',
+    breadcrumb: ['이러닝', 'Web(Front)'],
+    description: 'Vue Router 기반 SPA 화면 전환과 중첩 라우팅을 정리한 실습형 콘텐츠입니다.',
+    progress: '수강완료',
+    status: '완료',
+    date: '2026.05.08',
+    views: 11,
+    likes: 2,
+    bookmarks: 2,
+    textbook: false,
+    label: 'E-LEARNING'
+  }
+]
+
+export const bookmarkedLearningItems = [
+  {
+    id: 201,
+    title: '15기 0528_프론트엔드_리뉴얼 실습자료_3',
+    breadcrumb: ['찜한 목록', '교재'],
+    description: '최근 수업에서 찜한 프론트엔드 실습 교재입니다.',
+    progress: '찜한 콘텐츠',
+    status: '찜함',
+    date: '2026.05.09',
+    views: 2,
+    likes: 0,
+    bookmarks: 1,
+    textbook: true,
+    label: 'BOOKMARK'
+  },
+  {
+    id: 202,
+    title: 'DB 관계 모델링 보충 자료',
+    breadcrumb: ['찜한 목록', '학습자료'],
+    description: '관통 프로젝트 준비를 위해 저장해 둔 DB 관계 모델링 보충 자료입니다.',
+    progress: '찜한 콘텐츠',
+    status: '찜함',
+    date: '2026.05.07',
+    views: 7,
+    likes: 1,
+    bookmarks: 1,
+    textbook: true,
+    label: 'BOOKMARK'
+  }
+]
 export const notifications = [
   { id: 1, title: 'Quest 제출 마감이 하루 남았습니다.', body: 'Framework 소개 Quest를 오늘 안에 제출하세요.', date: '2026.05.10', unread: true },
   { id: 2, title: '공지사항이 등록되었습니다.', body: '5월 교육 운영 및 출결 유의사항 안내', date: '2026.05.10', unread: true },

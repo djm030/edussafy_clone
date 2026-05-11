@@ -22,11 +22,12 @@ import MeetupApplyPage from '../pages/mentoring/MeetupApplyPage.vue'
 import MeetupInfoPage from '../pages/mentoring/MeetupInfoPage.vue'
 import MeetupReviewWritePage from '../pages/mentoring/MeetupReviewWritePage.vue'
 import AttendancePage from '../pages/mycampus/AttendancePage.vue'
+import BookmarksPage from '../pages/mycampus/BookmarksPage.vue'
 import DocumentWritePage from '../pages/mycampus/DocumentWritePage.vue'
 import DocumentsPage from '../pages/mycampus/DocumentsPage.vue'
 import EducationStatusPage from '../pages/mycampus/EducationStatusPage.vue'
+import ElearningPage from '../pages/mycampus/ElearningPage.vue'
 import LevelPointsPage from '../pages/mycampus/LevelPointsPage.vue'
-import MyCampusEmptyPage from '../pages/mycampus/MyCampusEmptyPage.vue'
 import PasswordPage from '../pages/mycampus/PasswordPage.vue'
 import PledgesPage from '../pages/mycampus/PledgesPage.vue'
 import ProfilePage from '../pages/mycampus/ProfilePage.vue'
@@ -43,8 +44,8 @@ const routes = [
   { path: routePaths.dashboard, name: 'dashboard', component: DashboardPage },
   { path: routePaths.mycampusLevelPoints, name: 'mycampus-level-points', component: LevelPointsPage },
   { path: routePaths.mycampusAttendance, name: 'mycampus-attendance', component: AttendancePage },
-  { path: routePaths.mycampusElearning, name: 'mycampus-elearning', component: MyCampusEmptyPage, props: { title: '학습중 이러닝', message: '학습중인 이러닝이 없습니다.', description: '배정된 이러닝 과정이 생기면 이 영역에서 진행 상태를 확인할 수 있습니다.' } },
-  { path: routePaths.mycampusBookmarks, name: 'mycampus-bookmarks', component: MyCampusEmptyPage, props: { title: '찜한 목록', message: '찜한 학습자료가 없습니다.', description: '학습자료 상세에서 찜한 콘텐츠를 모아볼 수 있습니다.' } },
+  { path: routePaths.mycampusElearning, name: 'mycampus-elearning', component: ElearningPage },
+  { path: routePaths.mycampusBookmarks, name: 'mycampus-bookmarks', component: BookmarksPage },
   { path: routePaths.mycampusDocuments, name: 'mycampus-documents', component: DocumentsPage },
   { path: routePaths.mycampusDocumentWrite, name: 'mycampus-document-write', component: DocumentWritePage },
   { path: routePaths.mycampusPledges, name: 'mycampus-pledges', component: PledgesPage },

@@ -1,9 +1,11 @@
 import { isApiEnabled } from '../api/client'
-import { agreementsApi, attendanceApi, pointsApi, usersApi } from '../api/modules'
+import { agreementsApi, attendanceApi, bookmarksApi, learningApi, pointsApi, usersApi } from '../api/modules'
 import {
   attendanceDays,
   attendanceSummary,
+  bookmarkedLearningItems,
   educationStatus,
+  eLearningItems,
   pledges,
   pointHistory,
   pointSummary
@@ -113,6 +115,54 @@ function summarizeAttendance(days) {
   ]
 }
 
+function unwrapLearningItem(item) {
+  return item.learningContent || item.content || item.target || item.targetContent || item.learning || item
+}
+
+function normalizeLearningItem(item) {
+  const content = unwrapLearningItem(item)
+  const category = content.categoryName || content.category?.name || item.categoryName || '이러닝'
+  const type = content.contentType || content.type || item.contentType || '학습자료'
+  const progressRate = item.progressRate ?? item.progressPercent ?? item.progress ?? content.progressRate
+  const completed = item.completedAt || item.status === 'COMPLETED' || item.progressStatus === 'COMPLETED'
+  const statusLabel = completed ? '수강완료' : (progressRate ? `${progressRate}% 진행` : item.statusLabel || '학습중')
+
+  return {
+    id: content.id || content.contentId || item.contentId || item.id,
+    title: content.title || item.title || '이러닝 콘텐츠',
+    breadcrumb: [category, type],
+    description: content.description || content.summary || item.description || item.summary || content.title || '학습 콘텐츠입니다.',
+    progress: statusLabel,
+    status: completed ? '완료' : '학습중',
+    date: formatDate(item.updatedAt || item.lastStudiedAt || item.createdAt || content.createdAt),
+    views: content.viewCount ?? content.views ?? 0,
+    likes: content.likeCount ?? content.likes ?? 0,
+    bookmarks: content.bookmarkCount ?? content.bookmarks ?? 0,
+    textbook: content.isTextbook ?? type === 'FILE',
+    label: content.label || 'E-LEARNING'
+  }
+}
+
+function normalizeBookmarkedLearningItem(item) {
+  const content = unwrapLearningItem(item)
+  const category = content.categoryName || content.category?.name || item.categoryName || '찜한 목록'
+  const type = content.contentType || content.type || item.targetType || '학습자료'
+
+  return {
+    id: content.id || content.contentId || item.targetId || item.contentId || item.id,
+    title: content.title || item.title || '찜한 학습자료',
+    breadcrumb: [category, type],
+    description: content.description || content.summary || item.description || item.summary || content.title || '찜한 학습 콘텐츠입니다.',
+    progress: '찜한 콘텐츠',
+    status: '찜함',
+    date: formatDate(item.bookmarkedAt || item.createdAt || content.createdAt),
+    views: content.viewCount ?? content.views ?? 0,
+    likes: content.likeCount ?? content.likes ?? 0,
+    bookmarks: content.bookmarkCount ?? content.bookmarks ?? 1,
+    textbook: content.isTextbook ?? type === 'FILE',
+    label: content.label || 'BOOKMARK'
+  }
+}
 function normalizeAgreement(item) {
   const agreement = item.agreement || item
   const agreedAt = item.agreedAt || item.signedAt || item.createdAt
@@ -201,4 +251,24 @@ export async function loadEducationStatusData() {
   ])
 
   return buildEducationStatus(summary, campusSummary)
+}
+
+export async function loadElearningData() {
+  if (!isApiEnabled) return eLearningItems
+
+  const page = await learningApi.myProgress({ page: 0, size: 10 }).catch(() => null)
+  const items = pageItems(page).map(normalizeLearningItem)
+  return items.length ? items : eLearningItems
+}
+
+export async function loadBookmarkData() {
+  if (!isApiEnabled) return bookmarkedLearningItems
+
+  const bookmarkPage = await bookmarksApi.my({ targetType: 'LEARNING_CONTENT', page: 0, size: 10 }).catch(() => null)
+  const bookmarkItems = pageItems(bookmarkPage).map(normalizeBookmarkedLearningItem)
+  if (bookmarkItems.length) return bookmarkItems
+
+  const selectedPage = await learningApi.mySelected({ page: 0, size: 10 }).catch(() => null)
+  const selectedItems = pageItems(selectedPage).map(normalizeBookmarkedLearningItem)
+  return selectedItems.length ? selectedItems : bookmarkedLearningItems
 }
