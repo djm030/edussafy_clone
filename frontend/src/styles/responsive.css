@@ -157,3 +157,43 @@
     padding-left: 24px;
   }
 }
+
+@media (max-width: 960px) {
+  .survey-grid,
+  .meetup-grid,
+  .roster-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .search-filter-bar {
+    grid-template-columns: 1fr;
+  }
+
+  .board-table {
+    min-width: 760px;
+  }
+
+  .board-page {
+    overflow-x: auto;
+  }
+}
+
+@media (max-width: 720px) {
+  .board-page-title-row,
+  .form-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .survey-grid,
+  .meetup-grid,
+  .roster-grid,
+  .article-meta,
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .faq-item p {
+    padding-left: 22px;
+  }
+}

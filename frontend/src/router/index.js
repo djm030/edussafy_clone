@@ -7,6 +7,21 @@ import ClassroomResourceDetailPage from '../pages/classroom/ClassroomResourceDet
 import ClassroomResourcesPage from '../pages/classroom/ClassroomResourcesPage.vue'
 import LectureReplayPage from '../pages/classroom/LectureReplayPage.vue'
 import RequiredLearningPage from '../pages/classroom/RequiredLearningPage.vue'
+import BoardListPage from '../pages/community/BoardListPage.vue'
+import BoardWritePage from '../pages/community/BoardWritePage.vue'
+import ClassRosterPage from '../pages/community/ClassRosterPage.vue'
+import CommunitySurveysPage from '../pages/community/CommunitySurveysPage.vue'
+import HelpFaqPage from '../pages/help/HelpFaqPage.vue'
+import HelpInquiriesPage from '../pages/help/HelpInquiriesPage.vue'
+import HelpInquiryWritePage from '../pages/help/HelpInquiryWritePage.vue'
+import HelpNoticeDetailPage from '../pages/help/HelpNoticeDetailPage.vue'
+import HelpNoticePage from '../pages/help/HelpNoticePage.vue'
+import HelpRulesPage from '../pages/help/HelpRulesPage.vue'
+import MentoringBoardPage from '../pages/mentoring/MentoringBoardPage.vue'
+import MeetupApplyPage from '../pages/mentoring/MeetupApplyPage.vue'
+import MeetupInfoPage from '../pages/mentoring/MeetupInfoPage.vue'
+import MeetupReviewWritePage from '../pages/mentoring/MeetupReviewWritePage.vue'
+import PostDetailPage from '../pages/shared/PostDetailPage.vue'
 import ErrorPage from '../pages/errors/ErrorPage.vue'
 import PlaceholderPage from '../pages/PlaceholderPage.vue'
 import { routePaths } from '../constants/routes'
@@ -39,24 +54,31 @@ const routes = [
   { path: routePaths.classroomRequiredLearning, name: 'classroom-required-learning', component: RequiredLearningPage },
   { path: routePaths.classroomResources, name: 'classroom-resources', component: ClassroomResourcesPage },
   { path: '/classroom/resources/:id', name: 'classroom-resource-detail', component: ClassroomResourceDetailPage },
-  { path: routePaths.communitySurveys, name: 'community-surveys', ...placeholder('Community Surveys') },
-  { path: routePaths.communityOpenBoard, name: 'community-open-board', ...placeholder('Open Board') },
-  { path: routePaths.communityOpenBoardWrite, name: 'community-open-board-write', ...placeholder('Open Board Write') },
-  { path: routePaths.communityAnonymousBoard, name: 'community-anonymous-board', ...placeholder('Anonymous Board') },
-  { path: routePaths.communityClassRoster, name: 'community-class-roster', ...placeholder('Class Roster') },
-  { path: routePaths.helpNotice, name: 'help-notice', ...placeholder('Notice') },
-  { path: '/help/notice/:id', name: 'help-notice-detail', ...placeholder('Notice Detail') },
-  { path: routePaths.helpFaq, name: 'help-faq', ...placeholder('FAQ') },
-  { path: routePaths.helpInquiries, name: 'help-inquiries', ...placeholder('Inquiries') },
-  { path: routePaths.helpInquiryWrite, name: 'help-inquiry-write', ...placeholder('Inquiry Write') },
-  { path: routePaths.helpRules, name: 'help-rules', ...placeholder('Academic Rules') },
-  { path: routePaths.mentoringStories, name: 'mentoring-stories', ...placeholder('Mentoring Stories') },
-  { path: routePaths.mentoringQna, name: 'mentoring-qna', ...placeholder('Mentoring Q&A') },
-  { path: routePaths.mentoringNotice, name: 'mentoring-notice', ...placeholder('Mentoring Notice') },
-  { path: routePaths.mentoringMeetupApply, name: 'mentoring-meetup-apply', ...placeholder('Meetup Apply') },
-  { path: routePaths.mentoringMeetupInfo, name: 'mentoring-meetup-info', ...placeholder('Meetup Info') },
-  { path: routePaths.mentoringMeetupReviews, name: 'mentoring-meetup-reviews', ...placeholder('Meetup Reviews') },
-  { path: routePaths.mentoringMeetupReviewWrite, name: 'mentoring-meetup-review-write', ...placeholder('Meetup Review Write') },
+  { path: routePaths.communitySurveys, name: 'community-surveys', component: CommunitySurveysPage },
+  { path: routePaths.communityOpenBoard, name: 'community-open-board', component: BoardListPage, props: { variant: 'open' } },
+  { path: routePaths.communityOpenBoardWrite, name: 'community-open-board-write', component: BoardWritePage },
+  { path: '/community/boards/open/:id', name: 'community-open-board-detail', component: PostDetailPage, props: { source: 'open' } },
+  { path: routePaths.communityAnonymousBoard, name: 'community-anonymous-board', component: BoardListPage, props: { variant: 'anonymous' } },
+  { path: '/community/boards/anonymous/:id', name: 'community-anonymous-board-detail', component: PostDetailPage, props: { source: 'anonymous' } },
+  { path: routePaths.communityClassRoster, name: 'community-class-roster', component: ClassRosterPage },
+  { path: routePaths.helpNotice, name: 'help-notice', component: HelpNoticePage },
+  { path: '/help/notice/:id', name: 'help-notice-detail', component: HelpNoticeDetailPage },
+  { path: routePaths.helpFaq, name: 'help-faq', component: HelpFaqPage },
+  { path: routePaths.helpInquiries, name: 'help-inquiries', component: HelpInquiriesPage },
+  { path: '/help/inquiries/:id', name: 'help-inquiry-detail', component: HelpInquiriesPage },
+  { path: routePaths.helpInquiryWrite, name: 'help-inquiry-write', component: HelpInquiryWritePage },
+  { path: routePaths.helpRules, name: 'help-rules', component: HelpRulesPage },
+  { path: routePaths.mentoringStories, name: 'mentoring-stories', component: MentoringBoardPage, props: { variant: 'stories' } },
+  { path: '/mentoring/stories/:id', name: 'mentoring-story-detail', component: PostDetailPage, props: { source: 'stories' } },
+  { path: routePaths.mentoringQna, name: 'mentoring-qna', component: MentoringBoardPage, props: { variant: 'qna' } },
+  { path: '/mentoring/qna/:id', name: 'mentoring-qna-detail', component: PostDetailPage, props: { source: 'qna' } },
+  { path: routePaths.mentoringNotice, name: 'mentoring-notice', component: MentoringBoardPage, props: { variant: 'notice' } },
+  { path: '/mentoring/notice/:id', name: 'mentoring-notice-detail', component: PostDetailPage, props: { source: 'notice' } },
+  { path: routePaths.mentoringMeetupApply, name: 'mentoring-meetup-apply', component: MeetupApplyPage },
+  { path: routePaths.mentoringMeetupInfo, name: 'mentoring-meetup-info', component: MeetupInfoPage },
+  { path: routePaths.mentoringMeetupReviews, name: 'mentoring-meetup-reviews', component: MentoringBoardPage, props: { variant: 'reviews' } },
+  { path: '/mentoring/meetups/reviews/:id', name: 'mentoring-meetup-review-detail', component: PostDetailPage, props: { source: 'reviews' } },
+  { path: routePaths.mentoringMeetupReviewWrite, name: 'mentoring-meetup-review-write', component: MeetupReviewWritePage },
   { path: routePaths.notifications, name: 'notifications', ...placeholder('Notifications') },
   { path: routePaths.forbidden, name: 'forbidden', component: ErrorPage, props: { code: '403 Forbidden', message: 'You do not have permission to access this content.' } },
   { path: '/:pathMatch(.*)*', name: 'not-found', component: ErrorPage, props: { code: '404 Not Found', message: 'The requested page could not be found.' } }

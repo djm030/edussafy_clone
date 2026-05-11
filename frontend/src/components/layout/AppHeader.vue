@@ -25,7 +25,7 @@
           <span class="notification-dot">1</span>
           알림
         </RouterLink>
-        <span class="profile-chip">김샤피</span>
+        <span class="profile-chip">김싸피</span>
       </div>
     </div>
 
