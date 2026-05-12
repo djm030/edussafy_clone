@@ -1,6 +1,6 @@
 {
   "routePath": "/mycampus/documents",
-  "url": "http://127.0.0.1:5175/mycampus/documents",
+  "url": "http://127.0.0.1:5176/mycampus/documents?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
   "referenceScreenshot": "../../edu_screnshot/29_mycampus_document_submission_empty.png",
   "referenceExists": true,
   "referenceSize": {
@@ -17,10 +17,11 @@
   "capturedSize": {
     "width": 1326,
     "height": 1060,
-    "bytes": 151612
+    "bytes": 152709
   },
   "chromeStatus": 0,
-  "stderr": "151612 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mycampus-documents.png\r\n",
+  "stderr": "152709 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mycampus-documents.png\r\n",
+  "authenticatedCapture": true,
   "visualParityClaim": false,
   "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
 }

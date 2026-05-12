@@ -1,6 +1,6 @@
 {
   "routePath": "/classroom/my-replays",
-  "url": "http://127.0.0.1:5175/classroom/my-replays",
+  "url": "http://127.0.0.1:5176/classroom/my-replays?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
   "referenceScreenshot": "../../edu_screnshot/13_classroom_my_lecture_replay.png",
   "referenceExists": true,
   "referenceSize": {
@@ -17,10 +17,11 @@
   "capturedSize": {
     "width": 1326,
     "height": 2201,
-    "bytes": 253488
+    "bytes": 257704
   },
   "chromeStatus": 0,
-  "stderr": "253488 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\classroom-my-replays.png\r\n",
+  "stderr": "257704 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\classroom-my-replays.png\r\n",
+  "authenticatedCapture": true,
   "visualParityClaim": false,
   "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
 }

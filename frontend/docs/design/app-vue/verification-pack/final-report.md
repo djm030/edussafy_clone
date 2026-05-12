@@ -1,75 +1,59 @@
-# Final verification report ? Edu SSAFY frontend clone
+﻿# Final verification report ? Edu SSAFY frontend clone
 
-Generated at: 2026-05-12T03:28:05Z
+Generated at: 2026-05-12T03:53:30Z
 
 ## Overall verdict
 
-Status: PARTIAL, expanded API/runtime closed; visual pixel parity not fully claimed.
+Status: PARTIAL visual parity, API/runtime green.
 
-The current local frontend/backend runtime now passes the canonical route smoke and API runtime checks. The previous API blockers (board detail 404s, document submit 403, and API-mode fallback confusion) are resolved in fresh evidence. The project remains PARTIAL only because screenshot parity is captured and manually reviewed, not proven by an automated pixel-diff threshold, and authenticated browser visual capture is not yet exact.
+The local backend and frontend runtime are verified with real API-mode evidence. This phase closes the requested visual-evidence/policy gaps: authenticated visual capture now logs in as the seeded student, the dashboard screenshot layout is closer to the reference, NO_SCREENSHOT routes have explicit criteria-only evidence, and mock fallback policy is finalised as demo-only.
 
 Hard-rule confirmations:
-- Backend code changed in this phase: yes; auth refresh, meetup metadata/submit validation, course session range/replay, and dashboard aggregation endpoints were added.
+- Backend code changed in this phase: no.
+- Frontend visual/runtime evidence changed in this phase: yes.
 - New dependencies added: no.
-- Work scope: auth/session UX, meetup application/info, curriculum range, my replay, dashboard aggregator, frontend API wiring, canonical contract, and verification evidence.
-- Mock fallback claimed as API completion: no; runtime evidence used real API at `http://127.0.0.1:8088`.
-- Visual completion claimed without capture evidence: no; screenshots were captured for all mapped reference routes, but `visualCompleteClaim` remains `false`.
+- Mock fallback claimed as API completion: no; API runtime evidence reports `usedMockFallback: false`.
+- Visual completion claimed without capture evidence: no; authenticated screenshots were captured for all mapped reference routes, but `visualCompleteClaim` remains `false` because no automated pixel-diff threshold exists.
 
+## 2026-05-12 visual auth / NO_SCREENSHOT / mock policy update
 
-## 2026-05-12 student runtime update
-- Added live student attendance actions: `GET /api/v1/attendance/today`, `POST /api/v1/attendance/check-in`, and `POST /api/v1/attendance/check-out`. Backend decisions use `Asia/Seoul` time and frontend pages now render real today-state/buttons instead of static attendance state.
-- Wired student action gaps for notifications (read/read-all/delete), learning resources (like/bookmark/download/complete), and board details (like/comment create/delete).
-- Fresh verification after this update: backend `./gradlew.bat test` PASS, frontend `npm run build` PASS, API runtime `GET 51/51` and forms `11/11` PASS against `http://127.0.0.1:18080`, route smoke `51/51` PASS against `http://127.0.0.1:5175`, visual capture `30/30` PASS dimension-capture only; attendance action artifact: `verification-pack/api/runtime/attendance-actions-runtime.json`.
-- Docker compose image rebuild was attempted but blocked by Maven Central TLS/download failures inside the build container; a local `bootJar` was mounted into `eclipse-temurin:21-jre-alpine` on the existing Docker network for runtime verification.
-
-
-## 2026-05-12 auth/meetup/curriculum/dashboard runtime update
-- Added real refresh-token flow: `POST /api/v1/auth/refresh`, refresh-token validation, frontend token retry, route guard, and session-expired login UX. The previous recurring `Invalid authentication token` user-facing dead end is now handled by refresh/re-login redirect instead of leaving stale tokens active.
-- Completed meetup application/info API payloads: event start/end time, location, capacity, selection policy, linked post metadata/content, idempotent selected/submitted re-submit, and open/close/capacity validation.
-- Added curriculum range API: `GET /api/v1/courses/{courseId}/sessions` with optional `startDate`/`endDate`, and wired the curriculum page to use it before week fallback.
-- Added my lecture replay API: `GET /api/v1/course-sessions/replays/my`, scoped to the current user's generation/region/class.
-- Added dashboard aggregator API: `GET /api/v1/dashboard/my`, and wired the frontend dashboard to consume the composed backend response.
-- Fresh verification after this update: backend `./gradlew.bat test` PASS, frontend `npm run build` PASS, Docker backend/nginx rebuild PASS, API runtime `GET 54/54` and forms `12/12` PASS against `http://127.0.0.1:8088`, route smoke `51/51` PASS against `http://127.0.0.1:5173`.
-- New/updated evidence artifacts include `api-v1-dashboard-my.api.json`, `api-v1-course-sessions-replays-my.api.json`, `get-api-v1-courses-courseid-sessions.api.json`, and `form-interactions-runtime.json` with `auth refresh` HTTP 200.
-
-## 2026-05-12 attendance monthly/curriculum overview runtime update
-- Added attendance monthly aggregate API: `GET /api/v1/attendance/monthly` returns monthly summary counts, calendar-day rows, latest appeal status, appeal availability, and today's attendance action state.
-- Wired MyCampus attendance to prefer the monthly aggregate response while retaining the old paged attendance fallback.
-- Added curriculum overview API: `GET /api/v1/courses/my/curriculum` returns the current course, phase metadata, weeks, and grouped session days.
-- Removed API-mode curriculum dependency on mock phase data; fallback mode still uses local mock data only when API mode is disabled or the overview API is unavailable.
-- Updated the canonical contract so `/mycampus/attendance` includes monthly/today endpoints, `/classroom/curriculum` includes the overview endpoint, and `/mentoring/meetups/apply` is no longer `N/A`.
-- Fresh verification after this update: backend `./gradlew.bat test` PASS, frontend `npm run build` PASS, Docker backend/nginx rebuild PASS, API runtime `GET 58/58` and forms `12/12` PASS against `http://127.0.0.1:8088`, route smoke `51/51` PASS against `http://127.0.0.1:5173`.
-- New evidence artifacts include `api-v1-attendance-monthly.api.json`, `api-v1-attendance-today.api.json`, `api-v1-courses-my-curriculum.api.json`, and `api-v1-surveys-my-participations.api.json`.
+- Added local visual-auth token bootstrap in `src/main.js`; it accepts `visualAccessToken` and `visualRefreshToken` only in Vite dev or `VITE_VISUAL_AUTH=true`, stores them in localStorage, then removes them from the URL.
+- Updated `capture-visual-runtime.mjs` to log in through `POST /api/v1/auth/login`, inject redacted visual auth query params per capture, and record authenticated capture metadata.
+- Dashboard visual pass: top card composition is now yellow attendance plus one continuous blue dashboard panel; lower resources now use learning-card thumbnails plus e-learning, SSAFYcial, free board, and notice sections.
+- Mapped six previously secondary-only screenshots as primary route references, reducing NO_SCREENSHOT rows from 19 to 13.
+- Added `verification-pack/no-screenshot-criteria.md` and `verification-pack/mock-fallback-policy.md`.
 
 ## Local runtime used
 
-- Frontend route-smoke base URL: `http://127.0.0.1:5173`.
+- Frontend base URL: `http://127.0.0.1:5176`.
 - Backend/nginx API base URL: `http://127.0.0.1:8088`.
-- Student login used by runtime checks: `student@edussafy.local` / `0000`.
-- Additional seeded local accounts: `admin@edussafy.local` / `0000`, `operator@edussafy.local` / `0000`.
+- Student login used by runtime checks/capture: `student@edussafy.local` / `0000`.
+- Visual auth tokens are redacted in all generated evidence.
 
 ## Canonical contract and inventory
 
 - Regeneration command: `node frontend/docs/design/app-vue/scripts/build-contract-inventory.mjs`.
-- Generated at: `2026-05-12T02:40:21.874Z`.
+- Generated at: `2026-05-12T03:46:15.865Z`.
 - Canonical rows: 54.
-- READY rows: 35.
+- READY rows: 41.
 - PARTIAL rows: 0.
-- NO_SCREENSHOT rows: 19.
+- NO_SCREENSHOT rows: 13.
 - BLOCKED rows: 0.
 - Screenshot aliases resolved: 9.
 - Unmapped screenshot routes: 0.
-- boardCode partial rows: 0.
+- Board-code PARTIAL items: 0.
 
 Evidence paths:
 - `frontend/docs/design/app-vue/canonical-contract.md`
 - `frontend/docs/design/app-vue/contract-inventory.json`
 - `frontend/docs/design/app-vue/verification-pack/README.md`
+- `frontend/docs/design/app-vue/verification-pack/no-screenshot-criteria.md`
+- `frontend/docs/design/app-vue/verification-pack/mock-fallback-policy.md`
 
 ## Route smoke evidence
 
 - Command: `FRONTEND_BASE_URL=<url> node frontend/docs/design/app-vue/scripts/run-route-smoke.mjs`.
-- Captured at: `2026-05-12T03:28:05.463Z`.
+- Captured at: `2026-05-12T03:52:28.980Z`.
 - Complete claim: `true`.
 - Routes: 51/51 passed, 0 failed.
 - Evidence: `frontend/docs/design/app-vue/verification-pack/api/runtime/route-smoke-runtime-summary.json`.
@@ -77,85 +61,59 @@ Evidence paths:
 ## API runtime evidence
 
 - Command: `API_BASE_URL=http://127.0.0.1:8088 node frontend/docs/design/app-vue/scripts/run-api-runtime-check.mjs`.
-- Captured at: `2026-05-12T03:28:03.769Z`.
+- Captured at: `2026-05-12T03:52:29.069Z`.
 - API base URL: `http://127.0.0.1:8088`.
 - Mock fallback used: `false`.
 - API runtime exercised: `true`.
-- API complete claim: `false`; this remains false because visual parity is tracked separately and completion requires evidence synthesis, not because API endpoints failed.
-- Login/session: `student@edussafy.local` returned HTTP 200; token is redacted in evidence.
+- API complete claim: `false`; the endpoint smoke is green, while final product completion remains tied to visual parity evidence.
+- Login/session: `student@edussafy.local` returned HTTP 200; token is redacted.
 - GET endpoints: 58/58 succeeded.
 - Form/runtime checks: 12/12 succeeded.
+- Blocker: `None`.
 - Evidence directory: `frontend/docs/design/app-vue/verification-pack/api/runtime/`.
-
-Resolved prior API blockers:
-- Board detail 404s: closed by discovering or creating representative board post IDs before detail probes.
-- Board detail samples used:
-  - `free` -> post `31` (existing-list).
-  - `anonymity` -> post `6` (existing-list).
-  - `notice` -> post `1` (existing-list).
-  - `mento-state` -> post `7` (existing-list).
-  - `mento-qna` -> post `8` (existing-list).
-  - `mento-notice` -> post `9` (existing-list).
-  - `mento-review` -> post `33` (existing-list).
-- Document submit 403: closed; `document submit without file` now returns HTTP 200.
-- API-mode fallback confusion: closed; API-mode detail pages no longer silently render mock fallback on real API errors.
-
-Runtime-successful form checks:
-- `auth refresh` `POST /api/v1/auth/refresh` -> HTTP 200.
-- `free category lookup` `GET /api/v1/boards/free/categories` -> HTTP 200.
-- `community board write` `POST /api/v1/boards/free/posts` -> HTTP 200.
-- `doc-req category lookup` `GET /api/v1/boards/doc-req/categories` -> HTTP 200.
-- `document submit without file` `POST /api/v1/boards/doc-req/posts` -> HTTP 200.
-- `inquiry write` `POST /api/v1/inquiries` -> HTTP 200.
-- `mento-review category lookup` `GET /api/v1/boards/mento-review/categories` -> HTTP 200.
-- `mentoring review write` `POST /api/v1/boards/mento-review/posts` -> HTTP 200.
-- `profile save` `PATCH /api/v1/users/me` -> HTTP 200.
-- `password save same password` `PATCH /api/v1/auth/password` -> HTTP 200.
-- `survey submit sample` `POST /api/v1/surveys/1/submit` -> HTTP 200.
-- `quest submit sample` `POST /api/v1/tasks/1/submit` -> HTTP 200.
 
 ## Visual parity evidence
 
-- Command: `FRONTEND_BASE_URL=http://127.0.0.1:5174 CHROME_PATH="C:\Program Files\Google\Chrome\Application\chrome.exe" node frontend/docs/design/app-vue/scripts/capture-visual-runtime.mjs`.
-- Captured at: `2026-05-12T01:25:18.998Z`.
+- Command: `FRONTEND_BASE_URL=http://127.0.0.1:5176 API_BASE_URL=http://127.0.0.1:8088 VISUAL_AUTH=true CHROME_PATH="C:\Program Files\Google\Chrome\Application\chrome.exe" node frontend/docs/design/app-vue/scripts/capture-visual-runtime.mjs`.
+- Captured at: `2026-05-12T03:53:07.294Z`.
+- Authenticated capture: `true` with HTTP 200 login.
 - Visual complete claim: `false`.
-- Reference routes attempted: 30/30.
-- Screenshots captured: 30.
+- Reference routes attempted: 36/36.
+- Screenshots captured: 36.
 - Capture failures: 0.
-- Capture script sets Chrome viewport to each reference PNG size before capture, so runtime screenshots are dimension-comparable route by route.
 - Evidence directory: `frontend/docs/design/app-vue/verification-pack/visual/runtime/`.
 - Screenshot directory: `frontend/docs/design/app-vue/verification-pack/screenshots/runtime/`.
 
-Manual visual verdict:
-- Score: 68/100.
+Manual visual verdict after this pass:
+- Score: 82/100.
 - Verdict: `revise`.
 - Category match: `true`.
-- Differences:
-  - Capture dimensions now match reference screenshots route-by-route.
-  - Global header and service tiles are much closer, but nav/user spacing still differs from reference.
-  - Dashboard top composition now follows yellow attendance plus blue metric band, but text hierarchy and exact data layout still differ.
-  - Lower dashboard sections use closer white blocks and divider lines, but reference content density/assets are not fully matched.
-- Suggestions:
-  - Future pass should refine exact dashboard content and imagery rather than shell structure.
-  - Use authenticated visual capture if exact logged-in warning/data parity becomes mandatory.
-  - Continue with evidence regeneration because current visual delta is documented as acceptable partial, not pixel-perfect.
+- Improvements: authenticated capture, continuous blue dashboard band, learning resource cards, e-learning empty block, and lower-board ordering now resemble the reference more closely.
+- Remaining differences: exact header/profile spacing, attendance/date sample values, curriculum timeline details, resource thumbnail imagery, and footer notice strip are still not pixel-identical.
 
 ## Build and compile verification
 
 - `npm run build` in `frontend`: PASS.
-- `.\gradlew.bat compileJava` in `backend`: PASS.
 - Contract inventory regeneration: PASS.
 - Route smoke runtime: PASS 51/51.
 - API runtime check: PASS GET 58/58 and forms 12/12.
-- Visual capture runtime: PASS 30/30.
+- Authenticated visual capture runtime: PASS 36/36.
+- Post-deslop re-verification: PASS with the same build/route/API/visual gates.
+
+## Cleanup pass
+
+- Scope: changed frontend runtime, dashboard visual files, contract scripts, and evidence docs only.
+- Simplification: removed duplicate `pageItems(apiDashboard?.storyPosts)` evaluation in dashboard service.
+- No behavior-changing refactor or dependency was added.
 
 ## Remaining risks and next work
 
-1. Visual parity is not pixel-perfect proven. Current verdict is 68/100 and `revise`; this is acceptable evidence for a partial visual pass, not final screenshot equality.
-2. Visual capture does not yet inject authenticated browser storage, so some captured pages may reflect current unauthenticated or fallback-safe visual state rather than exact logged-in production state.
-3. The API runtime check may create smoke posts in the local database when a board has no representative list item; this is intentional for local evidence but mutates local test data.
-4. `.gitignore` and `skills-lock.json` were pre-existing/unrelated worktree changes and are intentionally excluded from this phase.
+1. Visual parity is improved but not pixel-perfect; `visualCompleteClaim` remains `false` until manual verdict reaches the pass threshold or a pixel-diff verifier is added.
+2. Dashboard still uses generated/demo-like learning thumbnails instead of exact reference artwork assets.
+3. NO_SCREENSHOT routes are criteria-only by design and cannot be promoted to pixel-perfect without new reference screenshots.
+4. API runtime checks can create local smoke posts when a representative board post is needed; this mutates local test data only.
+5. `.gitignore` and `skills-lock.json` were pre-existing/unrelated worktree changes and are intentionally excluded from this phase.
 
 ## Stop condition
 
-Phase 3 can stop after this report is committed because fresh evidence shows the API/runtime phase is closed, screenshot capture evidence is regenerated, and remaining gaps are explicitly visual/pixel-verification risks rather than runtime blockers.
+This phase is complete for the requested runtime/evidence/policy items: build, route smoke, API runtime, and authenticated visual capture all pass with fresh evidence. Visual pixel parity remains an explicitly documented partial rather than an unproven completion claim.

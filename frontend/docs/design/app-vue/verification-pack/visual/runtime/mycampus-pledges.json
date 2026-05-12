@@ -1,6 +1,6 @@
 {
   "routePath": "/mycampus/pledges",
-  "url": "http://127.0.0.1:5175/mycampus/pledges",
+  "url": "http://127.0.0.1:5176/mycampus/pledges?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
   "referenceScreenshot": "../../edu_screnshot/31_mycampus_student_pledge_list.png",
   "referenceExists": true,
   "referenceSize": {
@@ -17,10 +17,11 @@
   "capturedSize": {
     "width": 1326,
     "height": 913,
-    "bytes": 150852
+    "bytes": 151947
   },
   "chromeStatus": 0,
-  "stderr": "150852 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mycampus-pledges.png\r\n",
+  "stderr": "151947 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mycampus-pledges.png\r\n",
+  "authenticatedCapture": true,
   "visualParityClaim": false,
   "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
 }

@@ -1,6 +1,6 @@
 {
   "routePath": "/classroom/quests",
-  "url": "http://127.0.0.1:5175/classroom/quests",
+  "url": "http://127.0.0.1:5176/classroom/quests?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
   "referenceScreenshot": "../../edu_screnshot/03_quest_evaluation_list.png",
   "referenceExists": true,
   "referenceSize": {
@@ -17,10 +17,11 @@
   "capturedSize": {
     "width": 1326,
     "height": 2384,
-    "bytes": 156333
+    "bytes": 157420
   },
   "chromeStatus": 0,
-  "stderr": "156333 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\classroom-quests.png\r\n",
+  "stderr": "157420 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\classroom-quests.png\r\n",
+  "authenticatedCapture": true,
   "visualParityClaim": false,
   "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
 }

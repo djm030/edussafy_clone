@@ -1,6 +1,6 @@
 {
   "routePath": "/mycampus/education-status",
-  "url": "http://127.0.0.1:5175/mycampus/education-status",
+  "url": "http://127.0.0.1:5176/mycampus/education-status?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
   "referenceScreenshot": "../../edu_screnshot/32_mycampus_education_status.png",
   "referenceExists": true,
   "referenceSize": {
@@ -17,10 +17,11 @@
   "capturedSize": {
     "width": 1326,
     "height": 3283,
-    "bytes": 163083
+    "bytes": 164195
   },
   "chromeStatus": 0,
-  "stderr": "163083 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mycampus-education-status.png\r\n",
+  "stderr": "164195 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mycampus-education-status.png\r\n",
+  "authenticatedCapture": true,
   "visualParityClaim": false,
   "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
 }

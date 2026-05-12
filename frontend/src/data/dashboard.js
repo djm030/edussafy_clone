@@ -51,6 +51,11 @@ export const dashboardData = {
     { id: 2, categoryName: '일반', title: '오늘 학습 자료 정리', displayName: '이싸피', viewCount: 18, commentCount: 1, createdAt: '2026-05-10' },
     { id: 3, categoryName: '일반', title: '프로젝트 환경 실행 팁', displayName: '박싸피', viewCount: 31, commentCount: 4, createdAt: '2026-05-09' }
   ],
+  storyPosts: [
+    { id: 1, categoryName: 'SSAFYcial', title: '교육생 인터뷰: API 완성까지의 여정', displayName: '운영자', viewCount: 16, commentCount: 0, createdAt: '2026-05-11' },
+    { id: 2, categoryName: 'SSAFYcial', title: '프로젝트 발표 준비 체크리스트', displayName: '운영자', viewCount: 9, commentCount: 1, createdAt: '2026-05-10' },
+    { id: 3, categoryName: 'SSAFYcial', title: '캠퍼스 소식 모아보기', displayName: '운영자', viewCount: 7, commentCount: 0, createdAt: '2026-05-09' }
+  ],
   notices: [
     { id: 1, categoryName: '공지', title: 'SSAFY EDU 클론 데모 공지', displayName: '운영자', viewCount: 12, createdAt: '2026-05-11', isNotice: true },
     { id: 2, categoryName: '공지', title: '월말 평가 안내', displayName: '운영자', viewCount: 8, createdAt: '2026-05-10', isNotice: true },

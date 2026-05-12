@@ -23,7 +23,9 @@ const paths = {
   backendV1: path.join(backendRoot, 'src/main/resources/db/migration/V1__init_schema.sql'),
   outJson: path.join(appVueDir, 'contract-inventory.json'),
   outMd: path.join(appVueDir, 'canonical-contract.md'),
-  verificationReadme: path.join(appVueDir, 'verification-pack/README.md')
+  verificationReadme: path.join(appVueDir, 'verification-pack/README.md'),
+  noScreenshotCriteria: path.join(appVueDir, 'verification-pack/no-screenshot-criteria.md'),
+  mockFallbackPolicy: path.join(appVueDir, 'verification-pack/mock-fallback-policy.md')
 }
 
 function read(filePath) {
@@ -483,9 +485,9 @@ function build() {
       apiEndpoints: endpoints,
       boardCodes,
       expectedDataShape: expectedDataShape(row.path, endpoints),
-      mockAllowed: row.routeKind === 'redirect' || row.routeKind === 'wildcard' || row.routeKind === 'external' ? 'n/a' : 'yes until API verification phase; must be explicit in evidence',
+      mockAllowed: row.routeKind === 'redirect' || row.routeKind === 'wildcard' || row.routeKind === 'external' ? 'n/a' : 'demo-only when VITE_USE_API is not true; API-mode evidence must report usedMockFallback=false',
       evidenceApiPath: endpoints.length ? `verification-pack/api/phase-0/${evidenceSlug}.json` : 'N/A',
-      evidenceScreenshotPath: primaryScreenshot ? `verification-pack/screenshots/phase-0/${evidenceSlug}.png` : 'NO_SCREENSHOT',
+      evidenceScreenshotPath: primaryScreenshot ? `verification-pack/screenshots/phase-0/${evidenceSlug}.png` : `verification-pack/no-screenshot-criteria.md#${evidenceSlug}`,
       owner: 'frontend-phase-0-contract-lock',
       status: '',
       notes: []
@@ -493,7 +495,7 @@ function build() {
     rowObject.status = statusFor(rowObject, { primary: primaryScreenshot }, boardCodes, boardAudit)
     if (row.redirect) rowObject.notes.push(`redirects to ${row.redirect}`)
     if (row.routeKind === 'wildcard') rowObject.notes.push('router wildcard covers 404; /404 constant is route-only error target')
-    if (!primaryScreenshot && !['redirect', 'external'].includes(row.routeKind)) rowObject.notes.push('NO_SCREENSHOT: no primary screenshot mapped in 05-screenshot-reference-map.md')
+    if (!primaryScreenshot && !['redirect', 'external'].includes(row.routeKind)) rowObject.notes.push('NO_SCREENSHOT: criteria-only route; use verification-pack/no-screenshot-criteria.md')
     if (boardCodes.some((code) => boardAudit.find((audit) => audit.code === code)?.status !== 'OK')) rowObject.notes.push('PARTIAL: board-code drift is listed in boardCodeAudit')
     return rowObject
   })
@@ -619,7 +621,66 @@ function renderCanonicalContract(inventory) {
 }
 
 function renderVerificationReadme() {
-  return `# Verification pack\n\nThis folder stores reproducible evidence for the Edu SSAFY frontend clone. Do not store secrets, authorization headers, cookies, passwords, tokens, or non-demo personal data here.\n\n## Generate the Phase 0 contract\n\n\`\`\`bash\nnode frontend/docs/design/app-vue/scripts/build-contract-inventory.mjs\n\`\`\`\n\nThe command writes:\n\n- \`frontend/docs/design/app-vue/contract-inventory.json\`\n- \`frontend/docs/design/app-vue/canonical-contract.md\`\n- \`frontend/docs/design/app-vue/verification-pack/README.md\`\n\n## Evidence layout\n\n- \`api/<phase>/<route-slug>.json\` — API/runtime evidence per route.\n- \`screenshots/<phase>/<route-slug>.png\` — implementation screenshot captured at the agreed viewport.\n- \`visual/<phase>/<route-slug>.md\` — visual comparison notes against the screenshot reference.\n\n## API evidence schema\n\nEach API evidence file must use this shape:\n\n\`\`\`json\n{\n  "routePath": "/dashboard",\n  "routeKind": "page",\n  "endpoint": "GET /api/v1/users/me/campus-summary",\n  "method": "GET",\n  "statusCode": 200,\n  "success": true,\n  "dataShapeSummary": "summary cards and user campus stats",\n  "usedMockFallback": false,\n  "redactedRequest": {},\n  "redactedResponseSample": {},\n  "capturedAt": "2026-05-12T00:00:00.000Z",\n  "command": "document the exact command used",\n  "blocker": null\n}\n\`\`\`\n\nIf the API cannot be verified, set \`success: false\`, include \`blocker\`, and mark the related canonical row \`BLOCKED\` or \`PARTIAL\`.\n\n## Stop rules\n\n1. Do not begin visual/domain implementation unless \`canonical-contract.md\`, \`contract-inventory.json\`, and this README exist.\n2. Route/screenshot/API/boardCode drift must be resolved or explicitly marked \`BLOCKED\`, \`PARTIAL\`, or \`NO_SCREENSHOT\`.\n3. Rows with \`mock_allowed: yes until API verification phase\` cannot be claimed as API-complete without an API evidence file.\n4. Dynamic routes require a representative sample URL in screenshot and API evidence.\n5. Redirect routes require route-smoke evidence only.\n6. Wildcard routes require 404 route-smoke evidence.\n7. External links require href/target evidence only.\n8. Delete or redact any evidence that contains secrets, credentials, tokens, cookies, or non-demo personal data.\n`
+  return `# Verification pack
+
+This folder stores reproducible evidence for the Edu SSAFY frontend clone. Do not store secrets, authorization headers, cookies, passwords, tokens, or non-demo personal data here.
+
+## Generate the Phase 0 contract
+
+\`\`\`bash
+node frontend/docs/design/app-vue/scripts/build-contract-inventory.mjs
+\`\`\`
+
+The command writes:
+
+- \`frontend/docs/design/app-vue/contract-inventory.json\`
+- \`frontend/docs/design/app-vue/canonical-contract.md\`
+- \`frontend/docs/design/app-vue/verification-pack/README.md\`
+
+## Evidence layout
+
+- \`api/<phase>/<route-slug>.json\` ? API/runtime evidence per route.
+- \`screenshots/<phase>/<route-slug>.png\` ? implementation screenshot captured at the agreed viewport.
+- \`visual/<phase>/<route-slug>.md\` ? visual comparison notes against the screenshot reference.
+- \`no-screenshot-criteria.md\` ? criteria-only evidence gate for routes without a primary reference screenshot.
+- \`mock-fallback-policy.md\` ? final policy for demo fallbacks versus API-mode completion claims.
+
+## API evidence schema
+
+Each API evidence file must use this shape:
+
+\`\`\`json
+{
+  "routePath": "/dashboard",
+  "routeKind": "page",
+  "endpoint": "GET /api/v1/users/me/campus-summary",
+  "method": "GET",
+  "statusCode": 200,
+  "success": true,
+  "dataShapeSummary": "summary cards and user campus stats",
+  "usedMockFallback": false,
+  "redactedRequest": {},
+  "redactedResponseSample": {},
+  "capturedAt": "2026-05-12T00:00:00.000Z",
+  "command": "document the exact command used",
+  "blocker": null
+}
+\`\`\`
+
+If the API cannot be verified, set \`success: false\`, include \`blocker\`, and mark the related canonical row \`BLOCKED\` or \`PARTIAL\`.
+
+## Stop rules
+
+1. Do not begin visual/domain implementation unless \`canonical-contract.md\`, \`contract-inventory.json\`, and this README exist.
+2. Route/screenshot/API/boardCode drift must be resolved or explicitly marked \`BLOCKED\`, \`PARTIAL\`, or \`NO_SCREENSHOT\`.
+3. Rows with \`mock_allowed: demo-only when VITE_USE_API is not true\` cannot be claimed as API-complete unless API-mode evidence reports \`usedMockFallback: false\`.
+4. NO_SCREENSHOT rows cannot make pixel-parity claims; they require route-smoke/API evidence plus the criteria in \`no-screenshot-criteria.md\`.
+5. Dynamic routes require a representative sample URL in screenshot and API evidence.
+6. Redirect routes require route-smoke evidence only.
+7. Wildcard routes require 404 route-smoke evidence.
+8. External links require href/target evidence only.
+9. Delete or redact any evidence that contains secrets, credentials, tokens, cookies, or non-demo personal data.
+`
 }
 
 const inventory = build()

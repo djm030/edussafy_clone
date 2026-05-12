@@ -1,6 +1,6 @@
 {
   "routePath": "/mentoring/meetups/reviews",
-  "url": "http://127.0.0.1:5175/mentoring/meetups/reviews",
+  "url": "http://127.0.0.1:5176/mentoring/meetups/reviews?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
   "referenceScreenshot": "../../edu_screnshot/23_mentoring_meetup_review_board.png",
   "referenceExists": true,
   "referenceSize": {
@@ -17,10 +17,11 @@
   "capturedSize": {
     "width": 1326,
     "height": 2300,
-    "bytes": 160675
+    "bytes": 161772
   },
   "chromeStatus": 0,
-  "stderr": "160675 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mentoring-meetups-reviews.png\r\n",
+  "stderr": "161772 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mentoring-meetups-reviews.png\r\n",
+  "authenticatedCapture": true,
   "visualParityClaim": false,
   "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
 }

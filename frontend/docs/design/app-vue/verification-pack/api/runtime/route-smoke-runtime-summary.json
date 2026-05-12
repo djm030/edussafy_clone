@@ -1,7 +1,7 @@
 {
-  "capturedAt": "2026-05-12T03:28:05.463Z",
+  "capturedAt": "2026-05-12T03:52:28.980Z",
   "command": "FRONTEND_BASE_URL=<url> node frontend/docs/design/app-vue/scripts/run-route-smoke.mjs",
-  "baseUrl": "http://127.0.0.1:5173",
+  "baseUrl": "http://127.0.0.1:5176",
   "routeSmokeComplete": true,
   "totalRoutes": 51,
   "passedRoutes": 51,
@@ -30,7 +30,7 @@
       "contentType": "text/html",
       "containsAppRoot": true,
       "bodyBytes": 385,
-      "capturedAt": "2026-05-12T03:28:03.769Z"
+      "capturedAt": "2026-05-12T03:52:26.913Z"
     },
     {
       "routePath": "/",
@@ -42,7 +42,7 @@
       "contentType": "text/html",
       "containsAppRoot": true,
       "bodyBytes": 385,
-      "capturedAt": "2026-05-12T03:28:04.191Z"
+      "capturedAt": "2026-05-12T03:52:26.958Z"
     },
     {
       "routePath": "/dashboard",
@@ -54,7 +54,7 @@
       "contentType": "text/html",
       "containsAppRoot": true,
       "bodyBytes": 385,
-      "capturedAt": "2026-05-12T03:28:04.221Z"
+      "capturedAt": "2026-05-12T03:52:27.000Z"
     },
     {
       "routePath": "/mycampus/level-points",
@@ -66,7 +66,7 @@
       "contentType": "text/html",
       "containsAppRoot": true,
       "bodyBytes": 385,
-      "capturedAt": "2026-05-12T03:28:04.249Z"
+      "capturedAt": "2026-05-12T03:52:27.051Z"
     },
     {
       "routePath": "/mycampus/attendance",
@@ -78,7 +78,7 @@
       "contentType": "text/html",
       "containsAppRoot": true,
       "bodyBytes": 385,
-      "capturedAt": "2026-05-12T03:28:04.275Z"
+      "capturedAt": "2026-05-12T03:52:27.092Z"
     },
     {
       "routePath": "/mycampus/elearning",
@@ -90,7 +90,7 @@
       "contentType": "text/html",
       "containsAppRoot": true,
       "bodyBytes": 385,
-      "capturedAt": "2026-05-12T03:28:04.303Z"
+      "capturedAt": "2026-05-12T03:52:27.136Z"
     },
     {
       "routePath": "/mycampus/bookmarks",
@@ -102,7 +102,7 @@
       "contentType": "text/html",
       "containsAppRoot": true,
       "bodyBytes": 385,
-      "capturedAt": "2026-05-12T03:28:04.328Z"
+      "capturedAt": "2026-05-12T03:52:27.179Z"
     },
     {
       "routePath": "/mycampus/documents",
@@ -114,19 +114,19 @@
       "contentType": "text/html",
       "containsAppRoot": true,
       "bodyBytes": 385,
-      "capturedAt": "2026-05-12T03:28:04.353Z"
+      "capturedAt": "2026-05-12T03:52:27.219Z"
     },
     {
       "routePath": "/mycampus/documents/write",
       "samplePath": "/mycampus/documents/write",
       "routeKind": "page",
-      "canonicalStatus": "NO_SCREENSHOT",
+      "canonicalStatus": "READY",
       "statusCode": 200,
       "ok": true,
       "contentType": "text/html",
       "containsAppRoot": true,
       "bodyBytes": 385,
-      "capturedAt": "2026-05-12T03:28:04.379Z"
+      "capturedAt": "2026-05-12T03:52:27.270Z"
     },
     {
       "routePath": "/mycampus/pledges",
@@ -138,7 +138,7 @@
       "contentType": "text/html",
       "containsAppRoot": true,
       "bodyBytes": 385,
-      "capturedAt": "2026-05-12T03:28:04.402Z"
+      "capturedAt": "2026-05-12T03:52:27.315Z"
     },
     {
       "routePath": "/mycampus/education-status",
@@ -150,7 +150,7 @@
       "contentType": "text/html",
       "containsAppRoot": true,
       "bodyBytes": 385,
-      "capturedAt": "2026-05-12T03:28:04.428Z"
+      "capturedAt": "2026-05-12T03:52:27.360Z"
     },
     {
       "routePath": "/mycampus/profile",
@@ -162,7 +162,7 @@
       "contentType": "text/html",
       "containsAppRoot": true,
       "bodyBytes": 385,
-      "capturedAt": "2026-05-12T03:28:04.454Z"
+      "capturedAt": "2026-05-12T03:52:27.395Z"
     },
     {
       "routePath": "/mycampus/password",
@@ -174,7 +174,7 @@
       "contentType": "text/html",
       "containsAppRoot": true,
       "bodyBytes": 385,
-      "capturedAt": "2026-05-12T03:28:04.478Z"
+      "capturedAt": "2026-05-12T03:52:27.428Z"
     },
     {
       "routePath": "/classroom/my-replays",
@@ -186,7 +186,7 @@
       "contentType": "text/html",
       "containsAppRoot": true,
       "bodyBytes": 385,
-      "capturedAt": "2026-05-12T03:28:04.502Z"
+      "capturedAt": "2026-05-12T03:52:27.467Z"
     },
     {
       "routePath": "/classroom/all-replays",
@@ -198,7 +198,7 @@
       "contentType": "text/html",
       "containsAppRoot": true,
       "bodyBytes": 385,
-      "capturedAt": "2026-05-12T03:28:04.525Z"
+      "capturedAt": "2026-05-12T03:52:27.519Z"
     },
     {
       "routePath": "/classroom/curriculum",
@@ -210,7 +210,7 @@
       "contentType": "text/html",
       "containsAppRoot": true,
       "bodyBytes": 385,
-      "capturedAt": "2026-05-12T03:28:04.549Z"
+      "capturedAt": "2026-05-12T03:52:27.555Z"
     },
     {
       "routePath": "/classroom/quests",
@@ -222,19 +222,19 @@
       "contentType": "text/html",
       "containsAppRoot": true,
       "bodyBytes": 385,
-      "capturedAt": "2026-05-12T03:28:04.572Z"
+      "capturedAt": "2026-05-12T03:52:27.606Z"
     },
     {
       "routePath": "/classroom/quests/:id",
       "samplePath": "/classroom/quests/1",
       "routeKind": "dynamic-page",
-      "canonicalStatus": "NO_SCREENSHOT",
+      "canonicalStatus": "READY",
       "statusCode": 200,
       "ok": true,
       "contentType": "text/html",
       "containsAppRoot": true,
       "bodyBytes": 385,
-      "capturedAt": "2026-05-12T03:28:04.595Z"
+      "capturedAt": "2026-05-12T03:52:27.641Z"
     },
     {
       "routePath": "/classroom/required-learning",
@@ -246,7 +246,7 @@
       "contentType": "text/html",
       "containsAppRoot": true,
       "bodyBytes": 385,
-      "capturedAt": "2026-05-12T03:28:04.620Z"
+      "capturedAt": "2026-05-12T03:52:27.689Z"
     },
     {
       "routePath": "/classroom/resources",
@@ -258,7 +258,7 @@
       "contentType": "text/html",
       "containsAppRoot": true,
       "bodyBytes": 385,
-      "capturedAt": "2026-05-12T03:28:04.645Z"
+      "capturedAt": "2026-05-12T03:52:27.734Z"
     },
     {
       "routePath": "/classroom/resources/:id",
@@ -270,7 +270,7 @@
       "contentType": "text/html",
       "containsAppRoot": true,
       "bodyBytes": 385,
-      "capturedAt": "2026-05-12T03:28:04.668Z"
+      "capturedAt": "2026-05-12T03:52:27.773Z"
     },
     {
       "routePath": "/community/surveys",
@@ -282,7 +282,7 @@
       "contentType": "text/html",
       "containsAppRoot": true,
       "bodyBytes": 385,
-      "capturedAt": "2026-05-12T03:28:04.693Z"
+      "capturedAt": "2026-05-12T03:52:27.820Z"
     },
     {
       "routePath": "/community/surveys/:id",
@@ -294,7 +294,7 @@
       "contentType": "text/html",
       "containsAppRoot": true,
       "bodyBytes": 385,
-      "capturedAt": "2026-05-12T03:28:04.722Z"
+      "capturedAt": "2026-05-12T03:52:27.857Z"
     },
     {
       "routePath": "/community/boards/open",
@@ -306,19 +306,19 @@
       "contentType": "text/html",
       "containsAppRoot": true,
       "bodyBytes": 385,
-      "capturedAt": "2026-05-12T03:28:04.749Z"
+      "capturedAt": "2026-05-12T03:52:27.901Z"
     },
     {
       "routePath": "/community/boards/open/write",
       "samplePath": "/community/boards/open/write",
       "routeKind": "page",
-      "canonicalStatus": "NO_SCREENSHOT",
+      "canonicalStatus": "READY",
       "statusCode": 200,
       "ok": true,
       "contentType": "text/html",
       "containsAppRoot": true,
       "bodyBytes": 385,
-      "capturedAt": "2026-05-12T03:28:04.776Z"
+      "capturedAt": "2026-05-12T03:52:27.935Z"
     },
     {
       "routePath": "/community/boards/open/:id",
@@ -330,7 +330,7 @@
       "contentType": "text/html",
       "containsAppRoot": true,
       "bodyBytes": 385,
-      "capturedAt": "2026-05-12T03:28:04.802Z"
+      "capturedAt": "2026-05-12T03:52:27.976Z"
     },
     {
       "routePath": "/community/boards/anonymous",
@@ -342,7 +342,7 @@
       "contentType": "text/html",
       "containsAppRoot": true,
       "bodyBytes": 385,
-      "capturedAt": "2026-05-12T03:28:04.825Z"
+      "capturedAt": "2026-05-12T03:52:28.019Z"
     },
     {
       "routePath": "/community/boards/anonymous/:id",
@@ -354,7 +354,7 @@
       "contentType": "text/html",
       "containsAppRoot": true,
       "bodyBytes": 385,
-      "capturedAt": "2026-05-12T03:28:04.853Z"
+      "capturedAt": "2026-05-12T03:52:28.059Z"
     },
     {
       "routePath": "/community/class-roster",
@@ -366,7 +366,7 @@
       "contentType": "text/html",
       "containsAppRoot": true,
       "bodyBytes": 385,
-      "capturedAt": "2026-05-12T03:28:04.880Z"
+      "capturedAt": "2026-05-12T03:52:28.097Z"
     },
     {
       "routePath": "/help/notice",
@@ -378,19 +378,19 @@
       "contentType": "text/html",
       "containsAppRoot": true,
       "bodyBytes": 385,
-      "capturedAt": "2026-05-12T03:28:04.905Z"
+      "capturedAt": "2026-05-12T03:52:28.142Z"
     },
     {
       "routePath": "/help/notice/:id",
       "samplePath": "/help/notice/1",
       "routeKind": "dynamic-page",
-      "canonicalStatus": "NO_SCREENSHOT",
+      "canonicalStatus": "READY",
       "statusCode": 200,
       "ok": true,
       "contentType": "text/html",
       "containsAppRoot": true,
       "bodyBytes": 385,
-      "capturedAt": "2026-05-12T03:28:04.935Z"
+      "capturedAt": "2026-05-12T03:52:28.184Z"
     },
     {
       "routePath": "/help/faq",
@@ -402,7 +402,7 @@
       "contentType": "text/html",
       "containsAppRoot": true,
       "bodyBytes": 385,
-      "capturedAt": "2026-05-12T03:28:04.965Z"
+      "capturedAt": "2026-05-12T03:52:28.227Z"
     },
     {
       "routePath": "/help/inquiries",
@@ -414,7 +414,7 @@
       "contentType": "text/html",
       "containsAppRoot": true,
       "bodyBytes": 385,
-      "capturedAt": "2026-05-12T03:28:04.990Z"
+      "capturedAt": "2026-05-12T03:52:28.264Z"
     },
     {
       "routePath": "/help/inquiries/:id",
@@ -426,19 +426,19 @@
       "contentType": "text/html",
       "containsAppRoot": true,
       "bodyBytes": 385,
-      "capturedAt": "2026-05-12T03:28:05.016Z"
+      "capturedAt": "2026-05-12T03:52:28.302Z"
     },
     {
       "routePath": "/help/inquiries/write",
       "samplePath": "/help/inquiries/write",
       "routeKind": "page",
-      "canonicalStatus": "NO_SCREENSHOT",
+      "canonicalStatus": "READY",
       "statusCode": 200,
       "ok": true,
       "contentType": "text/html",
       "containsAppRoot": true,
       "bodyBytes": 385,
-      "capturedAt": "2026-05-12T03:28:05.044Z"
+      "capturedAt": "2026-05-12T03:52:28.332Z"
     },
     {
       "routePath": "/help/rules",
@@ -450,7 +450,7 @@
       "contentType": "text/html",
       "containsAppRoot": true,
       "bodyBytes": 385,
-      "capturedAt": "2026-05-12T03:28:05.069Z"
+      "capturedAt": "2026-05-12T03:52:28.373Z"
     },
     {
       "routePath": "/mentoring/stories",
@@ -462,7 +462,7 @@
       "contentType": "text/html",
       "containsAppRoot": true,
       "bodyBytes": 385,
-      "capturedAt": "2026-05-12T03:28:05.096Z"
+      "capturedAt": "2026-05-12T03:52:28.410Z"
     },
     {
       "routePath": "/mentoring/stories/:id",
@@ -474,7 +474,7 @@
       "contentType": "text/html",
       "containsAppRoot": true,
       "bodyBytes": 385,
-      "capturedAt": "2026-05-12T03:28:05.120Z"
+      "capturedAt": "2026-05-12T03:52:28.454Z"
     },
     {
       "routePath": "/mentoring/qna",
@@ -486,7 +486,7 @@
       "contentType": "text/html",
       "containsAppRoot": true,
       "bodyBytes": 385,
-      "capturedAt": "2026-05-12T03:28:05.144Z"
+      "capturedAt": "2026-05-12T03:52:28.502Z"
     },
     {
       "routePath": "/mentoring/qna/:id",
@@ -498,7 +498,7 @@
       "contentType": "text/html",
       "containsAppRoot": true,
       "bodyBytes": 385,
-      "capturedAt": "2026-05-12T03:28:05.169Z"
+      "capturedAt": "2026-05-12T03:52:28.543Z"
     },
     {
       "routePath": "/mentoring/notice",
@@ -510,7 +510,7 @@
       "contentType": "text/html",
       "containsAppRoot": true,
       "bodyBytes": 385,
-      "capturedAt": "2026-05-12T03:28:05.194Z"
+      "capturedAt": "2026-05-12T03:52:28.578Z"
     },
     {
       "routePath": "/mentoring/notice/:id",
@@ -522,7 +522,7 @@
       "contentType": "text/html",
       "containsAppRoot": true,
       "bodyBytes": 385,
-      "capturedAt": "2026-05-12T03:28:05.219Z"
+      "capturedAt": "2026-05-12T03:52:28.618Z"
     },
     {
       "routePath": "/mentoring/meetups/apply",
@@ -534,7 +534,7 @@
       "contentType": "text/html",
       "containsAppRoot": true,
       "bodyBytes": 385,
-      "capturedAt": "2026-05-12T03:28:05.243Z"
+      "capturedAt": "2026-05-12T03:52:28.651Z"
     },
     {
       "routePath": "/mentoring/meetups/info",
@@ -546,7 +546,7 @@
       "contentType": "text/html",
       "containsAppRoot": true,
       "bodyBytes": 385,
-      "capturedAt": "2026-05-12T03:28:05.267Z"
+      "capturedAt": "2026-05-12T03:52:28.689Z"
     },
     {
       "routePath": "/mentoring/meetups/reviews",
@@ -558,7 +558,7 @@
       "contentType": "text/html",
       "containsAppRoot": true,
       "bodyBytes": 385,
-      "capturedAt": "2026-05-12T03:28:05.292Z"
+      "capturedAt": "2026-05-12T03:52:28.725Z"
     },
     {
       "routePath": "/mentoring/meetups/reviews/:id",
@@ -570,19 +570,19 @@
       "contentType": "text/html",
       "containsAppRoot": true,
       "bodyBytes": 385,
-      "capturedAt": "2026-05-12T03:28:05.317Z"
+      "capturedAt": "2026-05-12T03:52:28.757Z"
     },
     {
       "routePath": "/mentoring/meetups/reviews/write",
       "samplePath": "/mentoring/meetups/reviews/write",
       "routeKind": "page",
-      "canonicalStatus": "NO_SCREENSHOT",
+      "canonicalStatus": "READY",
       "statusCode": 200,
       "ok": true,
       "contentType": "text/html",
       "containsAppRoot": true,
       "bodyBytes": 385,
-      "capturedAt": "2026-05-12T03:28:05.342Z"
+      "capturedAt": "2026-05-12T03:52:28.792Z"
     },
     {
       "routePath": "/notifications",
@@ -594,7 +594,7 @@
       "contentType": "text/html",
       "containsAppRoot": true,
       "bodyBytes": 385,
-      "capturedAt": "2026-05-12T03:28:05.366Z"
+      "capturedAt": "2026-05-12T03:52:28.834Z"
     },
     {
       "routePath": "/403",
@@ -606,7 +606,7 @@
       "contentType": "text/html",
       "containsAppRoot": true,
       "bodyBytes": 385,
-      "capturedAt": "2026-05-12T03:28:05.389Z"
+      "capturedAt": "2026-05-12T03:52:28.868Z"
     },
     {
       "routePath": "/404",
@@ -618,7 +618,7 @@
       "contentType": "text/html",
       "containsAppRoot": true,
       "bodyBytes": 385,
-      "capturedAt": "2026-05-12T03:28:05.413Z"
+      "capturedAt": "2026-05-12T03:52:28.899Z"
     },
     {
       "routePath": "/:pathMatch(.*)*",
@@ -630,7 +630,7 @@
       "contentType": "text/html",
       "containsAppRoot": true,
       "bodyBytes": 385,
-      "capturedAt": "2026-05-12T03:28:05.439Z"
+      "capturedAt": "2026-05-12T03:52:28.943Z"
     }
   ]
 }

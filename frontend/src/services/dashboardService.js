@@ -80,6 +80,7 @@ export async function loadDashboardData() {
   const pointSummary = apiDashboard?.pointSummary || {}
   const summaryUser = apiDashboard?.user || campusSummary?.user || dashboardData.user
   const notifications = pageItems(apiDashboard?.notifications).slice(0, 3).map(normalizeNotification)
+  const storyPosts = pageItems(apiDashboard?.storyPosts)
 
   return {
     ...dashboardData,
@@ -117,6 +118,7 @@ export async function loadDashboardData() {
       required: Boolean(item.isRequired)
     })),
     freeBoardPosts: pageItems(apiDashboard?.freeBoardPosts),
+    storyPosts: storyPosts.length ? storyPosts : dashboardData.storyPosts,
     notices: pageItems(apiDashboard?.notices)
   }
 }

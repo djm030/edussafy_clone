@@ -1,6 +1,6 @@
 {
   "routePath": "/community/class-roster",
-  "url": "http://127.0.0.1:5175/community/class-roster",
+  "url": "http://127.0.0.1:5176/community/class-roster?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
   "referenceScreenshot": "../../edu_screnshot/17_community_class_roster.png",
   "referenceExists": true,
   "referenceSize": {
@@ -17,10 +17,11 @@
   "capturedSize": {
     "width": 1326,
     "height": 1648,
-    "bytes": 152790
+    "bytes": 153867
   },
   "chromeStatus": 0,
-  "stderr": "152790 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\community-class-roster.png\r\n",
+  "stderr": "153867 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\community-class-roster.png\r\n",
+  "authenticatedCapture": true,
   "visualParityClaim": false,
   "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
 }

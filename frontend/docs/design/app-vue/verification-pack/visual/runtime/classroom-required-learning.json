@@ -1,6 +1,6 @@
 {
   "routePath": "/classroom/required-learning",
-  "url": "http://127.0.0.1:5175/classroom/required-learning",
+  "url": "http://127.0.0.1:5176/classroom/required-learning?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
   "referenceScreenshot": "../../edu_screnshot/15_classroom_required_learning_empty.png",
   "referenceExists": true,
   "referenceSize": {
@@ -17,10 +17,11 @@
   "capturedSize": {
     "width": 1326,
     "height": 1105,
-    "bytes": 150544
+    "bytes": 151159
   },
   "chromeStatus": 0,
-  "stderr": "150544 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\classroom-required-learning.png\r\n",
+  "stderr": "151159 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\classroom-required-learning.png\r\n",
+  "authenticatedCapture": true,
   "visualParityClaim": false,
   "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
 }

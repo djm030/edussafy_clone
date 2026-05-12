@@ -1,6 +1,6 @@
 {
   "routePath": "/mycampus/bookmarks",
-  "url": "http://127.0.0.1:5175/mycampus/bookmarks",
+  "url": "http://127.0.0.1:5176/mycampus/bookmarks?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
   "referenceScreenshot": "../../edu_screnshot/28_mycampus_bookmarks_empty.png",
   "referenceExists": true,
   "referenceSize": {
@@ -17,10 +17,11 @@
   "capturedSize": {
     "width": 1326,
     "height": 1060,
-    "bytes": 151508
+    "bytes": 152646
   },
   "chromeStatus": 0,
-  "stderr": "151508 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mycampus-bookmarks.png\r\n",
+  "stderr": "152646 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mycampus-bookmarks.png\r\n",
+  "authenticatedCapture": true,
   "visualParityClaim": false,
   "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
 }

@@ -1,6 +1,6 @@
 {
   "routePath": "/help/inquiries",
-  "url": "http://127.0.0.1:5175/help/inquiries",
+  "url": "http://127.0.0.1:5176/help/inquiries?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
   "referenceScreenshot": "../../edu_screnshot/09_helpdesk_inquiry_empty.png",
   "referenceExists": true,
   "referenceSize": {
@@ -17,10 +17,11 @@
   "capturedSize": {
     "width": 1326,
     "height": 963,
-    "bytes": 151036
+    "bytes": 152145
   },
   "chromeStatus": 0,
-  "stderr": "151036 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\help-inquiries.png\r\n",
+  "stderr": "152145 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\help-inquiries.png\r\n",
+  "authenticatedCapture": true,
   "visualParityClaim": false,
   "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
 }

@@ -1,6 +1,6 @@
 {
   "routePath": "/help/notice",
-  "url": "http://127.0.0.1:5175/help/notice",
+  "url": "http://127.0.0.1:5176/help/notice?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
   "referenceScreenshot": "../../edu_screnshot/07_helpdesk_notice.png",
   "referenceExists": true,
   "referenceSize": {
@@ -17,10 +17,11 @@
   "capturedSize": {
     "width": 1326,
     "height": 1815,
-    "bytes": 156669
+    "bytes": 157745
   },
   "chromeStatus": 0,
-  "stderr": "156669 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\help-notice.png\r\n",
+  "stderr": "157745 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\help-notice.png\r\n",
+  "authenticatedCapture": true,
   "visualParityClaim": false,
   "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
 }

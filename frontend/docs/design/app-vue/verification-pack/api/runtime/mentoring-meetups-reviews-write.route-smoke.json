@@ -2,11 +2,11 @@
   "routePath": "/mentoring/meetups/reviews/write",
   "samplePath": "/mentoring/meetups/reviews/write",
   "routeKind": "page",
-  "canonicalStatus": "NO_SCREENSHOT",
+  "canonicalStatus": "READY",
   "statusCode": 200,
   "ok": true,
   "contentType": "text/html",
   "containsAppRoot": true,
   "bodyBytes": 385,
-  "capturedAt": "2026-05-12T03:28:05.342Z"
+  "capturedAt": "2026-05-12T03:52:28.792Z"
 }

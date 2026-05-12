@@ -2,11 +2,11 @@
   "routePath": "/mycampus/documents/write",
   "samplePath": "/mycampus/documents/write",
   "routeKind": "page",
-  "canonicalStatus": "NO_SCREENSHOT",
+  "canonicalStatus": "READY",
   "statusCode": 200,
   "ok": true,
   "contentType": "text/html",
   "containsAppRoot": true,
   "bodyBytes": 385,
-  "capturedAt": "2026-05-12T03:28:04.379Z"
+  "capturedAt": "2026-05-12T03:52:27.270Z"
 }

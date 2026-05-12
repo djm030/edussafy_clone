@@ -1,6 +1,6 @@
 {
   "routePath": "/mentoring/qna",
-  "url": "http://127.0.0.1:5175/mentoring/qna",
+  "url": "http://127.0.0.1:5176/mentoring/qna?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
   "referenceScreenshot": "../../edu_screnshot/19_mentoring_qna_board.png",
   "referenceExists": true,
   "referenceSize": {
@@ -17,10 +17,11 @@
   "capturedSize": {
     "width": 1326,
     "height": 2698,
-    "bytes": 160937
+    "bytes": 162083
   },
   "chromeStatus": 0,
-  "stderr": "160937 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mentoring-qna.png\r\n",
+  "stderr": "162083 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mentoring-qna.png\r\n",
+  "authenticatedCapture": true,
   "visualParityClaim": false,
   "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
 }

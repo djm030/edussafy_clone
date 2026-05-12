@@ -1,6 +1,6 @@
 {
   "routePath": "/mycampus/elearning",
-  "url": "http://127.0.0.1:5175/mycampus/elearning",
+  "url": "http://127.0.0.1:5176/mycampus/elearning?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
   "referenceScreenshot": "../../edu_screnshot/27_mycampus_learning_elearning_empty.png",
   "referenceExists": true,
   "referenceSize": {
@@ -17,10 +17,11 @@
   "capturedSize": {
     "width": 1326,
     "height": 1105,
-    "bytes": 153429
+    "bytes": 154554
   },
   "chromeStatus": 0,
-  "stderr": "153429 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mycampus-elearning.png\r\n",
+  "stderr": "154554 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mycampus-elearning.png\r\n",
+  "authenticatedCapture": true,
   "visualParityClaim": false,
   "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
 }

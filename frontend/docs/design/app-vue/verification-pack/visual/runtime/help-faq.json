@@ -1,6 +1,6 @@
 {
   "routePath": "/help/faq",
-  "url": "http://127.0.0.1:5175/help/faq",
+  "url": "http://127.0.0.1:5176/help/faq?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
   "referenceScreenshot": "../../edu_screnshot/08_helpdesk_faq_empty.png",
   "referenceExists": true,
   "referenceSize": {
@@ -17,10 +17,11 @@
   "capturedSize": {
     "width": 1326,
     "height": 1028,
-    "bytes": 148812
+    "bytes": 149930
   },
   "chromeStatus": 0,
-  "stderr": "148812 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\help-faq.png\r\n",
+  "stderr": "149930 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\help-faq.png\r\n",
+  "authenticatedCapture": true,
   "visualParityClaim": false,
   "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
 }

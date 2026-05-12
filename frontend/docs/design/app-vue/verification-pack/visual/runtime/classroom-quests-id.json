@@ -1,0 +1,27 @@
+{
+  "routePath": "/classroom/quests/:id",
+  "url": "http://127.0.0.1:5176/classroom/quests/1?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
+  "referenceScreenshot": "../../edu_screnshot/38_classroom_quest_detail_completed.png",
+  "referenceExists": true,
+  "referenceSize": {
+    "width": 1326,
+    "height": 2183,
+    "bytes": 330876
+  },
+  "captureViewport": {
+    "width": 1326,
+    "height": 2183
+  },
+  "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\classroom-quests-id.png",
+  "captured": true,
+  "capturedSize": {
+    "width": 1326,
+    "height": 2183,
+    "bytes": 153488
+  },
+  "chromeStatus": 0,
+  "stderr": "153488 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\classroom-quests-id.png\r\n",
+  "authenticatedCapture": true,
+  "visualParityClaim": false,
+  "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+}

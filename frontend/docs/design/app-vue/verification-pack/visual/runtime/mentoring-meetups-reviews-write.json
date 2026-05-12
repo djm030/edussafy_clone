@@ -1,0 +1,27 @@
+{
+  "routePath": "/mentoring/meetups/reviews/write",
+  "url": "http://127.0.0.1:5176/mentoring/meetups/reviews/write?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
+  "referenceScreenshot": "../../edu_screnshot/24_mentoring_meetup_review_write_form.png",
+  "referenceExists": true,
+  "referenceSize": {
+    "width": 1326,
+    "height": 1541,
+    "bytes": 212318
+  },
+  "captureViewport": {
+    "width": 1326,
+    "height": 1541
+  },
+  "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mentoring-meetups-reviews-write.png",
+  "captured": true,
+  "capturedSize": {
+    "width": 1326,
+    "height": 1541,
+    "bytes": 158124
+  },
+  "chromeStatus": 0,
+  "stderr": "158124 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mentoring-meetups-reviews-write.png\r\n",
+  "authenticatedCapture": true,
+  "visualParityClaim": false,
+  "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+}

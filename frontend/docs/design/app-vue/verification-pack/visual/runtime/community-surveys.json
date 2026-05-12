@@ -1,6 +1,6 @@
 {
   "routePath": "/community/surveys",
-  "url": "http://127.0.0.1:5175/community/surveys",
+  "url": "http://127.0.0.1:5176/community/surveys?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
   "referenceScreenshot": "../../edu_screnshot/05_community_survey.png",
   "referenceExists": true,
   "referenceSize": {
@@ -17,10 +17,11 @@
   "capturedSize": {
     "width": 1326,
     "height": 2366,
-    "bytes": 157653
+    "bytes": 158797
   },
   "chromeStatus": 0,
-  "stderr": "157653 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\community-surveys.png\r\n",
+  "stderr": "158797 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\community-surveys.png\r\n",
+  "authenticatedCapture": true,
   "visualParityClaim": false,
   "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
 }

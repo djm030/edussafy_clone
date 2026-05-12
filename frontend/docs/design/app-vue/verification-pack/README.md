@@ -16,9 +16,11 @@ The command writes:
 
 ## Evidence layout
 
-- `api/<phase>/<route-slug>.json` — API/runtime evidence per route.
-- `screenshots/<phase>/<route-slug>.png` — implementation screenshot captured at the agreed viewport.
-- `visual/<phase>/<route-slug>.md` — visual comparison notes against the screenshot reference.
+- `api/<phase>/<route-slug>.json` ? API/runtime evidence per route.
+- `screenshots/<phase>/<route-slug>.png` ? implementation screenshot captured at the agreed viewport.
+- `visual/<phase>/<route-slug>.md` ? visual comparison notes against the screenshot reference.
+- `no-screenshot-criteria.md` ? criteria-only evidence gate for routes without a primary reference screenshot.
+- `mock-fallback-policy.md` ? final policy for demo fallbacks versus API-mode completion claims.
 
 ## API evidence schema
 
@@ -48,9 +50,10 @@ If the API cannot be verified, set `success: false`, include `blocker`, and mark
 
 1. Do not begin visual/domain implementation unless `canonical-contract.md`, `contract-inventory.json`, and this README exist.
 2. Route/screenshot/API/boardCode drift must be resolved or explicitly marked `BLOCKED`, `PARTIAL`, or `NO_SCREENSHOT`.
-3. Rows with `mock_allowed: yes until API verification phase` cannot be claimed as API-complete without an API evidence file.
-4. Dynamic routes require a representative sample URL in screenshot and API evidence.
-5. Redirect routes require route-smoke evidence only.
-6. Wildcard routes require 404 route-smoke evidence.
-7. External links require href/target evidence only.
-8. Delete or redact any evidence that contains secrets, credentials, tokens, cookies, or non-demo personal data.
+3. Rows with `mock_allowed: demo-only when VITE_USE_API is not true` cannot be claimed as API-complete unless API-mode evidence reports `usedMockFallback: false`.
+4. NO_SCREENSHOT rows cannot make pixel-parity claims; they require route-smoke/API evidence plus the criteria in `no-screenshot-criteria.md`.
+5. Dynamic routes require a representative sample URL in screenshot and API evidence.
+6. Redirect routes require route-smoke evidence only.
+7. Wildcard routes require 404 route-smoke evidence.
+8. External links require href/target evidence only.
+9. Delete or redact any evidence that contains secrets, credentials, tokens, cookies, or non-demo personal data.

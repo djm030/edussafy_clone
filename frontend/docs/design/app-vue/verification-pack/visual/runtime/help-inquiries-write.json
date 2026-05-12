@@ -1,0 +1,27 @@
+{
+  "routePath": "/help/inquiries/write",
+  "url": "http://127.0.0.1:5176/help/inquiries/write?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
+  "referenceScreenshot": "../../edu_screnshot/10_helpdesk_inquiry_form.png",
+  "referenceExists": true,
+  "referenceSize": {
+    "width": 1326,
+    "height": 1239,
+    "bytes": 267876
+  },
+  "captureViewport": {
+    "width": 1326,
+    "height": 1239
+  },
+  "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\help-inquiries-write.png",
+  "captured": true,
+  "capturedSize": {
+    "width": 1326,
+    "height": 1239,
+    "bytes": 154898
+  },
+  "chromeStatus": 0,
+  "stderr": "154898 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\help-inquiries-write.png\r\n",
+  "authenticatedCapture": true,
+  "visualParityClaim": false,
+  "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+}

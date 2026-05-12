@@ -1,0 +1,27 @@
+{
+  "routePath": "/help/notice/:id",
+  "url": "http://127.0.0.1:5176/help/notice/1?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
+  "referenceScreenshot": "../../edu_screnshot/33_helpdesk_notice_detail.png",
+  "referenceExists": true,
+  "referenceSize": {
+    "width": 1326,
+    "height": 5572,
+    "bytes": 500648
+  },
+  "captureViewport": {
+    "width": 1326,
+    "height": 5572
+  },
+  "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\help-notice-id.png",
+  "captured": true,
+  "capturedSize": {
+    "width": 1326,
+    "height": 5572,
+    "bytes": 172066
+  },
+  "chromeStatus": 0,
+  "stderr": "172066 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\help-notice-id.png\r\n",
+  "authenticatedCapture": true,
+  "visualParityClaim": false,
+  "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+}

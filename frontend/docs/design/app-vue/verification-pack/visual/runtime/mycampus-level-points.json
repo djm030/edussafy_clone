@@ -1,6 +1,6 @@
 {
   "routePath": "/mycampus/level-points",
-  "url": "http://127.0.0.1:5175/mycampus/level-points",
+  "url": "http://127.0.0.1:5176/mycampus/level-points?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
   "referenceScreenshot": "../../edu_screnshot/25_mycampus_level_points_dashboard.png",
   "referenceExists": true,
   "referenceSize": {
@@ -17,10 +17,11 @@
   "capturedSize": {
     "width": 1326,
     "height": 1770,
-    "bytes": 178581
+    "bytes": 179745
   },
   "chromeStatus": 0,
-  "stderr": "178581 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mycampus-level-points.png\r\n",
+  "stderr": "179745 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mycampus-level-points.png\r\n",
+  "authenticatedCapture": true,
   "visualParityClaim": false,
   "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
 }

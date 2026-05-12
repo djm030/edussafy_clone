@@ -59,28 +59,41 @@ onMounted(async () => {
         </dl>
       </DashboardCard>
 
-      <DashboardCard title="장학 포인트" action-label="내역" action-to="/mycampus/level-points">
-        <p class="metric-value">{{ formatCount(data.pointSummary.scholarshipPoint) }}</p>
-        <p class="metric-caption">누적 포인트</p>
-      </DashboardCard>
+      <section class="dashboard-blue-panel" aria-label="학습 요약">
+        <div class="dashboard-metric-stack">
+          <div class="dashboard-panel-header">
+            <h2>나의 학습 현황</h2>
+            <RouterLink to="/mycampus/level-points">내역</RouterLink>
+          </div>
+          <div class="dashboard-panel-metric">
+            <span>장학 포인트</span>
+            <strong>{{ formatCount(data.pointSummary.scholarshipPoint) }}</strong>
+            <small>누적 포인트</small>
+          </div>
+          <div class="dashboard-panel-metric">
+            <span>레벨 / EXP</span>
+            <strong>Lv. {{ data.pointSummary.levelNo }}</strong>
+            <div class="progress-track"><span :style="{ width: `${Math.min(data.pointSummary.totalExp / 5, 100)}%` }"></span></div>
+            <small>{{ formatCount(data.pointSummary.totalExp) }} EXP</small>
+          </div>
+        </div>
 
-      <DashboardCard title="레벨 / EXP" action-label="학습" action-to="/mycampus/level-points">
-        <p class="metric-value">Lv. {{ data.pointSummary.levelNo }}</p>
-        <div class="progress-track"><span :style="{ width: `${Math.min(data.pointSummary.totalExp / 5, 100)}%` }"></span></div>
-        <p class="metric-caption">{{ formatCount(data.pointSummary.totalExp) }} EXP</p>
-      </DashboardCard>
-
-      <DashboardCard title="알림" action-label="더보기" action-to="/notifications">
-        <ul class="compact-list">
-          <li v-for="item in data.notifications" :key="item.id">
-            <span :class="['list-dot', { unread: !item.isRead }]"></span>
-            <div>
-              <strong>{{ item.title }}</strong>
-              <small>{{ item.createdAt }}</small>
-            </div>
-          </li>
-        </ul>
-      </DashboardCard>
+        <div class="dashboard-panel-notices">
+          <div class="dashboard-panel-header">
+            <h2>알림</h2>
+            <RouterLink to="/notifications">더보기</RouterLink>
+          </div>
+          <ul class="compact-list">
+            <li v-for="item in data.notifications" :key="item.id">
+              <span :class="['list-dot', { unread: !item.isRead }]"></span>
+              <div>
+                <strong>{{ item.title }}</strong>
+                <small>{{ item.createdAt }}</small>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
     </div>
 
     <div class="dashboard-content-grid">
@@ -110,16 +123,36 @@ onMounted(async () => {
     </div>
 
     <div class="dashboard-resource-grid">
-      <DashboardCard title="학습 자료" action-label="더보기" action-to="/classroom/resources">
-        <ul class="resource-list">
-          <li v-for="item in data.learningPreview" :key="item.id">
-            <span class="resource-thumb">{{ item.contentType }}</span>
-            <div>
+      <DashboardCard class="learning-card-wide" title="학습 자료" action-label="더보기" action-to="/classroom/resources">
+        <div class="learning-card-list">
+          <article v-for="item in data.learningPreview" :key="item.id" class="learning-preview-card">
+            <span class="learning-preview-thumb">{{ item.contentType }}</span>
+            <div class="learning-preview-body">
+              <small>커리큘럼 &gt; 교재</small>
               <strong>{{ item.title }}</strong>
-              <small>{{ item.duration }} <span v-if="item.required">· 필수</span></small>
+              <p>{{ item.duration }} <span v-if="item.required">· 필수</span></p>
             </div>
-          </li>
-        </ul>
+          </article>
+        </div>
+      </DashboardCard>
+
+      <DashboardCard class="elearning-card" title="학습중 이러닝" action-label="MY CAMPUS" action-to="/mycampus/elearning">
+        <div class="dashboard-empty-tile">
+          <strong>학습 중인 E-Learning이 없습니다.</strong>
+          <small>신규 교육이 배정되면 이 영역에 표시됩니다.</small>
+        </div>
+      </DashboardCard>
+
+      <DashboardCard title="SSAFYcial" action-label="멘토링" action-to="/mentoring/stories">
+        <table class="preview-table">
+          <tbody>
+            <tr v-for="post in data.storyPosts" :key="post.id">
+              <td>{{ post.title }}</td>
+              <td>{{ post.displayName }}</td>
+              <td>{{ post.createdAt }}</td>
+            </tr>
+          </tbody>
+        </table>
       </DashboardCard>
 
       <DashboardCard title="자유게시판" action-label="게시판" action-to="/community/boards/open">

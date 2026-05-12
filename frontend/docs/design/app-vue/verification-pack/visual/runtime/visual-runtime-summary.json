@@ -1,18 +1,28 @@
 {
-  "capturedAt": "2026-05-12T02:06:16.753Z",
-  "command": "FRONTEND_BASE_URL=<url> node frontend/docs/design/app-vue/scripts/capture-visual-runtime.mjs",
-  "baseUrl": "http://127.0.0.1:5175",
+  "capturedAt": "2026-05-12T03:53:07.294Z",
+  "command": "FRONTEND_BASE_URL=<url> API_BASE_URL=<url> VISUAL_AUTH=true node frontend/docs/design/app-vue/scripts/capture-visual-runtime.mjs",
+  "baseUrl": "http://127.0.0.1:5176",
+  "apiBaseUrl": "http://127.0.0.1:8088",
   "chromePath": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+  "auth": {
+    "enabled": true,
+    "email": "student@edussafy.local",
+    "authenticated": true,
+    "statusCode": 200,
+    "accessToken": "<redacted>",
+    "refreshToken": "<redacted>",
+    "message": "요청이 성공했습니다."
+  },
   "visualCompleteClaim": false,
-  "reason": "Runtime screenshots were captured where possible and reference dimensions checked, but no pixel-diff dependency was added; parity remains evidence-backed PARTIAL unless manually reviewed.",
-  "totalReferenceRoutes": 30,
-  "attemptedRoutes": 30,
-  "capturedRoutes": 30,
+  "reason": "Authenticated runtime screenshots were captured where possible and reference dimensions checked, but no pixel-diff dependency was added; parity remains evidence-backed PARTIAL unless manually reviewed.",
+  "totalReferenceRoutes": 36,
+  "attemptedRoutes": 36,
+  "capturedRoutes": 36,
   "failedRoutes": 0,
   "results": [
     {
       "routePath": "/dashboard",
-      "url": "http://127.0.0.1:5175/dashboard",
+      "url": "http://127.0.0.1:5176/dashboard?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
       "referenceScreenshot": "../../edu_screnshot/01_home_dashboard.png",
       "referenceExists": true,
       "referenceSize": {
@@ -29,16 +39,17 @@
       "capturedSize": {
         "width": 1326,
         "height": 2254,
-        "bytes": 99907
+        "bytes": 193289
       },
       "chromeStatus": 0,
-      "stderr": "99907 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\dashboard.png\r\n",
+      "stderr": "193289 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\dashboard.png\r\n",
+      "authenticatedCapture": true,
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
     {
       "routePath": "/mycampus/level-points",
-      "url": "http://127.0.0.1:5175/mycampus/level-points",
+      "url": "http://127.0.0.1:5176/mycampus/level-points?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
       "referenceScreenshot": "../../edu_screnshot/25_mycampus_level_points_dashboard.png",
       "referenceExists": true,
       "referenceSize": {
@@ -55,16 +66,17 @@
       "capturedSize": {
         "width": 1326,
         "height": 1770,
-        "bytes": 178581
+        "bytes": 179745
       },
       "chromeStatus": 0,
-      "stderr": "178581 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mycampus-level-points.png\r\n",
+      "stderr": "179745 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mycampus-level-points.png\r\n",
+      "authenticatedCapture": true,
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
     {
       "routePath": "/mycampus/attendance",
-      "url": "http://127.0.0.1:5175/mycampus/attendance",
+      "url": "http://127.0.0.1:5176/mycampus/attendance?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
       "referenceScreenshot": "../../edu_screnshot/26_mycampus_attendance_status.png",
       "referenceExists": true,
       "referenceSize": {
@@ -81,16 +93,17 @@
       "capturedSize": {
         "width": 1326,
         "height": 2123,
-        "bytes": 167162
+        "bytes": 168235
       },
       "chromeStatus": 0,
-      "stderr": "167162 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mycampus-attendance.png\r\n",
+      "stderr": "168235 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mycampus-attendance.png\r\n",
+      "authenticatedCapture": true,
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
     {
       "routePath": "/mycampus/elearning",
-      "url": "http://127.0.0.1:5175/mycampus/elearning",
+      "url": "http://127.0.0.1:5176/mycampus/elearning?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
       "referenceScreenshot": "../../edu_screnshot/27_mycampus_learning_elearning_empty.png",
       "referenceExists": true,
       "referenceSize": {
@@ -107,16 +120,17 @@
       "capturedSize": {
         "width": 1326,
         "height": 1105,
-        "bytes": 153429
+        "bytes": 154554
       },
       "chromeStatus": 0,
-      "stderr": "153429 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mycampus-elearning.png\r\n",
+      "stderr": "154554 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mycampus-elearning.png\r\n",
+      "authenticatedCapture": true,
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
     {
       "routePath": "/mycampus/bookmarks",
-      "url": "http://127.0.0.1:5175/mycampus/bookmarks",
+      "url": "http://127.0.0.1:5176/mycampus/bookmarks?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
       "referenceScreenshot": "../../edu_screnshot/28_mycampus_bookmarks_empty.png",
       "referenceExists": true,
       "referenceSize": {
@@ -133,16 +147,17 @@
       "capturedSize": {
         "width": 1326,
         "height": 1060,
-        "bytes": 151508
+        "bytes": 152646
       },
       "chromeStatus": 0,
-      "stderr": "151508 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mycampus-bookmarks.png\r\n",
+      "stderr": "152646 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mycampus-bookmarks.png\r\n",
+      "authenticatedCapture": true,
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
     {
       "routePath": "/mycampus/documents",
-      "url": "http://127.0.0.1:5175/mycampus/documents",
+      "url": "http://127.0.0.1:5176/mycampus/documents?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
       "referenceScreenshot": "../../edu_screnshot/29_mycampus_document_submission_empty.png",
       "referenceExists": true,
       "referenceSize": {
@@ -159,16 +174,44 @@
       "capturedSize": {
         "width": 1326,
         "height": 1060,
-        "bytes": 151612
+        "bytes": 152709
       },
       "chromeStatus": 0,
-      "stderr": "151612 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mycampus-documents.png\r\n",
+      "stderr": "152709 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mycampus-documents.png\r\n",
+      "authenticatedCapture": true,
+      "visualParityClaim": false,
+      "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+    },
+    {
+      "routePath": "/mycampus/documents/write",
+      "url": "http://127.0.0.1:5176/mycampus/documents/write?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
+      "referenceScreenshot": "../../edu_screnshot/30_mycampus_document_submission_write_form.png",
+      "referenceExists": true,
+      "referenceSize": {
+        "width": 1326,
+        "height": 1239,
+        "bytes": 263710
+      },
+      "captureViewport": {
+        "width": 1326,
+        "height": 1239
+      },
+      "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mycampus-documents-write.png",
+      "captured": true,
+      "capturedSize": {
+        "width": 1326,
+        "height": 1239,
+        "bytes": 156033
+      },
+      "chromeStatus": 0,
+      "stderr": "156033 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mycampus-documents-write.png\r\n",
+      "authenticatedCapture": true,
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
     {
       "routePath": "/mycampus/pledges",
-      "url": "http://127.0.0.1:5175/mycampus/pledges",
+      "url": "http://127.0.0.1:5176/mycampus/pledges?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
       "referenceScreenshot": "../../edu_screnshot/31_mycampus_student_pledge_list.png",
       "referenceExists": true,
       "referenceSize": {
@@ -185,16 +228,17 @@
       "capturedSize": {
         "width": 1326,
         "height": 913,
-        "bytes": 150852
+        "bytes": 151947
       },
       "chromeStatus": 0,
-      "stderr": "150852 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mycampus-pledges.png\r\n",
+      "stderr": "151947 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mycampus-pledges.png\r\n",
+      "authenticatedCapture": true,
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
     {
       "routePath": "/mycampus/education-status",
-      "url": "http://127.0.0.1:5175/mycampus/education-status",
+      "url": "http://127.0.0.1:5176/mycampus/education-status?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
       "referenceScreenshot": "../../edu_screnshot/32_mycampus_education_status.png",
       "referenceExists": true,
       "referenceSize": {
@@ -211,16 +255,17 @@
       "capturedSize": {
         "width": 1326,
         "height": 3283,
-        "bytes": 163083
+        "bytes": 164195
       },
       "chromeStatus": 0,
-      "stderr": "163083 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mycampus-education-status.png\r\n",
+      "stderr": "164195 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mycampus-education-status.png\r\n",
+      "authenticatedCapture": true,
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
     {
       "routePath": "/classroom/my-replays",
-      "url": "http://127.0.0.1:5175/classroom/my-replays",
+      "url": "http://127.0.0.1:5176/classroom/my-replays?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
       "referenceScreenshot": "../../edu_screnshot/13_classroom_my_lecture_replay.png",
       "referenceExists": true,
       "referenceSize": {
@@ -237,16 +282,17 @@
       "capturedSize": {
         "width": 1326,
         "height": 2201,
-        "bytes": 253488
+        "bytes": 257704
       },
       "chromeStatus": 0,
-      "stderr": "253488 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\classroom-my-replays.png\r\n",
+      "stderr": "257704 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\classroom-my-replays.png\r\n",
+      "authenticatedCapture": true,
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
     {
       "routePath": "/classroom/all-replays",
-      "url": "http://127.0.0.1:5175/classroom/all-replays",
+      "url": "http://127.0.0.1:5176/classroom/all-replays?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
       "referenceScreenshot": "../../edu_screnshot/14_classroom_all_lecture_replay.png",
       "referenceExists": true,
       "referenceSize": {
@@ -263,16 +309,17 @@
       "capturedSize": {
         "width": 1326,
         "height": 1901,
-        "bytes": 152906
+        "bytes": 153923
       },
       "chromeStatus": 0,
-      "stderr": "152906 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\classroom-all-replays.png\r\n",
+      "stderr": "153923 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\classroom-all-replays.png\r\n",
+      "authenticatedCapture": true,
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
     {
       "routePath": "/classroom/curriculum",
-      "url": "http://127.0.0.1:5175/classroom/curriculum",
+      "url": "http://127.0.0.1:5176/classroom/curriculum?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
       "referenceScreenshot": "../../edu_screnshot/02_classroom_weekly_curriculum.png",
       "referenceExists": true,
       "referenceSize": {
@@ -289,16 +336,17 @@
       "capturedSize": {
         "width": 1326,
         "height": 1981,
-        "bytes": 153907
+        "bytes": 155066
       },
       "chromeStatus": 0,
-      "stderr": "153907 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\classroom-curriculum.png\r\n",
+      "stderr": "155066 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\classroom-curriculum.png\r\n",
+      "authenticatedCapture": true,
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
     {
       "routePath": "/classroom/quests",
-      "url": "http://127.0.0.1:5175/classroom/quests",
+      "url": "http://127.0.0.1:5176/classroom/quests?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
       "referenceScreenshot": "../../edu_screnshot/03_quest_evaluation_list.png",
       "referenceExists": true,
       "referenceSize": {
@@ -315,16 +363,44 @@
       "capturedSize": {
         "width": 1326,
         "height": 2384,
-        "bytes": 156333
+        "bytes": 157420
       },
       "chromeStatus": 0,
-      "stderr": "156333 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\classroom-quests.png\r\n",
+      "stderr": "157420 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\classroom-quests.png\r\n",
+      "authenticatedCapture": true,
+      "visualParityClaim": false,
+      "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+    },
+    {
+      "routePath": "/classroom/quests/:id",
+      "url": "http://127.0.0.1:5176/classroom/quests/1?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
+      "referenceScreenshot": "../../edu_screnshot/38_classroom_quest_detail_completed.png",
+      "referenceExists": true,
+      "referenceSize": {
+        "width": 1326,
+        "height": 2183,
+        "bytes": 330876
+      },
+      "captureViewport": {
+        "width": 1326,
+        "height": 2183
+      },
+      "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\classroom-quests-id.png",
+      "captured": true,
+      "capturedSize": {
+        "width": 1326,
+        "height": 2183,
+        "bytes": 153488
+      },
+      "chromeStatus": 0,
+      "stderr": "153488 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\classroom-quests-id.png\r\n",
+      "authenticatedCapture": true,
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
     {
       "routePath": "/classroom/required-learning",
-      "url": "http://127.0.0.1:5175/classroom/required-learning",
+      "url": "http://127.0.0.1:5176/classroom/required-learning?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
       "referenceScreenshot": "../../edu_screnshot/15_classroom_required_learning_empty.png",
       "referenceExists": true,
       "referenceSize": {
@@ -341,16 +417,17 @@
       "capturedSize": {
         "width": 1326,
         "height": 1105,
-        "bytes": 150544
+        "bytes": 151159
       },
       "chromeStatus": 0,
-      "stderr": "150544 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\classroom-required-learning.png\r\n",
+      "stderr": "151159 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\classroom-required-learning.png\r\n",
+      "authenticatedCapture": true,
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
     {
       "routePath": "/classroom/resources",
-      "url": "http://127.0.0.1:5175/classroom/resources",
+      "url": "http://127.0.0.1:5176/classroom/resources?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
       "referenceScreenshot": "../../edu_screnshot/04_learning_resources.png",
       "referenceExists": true,
       "referenceSize": {
@@ -367,16 +444,17 @@
       "capturedSize": {
         "width": 1326,
         "height": 3472,
-        "bytes": 164265
+        "bytes": 165378
       },
       "chromeStatus": 0,
-      "stderr": "164265 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\classroom-resources.png\r\n",
+      "stderr": "165378 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\classroom-resources.png\r\n",
+      "authenticatedCapture": true,
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
     {
       "routePath": "/community/surveys",
-      "url": "http://127.0.0.1:5175/community/surveys",
+      "url": "http://127.0.0.1:5176/community/surveys?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
       "referenceScreenshot": "../../edu_screnshot/05_community_survey.png",
       "referenceExists": true,
       "referenceSize": {
@@ -393,16 +471,17 @@
       "capturedSize": {
         "width": 1326,
         "height": 2366,
-        "bytes": 157653
+        "bytes": 158797
       },
       "chromeStatus": 0,
-      "stderr": "157653 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\community-surveys.png\r\n",
+      "stderr": "158797 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\community-surveys.png\r\n",
+      "authenticatedCapture": true,
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
     {
       "routePath": "/community/boards/open",
-      "url": "http://127.0.0.1:5175/community/boards/open",
+      "url": "http://127.0.0.1:5176/community/boards/open?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
       "referenceScreenshot": "../../edu_screnshot/06_open_board.png",
       "referenceExists": true,
       "referenceSize": {
@@ -419,16 +498,44 @@
       "capturedSize": {
         "width": 1326,
         "height": 2343,
-        "bytes": 159582
+        "bytes": 160720
       },
       "chromeStatus": 0,
-      "stderr": "159582 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\community-boards-open.png\r\n",
+      "stderr": "160720 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\community-boards-open.png\r\n",
+      "authenticatedCapture": true,
+      "visualParityClaim": false,
+      "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+    },
+    {
+      "routePath": "/community/boards/open/write",
+      "url": "http://127.0.0.1:5176/community/boards/open/write?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
+      "referenceScreenshot": "../../edu_screnshot/35_community_open_board_write_form.png",
+      "referenceExists": true,
+      "referenceSize": {
+        "width": 1326,
+        "height": 1732,
+        "bytes": 323161
+      },
+      "captureViewport": {
+        "width": 1326,
+        "height": 1732
+      },
+      "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\community-boards-open-write.png",
+      "captured": true,
+      "capturedSize": {
+        "width": 1326,
+        "height": 1732,
+        "bytes": 156039
+      },
+      "chromeStatus": 0,
+      "stderr": "156039 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\community-boards-open-write.png\r\n",
+      "authenticatedCapture": true,
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
     {
       "routePath": "/community/boards/anonymous",
-      "url": "http://127.0.0.1:5175/community/boards/anonymous",
+      "url": "http://127.0.0.1:5176/community/boards/anonymous?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
       "referenceScreenshot": "../../edu_screnshot/16_community_anonymous_board.png",
       "referenceExists": true,
       "referenceSize": {
@@ -445,16 +552,17 @@
       "capturedSize": {
         "width": 1326,
         "height": 2300,
-        "bytes": 159265
+        "bytes": 160365
       },
       "chromeStatus": 0,
-      "stderr": "159265 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\community-boards-anonymous.png\r\n",
+      "stderr": "160365 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\community-boards-anonymous.png\r\n",
+      "authenticatedCapture": true,
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
     {
       "routePath": "/community/class-roster",
-      "url": "http://127.0.0.1:5175/community/class-roster",
+      "url": "http://127.0.0.1:5176/community/class-roster?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
       "referenceScreenshot": "../../edu_screnshot/17_community_class_roster.png",
       "referenceExists": true,
       "referenceSize": {
@@ -471,16 +579,17 @@
       "capturedSize": {
         "width": 1326,
         "height": 1648,
-        "bytes": 152790
+        "bytes": 153867
       },
       "chromeStatus": 0,
-      "stderr": "152790 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\community-class-roster.png\r\n",
+      "stderr": "153867 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\community-class-roster.png\r\n",
+      "authenticatedCapture": true,
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
     {
       "routePath": "/help/notice",
-      "url": "http://127.0.0.1:5175/help/notice",
+      "url": "http://127.0.0.1:5176/help/notice?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
       "referenceScreenshot": "../../edu_screnshot/07_helpdesk_notice.png",
       "referenceExists": true,
       "referenceSize": {
@@ -497,16 +606,44 @@
       "capturedSize": {
         "width": 1326,
         "height": 1815,
-        "bytes": 156669
+        "bytes": 157745
       },
       "chromeStatus": 0,
-      "stderr": "156669 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\help-notice.png\r\n",
+      "stderr": "157745 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\help-notice.png\r\n",
+      "authenticatedCapture": true,
+      "visualParityClaim": false,
+      "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+    },
+    {
+      "routePath": "/help/notice/:id",
+      "url": "http://127.0.0.1:5176/help/notice/1?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
+      "referenceScreenshot": "../../edu_screnshot/33_helpdesk_notice_detail.png",
+      "referenceExists": true,
+      "referenceSize": {
+        "width": 1326,
+        "height": 5572,
+        "bytes": 500648
+      },
+      "captureViewport": {
+        "width": 1326,
+        "height": 5572
+      },
+      "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\help-notice-id.png",
+      "captured": true,
+      "capturedSize": {
+        "width": 1326,
+        "height": 5572,
+        "bytes": 172066
+      },
+      "chromeStatus": 0,
+      "stderr": "172066 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\help-notice-id.png\r\n",
+      "authenticatedCapture": true,
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
     {
       "routePath": "/help/faq",
-      "url": "http://127.0.0.1:5175/help/faq",
+      "url": "http://127.0.0.1:5176/help/faq?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
       "referenceScreenshot": "../../edu_screnshot/08_helpdesk_faq_empty.png",
       "referenceExists": true,
       "referenceSize": {
@@ -523,16 +660,17 @@
       "capturedSize": {
         "width": 1326,
         "height": 1028,
-        "bytes": 148812
+        "bytes": 149930
       },
       "chromeStatus": 0,
-      "stderr": "148812 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\help-faq.png\r\n",
+      "stderr": "149930 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\help-faq.png\r\n",
+      "authenticatedCapture": true,
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
     {
       "routePath": "/help/inquiries",
-      "url": "http://127.0.0.1:5175/help/inquiries",
+      "url": "http://127.0.0.1:5176/help/inquiries?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
       "referenceScreenshot": "../../edu_screnshot/09_helpdesk_inquiry_empty.png",
       "referenceExists": true,
       "referenceSize": {
@@ -549,16 +687,44 @@
       "capturedSize": {
         "width": 1326,
         "height": 963,
-        "bytes": 151036
+        "bytes": 152145
       },
       "chromeStatus": 0,
-      "stderr": "151036 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\help-inquiries.png\r\n",
+      "stderr": "152145 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\help-inquiries.png\r\n",
+      "authenticatedCapture": true,
+      "visualParityClaim": false,
+      "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+    },
+    {
+      "routePath": "/help/inquiries/write",
+      "url": "http://127.0.0.1:5176/help/inquiries/write?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
+      "referenceScreenshot": "../../edu_screnshot/10_helpdesk_inquiry_form.png",
+      "referenceExists": true,
+      "referenceSize": {
+        "width": 1326,
+        "height": 1239,
+        "bytes": 267876
+      },
+      "captureViewport": {
+        "width": 1326,
+        "height": 1239
+      },
+      "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\help-inquiries-write.png",
+      "captured": true,
+      "capturedSize": {
+        "width": 1326,
+        "height": 1239,
+        "bytes": 154898
+      },
+      "chromeStatus": 0,
+      "stderr": "154898 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\help-inquiries-write.png\r\n",
+      "authenticatedCapture": true,
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
     {
       "routePath": "/help/rules",
-      "url": "http://127.0.0.1:5175/help/rules",
+      "url": "http://127.0.0.1:5176/help/rules?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
       "referenceScreenshot": "../../edu_screnshot/18_helpdesk_academic_rules.png",
       "referenceExists": true,
       "referenceSize": {
@@ -575,16 +741,17 @@
       "capturedSize": {
         "width": 1326,
         "height": 1181,
-        "bytes": 149983
+        "bytes": 151109
       },
       "chromeStatus": 0,
-      "stderr": "149983 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\help-rules.png\r\n",
+      "stderr": "151109 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\help-rules.png\r\n",
+      "authenticatedCapture": true,
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
     {
       "routePath": "/mentoring/stories",
-      "url": "http://127.0.0.1:5175/mentoring/stories",
+      "url": "http://127.0.0.1:5176/mentoring/stories?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
       "referenceScreenshot": "../../edu_screnshot/11_mentoring_story_board.png",
       "referenceExists": true,
       "referenceSize": {
@@ -601,16 +768,17 @@
       "capturedSize": {
         "width": 1326,
         "height": 2553,
-        "bytes": 160761
+        "bytes": 161891
       },
       "chromeStatus": 0,
-      "stderr": "160761 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mentoring-stories.png\r\n",
+      "stderr": "161891 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mentoring-stories.png\r\n",
+      "authenticatedCapture": true,
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
     {
       "routePath": "/mentoring/qna",
-      "url": "http://127.0.0.1:5175/mentoring/qna",
+      "url": "http://127.0.0.1:5176/mentoring/qna?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
       "referenceScreenshot": "../../edu_screnshot/19_mentoring_qna_board.png",
       "referenceExists": true,
       "referenceSize": {
@@ -627,16 +795,17 @@
       "capturedSize": {
         "width": 1326,
         "height": 2698,
-        "bytes": 160937
+        "bytes": 162083
       },
       "chromeStatus": 0,
-      "stderr": "160937 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mentoring-qna.png\r\n",
+      "stderr": "162083 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mentoring-qna.png\r\n",
+      "authenticatedCapture": true,
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
     {
       "routePath": "/mentoring/notice",
-      "url": "http://127.0.0.1:5175/mentoring/notice",
+      "url": "http://127.0.0.1:5176/mentoring/notice?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
       "referenceScreenshot": "../../edu_screnshot/20_mentoring_notice_board.png",
       "referenceExists": true,
       "referenceSize": {
@@ -653,16 +822,17 @@
       "capturedSize": {
         "width": 1326,
         "height": 2343,
-        "bytes": 160578
+        "bytes": 161740
       },
       "chromeStatus": 0,
-      "stderr": "160578 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mentoring-notice.png\r\n",
+      "stderr": "161740 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mentoring-notice.png\r\n",
+      "authenticatedCapture": true,
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
     {
       "routePath": "/mentoring/meetups/apply",
-      "url": "http://127.0.0.1:5175/mentoring/meetups/apply",
+      "url": "http://127.0.0.1:5176/mentoring/meetups/apply?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
       "referenceScreenshot": "../../edu_screnshot/21_mentoring_meetup_apply.png",
       "referenceExists": true,
       "referenceSize": {
@@ -679,16 +849,17 @@
       "capturedSize": {
         "width": 1326,
         "height": 944,
-        "bytes": 148492
+        "bytes": 149613
       },
       "chromeStatus": 0,
-      "stderr": "148492 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mentoring-meetups-apply.png\r\n",
+      "stderr": "149613 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mentoring-meetups-apply.png\r\n",
+      "authenticatedCapture": true,
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
     {
       "routePath": "/mentoring/meetups/info",
-      "url": "http://127.0.0.1:5175/mentoring/meetups/info",
+      "url": "http://127.0.0.1:5176/mentoring/meetups/info?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
       "referenceScreenshot": "../../edu_screnshot/22_mentoring_meetup_info_empty.png",
       "referenceExists": true,
       "referenceSize": {
@@ -705,16 +876,17 @@
       "capturedSize": {
         "width": 1326,
         "height": 995,
-        "bytes": 154920
+        "bytes": 155526
       },
       "chromeStatus": 0,
-      "stderr": "154920 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mentoring-meetups-info.png\r\n",
+      "stderr": "155526 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mentoring-meetups-info.png\r\n",
+      "authenticatedCapture": true,
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
     {
       "routePath": "/mentoring/meetups/reviews",
-      "url": "http://127.0.0.1:5175/mentoring/meetups/reviews",
+      "url": "http://127.0.0.1:5176/mentoring/meetups/reviews?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
       "referenceScreenshot": "../../edu_screnshot/23_mentoring_meetup_review_board.png",
       "referenceExists": true,
       "referenceSize": {
@@ -731,16 +903,44 @@
       "capturedSize": {
         "width": 1326,
         "height": 2300,
-        "bytes": 160675
+        "bytes": 161772
       },
       "chromeStatus": 0,
-      "stderr": "160675 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mentoring-meetups-reviews.png\r\n",
+      "stderr": "161772 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mentoring-meetups-reviews.png\r\n",
+      "authenticatedCapture": true,
+      "visualParityClaim": false,
+      "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+    },
+    {
+      "routePath": "/mentoring/meetups/reviews/write",
+      "url": "http://127.0.0.1:5176/mentoring/meetups/reviews/write?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
+      "referenceScreenshot": "../../edu_screnshot/24_mentoring_meetup_review_write_form.png",
+      "referenceExists": true,
+      "referenceSize": {
+        "width": 1326,
+        "height": 1541,
+        "bytes": 212318
+      },
+      "captureViewport": {
+        "width": 1326,
+        "height": 1541
+      },
+      "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mentoring-meetups-reviews-write.png",
+      "captured": true,
+      "capturedSize": {
+        "width": 1326,
+        "height": 1541,
+        "bytes": 158124
+      },
+      "chromeStatus": 0,
+      "stderr": "158124 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mentoring-meetups-reviews-write.png\r\n",
+      "authenticatedCapture": true,
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
     {
       "routePath": "/notifications",
-      "url": "http://127.0.0.1:5175/notifications",
+      "url": "http://127.0.0.1:5176/notifications?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
       "referenceScreenshot": "../../edu_screnshot/36_notification_inbox.png",
       "referenceExists": true,
       "referenceSize": {
@@ -757,16 +957,17 @@
       "capturedSize": {
         "width": 1326,
         "height": 1492,
-        "bytes": 146991
+        "bytes": 148102
       },
       "chromeStatus": 0,
-      "stderr": "146991 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\notifications.png\r\n",
+      "stderr": "148102 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\notifications.png\r\n",
+      "authenticatedCapture": true,
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
     {
       "routePath": "/403",
-      "url": "http://127.0.0.1:5175/403",
+      "url": "http://127.0.0.1:5176/403?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
       "referenceScreenshot": "../../edu_screnshot/39_mycampus_ebook_403_forbidden.png",
       "referenceExists": true,
       "referenceSize": {
@@ -787,6 +988,7 @@
       },
       "chromeStatus": 0,
       "stderr": "21169 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\403.png\r\n",
+      "authenticatedCapture": true,
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     }

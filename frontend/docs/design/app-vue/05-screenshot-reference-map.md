@@ -75,6 +75,16 @@ Inspect before coding:
 - detail completed state
 - pagination
 
+### `/classroom/quests/:id`
+
+Primary screenshot:
+- `../../edu_screnshot/38_classroom_quest_detail_completed.png`
+
+Inspect before coding:
+- representative completed detail state
+- answer/result summary density
+- back/list action placement
+
 ### `/classroom/resources`
 
 Primary screenshot:
@@ -125,6 +135,16 @@ Inspect before coding:
 - pagination
 - write form table and attachment controls
 
+### `/community/boards/open/write`
+
+Primary screenshot:
+- `../../edu_screnshot/35_community_open_board_write_form.png`
+
+Inspect before coding:
+- category/title/content table rhythm
+- attachment controls
+- submit/cancel action alignment
+
 ### `/community/anonymous-board`
 
 Primary screenshot:
@@ -149,6 +169,15 @@ Inspect before coding:
 - notice board table
 - detail title/meta/content layout
 
+### `/help/notice/:id`
+
+Primary screenshot:
+- `../../edu_screnshot/33_helpdesk_notice_detail.png`
+
+Inspect before coding:
+- detail title/meta/content layout
+- list/back button placement
+
 ### `/help/faq`
 
 Primary screenshot:
@@ -168,6 +197,15 @@ Secondary screenshot:
 
 Inspect before coding:
 - empty state
+- inquiry write form table
+- submit/cancel action alignment
+
+### `/help/inquiries/write`
+
+Primary screenshot:
+- `../../edu_screnshot/10_helpdesk_inquiry_form.png`
+
+Inspect before coding:
 - inquiry write form table
 - submit/cancel action alignment
 
@@ -223,6 +261,15 @@ Inspect before coding:
 - write form pattern
 - meetup empty state
 
+### `/mentoring/meetups/reviews/write`
+
+Primary screenshot:
+- `../../edu_screnshot/24_mentoring_meetup_review_write_form.png`
+
+Inspect before coding:
+- meetup review write form pattern
+- upload/submit action alignment
+
 ## MyCampus
 
 ### `/mycampus/level-points`
@@ -256,6 +303,16 @@ Primary screenshot:
 
 Secondary screenshot:
 - `../../edu_screnshot/30_mycampus_document_submission_write_form.png`
+
+### `/mycampus/documents/write`
+
+Primary screenshot:
+- `../../edu_screnshot/30_mycampus_document_submission_write_form.png`
+
+Inspect before coding:
+- document type selector
+- file upload controls
+- submit/cancel action alignment
 
 ### `/mycampus/pledge`
 

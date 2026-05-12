@@ -2,11 +2,11 @@
   "routePath": "/community/boards/open/write",
   "samplePath": "/community/boards/open/write",
   "routeKind": "page",
-  "canonicalStatus": "NO_SCREENSHOT",
+  "canonicalStatus": "READY",
   "statusCode": 200,
   "ok": true,
   "contentType": "text/html",
   "containsAppRoot": true,
   "bodyBytes": 385,
-  "capturedAt": "2026-05-12T03:28:04.776Z"
+  "capturedAt": "2026-05-12T03:52:27.935Z"
 }

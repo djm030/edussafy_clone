@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-12T03:10:12.519Z",
+  "generatedAt": "2026-05-12T03:46:15.865Z",
   "generator": "frontend/docs/design/app-vue/scripts/build-contract-inventory.mjs",
   "constraints": {
     "noVisualDomainImplementationBeforePhase0Artifacts": true,
@@ -12,9 +12,9 @@
   },
   "summary": {
     "canonicalRows": 54,
-    "readyRows": 35,
+    "readyRows": 41,
     "partialRows": 0,
-    "noScreenshotRows": 19,
+    "noScreenshotRows": 13,
     "blockedRows": 0,
     "screenshotAliasesResolved": 9,
     "unmappedScreenshotRoutes": 0,
@@ -961,39 +961,46 @@
       "line": 63
     },
     {
+      "routePath": "/classroom/quests/:id",
+      "section": "Classroom",
+      "primary": "../../edu_screnshot/38_classroom_quest_detail_completed.png",
+      "secondary": [],
+      "line": 78
+    },
+    {
       "routePath": "/classroom/resources",
       "section": "Classroom",
       "primary": "../../edu_screnshot/04_learning_resources.png",
       "secondary": [],
-      "line": 78
+      "line": 88
     },
     {
       "routePath": "/classroom/my-replays",
       "section": "Classroom",
       "primary": "../../edu_screnshot/13_classroom_my_lecture_replay.png",
       "secondary": [],
-      "line": 88
+      "line": 98
     },
     {
       "routePath": "/classroom/all-replays",
       "section": "Classroom",
       "primary": "../../edu_screnshot/14_classroom_all_lecture_replay.png",
       "secondary": [],
-      "line": 93
+      "line": 103
     },
     {
       "routePath": "/classroom/required-learning",
       "section": "Classroom",
       "primary": "../../edu_screnshot/15_classroom_required_learning_empty.png",
       "secondary": [],
-      "line": 98
+      "line": 108
     },
     {
       "routePath": "/community/survey",
       "section": "Community",
       "primary": "../../edu_screnshot/05_community_survey.png",
       "secondary": [],
-      "line": 109
+      "line": 119
     },
     {
       "routePath": "/community/open-board",
@@ -1002,21 +1009,28 @@
       "secondary": [
         "../../edu_screnshot/35_community_open_board_write_form.png"
       ],
-      "line": 114
+      "line": 124
+    },
+    {
+      "routePath": "/community/boards/open/write",
+      "section": "Community",
+      "primary": "../../edu_screnshot/35_community_open_board_write_form.png",
+      "secondary": [],
+      "line": 138
     },
     {
       "routePath": "/community/anonymous-board",
       "section": "Community",
       "primary": "../../edu_screnshot/16_community_anonymous_board.png",
       "secondary": [],
-      "line": 128
+      "line": 148
     },
     {
       "routePath": "/community/class-roster",
       "section": "Community",
       "primary": "../../edu_screnshot/17_community_class_roster.png",
       "secondary": [],
-      "line": 133
+      "line": 153
     },
     {
       "routePath": "/help/notice",
@@ -1025,14 +1039,21 @@
       "secondary": [
         "../../edu_screnshot/33_helpdesk_notice_detail.png"
       ],
-      "line": 140
+      "line": 160
+    },
+    {
+      "routePath": "/help/notice/:id",
+      "section": "Helpdesk",
+      "primary": "../../edu_screnshot/33_helpdesk_notice_detail.png",
+      "secondary": [],
+      "line": 172
     },
     {
       "routePath": "/help/faq",
       "section": "Helpdesk",
       "primary": "../../edu_screnshot/08_helpdesk_faq_empty.png",
       "secondary": [],
-      "line": 152
+      "line": 181
     },
     {
       "routePath": "/help/inquiries",
@@ -1041,7 +1062,14 @@
       "secondary": [
         "../../edu_screnshot/10_helpdesk_inquiry_form.png"
       ],
-      "line": 161
+      "line": 190
+    },
+    {
+      "routePath": "/help/inquiries/write",
+      "section": "Helpdesk",
+      "primary": "../../edu_screnshot/10_helpdesk_inquiry_form.png",
+      "secondary": [],
+      "line": 203
     },
     {
       "routePath": "/help/rules",
@@ -1050,42 +1078,42 @@
       "secondary": [
         "../../edu_screnshot/34_helpdesk_academic_rules_expanded_attendance.png"
       ],
-      "line": 174
+      "line": 212
     },
     {
       "routePath": "/mentoring/qna",
       "section": "Mentoring",
       "primary": "../../edu_screnshot/19_mentoring_qna_board.png",
       "secondary": [],
-      "line": 188
+      "line": 226
     },
     {
       "routePath": "/mentoring/story",
       "section": "Mentoring",
       "primary": "../../edu_screnshot/11_mentoring_story_board.png",
       "secondary": [],
-      "line": 193
+      "line": 231
     },
     {
       "routePath": "/mentoring/notice",
       "section": "Mentoring",
       "primary": "../../edu_screnshot/20_mentoring_notice_board.png",
       "secondary": [],
-      "line": 198
+      "line": 236
     },
     {
       "routePath": "/mentoring/meetup/apply",
       "section": "Mentoring",
       "primary": "../../edu_screnshot/21_mentoring_meetup_apply.png",
       "secondary": [],
-      "line": 203
+      "line": 241
     },
     {
       "routePath": "/mentoring/meetup/info",
       "section": "Mentoring",
       "primary": "../../edu_screnshot/22_mentoring_meetup_info_empty.png",
       "secondary": [],
-      "line": 208
+      "line": 246
     },
     {
       "routePath": "/mentoring/meetup/reviews",
@@ -1094,35 +1122,42 @@
       "secondary": [
         "../../edu_screnshot/24_mentoring_meetup_review_write_form.png"
       ],
-      "line": 213
+      "line": 251
+    },
+    {
+      "routePath": "/mentoring/meetups/reviews/write",
+      "section": "Mentoring",
+      "primary": "../../edu_screnshot/24_mentoring_meetup_review_write_form.png",
+      "secondary": [],
+      "line": 264
     },
     {
       "routePath": "/mycampus/level-points",
       "section": "MyCampus",
       "primary": "../../edu_screnshot/25_mycampus_level_points_dashboard.png",
       "secondary": [],
-      "line": 228
+      "line": 275
     },
     {
       "routePath": "/mycampus/attendance",
       "section": "MyCampus",
       "primary": "../../edu_screnshot/26_mycampus_attendance_status.png",
       "secondary": [],
-      "line": 237
+      "line": 284
     },
     {
       "routePath": "/mycampus/learning/elearning",
       "section": "MyCampus",
       "primary": "../../edu_screnshot/27_mycampus_learning_elearning_empty.png",
       "secondary": [],
-      "line": 242
+      "line": 289
     },
     {
       "routePath": "/mycampus/bookmarks",
       "section": "MyCampus",
       "primary": "../../edu_screnshot/28_mycampus_bookmarks_empty.png",
       "secondary": [],
-      "line": 247
+      "line": 294
     },
     {
       "routePath": "/mycampus/documents",
@@ -1131,21 +1166,28 @@
       "secondary": [
         "../../edu_screnshot/30_mycampus_document_submission_write_form.png"
       ],
-      "line": 252
+      "line": 299
+    },
+    {
+      "routePath": "/mycampus/documents/write",
+      "section": "MyCampus",
+      "primary": "../../edu_screnshot/30_mycampus_document_submission_write_form.png",
+      "secondary": [],
+      "line": 307
     },
     {
       "routePath": "/mycampus/pledge",
       "section": "MyCampus",
       "primary": "../../edu_screnshot/31_mycampus_student_pledge_list.png",
       "secondary": [],
-      "line": 260
+      "line": 317
     },
     {
       "routePath": "/mycampus/education-status",
       "section": "MyCampus",
       "primary": "../../edu_screnshot/32_mycampus_education_status.png",
       "secondary": [],
-      "line": 265
+      "line": 322
     },
     {
       "routePath": "/notifications",
@@ -1154,14 +1196,14 @@
       "secondary": [
         "../../edu_screnshot/37_profile_click_no_dropdown_notification_page.png"
       ],
-      "line": 272
+      "line": 329
     },
     {
       "routePath": "/403",
       "section": "Notifications / profile / error",
       "primary": "../../edu_screnshot/39_mycampus_ebook_403_forbidden.png",
       "secondary": [],
-      "line": 284
+      "line": 341
     }
   ],
   "actualScreenshots": [
@@ -1473,13 +1515,13 @@
       ],
       "boardCodes": [],
       "expectedDataShape": "form submit response or auth/session object",
-      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "mockAllowed": "demo-only when VITE_USE_API is not true; API-mode evidence must report usedMockFallback=false",
       "evidenceApiPath": "verification-pack/api/phase-0/login.json",
-      "evidenceScreenshotPath": "NO_SCREENSHOT",
+      "evidenceScreenshotPath": "verification-pack/no-screenshot-criteria.md#login",
       "owner": "frontend-phase-0-contract-lock",
       "status": "NO_SCREENSHOT",
       "notes": [
-        "NO_SCREENSHOT: no primary screenshot mapped in 05-screenshot-reference-map.md"
+        "NO_SCREENSHOT: criteria-only route; use verification-pack/no-screenshot-criteria.md"
       ]
     },
     {
@@ -1497,7 +1539,7 @@
       "expectedDataShape": "N/A",
       "mockAllowed": "n/a",
       "evidenceApiPath": "N/A",
-      "evidenceScreenshotPath": "NO_SCREENSHOT",
+      "evidenceScreenshotPath": "verification-pack/no-screenshot-criteria.md#root",
       "owner": "frontend-phase-0-contract-lock",
       "status": "READY",
       "notes": [
@@ -1525,7 +1567,7 @@
       ],
       "boardCodes": [],
       "expectedDataShape": "summary cards, preview lists, notifications, user/campus summary",
-      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "mockAllowed": "demo-only when VITE_USE_API is not true; API-mode evidence must report usedMockFallback=false",
       "evidenceApiPath": "verification-pack/api/phase-0/dashboard.json",
       "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/dashboard.png",
       "owner": "frontend-phase-0-contract-lock",
@@ -1549,7 +1591,7 @@
       ],
       "boardCodes": [],
       "expectedDataShape": "page-specific DTO or paged list normalized by frontend service",
-      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "mockAllowed": "demo-only when VITE_USE_API is not true; API-mode evidence must report usedMockFallback=false",
       "evidenceApiPath": "verification-pack/api/phase-0/mycampus-level-points.json",
       "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/mycampus-level-points.png",
       "owner": "frontend-phase-0-contract-lock",
@@ -1573,7 +1615,7 @@
       ],
       "boardCodes": [],
       "expectedDataShape": "page-specific DTO or paged list normalized by frontend service",
-      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "mockAllowed": "demo-only when VITE_USE_API is not true; API-mode evidence must report usedMockFallback=false",
       "evidenceApiPath": "verification-pack/api/phase-0/mycampus-attendance.json",
       "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/mycampus-attendance.png",
       "owner": "frontend-phase-0-contract-lock",
@@ -1597,7 +1639,7 @@
       ],
       "boardCodes": [],
       "expectedDataShape": "page-specific DTO or paged list normalized by frontend service",
-      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "mockAllowed": "demo-only when VITE_USE_API is not true; API-mode evidence must report usedMockFallback=false",
       "evidenceApiPath": "verification-pack/api/phase-0/mycampus-elearning.json",
       "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/mycampus-elearning.png",
       "owner": "frontend-phase-0-contract-lock",
@@ -1620,7 +1662,7 @@
       ],
       "boardCodes": [],
       "expectedDataShape": "page-specific DTO or paged list normalized by frontend service",
-      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "mockAllowed": "demo-only when VITE_USE_API is not true; API-mode evidence must report usedMockFallback=false",
       "evidenceApiPath": "verification-pack/api/phase-0/mycampus-bookmarks.json",
       "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/mycampus-bookmarks.png",
       "owner": "frontend-phase-0-contract-lock",
@@ -1646,7 +1688,7 @@
         "doc-req"
       ],
       "expectedDataShape": "page-specific DTO or paged list normalized by frontend service",
-      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "mockAllowed": "demo-only when VITE_USE_API is not true; API-mode evidence must report usedMockFallback=false",
       "evidenceApiPath": "verification-pack/api/phase-0/mycampus-documents.json",
       "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/mycampus-documents.png",
       "owner": "frontend-phase-0-contract-lock",
@@ -1660,8 +1702,8 @@
       "sourceOfTruth": "routes+router",
       "aliasOrLegacyPath": [],
       "frameSection": "FRAME.md §16 마이캠퍼스 프레임",
-      "screenshotKey": "",
-      "screenshotPath": "",
+      "screenshotKey": "30_mycampus_document_submission_write_form.png",
+      "screenshotPath": "../../edu_screnshot/30_mycampus_document_submission_write_form.png",
       "secondaryScreenshotPaths": [],
       "apiEndpoints": [
         "GET /api/v1/boards/doc-req/categories",
@@ -1672,14 +1714,12 @@
         "doc-req"
       ],
       "expectedDataShape": "form submit response or auth/session object",
-      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "mockAllowed": "demo-only when VITE_USE_API is not true; API-mode evidence must report usedMockFallback=false",
       "evidenceApiPath": "verification-pack/api/phase-0/mycampus-documents-write.json",
-      "evidenceScreenshotPath": "NO_SCREENSHOT",
+      "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/mycampus-documents-write.png",
       "owner": "frontend-phase-0-contract-lock",
-      "status": "NO_SCREENSHOT",
-      "notes": [
-        "NO_SCREENSHOT: no primary screenshot mapped in 05-screenshot-reference-map.md"
-      ]
+      "status": "READY",
+      "notes": []
     },
     {
       "routePath": "/mycampus/pledges",
@@ -1699,7 +1739,7 @@
       ],
       "boardCodes": [],
       "expectedDataShape": "page-specific DTO or paged list normalized by frontend service",
-      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "mockAllowed": "demo-only when VITE_USE_API is not true; API-mode evidence must report usedMockFallback=false",
       "evidenceApiPath": "verification-pack/api/phase-0/mycampus-pledges.json",
       "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/mycampus-pledges.png",
       "owner": "frontend-phase-0-contract-lock",
@@ -1722,7 +1762,7 @@
       ],
       "boardCodes": [],
       "expectedDataShape": "page-specific DTO or paged list normalized by frontend service",
-      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "mockAllowed": "demo-only when VITE_USE_API is not true; API-mode evidence must report usedMockFallback=false",
       "evidenceApiPath": "verification-pack/api/phase-0/mycampus-education-status.json",
       "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/mycampus-education-status.png",
       "owner": "frontend-phase-0-contract-lock",
@@ -1745,13 +1785,13 @@
       ],
       "boardCodes": [],
       "expectedDataShape": "page-specific DTO or paged list normalized by frontend service",
-      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "mockAllowed": "demo-only when VITE_USE_API is not true; API-mode evidence must report usedMockFallback=false",
       "evidenceApiPath": "verification-pack/api/phase-0/mycampus-profile.json",
-      "evidenceScreenshotPath": "NO_SCREENSHOT",
+      "evidenceScreenshotPath": "verification-pack/no-screenshot-criteria.md#mycampus-profile",
       "owner": "frontend-phase-0-contract-lock",
       "status": "NO_SCREENSHOT",
       "notes": [
-        "NO_SCREENSHOT: no primary screenshot mapped in 05-screenshot-reference-map.md"
+        "NO_SCREENSHOT: criteria-only route; use verification-pack/no-screenshot-criteria.md"
       ]
     },
     {
@@ -1769,13 +1809,13 @@
       ],
       "boardCodes": [],
       "expectedDataShape": "form submit response or auth/session object",
-      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "mockAllowed": "demo-only when VITE_USE_API is not true; API-mode evidence must report usedMockFallback=false",
       "evidenceApiPath": "verification-pack/api/phase-0/mycampus-password.json",
-      "evidenceScreenshotPath": "NO_SCREENSHOT",
+      "evidenceScreenshotPath": "verification-pack/no-screenshot-criteria.md#mycampus-password",
       "owner": "frontend-phase-0-contract-lock",
       "status": "NO_SCREENSHOT",
       "notes": [
-        "NO_SCREENSHOT: no primary screenshot mapped in 05-screenshot-reference-map.md"
+        "NO_SCREENSHOT: criteria-only route; use verification-pack/no-screenshot-criteria.md"
       ]
     },
     {
@@ -1793,7 +1833,7 @@
       ],
       "boardCodes": [],
       "expectedDataShape": "page-specific DTO or paged list normalized by frontend service",
-      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "mockAllowed": "demo-only when VITE_USE_API is not true; API-mode evidence must report usedMockFallback=false",
       "evidenceApiPath": "verification-pack/api/phase-0/classroom-my-replays.json",
       "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/classroom-my-replays.png",
       "owner": "frontend-phase-0-contract-lock",
@@ -1815,7 +1855,7 @@
       ],
       "boardCodes": [],
       "expectedDataShape": "page-specific DTO or paged list normalized by frontend service",
-      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "mockAllowed": "demo-only when VITE_USE_API is not true; API-mode evidence must report usedMockFallback=false",
       "evidenceApiPath": "verification-pack/api/phase-0/classroom-all-replays.json",
       "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/classroom-all-replays.png",
       "owner": "frontend-phase-0-contract-lock",
@@ -1843,7 +1883,7 @@
       ],
       "boardCodes": [],
       "expectedDataShape": "page-specific DTO or paged list normalized by frontend service",
-      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "mockAllowed": "demo-only when VITE_USE_API is not true; API-mode evidence must report usedMockFallback=false",
       "evidenceApiPath": "verification-pack/api/phase-0/classroom-curriculum.json",
       "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/classroom-curriculum.png",
       "owner": "frontend-phase-0-contract-lock",
@@ -1867,7 +1907,7 @@
       ],
       "boardCodes": [],
       "expectedDataShape": "page-specific DTO or paged list normalized by frontend service",
-      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "mockAllowed": "demo-only when VITE_USE_API is not true; API-mode evidence must report usedMockFallback=false",
       "evidenceApiPath": "verification-pack/api/phase-0/classroom-quests.json",
       "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/classroom-quests.png",
       "owner": "frontend-phase-0-contract-lock",
@@ -1881,8 +1921,8 @@
       "sourceOfTruth": "router-only",
       "aliasOrLegacyPath": [],
       "frameSection": "FRAME.md §7 강의실 — Quest/평가 프레임",
-      "screenshotKey": "",
-      "screenshotPath": "",
+      "screenshotKey": "38_classroom_quest_detail_completed.png",
+      "screenshotPath": "../../edu_screnshot/38_classroom_quest_detail_completed.png",
       "secondaryScreenshotPaths": [],
       "apiEndpoints": [
         "GET /api/v1/tasks/{taskId}",
@@ -1890,14 +1930,12 @@
       ],
       "boardCodes": [],
       "expectedDataShape": "detail object; route param id must map to API id",
-      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "mockAllowed": "demo-only when VITE_USE_API is not true; API-mode evidence must report usedMockFallback=false",
       "evidenceApiPath": "verification-pack/api/phase-0/classroom-quests-id.json",
-      "evidenceScreenshotPath": "NO_SCREENSHOT",
+      "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/classroom-quests-id.png",
       "owner": "frontend-phase-0-contract-lock",
-      "status": "NO_SCREENSHOT",
-      "notes": [
-        "NO_SCREENSHOT: no primary screenshot mapped in 05-screenshot-reference-map.md"
-      ]
+      "status": "READY",
+      "notes": []
     },
     {
       "routePath": "/classroom/required-learning",
@@ -1914,7 +1952,7 @@
       ],
       "boardCodes": [],
       "expectedDataShape": "page-specific DTO or paged list normalized by frontend service",
-      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "mockAllowed": "demo-only when VITE_USE_API is not true; API-mode evidence must report usedMockFallback=false",
       "evidenceApiPath": "verification-pack/api/phase-0/classroom-required-learning.json",
       "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/classroom-required-learning.png",
       "owner": "frontend-phase-0-contract-lock",
@@ -1937,7 +1975,7 @@
       ],
       "boardCodes": [],
       "expectedDataShape": "page-specific DTO or paged list normalized by frontend service",
-      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "mockAllowed": "demo-only when VITE_USE_API is not true; API-mode evidence must report usedMockFallback=false",
       "evidenceApiPath": "verification-pack/api/phase-0/classroom-resources.json",
       "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/classroom-resources.png",
       "owner": "frontend-phase-0-contract-lock",
@@ -1959,13 +1997,13 @@
       ],
       "boardCodes": [],
       "expectedDataShape": "detail object; route param id must map to API id",
-      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "mockAllowed": "demo-only when VITE_USE_API is not true; API-mode evidence must report usedMockFallback=false",
       "evidenceApiPath": "verification-pack/api/phase-0/classroom-resources-id.json",
-      "evidenceScreenshotPath": "NO_SCREENSHOT",
+      "evidenceScreenshotPath": "verification-pack/no-screenshot-criteria.md#classroom-resources-id",
       "owner": "frontend-phase-0-contract-lock",
       "status": "NO_SCREENSHOT",
       "notes": [
-        "NO_SCREENSHOT: no primary screenshot mapped in 05-screenshot-reference-map.md"
+        "NO_SCREENSHOT: criteria-only route; use verification-pack/no-screenshot-criteria.md"
       ]
     },
     {
@@ -1986,7 +2024,7 @@
       ],
       "boardCodes": [],
       "expectedDataShape": "page-specific DTO or paged list normalized by frontend service",
-      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "mockAllowed": "demo-only when VITE_USE_API is not true; API-mode evidence must report usedMockFallback=false",
       "evidenceApiPath": "verification-pack/api/phase-0/community-surveys.json",
       "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/community-surveys.png",
       "owner": "frontend-phase-0-contract-lock",
@@ -2008,13 +2046,13 @@
       ],
       "boardCodes": [],
       "expectedDataShape": "detail object; route param id must map to API id",
-      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "mockAllowed": "demo-only when VITE_USE_API is not true; API-mode evidence must report usedMockFallback=false",
       "evidenceApiPath": "verification-pack/api/phase-0/community-surveys-id.json",
-      "evidenceScreenshotPath": "NO_SCREENSHOT",
+      "evidenceScreenshotPath": "verification-pack/no-screenshot-criteria.md#community-surveys-id",
       "owner": "frontend-phase-0-contract-lock",
       "status": "NO_SCREENSHOT",
       "notes": [
-        "NO_SCREENSHOT: no primary screenshot mapped in 05-screenshot-reference-map.md"
+        "NO_SCREENSHOT: criteria-only route; use verification-pack/no-screenshot-criteria.md"
       ]
     },
     {
@@ -2038,7 +2076,7 @@
         "free"
       ],
       "expectedDataShape": "paged board posts: content/items/data with id, title, category, author, date, views",
-      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "mockAllowed": "demo-only when VITE_USE_API is not true; API-mode evidence must report usedMockFallback=false",
       "evidenceApiPath": "verification-pack/api/phase-0/community-boards-open.json",
       "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/community-boards-open.png",
       "owner": "frontend-phase-0-contract-lock",
@@ -2052,8 +2090,8 @@
       "sourceOfTruth": "routes+router",
       "aliasOrLegacyPath": [],
       "frameSection": "FRAME.md §11 커뮤니티 — 열린 게시판 / 익명 게시판 프레임",
-      "screenshotKey": "",
-      "screenshotPath": "",
+      "screenshotKey": "35_community_open_board_write_form.png",
+      "screenshotPath": "../../edu_screnshot/35_community_open_board_write_form.png",
       "secondaryScreenshotPaths": [],
       "apiEndpoints": [
         "GET /api/v1/boards/free/categories",
@@ -2063,14 +2101,12 @@
         "free"
       ],
       "expectedDataShape": "form submit response or auth/session object",
-      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "mockAllowed": "demo-only when VITE_USE_API is not true; API-mode evidence must report usedMockFallback=false",
       "evidenceApiPath": "verification-pack/api/phase-0/community-boards-open-write.json",
-      "evidenceScreenshotPath": "NO_SCREENSHOT",
+      "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/community-boards-open-write.png",
       "owner": "frontend-phase-0-contract-lock",
-      "status": "NO_SCREENSHOT",
-      "notes": [
-        "NO_SCREENSHOT: no primary screenshot mapped in 05-screenshot-reference-map.md"
-      ]
+      "status": "READY",
+      "notes": []
     },
     {
       "routePath": "/community/boards/open/:id",
@@ -2089,13 +2125,13 @@
         "free"
       ],
       "expectedDataShape": "detail object; route param id must map to API id",
-      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "mockAllowed": "demo-only when VITE_USE_API is not true; API-mode evidence must report usedMockFallback=false",
       "evidenceApiPath": "verification-pack/api/phase-0/community-boards-open-id.json",
-      "evidenceScreenshotPath": "NO_SCREENSHOT",
+      "evidenceScreenshotPath": "verification-pack/no-screenshot-criteria.md#community-boards-open-id",
       "owner": "frontend-phase-0-contract-lock",
       "status": "NO_SCREENSHOT",
       "notes": [
-        "NO_SCREENSHOT: no primary screenshot mapped in 05-screenshot-reference-map.md"
+        "NO_SCREENSHOT: criteria-only route; use verification-pack/no-screenshot-criteria.md"
       ]
     },
     {
@@ -2117,7 +2153,7 @@
         "anonymity"
       ],
       "expectedDataShape": "paged board posts: content/items/data with id, title, category, author, date, views",
-      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "mockAllowed": "demo-only when VITE_USE_API is not true; API-mode evidence must report usedMockFallback=false",
       "evidenceApiPath": "verification-pack/api/phase-0/community-boards-anonymous.json",
       "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/community-boards-anonymous.png",
       "owner": "frontend-phase-0-contract-lock",
@@ -2141,13 +2177,13 @@
         "anonymity"
       ],
       "expectedDataShape": "detail object; route param id must map to API id",
-      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "mockAllowed": "demo-only when VITE_USE_API is not true; API-mode evidence must report usedMockFallback=false",
       "evidenceApiPath": "verification-pack/api/phase-0/community-boards-anonymous-id.json",
-      "evidenceScreenshotPath": "NO_SCREENSHOT",
+      "evidenceScreenshotPath": "verification-pack/no-screenshot-criteria.md#community-boards-anonymous-id",
       "owner": "frontend-phase-0-contract-lock",
       "status": "NO_SCREENSHOT",
       "notes": [
-        "NO_SCREENSHOT: no primary screenshot mapped in 05-screenshot-reference-map.md"
+        "NO_SCREENSHOT: criteria-only route; use verification-pack/no-screenshot-criteria.md"
       ]
     },
     {
@@ -2165,7 +2201,7 @@
       ],
       "boardCodes": [],
       "expectedDataShape": "page-specific DTO or paged list normalized by frontend service",
-      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "mockAllowed": "demo-only when VITE_USE_API is not true; API-mode evidence must report usedMockFallback=false",
       "evidenceApiPath": "verification-pack/api/phase-0/community-class-roster.json",
       "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/community-class-roster.png",
       "owner": "frontend-phase-0-contract-lock",
@@ -2191,7 +2227,7 @@
         "notice"
       ],
       "expectedDataShape": "paged board posts: content/items/data with id, title, category, author, date, views",
-      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "mockAllowed": "demo-only when VITE_USE_API is not true; API-mode evidence must report usedMockFallback=false",
       "evidenceApiPath": "verification-pack/api/phase-0/help-notice.json",
       "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/help-notice.png",
       "owner": "frontend-phase-0-contract-lock",
@@ -2205,8 +2241,8 @@
       "sourceOfTruth": "router-only",
       "aliasOrLegacyPath": [],
       "frameSection": "FRAME.md §13 HELP DESK — 공지사항 프레임",
-      "screenshotKey": "",
-      "screenshotPath": "",
+      "screenshotKey": "33_helpdesk_notice_detail.png",
+      "screenshotPath": "../../edu_screnshot/33_helpdesk_notice_detail.png",
       "secondaryScreenshotPaths": [],
       "apiEndpoints": [
         "GET /api/v1/boards/notice/posts/{postId}"
@@ -2215,14 +2251,12 @@
         "notice"
       ],
       "expectedDataShape": "detail object; route param id must map to API id",
-      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "mockAllowed": "demo-only when VITE_USE_API is not true; API-mode evidence must report usedMockFallback=false",
       "evidenceApiPath": "verification-pack/api/phase-0/help-notice-id.json",
-      "evidenceScreenshotPath": "NO_SCREENSHOT",
+      "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/help-notice-id.png",
       "owner": "frontend-phase-0-contract-lock",
-      "status": "NO_SCREENSHOT",
-      "notes": [
-        "NO_SCREENSHOT: no primary screenshot mapped in 05-screenshot-reference-map.md"
-      ]
+      "status": "READY",
+      "notes": []
     },
     {
       "routePath": "/help/faq",
@@ -2241,7 +2275,7 @@
         "faq"
       ],
       "expectedDataShape": "page-specific DTO or paged list normalized by frontend service",
-      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "mockAllowed": "demo-only when VITE_USE_API is not true; API-mode evidence must report usedMockFallback=false",
       "evidenceApiPath": "verification-pack/api/phase-0/help-faq.json",
       "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/help-faq.png",
       "owner": "frontend-phase-0-contract-lock",
@@ -2265,7 +2299,7 @@
       ],
       "boardCodes": [],
       "expectedDataShape": "page-specific DTO or paged list normalized by frontend service",
-      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "mockAllowed": "demo-only when VITE_USE_API is not true; API-mode evidence must report usedMockFallback=false",
       "evidenceApiPath": "verification-pack/api/phase-0/help-inquiries.json",
       "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/help-inquiries.png",
       "owner": "frontend-phase-0-contract-lock",
@@ -2287,13 +2321,13 @@
       ],
       "boardCodes": [],
       "expectedDataShape": "detail object; route param id must map to API id",
-      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "mockAllowed": "demo-only when VITE_USE_API is not true; API-mode evidence must report usedMockFallback=false",
       "evidenceApiPath": "verification-pack/api/phase-0/help-inquiries-id.json",
-      "evidenceScreenshotPath": "NO_SCREENSHOT",
+      "evidenceScreenshotPath": "verification-pack/no-screenshot-criteria.md#help-inquiries-id",
       "owner": "frontend-phase-0-contract-lock",
       "status": "NO_SCREENSHOT",
       "notes": [
-        "NO_SCREENSHOT: no primary screenshot mapped in 05-screenshot-reference-map.md"
+        "NO_SCREENSHOT: criteria-only route; use verification-pack/no-screenshot-criteria.md"
       ]
     },
     {
@@ -2303,22 +2337,20 @@
       "sourceOfTruth": "routes+router",
       "aliasOrLegacyPath": [],
       "frameSection": "FRAME.md §14 HELP DESK — FAQ / 1:1 문의 / 학사규정 프레임",
-      "screenshotKey": "",
-      "screenshotPath": "",
+      "screenshotKey": "10_helpdesk_inquiry_form.png",
+      "screenshotPath": "../../edu_screnshot/10_helpdesk_inquiry_form.png",
       "secondaryScreenshotPaths": [],
       "apiEndpoints": [
         "POST /api/v1/inquiries"
       ],
       "boardCodes": [],
       "expectedDataShape": "form submit response or auth/session object",
-      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "mockAllowed": "demo-only when VITE_USE_API is not true; API-mode evidence must report usedMockFallback=false",
       "evidenceApiPath": "verification-pack/api/phase-0/help-inquiries-write.json",
-      "evidenceScreenshotPath": "NO_SCREENSHOT",
+      "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/help-inquiries-write.png",
       "owner": "frontend-phase-0-contract-lock",
-      "status": "NO_SCREENSHOT",
-      "notes": [
-        "NO_SCREENSHOT: no primary screenshot mapped in 05-screenshot-reference-map.md"
-      ]
+      "status": "READY",
+      "notes": []
     },
     {
       "routePath": "/help/rules",
@@ -2339,7 +2371,7 @@
         "rule"
       ],
       "expectedDataShape": "page-specific DTO or paged list normalized by frontend service",
-      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "mockAllowed": "demo-only when VITE_USE_API is not true; API-mode evidence must report usedMockFallback=false",
       "evidenceApiPath": "verification-pack/api/phase-0/help-rules.json",
       "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/help-rules.png",
       "owner": "frontend-phase-0-contract-lock",
@@ -2365,7 +2397,7 @@
         "mento-state"
       ],
       "expectedDataShape": "paged board posts: content/items/data with id, title, category, author, date, views",
-      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "mockAllowed": "demo-only when VITE_USE_API is not true; API-mode evidence must report usedMockFallback=false",
       "evidenceApiPath": "verification-pack/api/phase-0/mentoring-stories.json",
       "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/mentoring-stories.png",
       "owner": "frontend-phase-0-contract-lock",
@@ -2389,13 +2421,13 @@
         "mento-state"
       ],
       "expectedDataShape": "detail object; route param id must map to API id",
-      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "mockAllowed": "demo-only when VITE_USE_API is not true; API-mode evidence must report usedMockFallback=false",
       "evidenceApiPath": "verification-pack/api/phase-0/mentoring-stories-id.json",
-      "evidenceScreenshotPath": "NO_SCREENSHOT",
+      "evidenceScreenshotPath": "verification-pack/no-screenshot-criteria.md#mentoring-stories-id",
       "owner": "frontend-phase-0-contract-lock",
       "status": "NO_SCREENSHOT",
       "notes": [
-        "NO_SCREENSHOT: no primary screenshot mapped in 05-screenshot-reference-map.md"
+        "NO_SCREENSHOT: criteria-only route; use verification-pack/no-screenshot-criteria.md"
       ]
     },
     {
@@ -2415,7 +2447,7 @@
         "mento-qna"
       ],
       "expectedDataShape": "paged board posts: content/items/data with id, title, category, author, date, views",
-      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "mockAllowed": "demo-only when VITE_USE_API is not true; API-mode evidence must report usedMockFallback=false",
       "evidenceApiPath": "verification-pack/api/phase-0/mentoring-qna.json",
       "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/mentoring-qna.png",
       "owner": "frontend-phase-0-contract-lock",
@@ -2439,13 +2471,13 @@
         "mento-qna"
       ],
       "expectedDataShape": "detail object; route param id must map to API id",
-      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "mockAllowed": "demo-only when VITE_USE_API is not true; API-mode evidence must report usedMockFallback=false",
       "evidenceApiPath": "verification-pack/api/phase-0/mentoring-qna-id.json",
-      "evidenceScreenshotPath": "NO_SCREENSHOT",
+      "evidenceScreenshotPath": "verification-pack/no-screenshot-criteria.md#mentoring-qna-id",
       "owner": "frontend-phase-0-contract-lock",
       "status": "NO_SCREENSHOT",
       "notes": [
-        "NO_SCREENSHOT: no primary screenshot mapped in 05-screenshot-reference-map.md"
+        "NO_SCREENSHOT: criteria-only route; use verification-pack/no-screenshot-criteria.md"
       ]
     },
     {
@@ -2465,7 +2497,7 @@
         "mento-notice"
       ],
       "expectedDataShape": "paged board posts: content/items/data with id, title, category, author, date, views",
-      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "mockAllowed": "demo-only when VITE_USE_API is not true; API-mode evidence must report usedMockFallback=false",
       "evidenceApiPath": "verification-pack/api/phase-0/mentoring-notice.json",
       "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/mentoring-notice.png",
       "owner": "frontend-phase-0-contract-lock",
@@ -2489,13 +2521,13 @@
         "mento-notice"
       ],
       "expectedDataShape": "detail object; route param id must map to API id",
-      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "mockAllowed": "demo-only when VITE_USE_API is not true; API-mode evidence must report usedMockFallback=false",
       "evidenceApiPath": "verification-pack/api/phase-0/mentoring-notice-id.json",
-      "evidenceScreenshotPath": "NO_SCREENSHOT",
+      "evidenceScreenshotPath": "verification-pack/no-screenshot-criteria.md#mentoring-notice-id",
       "owner": "frontend-phase-0-contract-lock",
       "status": "NO_SCREENSHOT",
       "notes": [
-        "NO_SCREENSHOT: no primary screenshot mapped in 05-screenshot-reference-map.md"
+        "NO_SCREENSHOT: criteria-only route; use verification-pack/no-screenshot-criteria.md"
       ]
     },
     {
@@ -2517,7 +2549,7 @@
       ],
       "boardCodes": [],
       "expectedDataShape": "page-specific DTO or paged list normalized by frontend service",
-      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "mockAllowed": "demo-only when VITE_USE_API is not true; API-mode evidence must report usedMockFallback=false",
       "evidenceApiPath": "verification-pack/api/phase-0/mentoring-meetups-apply.json",
       "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/mentoring-meetups-apply.png",
       "owner": "frontend-phase-0-contract-lock",
@@ -2543,7 +2575,7 @@
         "meeting-info"
       ],
       "expectedDataShape": "page-specific DTO or paged list normalized by frontend service",
-      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "mockAllowed": "demo-only when VITE_USE_API is not true; API-mode evidence must report usedMockFallback=false",
       "evidenceApiPath": "verification-pack/api/phase-0/mentoring-meetups-info.json",
       "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/mentoring-meetups-info.png",
       "owner": "frontend-phase-0-contract-lock",
@@ -2571,7 +2603,7 @@
         "mento-review"
       ],
       "expectedDataShape": "paged board posts: content/items/data with id, title, category, author, date, views",
-      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "mockAllowed": "demo-only when VITE_USE_API is not true; API-mode evidence must report usedMockFallback=false",
       "evidenceApiPath": "verification-pack/api/phase-0/mentoring-meetups-reviews.json",
       "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/mentoring-meetups-reviews.png",
       "owner": "frontend-phase-0-contract-lock",
@@ -2595,13 +2627,13 @@
         "mento-review"
       ],
       "expectedDataShape": "detail object; route param id must map to API id",
-      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "mockAllowed": "demo-only when VITE_USE_API is not true; API-mode evidence must report usedMockFallback=false",
       "evidenceApiPath": "verification-pack/api/phase-0/mentoring-meetups-reviews-id.json",
-      "evidenceScreenshotPath": "NO_SCREENSHOT",
+      "evidenceScreenshotPath": "verification-pack/no-screenshot-criteria.md#mentoring-meetups-reviews-id",
       "owner": "frontend-phase-0-contract-lock",
       "status": "NO_SCREENSHOT",
       "notes": [
-        "NO_SCREENSHOT: no primary screenshot mapped in 05-screenshot-reference-map.md"
+        "NO_SCREENSHOT: criteria-only route; use verification-pack/no-screenshot-criteria.md"
       ]
     },
     {
@@ -2611,8 +2643,8 @@
       "sourceOfTruth": "routes+router",
       "aliasOrLegacyPath": [],
       "frameSection": "FRAME.md §15 멘토링 게시판 프레임",
-      "screenshotKey": "",
-      "screenshotPath": "",
+      "screenshotKey": "24_mentoring_meetup_review_write_form.png",
+      "screenshotPath": "../../edu_screnshot/24_mentoring_meetup_review_write_form.png",
       "secondaryScreenshotPaths": [],
       "apiEndpoints": [
         "GET /api/v1/boards/mento-review/categories",
@@ -2622,14 +2654,12 @@
         "mento-review"
       ],
       "expectedDataShape": "form submit response or auth/session object",
-      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "mockAllowed": "demo-only when VITE_USE_API is not true; API-mode evidence must report usedMockFallback=false",
       "evidenceApiPath": "verification-pack/api/phase-0/mentoring-meetups-reviews-write.json",
-      "evidenceScreenshotPath": "NO_SCREENSHOT",
+      "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/mentoring-meetups-reviews-write.png",
       "owner": "frontend-phase-0-contract-lock",
-      "status": "NO_SCREENSHOT",
-      "notes": [
-        "NO_SCREENSHOT: no primary screenshot mapped in 05-screenshot-reference-map.md"
-      ]
+      "status": "READY",
+      "notes": []
     },
     {
       "routePath": "/notifications",
@@ -2649,7 +2679,7 @@
       ],
       "boardCodes": [],
       "expectedDataShape": "page-specific DTO or paged list normalized by frontend service",
-      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "mockAllowed": "demo-only when VITE_USE_API is not true; API-mode evidence must report usedMockFallback=false",
       "evidenceApiPath": "verification-pack/api/phase-0/notifications.json",
       "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/notifications.png",
       "owner": "frontend-phase-0-contract-lock",
@@ -2669,7 +2699,7 @@
       "apiEndpoints": [],
       "boardCodes": [],
       "expectedDataShape": "N/A",
-      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "mockAllowed": "demo-only when VITE_USE_API is not true; API-mode evidence must report usedMockFallback=false",
       "evidenceApiPath": "N/A",
       "evidenceScreenshotPath": "verification-pack/screenshots/phase-0/403.png",
       "owner": "frontend-phase-0-contract-lock",
@@ -2689,13 +2719,13 @@
       "apiEndpoints": [],
       "boardCodes": [],
       "expectedDataShape": "N/A",
-      "mockAllowed": "yes until API verification phase; must be explicit in evidence",
+      "mockAllowed": "demo-only when VITE_USE_API is not true; API-mode evidence must report usedMockFallback=false",
       "evidenceApiPath": "N/A",
-      "evidenceScreenshotPath": "NO_SCREENSHOT",
+      "evidenceScreenshotPath": "verification-pack/no-screenshot-criteria.md#404",
       "owner": "frontend-phase-0-contract-lock",
       "status": "NO_SCREENSHOT",
       "notes": [
-        "NO_SCREENSHOT: no primary screenshot mapped in 05-screenshot-reference-map.md"
+        "NO_SCREENSHOT: criteria-only route; use verification-pack/no-screenshot-criteria.md"
       ]
     },
     {
@@ -2713,7 +2743,7 @@
       "expectedDataShape": "N/A",
       "mockAllowed": "n/a",
       "evidenceApiPath": "N/A",
-      "evidenceScreenshotPath": "NO_SCREENSHOT",
+      "evidenceScreenshotPath": "verification-pack/no-screenshot-criteria.md#wildcard-404",
       "owner": "frontend-phase-0-contract-lock",
       "status": "READY",
       "notes": [
@@ -2735,7 +2765,7 @@
       "expectedDataShape": "N/A",
       "mockAllowed": "n/a",
       "evidenceApiPath": "N/A",
-      "evidenceScreenshotPath": "NO_SCREENSHOT",
+      "evidenceScreenshotPath": "verification-pack/no-screenshot-criteria.md#job-ssafy-com",
       "owner": "frontend-phase-0-contract-lock",
       "status": "READY",
       "notes": []
@@ -2755,7 +2785,7 @@
       "expectedDataShape": "N/A",
       "mockAllowed": "n/a",
       "evidenceApiPath": "N/A",
-      "evidenceScreenshotPath": "NO_SCREENSHOT",
+      "evidenceScreenshotPath": "verification-pack/no-screenshot-criteria.md#project-ssafy-com",
       "owner": "frontend-phase-0-contract-lock",
       "status": "READY",
       "notes": []
@@ -2775,7 +2805,7 @@
       "expectedDataShape": "N/A",
       "mockAllowed": "n/a",
       "evidenceApiPath": "N/A",
-      "evidenceScreenshotPath": "NO_SCREENSHOT",
+      "evidenceScreenshotPath": "verification-pack/no-screenshot-criteria.md#meeting-ssafy-com",
       "owner": "frontend-phase-0-contract-lock",
       "status": "READY",
       "notes": []
@@ -2868,63 +2898,63 @@
         "legacyPath": "/community/survey",
         "canonicalPath": "/community/surveys",
         "source": "05-screenshot-reference-map.md",
-        "line": 109,
+        "line": 119,
         "status": "RESOLVED_ALIAS"
       },
       {
         "legacyPath": "/community/open-board",
         "canonicalPath": "/community/boards/open",
         "source": "05-screenshot-reference-map.md",
-        "line": 114,
+        "line": 124,
         "status": "RESOLVED_ALIAS"
       },
       {
         "legacyPath": "/community/anonymous-board",
         "canonicalPath": "/community/boards/anonymous",
         "source": "05-screenshot-reference-map.md",
-        "line": 128,
+        "line": 148,
         "status": "RESOLVED_ALIAS"
       },
       {
         "legacyPath": "/mentoring/story",
         "canonicalPath": "/mentoring/stories",
         "source": "05-screenshot-reference-map.md",
-        "line": 193,
+        "line": 231,
         "status": "RESOLVED_ALIAS"
       },
       {
         "legacyPath": "/mentoring/meetup/apply",
         "canonicalPath": "/mentoring/meetups/apply",
         "source": "05-screenshot-reference-map.md",
-        "line": 203,
+        "line": 241,
         "status": "RESOLVED_ALIAS"
       },
       {
         "legacyPath": "/mentoring/meetup/info",
         "canonicalPath": "/mentoring/meetups/info",
         "source": "05-screenshot-reference-map.md",
-        "line": 208,
+        "line": 246,
         "status": "RESOLVED_ALIAS"
       },
       {
         "legacyPath": "/mentoring/meetup/reviews",
         "canonicalPath": "/mentoring/meetups/reviews",
         "source": "05-screenshot-reference-map.md",
-        "line": 213,
+        "line": 251,
         "status": "RESOLVED_ALIAS"
       },
       {
         "legacyPath": "/mycampus/learning/elearning",
         "canonicalPath": "/mycampus/elearning",
         "source": "05-screenshot-reference-map.md",
-        "line": 242,
+        "line": 289,
         "status": "RESOLVED_ALIAS"
       },
       {
         "legacyPath": "/mycampus/pledge",
         "canonicalPath": "/mycampus/pledges",
         "source": "05-screenshot-reference-map.md",
-        "line": 260,
+        "line": 317,
         "status": "RESOLVED_ALIAS"
       }
     ],

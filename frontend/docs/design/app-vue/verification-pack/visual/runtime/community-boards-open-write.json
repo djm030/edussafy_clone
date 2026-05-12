@@ -1,0 +1,27 @@
+{
+  "routePath": "/community/boards/open/write",
+  "url": "http://127.0.0.1:5176/community/boards/open/write?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
+  "referenceScreenshot": "../../edu_screnshot/35_community_open_board_write_form.png",
+  "referenceExists": true,
+  "referenceSize": {
+    "width": 1326,
+    "height": 1732,
+    "bytes": 323161
+  },
+  "captureViewport": {
+    "width": 1326,
+    "height": 1732
+  },
+  "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\community-boards-open-write.png",
+  "captured": true,
+  "capturedSize": {
+    "width": 1326,
+    "height": 1732,
+    "bytes": 156039
+  },
+  "chromeStatus": 0,
+  "stderr": "156039 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\community-boards-open-write.png\r\n",
+  "authenticatedCapture": true,
+  "visualParityClaim": false,
+  "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
+}

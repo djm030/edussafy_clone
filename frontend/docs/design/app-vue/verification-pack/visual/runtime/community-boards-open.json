@@ -1,6 +1,6 @@
 {
   "routePath": "/community/boards/open",
-  "url": "http://127.0.0.1:5175/community/boards/open",
+  "url": "http://127.0.0.1:5176/community/boards/open?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
   "referenceScreenshot": "../../edu_screnshot/06_open_board.png",
   "referenceExists": true,
   "referenceSize": {
@@ -17,10 +17,11 @@
   "capturedSize": {
     "width": 1326,
     "height": 2343,
-    "bytes": 159582
+    "bytes": 160720
   },
   "chromeStatus": 0,
-  "stderr": "159582 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\community-boards-open.png\r\n",
+  "stderr": "160720 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\community-boards-open.png\r\n",
+  "authenticatedCapture": true,
   "visualParityClaim": false,
   "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
 }

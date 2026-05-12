@@ -1,6 +1,6 @@
 {
   "routePath": "/classroom/resources",
-  "url": "http://127.0.0.1:5175/classroom/resources",
+  "url": "http://127.0.0.1:5176/classroom/resources?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
   "referenceScreenshot": "../../edu_screnshot/04_learning_resources.png",
   "referenceExists": true,
   "referenceSize": {
@@ -17,10 +17,11 @@
   "capturedSize": {
     "width": 1326,
     "height": 3472,
-    "bytes": 164265
+    "bytes": 165378
   },
   "chromeStatus": 0,
-  "stderr": "164265 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\classroom-resources.png\r\n",
+  "stderr": "165378 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\classroom-resources.png\r\n",
+  "authenticatedCapture": true,
   "visualParityClaim": false,
   "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
 }

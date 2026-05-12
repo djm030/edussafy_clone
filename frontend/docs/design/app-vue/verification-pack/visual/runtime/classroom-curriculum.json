@@ -1,6 +1,6 @@
 {
   "routePath": "/classroom/curriculum",
-  "url": "http://127.0.0.1:5175/classroom/curriculum",
+  "url": "http://127.0.0.1:5176/classroom/curriculum?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
   "referenceScreenshot": "../../edu_screnshot/02_classroom_weekly_curriculum.png",
   "referenceExists": true,
   "referenceSize": {
@@ -17,10 +17,11 @@
   "capturedSize": {
     "width": 1326,
     "height": 1981,
-    "bytes": 153907
+    "bytes": 155066
   },
   "chromeStatus": 0,
-  "stderr": "153907 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\classroom-curriculum.png\r\n",
+  "stderr": "155066 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\classroom-curriculum.png\r\n",
+  "authenticatedCapture": true,
   "visualParityClaim": false,
   "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
 }
