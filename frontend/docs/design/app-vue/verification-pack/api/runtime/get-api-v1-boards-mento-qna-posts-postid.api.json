@@ -1,0 +1,16 @@
+{
+  "endpoint": "GET /api/v1/boards/mento-qna/posts/{postId}",
+  "endpointPath": "/api/v1/boards/mento-qna/posts/8",
+  "method": "GET",
+  "statusCode": 200,
+  "success": true,
+  "dataShapeSummary": "id,categoryId,categoryName,title,contentType,contentText,contentHtml,contentJson,displayName,isMine,viewCount,likeCount",
+  "redactedRequest": {
+    "headers": {
+      "Authorization": "Bearer <redacted>"
+    }
+  },
+  "redactedResponseSample": "id,categoryId,categoryName,title,contentType,contentText,contentHtml,contentJson,displayName,isMine,viewCount,likeCount",
+  "errorCode": null,
+  "message": "요청이 성공했습니다."
+}

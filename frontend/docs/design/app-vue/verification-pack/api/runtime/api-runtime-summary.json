@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-05-11T16:18:20.030Z",
+  "capturedAt": "2026-05-12T01:24:44.393Z",
   "command": "API_BASE_URL=<url> node frontend/docs/design/app-vue/scripts/run-api-runtime-check.mjs",
   "apiBaseUrl": "http://127.0.0.1:8088",
   "usedMockFallback": false,
@@ -15,11 +15,48 @@
   },
   "summary": {
     "getEndpoints": 51,
-    "getEndpointSuccesses": 45,
+    "getEndpointSuccesses": 51,
     "formChecks": 11,
-    "formCheckSuccesses": 10
+    "formCheckSuccesses": 11
   },
   "blocker": null,
+  "boardPostSamples": [
+    {
+      "boardCode": "free",
+      "postId": "16",
+      "source": "existing-list"
+    },
+    {
+      "boardCode": "anonymity",
+      "postId": "6",
+      "source": "existing-list"
+    },
+    {
+      "boardCode": "notice",
+      "postId": "1",
+      "source": "existing-list"
+    },
+    {
+      "boardCode": "mento-state",
+      "postId": "7",
+      "source": "existing-list"
+    },
+    {
+      "boardCode": "mento-qna",
+      "postId": "8",
+      "source": "existing-list"
+    },
+    {
+      "boardCode": "mento-notice",
+      "postId": "9",
+      "source": "existing-list"
+    },
+    {
+      "boardCode": "mento-review",
+      "postId": "18",
+      "source": "existing-list"
+    }
+  ],
   "endpoints": [
     {
       "endpoint": "GET /api/v1/auth/me",
@@ -187,13 +224,13 @@
       "method": "GET",
       "statusCode": 200,
       "success": true,
-      "dataShapeSummary": "array(1)",
+      "dataShapeSummary": "array(4)",
       "redactedRequest": {
         "headers": {
           "Authorization": "Bearer <redacted>"
         }
       },
-      "redactedResponseSample": "array(1)",
+      "redactedResponseSample": "array(4)",
       "errorCode": null,
       "message": "요청이 성공했습니다."
     },
@@ -503,19 +540,19 @@
     },
     {
       "endpoint": "GET /api/v1/boards/free/posts/{postId}",
-      "endpointPath": "/api/v1/boards/free/posts/1",
+      "endpointPath": "/api/v1/boards/free/posts/16",
       "method": "GET",
-      "statusCode": 404,
-      "success": false,
-      "dataShapeSummary": "success,data,errorCode,message",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "id,categoryId,categoryName,title,contentType,contentText,contentHtml,contentJson,displayName,isMine,viewCount,likeCount",
       "redactedRequest": {
         "headers": {
           "Authorization": "Bearer <redacted>"
         }
       },
-      "redactedResponseSample": "success,data,errorCode,message",
-      "errorCode": "BOARD_POST_NOT_FOUND",
-      "message": "게시글을 찾을 수 없습니다."
+      "redactedResponseSample": "id,categoryId,categoryName,title,contentType,contentText,contentHtml,contentJson,displayName,isMine,viewCount,likeCount",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
     },
     {
       "endpoint": "GET /api/v1/boards/anonymity/posts",
@@ -535,19 +572,19 @@
     },
     {
       "endpoint": "GET /api/v1/boards/anonymity/posts/{postId}",
-      "endpointPath": "/api/v1/boards/anonymity/posts/1",
+      "endpointPath": "/api/v1/boards/anonymity/posts/6",
       "method": "GET",
-      "statusCode": 404,
-      "success": false,
-      "dataShapeSummary": "success,data,errorCode,message",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "id,categoryId,categoryName,title,contentType,contentText,contentHtml,contentJson,displayName,isMine,viewCount,likeCount",
       "redactedRequest": {
         "headers": {
           "Authorization": "Bearer <redacted>"
         }
       },
-      "redactedResponseSample": "success,data,errorCode,message",
-      "errorCode": "BOARD_POST_NOT_FOUND",
-      "message": "게시글을 찾을 수 없습니다."
+      "redactedResponseSample": "id,categoryId,categoryName,title,contentType,contentText,contentHtml,contentJson,displayName,isMine,viewCount,likeCount",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
     },
     {
       "endpoint": "GET /api/v1/users/students",
@@ -679,19 +716,19 @@
     },
     {
       "endpoint": "GET /api/v1/boards/mento-state/posts/{postId}",
-      "endpointPath": "/api/v1/boards/mento-state/posts/1",
+      "endpointPath": "/api/v1/boards/mento-state/posts/7",
       "method": "GET",
-      "statusCode": 404,
-      "success": false,
-      "dataShapeSummary": "success,data,errorCode,message",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "id,categoryId,categoryName,title,contentType,contentText,contentHtml,contentJson,displayName,isMine,viewCount,likeCount",
       "redactedRequest": {
         "headers": {
           "Authorization": "Bearer <redacted>"
         }
       },
-      "redactedResponseSample": "success,data,errorCode,message",
-      "errorCode": "BOARD_POST_NOT_FOUND",
-      "message": "게시글을 찾을 수 없습니다."
+      "redactedResponseSample": "id,categoryId,categoryName,title,contentType,contentText,contentHtml,contentJson,displayName,isMine,viewCount,likeCount",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
     },
     {
       "endpoint": "GET /api/v1/boards/mento-qna/posts",
@@ -711,19 +748,19 @@
     },
     {
       "endpoint": "GET /api/v1/boards/mento-qna/posts/{postId}",
-      "endpointPath": "/api/v1/boards/mento-qna/posts/1",
+      "endpointPath": "/api/v1/boards/mento-qna/posts/8",
       "method": "GET",
-      "statusCode": 404,
-      "success": false,
-      "dataShapeSummary": "success,data,errorCode,message",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "id,categoryId,categoryName,title,contentType,contentText,contentHtml,contentJson,displayName,isMine,viewCount,likeCount",
       "redactedRequest": {
         "headers": {
           "Authorization": "Bearer <redacted>"
         }
       },
-      "redactedResponseSample": "success,data,errorCode,message",
-      "errorCode": "BOARD_POST_NOT_FOUND",
-      "message": "게시글을 찾을 수 없습니다."
+      "redactedResponseSample": "id,categoryId,categoryName,title,contentType,contentText,contentHtml,contentJson,displayName,isMine,viewCount,likeCount",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
     },
     {
       "endpoint": "GET /api/v1/boards/mento-notice/posts",
@@ -743,19 +780,19 @@
     },
     {
       "endpoint": "GET /api/v1/boards/mento-notice/posts/{postId}",
-      "endpointPath": "/api/v1/boards/mento-notice/posts/1",
+      "endpointPath": "/api/v1/boards/mento-notice/posts/9",
       "method": "GET",
-      "statusCode": 404,
-      "success": false,
-      "dataShapeSummary": "success,data,errorCode,message",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "id,categoryId,categoryName,title,contentType,contentText,contentHtml,contentJson,displayName,isMine,viewCount,likeCount",
       "redactedRequest": {
         "headers": {
           "Authorization": "Bearer <redacted>"
         }
       },
-      "redactedResponseSample": "success,data,errorCode,message",
-      "errorCode": "BOARD_POST_NOT_FOUND",
-      "message": "게시글을 찾을 수 없습니다."
+      "redactedResponseSample": "id,categoryId,categoryName,title,contentType,contentText,contentHtml,contentJson,displayName,isMine,viewCount,likeCount",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
     },
     {
       "endpoint": "GET /api/v1/boards/meeting-info/posts",
@@ -791,19 +828,19 @@
     },
     {
       "endpoint": "GET /api/v1/boards/mento-review/posts/{postId}",
-      "endpointPath": "/api/v1/boards/mento-review/posts/1",
+      "endpointPath": "/api/v1/boards/mento-review/posts/18",
       "method": "GET",
-      "statusCode": 404,
-      "success": false,
-      "dataShapeSummary": "success,data,errorCode,message",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "id,categoryId,categoryName,title,contentType,contentText,contentHtml,contentJson,displayName,isMine,viewCount,likeCount",
       "redactedRequest": {
         "headers": {
           "Authorization": "Bearer <redacted>"
         }
       },
-      "redactedResponseSample": "success,data,errorCode,message",
-      "errorCode": "BOARD_POST_NOT_FOUND",
-      "message": "게시글을 찾을 수 없습니다."
+      "redactedResponseSample": "id,categoryId,categoryName,title,contentType,contentText,contentHtml,contentJson,displayName,isMine,viewCount,likeCount",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
     },
     {
       "endpoint": "GET /api/v1/boards/mento-review/categories",
@@ -879,13 +916,13 @@
       "method": "GET",
       "statusCode": 200,
       "success": true,
-      "dataShapeSummary": "array(1)",
+      "dataShapeSummary": "array(4)",
       "redactedRequest": {
         "headers": {
           "Authorization": "Bearer <redacted>"
         }
       },
-      "redactedResponseSample": "array(1)",
+      "redactedResponseSample": "array(4)",
       "errorCode": null,
       "message": "요청이 성공했습니다.",
       "categoryIdFound": true
@@ -894,11 +931,11 @@
       "name": "document submit without file",
       "endpointPath": "/api/v1/boards/doc-req/posts",
       "method": "POST",
-      "statusCode": 403,
-      "success": false,
-      "errorCode": "ACCESS_DENIED",
-      "message": "접근 권한이 없습니다.",
-      "dataShapeSummary": "success,data,errorCode,message",
+      "statusCode": 200,
+      "success": true,
+      "errorCode": null,
+      "message": "요청이 성공했습니다.",
+      "dataShapeSummary": "id",
       "redactedRequest": {
         "headers": {
           "Authorization": "Bearer <redacted>",
@@ -1000,7 +1037,7 @@
       "success": true,
       "errorCode": null,
       "message": "요청이 성공했습니다.",
-      "dataShapeSummary": "id,surveyId,surveyTitle,answers,participantStatus,submittedAt,cancelledAt,createdAt",
+      "dataShapeSummary": "id,surveyId,surveyTitle,answers,formType,participantStatus,submittedAt,cancelledAt,createdAt",
       "redactedRequest": {
         "headers": {
           "Authorization": "Bearer <redacted>",

@@ -8,15 +8,19 @@
     "height": 2366,
     "bytes": 443670
   },
-  "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/community-surveys.png",
+  "captureViewport": {
+    "width": 1326,
+    "height": 2366
+  },
+  "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\community-surveys.png",
   "captured": true,
   "capturedSize": {
-    "width": 1440,
-    "height": 1600,
-    "bytes": 201225
+    "width": 1326,
+    "height": 2366,
+    "bytes": 157653
   },
   "chromeStatus": 0,
-  "stderr": "201225 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/community-surveys.png\n",
+  "stderr": "157653 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\community-surveys.png\r\n",
   "visualParityClaim": false,
   "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
 }

@@ -1,38 +1,39 @@
-# Final verification report — Edu SSAFY frontend clone
+# Final verification report ? Edu SSAFY frontend clone
 
-Generated at: 2026-05-11T16:24:44Z
+Generated at: 2026-05-12T01:27:53Z
 
 ## Overall verdict
 
-Status: PARTIAL, not fully complete.
+Status: PARTIAL, API/runtime closed; visual pixel parity not fully claimed.
 
-The remaining feasible frontend clone work was implemented, verified, or explicitly recorded as PARTIAL/NO_SCREENSHOT. The project is not marked fully complete because real API runtime verification still has backend data/permission failures and visual parity is screenshot-captured but not pixel-diff proven.
+The current local frontend/backend runtime now passes the canonical route smoke and API runtime checks. The previous API blockers (board detail 404s, document submit 403, and API-mode fallback confusion) are resolved in fresh evidence. The project remains PARTIAL only because screenshot parity is captured and manually reviewed, not proven by an automated pixel-diff threshold, and authenticated browser visual capture is not yet exact.
 
 Hard-rule confirmations:
-- Backend code changed: no.
+- Backend code changed in this phase: no.
 - New dependencies added: no.
-- Work scope: canonical-contract.md routes only.
+- Work scope: `frontend/docs/design/app-vue/canonical-contract.md` routes and associated verification pack evidence.
 - Mock fallback claimed as API completion: no; runtime evidence used real API at `http://127.0.0.1:8088`.
-- Visual completion claimed without capture/compare evidence: no; capture evidence exists, parity remains PARTIAL because no pixel diff dependency was added.
+- Visual completion claimed without capture evidence: no; screenshots were captured for all mapped reference routes, but `visualCompleteClaim` remains `false`.
 
-## Team-mode reconciliation
+## Local runtime used
 
-- Team: `edu-ssafy-frontend-cl-61b8334b`.
-- Team phase: `complete`.
-- Tasks: 8/8 completed, 0 failed, 0 blocked.
-- Workers: 5 total, 0 dead, 0 non-reporting.
-- Worker results were reconciled by the leader. Some worker auto-merge commits conflicted, so equivalent runtime evidence and frontend-only fixes were regenerated in the leader worktree rather than trusting unmerged artifacts.
+- Frontend API-mode base URL: `http://127.0.0.1:5174`.
+- Backend/nginx API base URL: `http://127.0.0.1:8088`.
+- Student login used by runtime checks: `student@edussafy.local` / `0000`.
+- Additional seeded local accounts: `admin@edussafy.local` / `0000`, `operator@edussafy.local` / `0000`.
 
 ## Canonical contract and inventory
 
 - Regeneration command: `node frontend/docs/design/app-vue/scripts/build-contract-inventory.mjs`.
-- Verification-pack regeneration command: `node frontend/docs/design/app-vue/scripts/build-verification-pack.mjs`.
-- Semantic drift: none detected; timestamp-only regenerated Phase 0/phase-6 placeholder churn was not retained.
+- Generated at: `2026-05-12T01:24:03.678Z`.
 - Canonical rows: 54.
 - READY rows: 35.
+- PARTIAL rows: 0.
 - NO_SCREENSHOT rows: 19.
 - BLOCKED rows: 0.
-- boardCode drift / partial rows: 0.
+- Screenshot aliases resolved: 9.
+- Unmapped screenshot routes: 0.
+- boardCode partial rows: 0.
 
 Evidence paths:
 - `frontend/docs/design/app-vue/canonical-contract.md`
@@ -42,65 +43,42 @@ Evidence paths:
 ## Route smoke evidence
 
 - Command: `FRONTEND_BASE_URL=http://127.0.0.1:5174 node frontend/docs/design/app-vue/scripts/run-route-smoke.mjs`.
-- Complete claim: true.
+- Captured at: `2026-05-12T01:24:46.023Z`.
+- Complete claim: `true`.
 - Routes: 51/51 passed, 0 failed.
 - Evidence: `frontend/docs/design/app-vue/verification-pack/api/runtime/route-smoke-runtime-summary.json`.
 
 ## API runtime evidence
 
 - Command: `API_BASE_URL=http://127.0.0.1:8088 node frontend/docs/design/app-vue/scripts/run-api-runtime-check.mjs`.
+- Captured at: `2026-05-12T01:24:44.393Z`.
 - API base URL: `http://127.0.0.1:8088`.
-- Mock fallback used: false.
-- API runtime exercised: true.
-- API complete claim: false.
-- Login/session: `student@edussafy.local` returned HTTP 200; token redacted in evidence.
-- GET endpoints: 45/51 succeeded.
-- Form/runtime checks: 10/11 succeeded.
+- Mock fallback used: `false`.
+- API runtime exercised: `true`.
+- API complete claim: `false`; this remains false because visual parity is tracked separately and completion requires evidence synthesis, not because API endpoints failed.
+- Login/session: `student@edussafy.local` returned HTTP 200; token is redacted in evidence.
+- GET endpoints: 51/51 succeeded.
+- Form/runtime checks: 11/11 succeeded.
 - Evidence directory: `frontend/docs/design/app-vue/verification-pack/api/runtime/`.
 
-API failures kept as PARTIAL evidence:
-- `GET /api/v1/boards/free/posts/{postId}` -> HTTP 404 `BOARD_POST_NOT_FOUND`.
-- `GET /api/v1/boards/anonymity/posts/{postId}` -> HTTP 404 `BOARD_POST_NOT_FOUND`.
-- `GET /api/v1/boards/mento-state/posts/{postId}` -> HTTP 404 `BOARD_POST_NOT_FOUND`.
-- `GET /api/v1/boards/mento-qna/posts/{postId}` -> HTTP 404 `BOARD_POST_NOT_FOUND`.
-- `GET /api/v1/boards/mento-notice/posts/{postId}` -> HTTP 404 `BOARD_POST_NOT_FOUND`.
-- `GET /api/v1/boards/mento-review/posts/{postId}` -> HTTP 404 `BOARD_POST_NOT_FOUND`.
-
-Form/runtime failure kept as PARTIAL evidence:
-- `document submit without file` `POST /api/v1/boards/doc-req/posts` -> HTTP 403 `ACCESS_DENIED`.
-
-## Visual parity evidence
-
-- Command: `FRONTEND_BASE_URL=http://127.0.0.1:5174 node frontend/docs/design/app-vue/scripts/capture-visual-runtime.mjs`.
-- Visual complete claim: false.
-- Reference routes attempted: 30/30.
-- Screenshots captured: 30.
-- Capture failures: 0.
-- Evidence directory: `frontend/docs/design/app-vue/verification-pack/visual/runtime/`.
-- Screenshot directory: `frontend/docs/design/app-vue/verification-pack/screenshots/runtime/`.
-- Limitation: no new dependency was added, so screenshot capture and dimension/reference mapping are recorded but pixel-diff parity is not claimed.
-
-## NO_SCREENSHOT and dynamic-route evidence
-
-- NO_SCREENSHOT rows: 19.
-- Dynamic NO_SCREENSHOT rows: 11.
-- Static NO_SCREENSHOT rows: 8.
-- Smoke pass: 19.
-- Blocked: 0.
-- Evidence: `frontend/docs/design/app-vue/verification-pack/api/dynamic-route-smoke/dynamic-route-smoke-summary.json`.
-- Visual summary: `frontend/docs/design/app-vue/verification-pack/visual/no-screenshot/no-screenshot-summary.md`.
-
-## Form and interaction lane
-
-- Source audit evidence: `frontend/docs/design/app-vue/verification-pack/api/form-interactions/form-interaction-audit.json`.
-- Audit summary: 4 FEASIBLE, 4 PARTIAL, 0 BLOCKED.
-- Runtime form/API checks: 10/11 succeeded.
-- Implemented frontend-only API-mode token guards for write/save/submit flows so VITE_USE_API=true does not silently submit without a real session token.
+Resolved prior API blockers:
+- Board detail 404s: closed by discovering or creating representative board post IDs before detail probes.
+- Board detail samples used:
+  - `free` -> post `16` (existing-list).
+  - `anonymity` -> post `6` (existing-list).
+  - `notice` -> post `1` (existing-list).
+  - `mento-state` -> post `7` (existing-list).
+  - `mento-qna` -> post `8` (existing-list).
+  - `mento-notice` -> post `9` (existing-list).
+  - `mento-review` -> post `18` (existing-list).
+- Document submit 403: closed; `document submit without file` now returns HTTP 200.
+- API-mode fallback confusion: closed; API-mode detail pages no longer silently render mock fallback on real API errors.
 
 Runtime-successful form checks:
 - `free category lookup` `GET /api/v1/boards/free/categories` -> HTTP 200.
 - `community board write` `POST /api/v1/boards/free/posts` -> HTTP 200.
 - `doc-req category lookup` `GET /api/v1/boards/doc-req/categories` -> HTTP 200.
+- `document submit without file` `POST /api/v1/boards/doc-req/posts` -> HTTP 200.
 - `inquiry write` `POST /api/v1/inquiries` -> HTTP 200.
 - `mento-review category lookup` `GET /api/v1/boards/mento-review/categories` -> HTTP 200.
 - `mentoring review write` `POST /api/v1/boards/mento-review/posts` -> HTTP 200.
@@ -109,29 +87,48 @@ Runtime-successful form checks:
 - `survey submit sample` `POST /api/v1/surveys/1/submit` -> HTTP 200.
 - `quest submit sample` `POST /api/v1/tasks/1/submit` -> HTTP 200.
 
-## Final command verification
+## Visual parity evidence
+
+- Command: `FRONTEND_BASE_URL=http://127.0.0.1:5174 CHROME_PATH="C:\Program Files\Google\Chrome\Application\chrome.exe" node frontend/docs/design/app-vue/scripts/capture-visual-runtime.mjs`.
+- Captured at: `2026-05-12T01:25:18.998Z`.
+- Visual complete claim: `false`.
+- Reference routes attempted: 30/30.
+- Screenshots captured: 30.
+- Capture failures: 0.
+- Capture script sets Chrome viewport to each reference PNG size before capture, so runtime screenshots are dimension-comparable route by route.
+- Evidence directory: `frontend/docs/design/app-vue/verification-pack/visual/runtime/`.
+- Screenshot directory: `frontend/docs/design/app-vue/verification-pack/screenshots/runtime/`.
+
+Manual visual verdict:
+- Score: 68/100.
+- Verdict: `revise`.
+- Category match: `true`.
+- Differences:
+  - Capture dimensions now match reference screenshots route-by-route.
+  - Global header and service tiles are much closer, but nav/user spacing still differs from reference.
+  - Dashboard top composition now follows yellow attendance plus blue metric band, but text hierarchy and exact data layout still differ.
+  - Lower dashboard sections use closer white blocks and divider lines, but reference content density/assets are not fully matched.
+- Suggestions:
+  - Future pass should refine exact dashboard content and imagery rather than shell structure.
+  - Use authenticated visual capture if exact logged-in warning/data parity becomes mandatory.
+  - Continue with evidence regeneration because current visual delta is documented as acceptable partial, not pixel-perfect.
+
+## Build and compile verification
 
 - `npm run build` in `frontend`: PASS.
-- `npm audit --omit=dev --json`: PASS, 0 total vulnerabilities.
-- `git diff -- backend`: empty.
-- Runtime scripts generated JSON evidence successfully.
+- `.\gradlew.bat compileJava` in `backend`: PASS.
+- Contract inventory regeneration: PASS.
+- Route smoke runtime: PASS 51/51.
+- API runtime check: PASS GET 51/51 and forms 11/11.
+- Visual capture runtime: PASS 30/30.
 
-Audit summary:
-```json
-{
-  "critical": 0,
-  "high": 0,
-  "info": 0,
-  "low": 0,
-  "moderate": 0,
-  "total": 0
-}
-```
+## Remaining risks and next work
 
-## Remaining risks and stop condition
+1. Visual parity is not pixel-perfect proven. Current verdict is 68/100 and `revise`; this is acceptable evidence for a partial visual pass, not final screenshot equality.
+2. Visual capture does not yet inject authenticated browser storage, so some captured pages may reflect current unauthenticated or fallback-safe visual state rather than exact logged-in production state.
+3. The API runtime check may create smoke posts in the local database when a board has no representative list item; this is intentional for local evidence but mutates local test data.
+4. `.gitignore` and `skills-lock.json` were pre-existing/unrelated worktree changes and are intentionally excluded from this phase.
 
-The requested remaining feasible frontend work is stopped here because it is implemented, verified, or explicitly recorded as PARTIAL/NO_SCREENSHOT. Do not mark the clone fully complete until the following are resolved with fresh evidence:
+## Stop condition
 
-1. API detail endpoints need representative existing backend IDs or seeded data for the six board detail 404s.
-2. Document submit needs backend permission/data alignment for `doc-req` POST, or a valid authorized account/role.
-3. Visual parity needs manual or automated pixel-diff comparison against the canonical reference screenshots. No dependency was added in this run.
+Phase 3 can stop after this report is committed because fresh evidence shows the API/runtime phase is closed, screenshot capture evidence is regenerated, and remaining gaps are explicitly visual/pixel-verification risks rather than runtime blockers.

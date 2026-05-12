@@ -8,15 +8,19 @@
     "height": 3283,
     "bytes": 455437
   },
-  "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mycampus-education-status.png",
+  "captureViewport": {
+    "width": 1326,
+    "height": 3283
+  },
+  "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mycampus-education-status.png",
   "captured": true,
   "capturedSize": {
-    "width": 1440,
-    "height": 1600,
-    "bytes": 201320
+    "width": 1326,
+    "height": 3283,
+    "bytes": 163083
   },
   "chromeStatus": 0,
-  "stderr": "201320 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mycampus-education-status.png\n",
+  "stderr": "163083 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mycampus-education-status.png\r\n",
   "visualParityClaim": false,
   "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
 }

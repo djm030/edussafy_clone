@@ -8,15 +8,19 @@
     "height": 1028,
     "bytes": 246379
   },
-  "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/help-faq.png",
+  "captureViewport": {
+    "width": 1326,
+    "height": 1028
+  },
+  "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\help-faq.png",
   "captured": true,
   "capturedSize": {
-    "width": 1440,
-    "height": 1600,
-    "bytes": 193691
+    "width": 1326,
+    "height": 1028,
+    "bytes": 148812
   },
   "chromeStatus": 0,
-  "stderr": "193691 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/help-faq.png\n",
+  "stderr": "148812 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\help-faq.png\r\n",
   "visualParityClaim": false,
   "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
 }

@@ -8,15 +8,19 @@
     "height": 944,
     "bytes": 191904
   },
-  "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mentoring-meetups-apply.png",
+  "captureViewport": {
+    "width": 1326,
+    "height": 944
+  },
+  "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mentoring-meetups-apply.png",
   "captured": true,
   "capturedSize": {
-    "width": 1440,
-    "height": 1600,
-    "bytes": 203649
+    "width": 1326,
+    "height": 944,
+    "bytes": 148492
   },
   "chromeStatus": 0,
-  "stderr": "203649 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mentoring-meetups-apply.png\n",
+  "stderr": "148492 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mentoring-meetups-apply.png\r\n",
   "visualParityClaim": false,
   "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
 }

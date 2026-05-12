@@ -8,15 +8,19 @@
     "height": 2343,
     "bytes": 473040
   },
-  "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/community-boards-open.png",
+  "captureViewport": {
+    "width": 1326,
+    "height": 2343
+  },
+  "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\community-boards-open.png",
   "captured": true,
   "capturedSize": {
-    "width": 1440,
-    "height": 1600,
-    "bytes": 206421
+    "width": 1326,
+    "height": 2343,
+    "bytes": 159582
   },
   "chromeStatus": 0,
-  "stderr": "206421 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/community-boards-open.png\n",
+  "stderr": "159582 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\community-boards-open.png\r\n",
   "visualParityClaim": false,
   "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
 }

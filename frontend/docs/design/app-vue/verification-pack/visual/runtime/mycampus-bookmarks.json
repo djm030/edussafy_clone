@@ -8,15 +8,19 @@
     "height": 1060,
     "bytes": 251372
   },
-  "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mycampus-bookmarks.png",
+  "captureViewport": {
+    "width": 1326,
+    "height": 1060
+  },
+  "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mycampus-bookmarks.png",
   "captured": true,
   "capturedSize": {
-    "width": 1440,
-    "height": 1600,
-    "bytes": 278941
+    "width": 1326,
+    "height": 1060,
+    "bytes": 151508
   },
   "chromeStatus": 0,
-  "stderr": "278941 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mycampus-bookmarks.png\n",
+  "stderr": "151508 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mycampus-bookmarks.png\r\n",
   "visualParityClaim": false,
   "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
 }

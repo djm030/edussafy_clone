@@ -8,15 +8,19 @@
     "height": 2553,
     "bytes": 368685
   },
-  "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mentoring-stories.png",
+  "captureViewport": {
+    "width": 1326,
+    "height": 2553
+  },
+  "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mentoring-stories.png",
   "captured": true,
   "capturedSize": {
-    "width": 1440,
-    "height": 1600,
-    "bytes": 195231
+    "width": 1326,
+    "height": 2553,
+    "bytes": 160761
   },
   "chromeStatus": 0,
-  "stderr": "195231 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mentoring-stories.png\n",
+  "stderr": "160761 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mentoring-stories.png\r\n",
   "visualParityClaim": false,
   "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
 }

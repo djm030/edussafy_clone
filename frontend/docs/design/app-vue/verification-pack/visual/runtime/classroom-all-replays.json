@@ -8,15 +8,19 @@
     "height": 1901,
     "bytes": 298099
   },
-  "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/classroom-all-replays.png",
+  "captureViewport": {
+    "width": 1326,
+    "height": 1901
+  },
+  "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\classroom-all-replays.png",
   "captured": true,
   "capturedSize": {
-    "width": 1440,
-    "height": 1600,
-    "bytes": 204928
+    "width": 1326,
+    "height": 1901,
+    "bytes": 152906
   },
   "chromeStatus": 0,
-  "stderr": "204928 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/classroom-all-replays.png\n",
+  "stderr": "152906 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\classroom-all-replays.png\r\n",
   "visualParityClaim": false,
   "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
 }

@@ -4,13 +4,13 @@
   "method": "GET",
   "statusCode": 200,
   "success": true,
-  "dataShapeSummary": "array(1)",
+  "dataShapeSummary": "array(4)",
   "redactedRequest": {
     "headers": {
       "Authorization": "Bearer <redacted>"
     }
   },
-  "redactedResponseSample": "array(1)",
+  "redactedResponseSample": "array(4)",
   "errorCode": null,
   "message": "요청이 성공했습니다."
 }

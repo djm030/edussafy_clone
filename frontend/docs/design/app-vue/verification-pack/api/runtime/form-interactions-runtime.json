@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-05-11T16:18:20.030Z",
+  "capturedAt": "2026-05-12T01:24:44.393Z",
   "rows": [
     {
       "name": "free category lookup",
@@ -41,13 +41,13 @@
       "method": "GET",
       "statusCode": 200,
       "success": true,
-      "dataShapeSummary": "array(1)",
+      "dataShapeSummary": "array(4)",
       "redactedRequest": {
         "headers": {
           "Authorization": "Bearer <redacted>"
         }
       },
-      "redactedResponseSample": "array(1)",
+      "redactedResponseSample": "array(4)",
       "errorCode": null,
       "message": "요청이 성공했습니다.",
       "categoryIdFound": true
@@ -56,11 +56,11 @@
       "name": "document submit without file",
       "endpointPath": "/api/v1/boards/doc-req/posts",
       "method": "POST",
-      "statusCode": 403,
-      "success": false,
-      "errorCode": "ACCESS_DENIED",
-      "message": "접근 권한이 없습니다.",
-      "dataShapeSummary": "success,data,errorCode,message",
+      "statusCode": 200,
+      "success": true,
+      "errorCode": null,
+      "message": "요청이 성공했습니다.",
+      "dataShapeSummary": "id",
       "redactedRequest": {
         "headers": {
           "Authorization": "Bearer <redacted>",
@@ -162,7 +162,7 @@
       "success": true,
       "errorCode": null,
       "message": "요청이 성공했습니다.",
-      "dataShapeSummary": "id,surveyId,surveyTitle,answers,participantStatus,submittedAt,cancelledAt,createdAt",
+      "dataShapeSummary": "id,surveyId,surveyTitle,answers,formType,participantStatus,submittedAt,cancelledAt,createdAt",
       "redactedRequest": {
         "headers": {
           "Authorization": "Bearer <redacted>",

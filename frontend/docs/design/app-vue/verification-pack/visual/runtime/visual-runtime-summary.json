@@ -1,8 +1,8 @@
 {
-  "capturedAt": "2026-05-11T16:18:14.289Z",
+  "capturedAt": "2026-05-12T01:25:18.998Z",
   "command": "FRONTEND_BASE_URL=<url> node frontend/docs/design/app-vue/scripts/capture-visual-runtime.mjs",
   "baseUrl": "http://127.0.0.1:5174",
-  "chromePath": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+  "chromePath": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
   "visualCompleteClaim": false,
   "reason": "Runtime screenshots were captured where possible and reference dimensions checked, but no pixel-diff dependency was added; parity remains evidence-backed PARTIAL unless manually reviewed.",
   "totalReferenceRoutes": 30,
@@ -20,15 +20,19 @@
         "height": 2254,
         "bytes": 404573
       },
-      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/dashboard.png",
+      "captureViewport": {
+        "width": 1326,
+        "height": 2254
+      },
+      "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\dashboard.png",
       "captured": true,
       "capturedSize": {
-        "width": 1440,
-        "height": 1600,
-        "bytes": 158340
+        "width": 1326,
+        "height": 2254,
+        "bytes": 100545
       },
       "chromeStatus": 0,
-      "stderr": "[26451:408936885:0512/011630.713081:ERROR:gpu/command_buffer/service/shared_image/shared_image_manager.cc:386] SharedImageManager::ProduceMemory: Trying to Produce a Memory representation from a non-existent mailbox.\n[26451:408936885:0512/011630.713524:ERROR:gpu/command_buffer/service/shared_image/shared_image_manager.cc:386] SharedImageManager::ProduceMemory: Trying to Produce a Memory representation from a non-existent mailbox.\n[26451:408936885:0512/011630.713530:ERROR:gpu/command_buffer/service/shared_image/shared_image_manager.cc:386] SharedImageManager::ProduceMemory: Trying to Produce a Memory representation from a non-existent mailbox.\n[26451:408936885:0512/011630.713533:ERROR:gpu/command_buffer/service/shared_image/shared_image_manager.cc:386] SharedImageManager::ProduceMemory: Trying to Produce a Memory representation from a non-existent mailbox.\n[26451:408936885:0512/011630.713535:ERROR:gpu/command_buffer/service/shared_image/shared_image_manager.cc:386] SharedImageManager::P",
+      "stderr": "100545 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\dashboard.png\r\n",
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
@@ -42,15 +46,19 @@
         "height": 1770,
         "bytes": 304516
       },
-      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mycampus-level-points.png",
+      "captureViewport": {
+        "width": 1326,
+        "height": 1770
+      },
+      "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mycampus-level-points.png",
       "captured": true,
       "capturedSize": {
-        "width": 1440,
-        "height": 1600,
-        "bytes": 236894
+        "width": 1326,
+        "height": 1770,
+        "bytes": 178581
       },
       "chromeStatus": 0,
-      "stderr": "236894 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mycampus-level-points.png\n",
+      "stderr": "178581 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mycampus-level-points.png\r\n",
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
@@ -64,15 +72,19 @@
         "height": 2123,
         "bytes": 328372
       },
-      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mycampus-attendance.png",
+      "captureViewport": {
+        "width": 1326,
+        "height": 2123
+      },
+      "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mycampus-attendance.png",
       "captured": true,
       "capturedSize": {
-        "width": 1440,
-        "height": 1600,
-        "bytes": 202494
+        "width": 1326,
+        "height": 2123,
+        "bytes": 161246
       },
       "chromeStatus": 0,
-      "stderr": "202494 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mycampus-attendance.png\n",
+      "stderr": "161246 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mycampus-attendance.png\r\n",
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
@@ -86,15 +98,19 @@
         "height": 1105,
         "bytes": 257024
       },
-      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mycampus-elearning.png",
+      "captureViewport": {
+        "width": 1326,
+        "height": 1105
+      },
+      "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mycampus-elearning.png",
       "captured": true,
       "capturedSize": {
-        "width": 1440,
-        "height": 1600,
-        "bytes": 285251
+        "width": 1326,
+        "height": 1105,
+        "bytes": 153429
       },
       "chromeStatus": 0,
-      "stderr": "285251 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mycampus-elearning.png\n",
+      "stderr": "153429 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mycampus-elearning.png\r\n",
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
@@ -108,15 +124,19 @@
         "height": 1060,
         "bytes": 251372
       },
-      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mycampus-bookmarks.png",
+      "captureViewport": {
+        "width": 1326,
+        "height": 1060
+      },
+      "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mycampus-bookmarks.png",
       "captured": true,
       "capturedSize": {
-        "width": 1440,
-        "height": 1600,
-        "bytes": 278941
+        "width": 1326,
+        "height": 1060,
+        "bytes": 151508
       },
       "chromeStatus": 0,
-      "stderr": "278941 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mycampus-bookmarks.png\n",
+      "stderr": "151508 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mycampus-bookmarks.png\r\n",
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
@@ -130,15 +150,19 @@
         "height": 1060,
         "bytes": 248987
       },
-      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mycampus-documents.png",
+      "captureViewport": {
+        "width": 1326,
+        "height": 1060
+      },
+      "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mycampus-documents.png",
       "captured": true,
       "capturedSize": {
-        "width": 1440,
-        "height": 1600,
-        "bytes": 192367
+        "width": 1326,
+        "height": 1060,
+        "bytes": 151612
       },
       "chromeStatus": 0,
-      "stderr": "192367 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mycampus-documents.png\n",
+      "stderr": "151612 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mycampus-documents.png\r\n",
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
@@ -152,15 +176,19 @@
         "height": 913,
         "bytes": 250523
       },
-      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mycampus-pledges.png",
+      "captureViewport": {
+        "width": 1326,
+        "height": 913
+      },
+      "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mycampus-pledges.png",
       "captured": true,
       "capturedSize": {
-        "width": 1440,
-        "height": 1600,
-        "bytes": 195509
+        "width": 1326,
+        "height": 913,
+        "bytes": 150852
       },
       "chromeStatus": 0,
-      "stderr": "195509 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mycampus-pledges.png\n",
+      "stderr": "150852 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mycampus-pledges.png\r\n",
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
@@ -174,15 +202,19 @@
         "height": 3283,
         "bytes": 455437
       },
-      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mycampus-education-status.png",
+      "captureViewport": {
+        "width": 1326,
+        "height": 3283
+      },
+      "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mycampus-education-status.png",
       "captured": true,
       "capturedSize": {
-        "width": 1440,
-        "height": 1600,
-        "bytes": 201320
+        "width": 1326,
+        "height": 3283,
+        "bytes": 163083
       },
       "chromeStatus": 0,
-      "stderr": "201320 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mycampus-education-status.png\n",
+      "stderr": "163083 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mycampus-education-status.png\r\n",
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
@@ -196,15 +228,19 @@
         "height": 2201,
         "bytes": 418395
       },
-      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/classroom-my-replays.png",
+      "captureViewport": {
+        "width": 1326,
+        "height": 2201
+      },
+      "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\classroom-my-replays.png",
       "captured": true,
       "capturedSize": {
-        "width": 1440,
-        "height": 1600,
-        "bytes": 295363
+        "width": 1326,
+        "height": 2201,
+        "bytes": 253488
       },
       "chromeStatus": 0,
-      "stderr": "295363 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/classroom-my-replays.png\n",
+      "stderr": "253488 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\classroom-my-replays.png\r\n",
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
@@ -218,15 +254,19 @@
         "height": 1901,
         "bytes": 298099
       },
-      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/classroom-all-replays.png",
+      "captureViewport": {
+        "width": 1326,
+        "height": 1901
+      },
+      "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\classroom-all-replays.png",
       "captured": true,
       "capturedSize": {
-        "width": 1440,
-        "height": 1600,
-        "bytes": 204928
+        "width": 1326,
+        "height": 1901,
+        "bytes": 152906
       },
       "chromeStatus": 0,
-      "stderr": "204928 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/classroom-all-replays.png\n",
+      "stderr": "152906 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\classroom-all-replays.png\r\n",
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
@@ -240,15 +280,19 @@
         "height": 1981,
         "bytes": 331976
       },
-      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/classroom-curriculum.png",
+      "captureViewport": {
+        "width": 1326,
+        "height": 1981
+      },
+      "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\classroom-curriculum.png",
       "captured": true,
       "capturedSize": {
-        "width": 1440,
-        "height": 1600,
-        "bytes": 244612
+        "width": 1326,
+        "height": 1981,
+        "bytes": 153907
       },
       "chromeStatus": 0,
-      "stderr": "244612 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/classroom-curriculum.png\n",
+      "stderr": "153907 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\classroom-curriculum.png\r\n",
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
@@ -262,15 +306,19 @@
         "height": 2384,
         "bytes": 457744
       },
-      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/classroom-quests.png",
+      "captureViewport": {
+        "width": 1326,
+        "height": 2384
+      },
+      "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\classroom-quests.png",
       "captured": true,
       "capturedSize": {
-        "width": 1440,
-        "height": 1600,
-        "bytes": 263074
+        "width": 1326,
+        "height": 2384,
+        "bytes": 156333
       },
       "chromeStatus": 0,
-      "stderr": "263074 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/classroom-quests.png\n",
+      "stderr": "156333 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\classroom-quests.png\r\n",
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
@@ -284,15 +332,19 @@
         "height": 1105,
         "bytes": 252241
       },
-      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/classroom-required-learning.png",
+      "captureViewport": {
+        "width": 1326,
+        "height": 1105
+      },
+      "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\classroom-required-learning.png",
       "captured": true,
       "capturedSize": {
-        "width": 1440,
-        "height": 1600,
-        "bytes": 180662
+        "width": 1326,
+        "height": 1105,
+        "bytes": 150544
       },
       "chromeStatus": 0,
-      "stderr": "180662 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/classroom-required-learning.png\n",
+      "stderr": "150544 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\classroom-required-learning.png\r\n",
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
@@ -306,15 +358,19 @@
         "height": 3472,
         "bytes": 876904
       },
-      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/classroom-resources.png",
+      "captureViewport": {
+        "width": 1326,
+        "height": 3472
+      },
+      "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\classroom-resources.png",
       "captured": true,
       "capturedSize": {
-        "width": 1440,
-        "height": 1600,
-        "bytes": 351489
+        "width": 1326,
+        "height": 3472,
+        "bytes": 164265
       },
       "chromeStatus": 0,
-      "stderr": "351489 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/classroom-resources.png\n",
+      "stderr": "164265 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\classroom-resources.png\r\n",
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
@@ -328,15 +384,19 @@
         "height": 2366,
         "bytes": 443670
       },
-      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/community-surveys.png",
+      "captureViewport": {
+        "width": 1326,
+        "height": 2366
+      },
+      "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\community-surveys.png",
       "captured": true,
       "capturedSize": {
-        "width": 1440,
-        "height": 1600,
-        "bytes": 201225
+        "width": 1326,
+        "height": 2366,
+        "bytes": 157653
       },
       "chromeStatus": 0,
-      "stderr": "201225 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/community-surveys.png\n",
+      "stderr": "157653 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\community-surveys.png\r\n",
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
@@ -350,15 +410,19 @@
         "height": 2343,
         "bytes": 473040
       },
-      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/community-boards-open.png",
+      "captureViewport": {
+        "width": 1326,
+        "height": 2343
+      },
+      "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\community-boards-open.png",
       "captured": true,
       "capturedSize": {
-        "width": 1440,
-        "height": 1600,
-        "bytes": 206421
+        "width": 1326,
+        "height": 2343,
+        "bytes": 159582
       },
       "chromeStatus": 0,
-      "stderr": "206421 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/community-boards-open.png\n",
+      "stderr": "159582 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\community-boards-open.png\r\n",
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
@@ -372,15 +436,19 @@
         "height": 2300,
         "bytes": 386003
       },
-      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/community-boards-anonymous.png",
+      "captureViewport": {
+        "width": 1326,
+        "height": 2300
+      },
+      "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\community-boards-anonymous.png",
       "captured": true,
       "capturedSize": {
-        "width": 1440,
-        "height": 1600,
-        "bytes": 197386
+        "width": 1326,
+        "height": 2300,
+        "bytes": 159265
       },
       "chromeStatus": 0,
-      "stderr": "197386 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/community-boards-anonymous.png\n",
+      "stderr": "159265 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\community-boards-anonymous.png\r\n",
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
@@ -394,15 +462,19 @@
         "height": 1648,
         "bytes": 520495
       },
-      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/community-class-roster.png",
+      "captureViewport": {
+        "width": 1326,
+        "height": 1648
+      },
+      "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\community-class-roster.png",
       "captured": true,
       "capturedSize": {
-        "width": 1440,
-        "height": 1600,
-        "bytes": 198730
+        "width": 1326,
+        "height": 1648,
+        "bytes": 152790
       },
       "chromeStatus": 0,
-      "stderr": "198730 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/community-class-roster.png\n",
+      "stderr": "152790 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\community-class-roster.png\r\n",
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
@@ -416,15 +488,19 @@
         "height": 1815,
         "bytes": 336897
       },
-      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/help-notice.png",
+      "captureViewport": {
+        "width": 1326,
+        "height": 1815
+      },
+      "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\help-notice.png",
       "captured": true,
       "capturedSize": {
-        "width": 1440,
-        "height": 1600,
-        "bytes": 197989
+        "width": 1326,
+        "height": 1815,
+        "bytes": 156669
       },
       "chromeStatus": 0,
-      "stderr": "[58978:408988871:0512/011735.830123:ERROR:gpu/command_buffer/service/shared_image/shared_image_manager.cc:386] SharedImageManager::ProduceMemory: Trying to Produce a Memory representation from a non-existent mailbox.\n[58978:408988871:0512/011735.830326:ERROR:gpu/command_buffer/service/shared_image/shared_image_manager.cc:386] SharedImageManager::ProduceMemory: Trying to Produce a Memory representation from a non-existent mailbox.\n[58978:408988871:0512/011735.830330:ERROR:gpu/command_buffer/service/shared_image/shared_image_manager.cc:386] SharedImageManager::ProduceMemory: Trying to Produce a Memory representation from a non-existent mailbox.\n[58978:408988871:0512/011735.830332:ERROR:gpu/command_buffer/service/shared_image/shared_image_manager.cc:386] SharedImageManager::ProduceMemory: Trying to Produce a Memory representation from a non-existent mailbox.\n[58978:408988871:0512/011735.830334:ERROR:gpu/command_buffer/service/shared_image/shared_image_manager.cc:386] SharedImageManager::P",
+      "stderr": "156669 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\help-notice.png\r\n",
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
@@ -438,15 +514,19 @@
         "height": 1028,
         "bytes": 246379
       },
-      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/help-faq.png",
+      "captureViewport": {
+        "width": 1326,
+        "height": 1028
+      },
+      "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\help-faq.png",
       "captured": true,
       "capturedSize": {
-        "width": 1440,
-        "height": 1600,
-        "bytes": 193691
+        "width": 1326,
+        "height": 1028,
+        "bytes": 148812
       },
       "chromeStatus": 0,
-      "stderr": "193691 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/help-faq.png\n",
+      "stderr": "148812 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\help-faq.png\r\n",
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
@@ -460,15 +540,19 @@
         "height": 963,
         "bytes": 237095
       },
-      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/help-inquiries.png",
+      "captureViewport": {
+        "width": 1326,
+        "height": 963
+      },
+      "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\help-inquiries.png",
       "captured": true,
       "capturedSize": {
-        "width": 1440,
-        "height": 1600,
-        "bytes": 196027
+        "width": 1326,
+        "height": 963,
+        "bytes": 151036
       },
       "chromeStatus": 0,
-      "stderr": "196027 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/help-inquiries.png\n",
+      "stderr": "151036 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\help-inquiries.png\r\n",
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
@@ -482,15 +566,19 @@
         "height": 1181,
         "bytes": 254182
       },
-      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/help-rules.png",
+      "captureViewport": {
+        "width": 1326,
+        "height": 1181
+      },
+      "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\help-rules.png",
       "captured": true,
       "capturedSize": {
-        "width": 1440,
-        "height": 1600,
-        "bytes": 199449
+        "width": 1326,
+        "height": 1181,
+        "bytes": 149983
       },
       "chromeStatus": 0,
-      "stderr": "199449 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/help-rules.png\n",
+      "stderr": "149983 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\help-rules.png\r\n",
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
@@ -504,15 +592,19 @@
         "height": 2553,
         "bytes": 368685
       },
-      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mentoring-stories.png",
+      "captureViewport": {
+        "width": 1326,
+        "height": 2553
+      },
+      "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mentoring-stories.png",
       "captured": true,
       "capturedSize": {
-        "width": 1440,
-        "height": 1600,
-        "bytes": 195231
+        "width": 1326,
+        "height": 2553,
+        "bytes": 160761
       },
       "chromeStatus": 0,
-      "stderr": "195231 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mentoring-stories.png\n",
+      "stderr": "160761 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mentoring-stories.png\r\n",
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
@@ -526,15 +618,19 @@
         "height": 2698,
         "bytes": 379742
       },
-      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mentoring-qna.png",
+      "captureViewport": {
+        "width": 1326,
+        "height": 2698
+      },
+      "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mentoring-qna.png",
       "captured": true,
       "capturedSize": {
-        "width": 1440,
-        "height": 1600,
-        "bytes": 195040
+        "width": 1326,
+        "height": 2698,
+        "bytes": 160937
       },
       "chromeStatus": 0,
-      "stderr": "[68291:409004131:0512/011753.011240:ERROR:base/process/process_mac.cc:53] task_policy_set TASK_CATEGORY_POLICY: (os/kern) invalid argument (4)\n[68291:409004131:0512/011753.011258:ERROR:base/process/process_mac.cc:98] task_policy_set TASK_SUPPRESSION_POLICY: (os/kern) invalid argument (4)\n195040 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mentoring-qna.png\n",
+      "stderr": "160937 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mentoring-qna.png\r\n",
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
@@ -548,15 +644,19 @@
         "height": 2343,
         "bytes": 310168
       },
-      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mentoring-notice.png",
+      "captureViewport": {
+        "width": 1326,
+        "height": 2343
+      },
+      "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mentoring-notice.png",
       "captured": true,
       "capturedSize": {
-        "width": 1440,
-        "height": 1600,
-        "bytes": 193573
+        "width": 1326,
+        "height": 2343,
+        "bytes": 160578
       },
       "chromeStatus": 0,
-      "stderr": "193573 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mentoring-notice.png\n",
+      "stderr": "160578 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mentoring-notice.png\r\n",
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
@@ -570,15 +670,19 @@
         "height": 944,
         "bytes": 191904
       },
-      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mentoring-meetups-apply.png",
+      "captureViewport": {
+        "width": 1326,
+        "height": 944
+      },
+      "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mentoring-meetups-apply.png",
       "captured": true,
       "capturedSize": {
-        "width": 1440,
-        "height": 1600,
-        "bytes": 203649
+        "width": 1326,
+        "height": 944,
+        "bytes": 148492
       },
       "chromeStatus": 0,
-      "stderr": "203649 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mentoring-meetups-apply.png\n",
+      "stderr": "148492 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mentoring-meetups-apply.png\r\n",
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
@@ -592,15 +696,19 @@
         "height": 995,
         "bytes": 180956
       },
-      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mentoring-meetups-info.png",
+      "captureViewport": {
+        "width": 1326,
+        "height": 995
+      },
+      "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mentoring-meetups-info.png",
       "captured": true,
       "capturedSize": {
-        "width": 1440,
-        "height": 1600,
-        "bytes": 190369
+        "width": 1326,
+        "height": 995,
+        "bytes": 154920
       },
       "chromeStatus": 0,
-      "stderr": "190369 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mentoring-meetups-info.png\n",
+      "stderr": "154920 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mentoring-meetups-info.png\r\n",
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
@@ -614,15 +722,19 @@
         "height": 2300,
         "bytes": 304651
       },
-      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mentoring-meetups-reviews.png",
+      "captureViewport": {
+        "width": 1326,
+        "height": 2300
+      },
+      "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mentoring-meetups-reviews.png",
       "captured": true,
       "capturedSize": {
-        "width": 1440,
-        "height": 1600,
-        "bytes": 196071
+        "width": 1326,
+        "height": 2300,
+        "bytes": 160675
       },
       "chromeStatus": 0,
-      "stderr": "196071 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mentoring-meetups-reviews.png\n",
+      "stderr": "160675 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mentoring-meetups-reviews.png\r\n",
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
@@ -636,15 +748,19 @@
         "height": 1492,
         "bytes": 272136
       },
-      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/notifications.png",
+      "captureViewport": {
+        "width": 1326,
+        "height": 1492
+      },
+      "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\notifications.png",
       "captured": true,
       "capturedSize": {
-        "width": 1440,
-        "height": 1600,
-        "bytes": 199363
+        "width": 1326,
+        "height": 1492,
+        "bytes": 146289
       },
       "chromeStatus": 0,
-      "stderr": "199363 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/notifications.png\n",
+      "stderr": "146289 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\notifications.png\r\n",
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
@@ -658,15 +774,19 @@
         "height": 533,
         "bytes": 10671
       },
-      "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/403.png",
+      "captureViewport": {
+        "width": 800,
+        "height": 533
+      },
+      "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\403.png",
       "captured": true,
       "capturedSize": {
-        "width": 1440,
-        "height": 1600,
-        "bytes": 50849
+        "width": 800,
+        "height": 533,
+        "bytes": 21169
       },
       "chromeStatus": 0,
-      "stderr": "50849 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/403.png\n",
+      "stderr": "21169 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\403.png\r\n",
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     }

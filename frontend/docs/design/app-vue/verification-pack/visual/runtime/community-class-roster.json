@@ -8,15 +8,19 @@
     "height": 1648,
     "bytes": 520495
   },
-  "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/community-class-roster.png",
+  "captureViewport": {
+    "width": 1326,
+    "height": 1648
+  },
+  "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\community-class-roster.png",
   "captured": true,
   "capturedSize": {
-    "width": 1440,
-    "height": 1600,
-    "bytes": 198730
+    "width": 1326,
+    "height": 1648,
+    "bytes": 152790
   },
   "chromeStatus": 0,
-  "stderr": "198730 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/community-class-roster.png\n",
+  "stderr": "152790 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\community-class-roster.png\r\n",
   "visualParityClaim": false,
   "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
 }

@@ -8,15 +8,19 @@
     "height": 913,
     "bytes": 250523
   },
-  "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mycampus-pledges.png",
+  "captureViewport": {
+    "width": 1326,
+    "height": 913
+  },
+  "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mycampus-pledges.png",
   "captured": true,
   "capturedSize": {
-    "width": 1440,
-    "height": 1600,
-    "bytes": 195509
+    "width": 1326,
+    "height": 913,
+    "bytes": 150852
   },
   "chromeStatus": 0,
-  "stderr": "195509 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mycampus-pledges.png\n",
+  "stderr": "150852 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mycampus-pledges.png\r\n",
   "visualParityClaim": false,
   "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
 }

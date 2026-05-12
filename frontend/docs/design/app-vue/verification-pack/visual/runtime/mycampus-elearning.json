@@ -8,15 +8,19 @@
     "height": 1105,
     "bytes": 257024
   },
-  "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mycampus-elearning.png",
+  "captureViewport": {
+    "width": 1326,
+    "height": 1105
+  },
+  "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mycampus-elearning.png",
   "captured": true,
   "capturedSize": {
-    "width": 1440,
-    "height": 1600,
-    "bytes": 285251
+    "width": 1326,
+    "height": 1105,
+    "bytes": 153429
   },
   "chromeStatus": 0,
-  "stderr": "285251 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mycampus-elearning.png\n",
+  "stderr": "153429 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mycampus-elearning.png\r\n",
   "visualParityClaim": false,
   "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
 }

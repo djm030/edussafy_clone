@@ -8,15 +8,19 @@
     "height": 2254,
     "bytes": 404573
   },
-  "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/dashboard.png",
+  "captureViewport": {
+    "width": 1326,
+    "height": 2254
+  },
+  "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\dashboard.png",
   "captured": true,
   "capturedSize": {
-    "width": 1440,
-    "height": 1600,
-    "bytes": 158340
+    "width": 1326,
+    "height": 2254,
+    "bytes": 100545
   },
   "chromeStatus": 0,
-  "stderr": "158340 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/dashboard.png\n",
+  "stderr": "100545 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\dashboard.png\r\n",
   "visualParityClaim": false,
   "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
 }

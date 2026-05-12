@@ -8,15 +8,19 @@
     "height": 1492,
     "bytes": 272136
   },
-  "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/notifications.png",
+  "captureViewport": {
+    "width": 1326,
+    "height": 1492
+  },
+  "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\notifications.png",
   "captured": true,
   "capturedSize": {
-    "width": 1440,
-    "height": 1600,
-    "bytes": 199363
+    "width": 1326,
+    "height": 1492,
+    "bytes": 146289
   },
   "chromeStatus": 0,
-  "stderr": "199363 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/notifications.png\n",
+  "stderr": "146289 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\notifications.png\r\n",
   "visualParityClaim": false,
   "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
 }

@@ -8,15 +8,19 @@
     "height": 1105,
     "bytes": 252241
   },
-  "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/classroom-required-learning.png",
+  "captureViewport": {
+    "width": 1326,
+    "height": 1105
+  },
+  "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\classroom-required-learning.png",
   "captured": true,
   "capturedSize": {
-    "width": 1440,
-    "height": 1600,
-    "bytes": 180662
+    "width": 1326,
+    "height": 1105,
+    "bytes": 150544
   },
   "chromeStatus": 0,
-  "stderr": "180662 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/classroom-required-learning.png\n",
+  "stderr": "150544 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\classroom-required-learning.png\r\n",
   "visualParityClaim": false,
   "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
 }

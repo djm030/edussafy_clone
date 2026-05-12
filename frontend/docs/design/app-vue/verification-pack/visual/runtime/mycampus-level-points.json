@@ -8,15 +8,19 @@
     "height": 1770,
     "bytes": 304516
   },
-  "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mycampus-level-points.png",
+  "captureViewport": {
+    "width": 1326,
+    "height": 1770
+  },
+  "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mycampus-level-points.png",
   "captured": true,
   "capturedSize": {
-    "width": 1440,
-    "height": 1600,
-    "bytes": 236894
+    "width": 1326,
+    "height": 1770,
+    "bytes": 178581
   },
   "chromeStatus": 0,
-  "stderr": "236894 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/mycampus-level-points.png\n",
+  "stderr": "178581 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mycampus-level-points.png\r\n",
   "visualParityClaim": false,
   "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
 }
