@@ -5,6 +5,7 @@ import com.edussafy.clone.domain.attendance.application.EducationCalendarService
 import com.edussafy.clone.domain.attendance.domain.enums.AttendanceStatus;
 import com.edussafy.clone.domain.attendance.dto.request.AttendanceAppealCreateRequest;
 import com.edussafy.clone.domain.attendance.dto.response.AttendanceAppealResponse;
+import com.edussafy.clone.domain.attendance.dto.response.AttendanceMonthlyResponse;
 import com.edussafy.clone.domain.attendance.dto.response.AttendanceRecordResponse;
 import com.edussafy.clone.domain.attendance.dto.response.AttendanceTodayResponse;
 import com.edussafy.clone.domain.attendance.dto.response.EducationCalendarDayResponse;
@@ -39,6 +40,15 @@ public class AttendanceController {
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "20") int size) {
         return ApiResponse.ok(attendanceService.getMyRecords(currentUserId, startDate, endDate, status, page, size));
+    }
+
+    @GetMapping("/attendance/monthly")
+    public ApiResponse<AttendanceMonthlyResponse> getMonthlyAttendance(
+            @CurrentUser Long currentUserId,
+            @RequestParam(required = false) Integer year,
+            @RequestParam(required = false) Integer month,
+            @RequestParam(required = false) Long courseId) {
+        return ApiResponse.ok(attendanceService.getMonthly(currentUserId, year, month, courseId));
     }
 
     @GetMapping("/attendance/my/{attendanceRecordId}")

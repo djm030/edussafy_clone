@@ -5,6 +5,7 @@ import com.edussafy.clone.domain.course.domain.entity.CourseSession;
 import com.edussafy.clone.domain.course.domain.entity.CourseWeek;
 import com.edussafy.clone.domain.course.domain.enums.CourseSessionType;
 import java.time.LocalDate;
+import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -39,6 +40,17 @@ public interface CourseSessionRepository extends JpaRepository<CourseSession, Lo
                                                   @Param("startDate") LocalDate startDate,
                                                   @Param("endDate") LocalDate endDate,
                                                   Pageable pageable);
+
+    @Query("""
+            select s from CourseSession s
+            where s.course.id = :courseId
+              and (:startDate is null or s.sessionDate >= :startDate)
+              and (:endDate is null or s.sessionDate <= :endDate)
+            order by s.sessionDate asc, s.sortOrder asc, s.id asc
+            """)
+    List<CourseSession> findCourseSessionsInRange(@Param("courseId") Long courseId,
+                                                  @Param("startDate") LocalDate startDate,
+                                                  @Param("endDate") LocalDate endDate);
 
     @Query("""
             select s from CourseSession s

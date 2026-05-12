@@ -2,12 +2,19 @@ package com.edussafy.clone.domain.attendance.application;
 
 import com.edussafy.clone.domain.attendance.domain.entity.AttendanceAppeal;
 import com.edussafy.clone.domain.attendance.domain.entity.AttendanceRecord;
+import com.edussafy.clone.domain.attendance.domain.entity.EducationCalendarDay;
+import com.edussafy.clone.domain.attendance.domain.enums.AttendanceAppealStatus;
+import com.edussafy.clone.domain.attendance.domain.enums.AttendanceReasonStatus;
 import com.edussafy.clone.domain.attendance.domain.enums.AttendanceStatus;
 import com.edussafy.clone.domain.attendance.domain.repository.AttendanceAppealRepository;
 import com.edussafy.clone.domain.attendance.domain.repository.AttendanceRecordRepository;
+import com.edussafy.clone.domain.attendance.domain.repository.EducationCalendarDayRepository;
 import com.edussafy.clone.domain.attendance.dto.mapper.AttendanceDtoMapper;
 import com.edussafy.clone.domain.attendance.dto.request.AttendanceAppealCreateRequest;
 import com.edussafy.clone.domain.attendance.dto.response.AttendanceAppealResponse;
+import com.edussafy.clone.domain.attendance.dto.response.AttendanceMonthlyDayResponse;
+import com.edussafy.clone.domain.attendance.dto.response.AttendanceMonthlyResponse;
+import com.edussafy.clone.domain.attendance.dto.response.AttendanceMonthlySummaryResponse;
 import com.edussafy.clone.domain.attendance.dto.response.AttendanceRecordResponse;
 import com.edussafy.clone.domain.attendance.dto.response.AttendanceTodayResponse;
 import com.edussafy.clone.domain.attendance.exception.AttendanceRecordNotFoundException;
@@ -23,6 +30,11 @@ import java.time.Clock;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.YearMonth;
+import java.util.EnumMap;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -45,6 +57,7 @@ public class AttendanceService {
 
     private final AttendanceRecordRepository attendanceRecordRepository;
     private final AttendanceAppealRepository attendanceAppealRepository;
+    private final EducationCalendarDayRepository educationCalendarDayRepository;
     private final UserRepository userRepository;
     private final FileResourceRepository fileResourceRepository;
     private final AttendanceDtoMapper mapper;
@@ -65,6 +78,53 @@ public class AttendanceService {
         AttendanceRecord record = attendanceRecordRepository.findById(recordId).orElseThrow(AttendanceRecordNotFoundException::new);
         if (!record.getUser().getId().equals(userId)) throw new AttendanceRecordNotFoundException();
         return mapper.toRecordResponse(record);
+    }
+
+    public AttendanceMonthlyResponse getMonthly(Long userId, Integer year, Integer month, Long courseId) {
+        User user = getUser(userId);
+        LocalDate currentDate = today();
+        YearMonth yearMonth = YearMonth.of(
+                year == null ? currentDate.getYear() : year,
+                month == null ? currentDate.getMonthValue() : month
+        );
+        LocalDate start = yearMonth.atDay(1);
+        LocalDate end = yearMonth.atEndOfMonth();
+
+        List<AttendanceRecord> records = courseId == null
+                ? attendanceRecordRepository.findByUserAndAttendanceDateBetweenOrderByAttendanceDateAsc(user, start, end)
+                : attendanceRecordRepository.findByUserAndCourseIdAndAttendanceDateBetweenOrderByAttendanceDateAsc(user, courseId, start, end);
+        Map<LocalDate, AttendanceRecord> recordsByDate = new LinkedHashMap<>();
+        for (AttendanceRecord record : records) {
+            recordsByDate.put(record.getAttendanceDate(), record);
+        }
+
+        Map<LocalDate, EducationCalendarDay> calendarByDate = new LinkedHashMap<>();
+        List<EducationCalendarDay> calendarDays = courseId == null
+                ? educationCalendarDayRepository.findByCalendarDateBetweenOrderByCalendarDateAsc(start, end)
+                : educationCalendarDayRepository.findByCourseIdAndCalendarDateBetweenOrderByCalendarDateAsc(courseId, start, end);
+        for (EducationCalendarDay day : calendarDays) {
+            calendarByDate.put(day.getCalendarDate(), day);
+        }
+
+        Map<Long, AttendanceAppeal> appealsByRecordId = new LinkedHashMap<>();
+        List<AttendanceAppeal> appeals = courseId == null
+                ? attendanceAppealRepository.findByUserAndAttendanceRecordAttendanceDateBetweenOrderByCreatedAtDesc(user, start, end)
+                : attendanceAppealRepository.findByUserAndAttendanceRecordCourseIdAndAttendanceRecordAttendanceDateBetweenOrderByCreatedAtDesc(user, courseId, start, end);
+        for (AttendanceAppeal appeal : appeals) {
+            appealsByRecordId.putIfAbsent(appeal.getAttendanceRecord().getId(), appeal);
+        }
+
+        List<AttendanceMonthlyDayResponse> days = start.datesUntil(end.plusDays(1))
+                .map(date -> toMonthlyDay(date, calendarByDate.get(date), recordsByDate.get(date), appealsByRecordId))
+                .toList();
+
+        return new AttendanceMonthlyResponse(
+                yearMonth.getYear(),
+                yearMonth.getMonthValue(),
+                summarizeMonthly(days),
+                days,
+                getToday(userId)
+        );
     }
 
     public AttendanceTodayResponse getToday(Long userId) {
@@ -135,6 +195,65 @@ public class AttendanceService {
 
     private AttendanceStatus keepCheckInIssueOrNormal(AttendanceRecord record) {
         return record.getStatus() == AttendanceStatus.LATE ? AttendanceStatus.LATE : AttendanceStatus.NORMAL;
+    }
+
+    private AttendanceMonthlyDayResponse toMonthlyDay(LocalDate date, EducationCalendarDay calendarDay,
+                                                      AttendanceRecord record, Map<Long, AttendanceAppeal> appealsByRecordId) {
+        AttendanceAppeal appeal = record == null ? null : appealsByRecordId.get(record.getId());
+        boolean canAppeal = record != null
+                && record.getStatus() != AttendanceStatus.NORMAL
+                && (appeal == null || appeal.getAppealStatus() == AttendanceAppealStatus.REJECTED);
+        boolean educationDay = calendarDay != null && Boolean.TRUE.equals(calendarDay.getIsEducationDay());
+
+        return new AttendanceMonthlyDayResponse(
+                date,
+                calendarDay == null ? null : calendarDay.getId(),
+                record == null ? null : record.getId(),
+                educationDay,
+                calendarDay == null ? null : calendarDay.getDayType(),
+                calendarDay == null ? null : calendarDay.getTitle(),
+                record == null ? null : record.getStatus(),
+                record == null ? AttendanceReasonStatus.NONE : record.getReasonStatus(),
+                record == null ? null : record.getCheckInAt(),
+                record == null ? null : record.getCheckOutAt(),
+                appeal == null ? null : appeal.getId(),
+                appeal == null ? null : appeal.getAppealStatus(),
+                canAppeal
+        );
+    }
+
+    private AttendanceMonthlySummaryResponse summarizeMonthly(List<AttendanceMonthlyDayResponse> days) {
+        Map<AttendanceStatus, Integer> statusCounts = new EnumMap<>(AttendanceStatus.class);
+        Map<AttendanceAppealStatus, Integer> appealCounts = new EnumMap<>(AttendanceAppealStatus.class);
+        int educationDayCount = 0;
+        int pendingCount = 0;
+
+        for (AttendanceMonthlyDayResponse day : days) {
+            if (day.educationDay()) educationDayCount++;
+            if (day.status() == null) {
+                if (day.educationDay()) pendingCount++;
+            } else {
+                statusCounts.merge(day.status(), 1, Integer::sum);
+            }
+            if (day.appealStatus() != null) {
+                appealCounts.merge(day.appealStatus(), 1, Integer::sum);
+            }
+        }
+
+        pendingCount += statusCounts.getOrDefault(AttendanceStatus.PENDING, 0);
+        return new AttendanceMonthlySummaryResponse(
+                educationDayCount,
+                statusCounts.getOrDefault(AttendanceStatus.NORMAL, 0),
+                statusCounts.getOrDefault(AttendanceStatus.LATE, 0),
+                statusCounts.getOrDefault(AttendanceStatus.EARLY_LEAVE, 0),
+                statusCounts.getOrDefault(AttendanceStatus.OUTING, 0),
+                statusCounts.getOrDefault(AttendanceStatus.ABSENT, 0),
+                statusCounts.getOrDefault(AttendanceStatus.EXCUSED, 0),
+                pendingCount,
+                appealCounts.getOrDefault(AttendanceAppealStatus.SUBMITTED, 0),
+                appealCounts.getOrDefault(AttendanceAppealStatus.APPROVED, 0),
+                appealCounts.getOrDefault(AttendanceAppealStatus.REJECTED, 0)
+        );
     }
 
     private AttendanceTodayResponse toTodayResponse(AttendanceRecord record, String message) {

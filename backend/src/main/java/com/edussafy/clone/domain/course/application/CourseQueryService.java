@@ -1,6 +1,7 @@
 package com.edussafy.clone.domain.course.application;
 
 import com.edussafy.clone.domain.course.domain.entity.Course;
+import com.edussafy.clone.domain.course.domain.entity.CourseSession;
 import com.edussafy.clone.domain.course.domain.entity.CourseWeek;
 import com.edussafy.clone.domain.course.domain.enums.CourseSessionType;
 import com.edussafy.clone.domain.course.domain.enums.CourseStatus;
@@ -8,6 +9,9 @@ import com.edussafy.clone.domain.course.domain.repository.CourseRepository;
 import com.edussafy.clone.domain.course.domain.repository.CourseSessionRepository;
 import com.edussafy.clone.domain.course.domain.repository.CourseWeekRepository;
 import com.edussafy.clone.domain.course.dto.mapper.CourseDtoMapper;
+import com.edussafy.clone.domain.course.dto.response.CourseCurriculumDayResponse;
+import com.edussafy.clone.domain.course.dto.response.CourseCurriculumOverviewResponse;
+import com.edussafy.clone.domain.course.dto.response.CourseCurriculumPhaseResponse;
 import com.edussafy.clone.domain.course.dto.response.CourseResponse;
 import com.edussafy.clone.domain.course.dto.response.CourseSessionResponse;
 import com.edussafy.clone.domain.course.dto.response.CourseWeekResponse;
@@ -19,7 +23,10 @@ import com.edussafy.clone.domain.user.domain.repository.UserRepository;
 import com.edussafy.clone.domain.user.exception.UserNotFoundException;
 import com.edussafy.clone.global.response.PageResponse;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -44,6 +51,35 @@ public class CourseQueryService {
 
     public CourseResponse getCourse(Long courseId) {
         return courseDtoMapper.toCourseResponse(getCourseEntity(courseId));
+    }
+
+    public CourseCurriculumOverviewResponse getMyCurriculumOverview(Long userId, Long courseId) {
+        User user = userRepository.findById(userId).orElseThrow(UserNotFoundException::new);
+        List<Course> courses = courseRepository.findByStatusOrderByStartDateDescIdDesc(CourseStatus.OPEN);
+        Course course;
+        if (courseId == null) {
+            course = courses.stream()
+                    .filter(candidate -> belongsToUser(candidate, user))
+                    .findFirst()
+                    .orElseThrow(CourseNotFoundException::new);
+        } else {
+            course = getCourseEntity(courseId);
+            if (!belongsToUser(course, user)) {
+                throw new CourseNotFoundException();
+            }
+        }
+        List<CourseWeek> weeks = courseWeekRepository.findByCourseOrderBySortOrderAscWeekNoAsc(course);
+        CourseWeek activeWeek = resolveActiveWeek(weeks);
+        LocalDate startDate = activeWeek == null ? course.getStartDate() : activeWeek.getStartDate();
+        LocalDate endDate = activeWeek == null ? course.getEndDate() : activeWeek.getEndDate();
+        List<CourseSession> sessions = courseSessionRepository.findCourseSessionsInRange(course.getId(), startDate, endDate);
+
+        return new CourseCurriculumOverviewResponse(
+                courseDtoMapper.toCourseResponse(course),
+                buildPhases(course),
+                weeks.stream().map(courseDtoMapper::toWeekResponse).toList(),
+                groupCurriculumDays(sessions)
+        );
     }
 
     public List<CourseWeekResponse> getWeeks(Long courseId) {
@@ -91,6 +127,65 @@ public class CourseQueryService {
 
     private Course getCourseEntity(Long courseId) {
         return courseRepository.findById(courseId).orElseThrow(CourseNotFoundException::new);
+    }
+
+    private boolean belongsToUser(Course course, User user) {
+        return (course.getGeneration() == null || course.getGeneration().equals(user.getGeneration()))
+                && (course.getRegion() == null || course.getRegion().equals(user.getRegion()))
+                && (course.getClassNo() == null || course.getClassNo().equals(user.getClassNo()));
+    }
+
+    private CourseWeek resolveActiveWeek(List<CourseWeek> weeks) {
+        LocalDate today = LocalDate.now();
+        return weeks.stream()
+                .filter(week -> week.getStartDate() != null && week.getEndDate() != null)
+                .filter(week -> !today.isBefore(week.getStartDate()) && !today.isAfter(week.getEndDate()))
+                .findFirst()
+                .orElseGet(() -> weeks.isEmpty() ? null : weeks.get(0));
+    }
+
+    private List<CourseCurriculumPhaseResponse> buildPhases(Course course) {
+        LocalDate today = LocalDate.now();
+        boolean active = course.getStartDate() == null || course.getEndDate() == null
+                || (!today.isBefore(course.getStartDate()) && !today.isAfter(course.getEndDate()));
+        String status;
+        if (active) {
+            status = "IN_PROGRESS";
+        } else if (today.isBefore(course.getStartDate())) {
+            status = "PLANNED";
+        } else {
+            status = "DONE";
+        }
+        return List.of(new CourseCurriculumPhaseResponse(course.getTitle(), status, active));
+    }
+
+    private List<CourseCurriculumDayResponse> groupCurriculumDays(List<CourseSession> sessions) {
+        Map<LocalDate, List<CourseSession>> sessionsByDate = new LinkedHashMap<>();
+        for (CourseSession session : sessions) {
+            LocalDate date = session.getSessionDate();
+            if (date == null && session.getStartAt() != null) date = session.getStartAt().toLocalDate();
+            if (date == null) continue;
+            sessionsByDate.computeIfAbsent(date, ignored -> new java.util.ArrayList<>()).add(session);
+        }
+        return sessionsByDate.entrySet().stream()
+                .map(entry -> new CourseCurriculumDayResponse(
+                        entry.getKey(),
+                        resolveTimeRange(entry.getValue()),
+                        null,
+                        entry.getValue().stream().map(courseDtoMapper::toSessionResponse).toList()
+                ))
+                .toList();
+    }
+
+    private String resolveTimeRange(List<CourseSession> sessions) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+        return sessions.stream().filter(session -> session.getStartAt() != null).findFirst()
+                .map(first -> {
+                    String start = first.getStartAt().format(formatter);
+                    String end = first.getEndAt() == null ? "" : first.getEndAt().format(formatter);
+                    return end.isBlank() ? start : start + "~" + end;
+                })
+                .orElse("");
     }
 
     private String blankToNull(String keyword) {

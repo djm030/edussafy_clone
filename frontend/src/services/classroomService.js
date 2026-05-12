@@ -108,6 +108,20 @@ function normalizeWeek(item, index) {
   }
 }
 
+const phaseStatusLabels = {
+  DONE: '완료',
+  IN_PROGRESS: '진행중',
+  PLANNED: '예정'
+}
+
+function normalizePhase(item, index) {
+  return {
+    label: item.label || item.title || `Phase ${index + 1}`,
+    status: phaseStatusLabels[item.status] || item.status || '예정',
+    active: item.active ?? item.isCurrent ?? index === 0
+  }
+}
+
 function categoryTone(type) {
   if (type === 'PROJECT') return 'project'
   if (type === 'ALGORITHM') return 'algorithm'
@@ -145,6 +159,16 @@ function normalizeCurriculumDays(items) {
   }, {})
 
   return Object.values(grouped)
+}
+
+function normalizeOverviewDay(item) {
+  const sessions = pageItems(item.sessions || item.items).map(normalizeCurriculumSession)
+  return {
+    date: `${formatDate(item.date)}(${dayLabel(item.date)})`,
+    timeRange: item.timeRange || '',
+    message: item.message || '',
+    items: sessions
+  }
 }
 
 export async function loadQuestItems() {
@@ -235,6 +259,15 @@ export async function loadMyReplayItems() {
 export async function loadCurriculumData() {
   if (!isApiEnabled) return { classroomPhases, curriculumWeeks, curriculumDays }
 
+  const overview = await classroomApi.curriculumOverview().catch(() => null)
+  if (overview) {
+    return {
+      classroomPhases: pageItems(overview.phases).map(normalizePhase),
+      curriculumWeeks: pageItems(overview.weeks).map(normalizeWeek),
+      curriculumDays: pageItems(overview.days).map(normalizeOverviewDay)
+    }
+  }
+
   const coursesPage = await classroomApi.myCourses()
   const course = pageItems(coursesPage)[0]
   const courseId = course?.id || course?.courseId
@@ -246,7 +279,7 @@ export async function loadCurriculumData() {
   const weekId = activeWeek?.id || activeWeek?.weekId
   if (!weekId) {
     return {
-      classroomPhases,
+      classroomPhases: [],
       curriculumWeeks: weeks,
       curriculumDays: []
     }
@@ -261,7 +294,7 @@ export async function loadCurriculumData() {
   const days = normalizeCurriculumDays(pageItems(sessionsPage))
 
   return {
-    classroomPhases,
+    classroomPhases: [],
     curriculumWeeks: weeks,
     curriculumDays: days
   }

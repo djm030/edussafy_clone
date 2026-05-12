@@ -73,6 +73,7 @@ export const boardsApi = {
 
 export const classroomApi = {
   myCourses: () => get('/courses/my'),
+  curriculumOverview: (params) => get('/courses/my/curriculum', params),
   course: (courseId) => get(`/courses/${courseId}`),
   weeks: (courseId) => get(`/courses/${courseId}/weeks`),
   sessionsInRange: (courseId, params) => get(`/courses/${courseId}/sessions`, params),
@@ -109,6 +110,7 @@ export const tasksApi = {
 
 export const attendanceApi = {
   today: () => get('/attendance/today'),
+  monthly: (params) => get('/attendance/monthly', params),
   checkIn: () => post('/attendance/check-in'),
   checkOut: () => post('/attendance/check-out'),
   my: (params) => get('/attendance/my', params),

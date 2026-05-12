@@ -134,6 +134,23 @@ function normalizeAttendanceDay(item) {
   }
 }
 
+function normalizeMonthlyAttendanceDay(item) {
+  const status = item.status || item.attendanceStatus || (item.educationDay ? 'PENDING' : null)
+  const date = item.date || item.attendanceDate || item.calendarDate
+
+  return {
+    id: item.attendanceRecordId || item.id || date,
+    date: formatDate(date),
+    day: item.dayLabel || item.day || dayFromDate(date),
+    status: status ? (attendanceLabels[status] || item.statusLabel || status) : '-',
+    statusTone: statusTones[status] || 'slate',
+    checkIn: formatTime(item.checkInAt || item.checkIn),
+    checkOut: formatTime(item.checkOutAt || item.checkOut),
+    canAppeal: Boolean(item.canAppeal),
+    appealStatus: item.appealStatus || null
+  }
+}
+
 function normalizeTodayAttendance(today) {
   const record = today?.record || null
   const date = record?.attendanceDate || today?.currentDate || new Date().toISOString().slice(0, 10)
@@ -187,6 +204,15 @@ function summarizeAttendance(days) {
     { label: '지각', value: counts['지각'] || 0, tone: 'slate' },
     { label: '외출', value: counts['외출'] || counts['조퇴'] || 0, tone: 'green' },
     { label: '결석', value: counts['결석'] || 0, tone: 'slate' }
+  ]
+}
+
+function normalizeMonthlySummary(summary = {}) {
+  return [
+    { label: '출석', value: summary.normalCount || 0, tone: 'blue' },
+    { label: '지각', value: summary.lateCount || 0, tone: 'slate' },
+    { label: '외출', value: (summary.earlyLeaveCount || 0) + (summary.outingCount || 0), tone: 'green' },
+    { label: '결석', value: summary.absentCount || 0, tone: 'slate' }
   ]
 }
 
@@ -369,16 +395,19 @@ export async function loadAttendanceData() {
     }
   }
 
-  const [today, page] = await Promise.all([
+  const [today, attendance] = await Promise.all([
     attendanceApi.today(),
-    attendanceApi.my({ page: 0, size: 7 })
+    attendanceApi.monthly().catch(() => attendanceApi.my({ page: 0, size: 31 }))
   ])
-  const days = pageItems(page).map(normalizeAttendanceDay)
+  const monthlyDays = Array.isArray(attendance?.days) ? attendance.days : null
+  const days = monthlyDays
+    ? monthlyDays.map(normalizeMonthlyAttendanceDay).filter((item) => item.status !== '-')
+    : pageItems(attendance).map(normalizeAttendanceDay)
 
   return {
-    attendanceSummary: summarizeAttendance(days),
+    attendanceSummary: attendance?.summary ? normalizeMonthlySummary(attendance.summary) : summarizeAttendance(days),
     attendanceDays: days,
-    todayAttendance: normalizeTodayAttendance(today)
+    todayAttendance: normalizeTodayAttendance(attendance?.today || today)
   }
 }
 

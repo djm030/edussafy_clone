@@ -1,6 +1,6 @@
 # Final verification report ? Edu SSAFY frontend clone
 
-Generated at: 2026-05-12T02:45:39Z
+Generated at: 2026-05-12T03:28:05Z
 
 ## Overall verdict
 
@@ -32,6 +32,15 @@ Hard-rule confirmations:
 - Fresh verification after this update: backend `./gradlew.bat test` PASS, frontend `npm run build` PASS, Docker backend/nginx rebuild PASS, API runtime `GET 54/54` and forms `12/12` PASS against `http://127.0.0.1:8088`, route smoke `51/51` PASS against `http://127.0.0.1:5173`.
 - New/updated evidence artifacts include `api-v1-dashboard-my.api.json`, `api-v1-course-sessions-replays-my.api.json`, `get-api-v1-courses-courseid-sessions.api.json`, and `form-interactions-runtime.json` with `auth refresh` HTTP 200.
 
+## 2026-05-12 attendance monthly/curriculum overview runtime update
+- Added attendance monthly aggregate API: `GET /api/v1/attendance/monthly` returns monthly summary counts, calendar-day rows, latest appeal status, appeal availability, and today's attendance action state.
+- Wired MyCampus attendance to prefer the monthly aggregate response while retaining the old paged attendance fallback.
+- Added curriculum overview API: `GET /api/v1/courses/my/curriculum` returns the current course, phase metadata, weeks, and grouped session days.
+- Removed API-mode curriculum dependency on mock phase data; fallback mode still uses local mock data only when API mode is disabled or the overview API is unavailable.
+- Updated the canonical contract so `/mycampus/attendance` includes monthly/today endpoints, `/classroom/curriculum` includes the overview endpoint, and `/mentoring/meetups/apply` is no longer `N/A`.
+- Fresh verification after this update: backend `./gradlew.bat test` PASS, frontend `npm run build` PASS, Docker backend/nginx rebuild PASS, API runtime `GET 58/58` and forms `12/12` PASS against `http://127.0.0.1:8088`, route smoke `51/51` PASS against `http://127.0.0.1:5173`.
+- New evidence artifacts include `api-v1-attendance-monthly.api.json`, `api-v1-attendance-today.api.json`, `api-v1-courses-my-curriculum.api.json`, and `api-v1-surveys-my-participations.api.json`.
+
 ## Local runtime used
 
 - Frontend route-smoke base URL: `http://127.0.0.1:5173`.
@@ -60,7 +69,7 @@ Evidence paths:
 ## Route smoke evidence
 
 - Command: `FRONTEND_BASE_URL=<url> node frontend/docs/design/app-vue/scripts/run-route-smoke.mjs`.
-- Captured at: `2026-05-12T02:45:39.389Z`.
+- Captured at: `2026-05-12T03:28:05.463Z`.
 - Complete claim: `true`.
 - Routes: 51/51 passed, 0 failed.
 - Evidence: `frontend/docs/design/app-vue/verification-pack/api/runtime/route-smoke-runtime-summary.json`.
@@ -68,26 +77,26 @@ Evidence paths:
 ## API runtime evidence
 
 - Command: `API_BASE_URL=http://127.0.0.1:8088 node frontend/docs/design/app-vue/scripts/run-api-runtime-check.mjs`.
-- Captured at: `2026-05-12T02:42:56.232Z`.
+- Captured at: `2026-05-12T03:28:03.769Z`.
 - API base URL: `http://127.0.0.1:8088`.
 - Mock fallback used: `false`.
 - API runtime exercised: `true`.
 - API complete claim: `false`; this remains false because visual parity is tracked separately and completion requires evidence synthesis, not because API endpoints failed.
 - Login/session: `student@edussafy.local` returned HTTP 200; token is redacted in evidence.
-- GET endpoints: 54/54 succeeded.
+- GET endpoints: 58/58 succeeded.
 - Form/runtime checks: 12/12 succeeded.
 - Evidence directory: `frontend/docs/design/app-vue/verification-pack/api/runtime/`.
 
 Resolved prior API blockers:
 - Board detail 404s: closed by discovering or creating representative board post IDs before detail probes.
 - Board detail samples used:
-  - `free` -> post `22` (existing-list).
+  - `free` -> post `31` (existing-list).
   - `anonymity` -> post `6` (existing-list).
   - `notice` -> post `1` (existing-list).
   - `mento-state` -> post `7` (existing-list).
   - `mento-qna` -> post `8` (existing-list).
   - `mento-notice` -> post `9` (existing-list).
-  - `mento-review` -> post `24` (existing-list).
+  - `mento-review` -> post `33` (existing-list).
 - Document submit 403: closed; `document submit without file` now returns HTTP 200.
 - API-mode fallback confusion: closed; API-mode detail pages no longer silently render mock fallback on real API errors.
 
@@ -137,7 +146,7 @@ Manual visual verdict:
 - `.\gradlew.bat compileJava` in `backend`: PASS.
 - Contract inventory regeneration: PASS.
 - Route smoke runtime: PASS 51/51.
-- API runtime check: PASS GET 54/54 and forms 12/12.
+- API runtime check: PASS GET 58/58 and forms 12/12.
 - Visual capture runtime: PASS 30/30.
 
 ## Remaining risks and next work

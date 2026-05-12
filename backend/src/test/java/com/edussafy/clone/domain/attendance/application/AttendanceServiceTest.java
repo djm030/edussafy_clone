@@ -3,14 +3,21 @@ package com.edussafy.clone.domain.attendance.application;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.BDDMockito.then;
 import static org.mockito.BDDMockito.given;
 
+import com.edussafy.clone.domain.attendance.domain.entity.AttendanceAppeal;
 import com.edussafy.clone.domain.attendance.domain.entity.AttendanceRecord;
+import com.edussafy.clone.domain.attendance.domain.enums.AttendanceAppealStatus;
+import com.edussafy.clone.domain.attendance.domain.enums.AttendanceIssueType;
 import com.edussafy.clone.domain.attendance.domain.enums.AttendanceStatus;
 import com.edussafy.clone.domain.attendance.domain.repository.AttendanceAppealRepository;
 import com.edussafy.clone.domain.attendance.domain.repository.AttendanceRecordRepository;
+import com.edussafy.clone.domain.attendance.domain.repository.EducationCalendarDayRepository;
 import com.edussafy.clone.domain.attendance.dto.mapper.AttendanceDtoMapper;
 import com.edussafy.clone.domain.attendance.dto.response.AttendanceTodayResponse;
+import com.edussafy.clone.domain.attendance.dto.response.AttendanceMonthlyResponse;
+import com.edussafy.clone.domain.course.domain.entity.Course;
 import com.edussafy.clone.domain.user.domain.entity.User;
 import com.edussafy.clone.domain.user.domain.enums.UserRole;
 import com.edussafy.clone.domain.user.domain.enums.UserStatus;
@@ -21,6 +28,7 @@ import java.time.Clock;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.List;
 import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -98,8 +106,56 @@ class AttendanceServiceTest {
         assertThatThrownBy(() -> service.checkOut(1L)).isInstanceOf(BusinessException.class);
     }
 
+    @Test
+    void getMonthly_filters_records_and_appeals_by_course() {
+        AttendanceService service = serviceAt("2026-05-12T03:00:00Z");
+        User user = user();
+        AttendanceRecord lateRecord = AttendanceRecord.builder()
+                .id(20L)
+                .user(user)
+                .course(Course.builder().id(3L).title("Java").build())
+                .attendanceDate(LocalDate.of(2026, 5, 1))
+                .checkInAt(LocalDate.of(2026, 5, 1).atTime(9, 10))
+                .status(AttendanceStatus.LATE)
+                .build();
+        AttendanceAppeal appeal = AttendanceAppeal.builder()
+                .id(30L)
+                .attendanceRecord(lateRecord)
+                .user(user)
+                .appealType(AttendanceIssueType.LATE)
+                .reason("Traffic")
+                .appealStatus(AttendanceAppealStatus.SUBMITTED)
+                .build();
+        given(userRepository.findById(1L)).willReturn(Optional.of(user));
+        given(attendanceRecordRepository.findByUserAndAttendanceDate(user, TODAY)).willReturn(Optional.empty());
+        given(attendanceRecordRepository.findByUserAndCourseIdAndAttendanceDateBetweenOrderByAttendanceDateAsc(
+                user, 3L, LocalDate.of(2026, 5, 1), LocalDate.of(2026, 5, 31))).willReturn(List.of(lateRecord));
+        given(attendanceAppealRepository.findByUserAndAttendanceRecordCourseIdAndAttendanceRecordAttendanceDateBetweenOrderByCreatedAtDesc(
+                user, 3L, LocalDate.of(2026, 5, 1), LocalDate.of(2026, 5, 31))).willReturn(List.of(appeal));
+        given(educationCalendarDayRepository.findByCourseIdAndCalendarDateBetweenOrderByCalendarDateAsc(
+                3L, LocalDate.of(2026, 5, 1), LocalDate.of(2026, 5, 31))).willReturn(List.of());
+
+        AttendanceMonthlyResponse response = service.getMonthly(1L, 2026, 5, 3L);
+
+        assertThat(response.summary().lateCount()).isEqualTo(1);
+        assertThat(response.summary().appealSubmittedCount()).isEqualTo(1);
+        assertThat(response.days())
+                .filteredOn(day -> LocalDate.of(2026, 5, 1).equals(day.date()))
+                .singleElement()
+                .satisfies(day -> {
+                    assertThat(day.attendanceRecordId()).isEqualTo(20L);
+                    assertThat(day.appealId()).isEqualTo(30L);
+                    assertThat(day.canAppeal()).isFalse();
+                });
+        then(attendanceRecordRepository).should().findByUserAndCourseIdAndAttendanceDateBetweenOrderByAttendanceDateAsc(
+                user, 3L, LocalDate.of(2026, 5, 1), LocalDate.of(2026, 5, 31));
+        then(attendanceAppealRepository).should().findByUserAndAttendanceRecordCourseIdAndAttendanceRecordAttendanceDateBetweenOrderByCreatedAtDesc(
+                user, 3L, LocalDate.of(2026, 5, 1), LocalDate.of(2026, 5, 31));
+    }
+
     private final AttendanceRecordRepository attendanceRecordRepository = Mockito.mock(AttendanceRecordRepository.class);
     private final AttendanceAppealRepository attendanceAppealRepository = Mockito.mock(AttendanceAppealRepository.class);
+    private final EducationCalendarDayRepository educationCalendarDayRepository = Mockito.mock(EducationCalendarDayRepository.class);
     private final UserRepository userRepository = Mockito.mock(UserRepository.class);
     private final FileResourceRepository fileResourceRepository = Mockito.mock(FileResourceRepository.class);
 
@@ -108,6 +164,7 @@ class AttendanceServiceTest {
         return new AttendanceService(
                 attendanceRecordRepository,
                 attendanceAppealRepository,
+                educationCalendarDayRepository,
                 userRepository,
                 fileResourceRepository,
                 new AttendanceDtoMapper(),

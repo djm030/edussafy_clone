@@ -1,6 +1,7 @@
 package com.edussafy.clone.domain.course.api;
 
 import com.edussafy.clone.domain.course.application.CourseQueryService;
+import com.edussafy.clone.domain.course.dto.response.CourseCurriculumOverviewResponse;
 import com.edussafy.clone.domain.course.dto.response.CourseResponse;
 import com.edussafy.clone.domain.course.dto.response.CourseSessionResponse;
 import com.edussafy.clone.domain.course.dto.response.CourseWeekResponse;
@@ -30,6 +31,13 @@ public class CourseController {
     @GetMapping("/courses/{courseId}")
     public ApiResponse<CourseResponse> getCourse(@PathVariable Long courseId) {
         return ApiResponse.ok(courseQueryService.getCourse(courseId));
+    }
+
+    @GetMapping("/courses/my/curriculum")
+    public ApiResponse<CourseCurriculumOverviewResponse> getMyCurriculumOverview(
+            @CurrentUser Long currentUserId,
+            @RequestParam(required = false) Long courseId) {
+        return ApiResponse.ok(courseQueryService.getMyCurriculumOverview(currentUserId, courseId));
     }
 
     @GetMapping("/courses/{courseId}/weeks")

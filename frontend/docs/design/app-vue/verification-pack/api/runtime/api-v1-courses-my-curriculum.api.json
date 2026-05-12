@@ -1,0 +1,16 @@
+{
+  "endpoint": "GET /api/v1/courses/my/curriculum",
+  "endpointPath": "/api/v1/courses/my/curriculum",
+  "method": "GET",
+  "statusCode": 200,
+  "success": true,
+  "dataShapeSummary": "course,phases,weeks,days",
+  "redactedRequest": {
+    "headers": {
+      "Authorization": "Bearer <redacted>"
+    }
+  },
+  "redactedResponseSample": "course,phases,weeks,days",
+  "errorCode": null,
+  "message": "요청이 성공했습니다."
+}

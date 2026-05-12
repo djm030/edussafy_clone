@@ -1,0 +1,16 @@
+{
+  "endpoint": "GET /api/v1/attendance/monthly",
+  "endpointPath": "/api/v1/attendance/monthly",
+  "method": "GET",
+  "statusCode": 200,
+  "success": true,
+  "dataShapeSummary": "year,month,summary,days,today",
+  "redactedRequest": {
+    "headers": {
+      "Authorization": "Bearer <redacted>"
+    }
+  },
+  "redactedResponseSample": "year,month,summary,days,today",
+  "errorCode": null,
+  "message": "요청이 성공했습니다."
+}

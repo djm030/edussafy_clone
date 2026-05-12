@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-05-12T02:42:56.232Z",
+  "capturedAt": "2026-05-12T03:28:03.769Z",
   "command": "API_BASE_URL=<url> node frontend/docs/design/app-vue/scripts/run-api-runtime-check.mjs",
   "apiBaseUrl": "http://127.0.0.1:8088",
   "usedMockFallback": false,
@@ -14,8 +14,8 @@
     "message": "요청이 성공했습니다."
   },
   "summary": {
-    "getEndpoints": 54,
-    "getEndpointSuccesses": 54,
+    "getEndpoints": 58,
+    "getEndpointSuccesses": 58,
     "formChecks": 12,
     "formCheckSuccesses": 12
   },
@@ -23,7 +23,7 @@
   "boardPostSamples": [
     {
       "boardCode": "free",
-      "postId": "22",
+      "postId": "31",
       "source": "existing-list"
     },
     {
@@ -53,7 +53,7 @@
     },
     {
       "boardCode": "mento-review",
-      "postId": "24",
+      "postId": "33",
       "source": "existing-list"
     }
   ],
@@ -151,6 +151,38 @@
         }
       },
       "redactedResponseSample": "content,page,size,totalElements,totalPages",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
+    },
+    {
+      "endpoint": "GET /api/v1/attendance/monthly",
+      "endpointPath": "/api/v1/attendance/monthly",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "year,month,summary,days,today",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "year,month,summary,days,today",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
+    },
+    {
+      "endpoint": "GET /api/v1/attendance/today",
+      "endpointPath": "/api/v1/attendance/today",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "record,currentDate,currentTime,canCheckIn,canCheckOut,nextAction,message",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "record,currentDate,currentTime,canCheckIn,canCheckOut,nextAction,message",
       "errorCode": null,
       "message": "요청이 성공했습니다."
     },
@@ -327,6 +359,22 @@
         }
       },
       "redactedResponseSample": "content,page,size,totalElements,totalPages",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
+    },
+    {
+      "endpoint": "GET /api/v1/courses/my/curriculum",
+      "endpointPath": "/api/v1/courses/my/curriculum",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "course,phases,weeks,days",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "course,phases,weeks,days",
       "errorCode": null,
       "message": "요청이 성공했습니다."
     },
@@ -588,7 +636,7 @@
     },
     {
       "endpoint": "GET /api/v1/boards/free/posts/{postId}",
-      "endpointPath": "/api/v1/boards/free/posts/22",
+      "endpointPath": "/api/v1/boards/free/posts/31",
       "method": "GET",
       "statusCode": 200,
       "success": true,
@@ -843,6 +891,22 @@
       "message": "요청이 성공했습니다."
     },
     {
+      "endpoint": "GET /api/v1/surveys/my-participations",
+      "endpointPath": "/api/v1/surveys/my-participations",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "content,page,size,totalElements,totalPages",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "content,page,size,totalElements,totalPages",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
+    },
+    {
       "endpoint": "GET /api/v1/boards/meeting-info/posts",
       "endpointPath": "/api/v1/boards/meeting-info/posts",
       "method": "GET",
@@ -876,7 +940,7 @@
     },
     {
       "endpoint": "GET /api/v1/boards/mento-review/posts/{postId}",
-      "endpointPath": "/api/v1/boards/mento-review/posts/24",
+      "endpointPath": "/api/v1/boards/mento-review/posts/33",
       "method": "GET",
       "statusCode": 200,
       "success": true,
