@@ -15,6 +15,13 @@ Hard-rule confirmations:
 - Mock fallback claimed as API completion: no; runtime evidence used real API at `http://127.0.0.1:8088`.
 - Visual completion claimed without capture evidence: no; screenshots were captured for all mapped reference routes, but `visualCompleteClaim` remains `false`.
 
+
+## 2026-05-12 student runtime update
+- Added live student attendance actions: `GET /api/v1/attendance/today`, `POST /api/v1/attendance/check-in`, and `POST /api/v1/attendance/check-out`. Backend decisions use `Asia/Seoul` time and frontend pages now render real today-state/buttons instead of static attendance state.
+- Wired student action gaps for notifications (read/read-all/delete), learning resources (like/bookmark/download/complete), and board details (like/comment create/delete).
+- Fresh verification after this update: backend `./gradlew.bat test` PASS, frontend `npm run build` PASS, API runtime `GET 51/51` and forms `11/11` PASS against `http://127.0.0.1:18080`, route smoke `51/51` PASS against `http://127.0.0.1:5175`, visual capture `30/30` PASS dimension-capture only; attendance action artifact: `verification-pack/api/runtime/attendance-actions-runtime.json`.
+- Docker compose image rebuild was attempted but blocked by Maven Central TLS/download failures inside the build container; a local `bootJar` was mounted into `eclipse-temurin:21-jre-alpine` on the existing Docker network for runtime verification.
+
 ## Local runtime used
 
 - Frontend API-mode base URL: `http://127.0.0.1:5174`.

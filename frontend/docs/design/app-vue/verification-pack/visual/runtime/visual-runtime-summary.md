@@ -1,7 +1,7 @@
 # Visual runtime summary
 
-- capturedAt: 2026-05-12T01:25:18.998Z
-- baseUrl: http://127.0.0.1:5174
+- capturedAt: 2026-05-12T02:06:16.753Z
+- baseUrl: http://127.0.0.1:5175
 - attempted routes: 30
 - captured routes: 30
 - failed routes: 0

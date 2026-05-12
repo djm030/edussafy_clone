@@ -1,6 +1,6 @@
 {
   "routePath": "/classroom/curriculum",
-  "url": "http://127.0.0.1:5174/classroom/curriculum",
+  "url": "http://127.0.0.1:5175/classroom/curriculum",
   "referenceScreenshot": "../../edu_screnshot/02_classroom_weekly_curriculum.png",
   "referenceExists": true,
   "referenceSize": {

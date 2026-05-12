@@ -6,6 +6,7 @@ import com.edussafy.clone.domain.attendance.domain.enums.AttendanceStatus;
 import com.edussafy.clone.domain.attendance.dto.request.AttendanceAppealCreateRequest;
 import com.edussafy.clone.domain.attendance.dto.response.AttendanceAppealResponse;
 import com.edussafy.clone.domain.attendance.dto.response.AttendanceRecordResponse;
+import com.edussafy.clone.domain.attendance.dto.response.AttendanceTodayResponse;
 import com.edussafy.clone.domain.attendance.dto.response.EducationCalendarDayResponse;
 import com.edussafy.clone.global.response.ApiResponse;
 import com.edussafy.clone.global.response.PageResponse;
@@ -43,6 +44,21 @@ public class AttendanceController {
     @GetMapping("/attendance/my/{attendanceRecordId}")
     public ApiResponse<AttendanceRecordResponse> getMyAttendanceDetail(@CurrentUser Long currentUserId, @PathVariable Long attendanceRecordId) {
         return ApiResponse.ok(attendanceService.getMyRecord(currentUserId, attendanceRecordId));
+    }
+
+    @GetMapping("/attendance/today")
+    public ApiResponse<AttendanceTodayResponse> getTodayAttendance(@CurrentUser Long currentUserId) {
+        return ApiResponse.ok(attendanceService.getToday(currentUserId));
+    }
+
+    @PostMapping("/attendance/check-in")
+    public ApiResponse<AttendanceTodayResponse> checkIn(@CurrentUser Long currentUserId) {
+        return ApiResponse.ok(attendanceService.checkIn(currentUserId));
+    }
+
+    @PostMapping("/attendance/check-out")
+    public ApiResponse<AttendanceTodayResponse> checkOut(@CurrentUser Long currentUserId) {
+        return ApiResponse.ok(attendanceService.checkOut(currentUserId));
     }
 
     @PostMapping("/attendance/appeals")

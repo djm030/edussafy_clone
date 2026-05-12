@@ -1,6 +1,6 @@
 {
   "routePath": "/mycampus/education-status",
-  "url": "http://127.0.0.1:5174/mycampus/education-status",
+  "url": "http://127.0.0.1:5175/mycampus/education-status",
   "referenceScreenshot": "../../edu_screnshot/32_mycampus_education_status.png",
   "referenceExists": true,
   "referenceSize": {

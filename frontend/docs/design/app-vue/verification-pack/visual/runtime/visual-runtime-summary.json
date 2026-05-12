@@ -1,7 +1,7 @@
 {
-  "capturedAt": "2026-05-12T01:25:18.998Z",
+  "capturedAt": "2026-05-12T02:06:16.753Z",
   "command": "FRONTEND_BASE_URL=<url> node frontend/docs/design/app-vue/scripts/capture-visual-runtime.mjs",
-  "baseUrl": "http://127.0.0.1:5174",
+  "baseUrl": "http://127.0.0.1:5175",
   "chromePath": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
   "visualCompleteClaim": false,
   "reason": "Runtime screenshots were captured where possible and reference dimensions checked, but no pixel-diff dependency was added; parity remains evidence-backed PARTIAL unless manually reviewed.",
@@ -12,7 +12,7 @@
   "results": [
     {
       "routePath": "/dashboard",
-      "url": "http://127.0.0.1:5174/dashboard",
+      "url": "http://127.0.0.1:5175/dashboard",
       "referenceScreenshot": "../../edu_screnshot/01_home_dashboard.png",
       "referenceExists": true,
       "referenceSize": {
@@ -29,16 +29,16 @@
       "capturedSize": {
         "width": 1326,
         "height": 2254,
-        "bytes": 100545
+        "bytes": 99907
       },
       "chromeStatus": 0,
-      "stderr": "100545 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\dashboard.png\r\n",
+      "stderr": "99907 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\dashboard.png\r\n",
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
     {
       "routePath": "/mycampus/level-points",
-      "url": "http://127.0.0.1:5174/mycampus/level-points",
+      "url": "http://127.0.0.1:5175/mycampus/level-points",
       "referenceScreenshot": "../../edu_screnshot/25_mycampus_level_points_dashboard.png",
       "referenceExists": true,
       "referenceSize": {
@@ -64,7 +64,7 @@
     },
     {
       "routePath": "/mycampus/attendance",
-      "url": "http://127.0.0.1:5174/mycampus/attendance",
+      "url": "http://127.0.0.1:5175/mycampus/attendance",
       "referenceScreenshot": "../../edu_screnshot/26_mycampus_attendance_status.png",
       "referenceExists": true,
       "referenceSize": {
@@ -81,16 +81,16 @@
       "capturedSize": {
         "width": 1326,
         "height": 2123,
-        "bytes": 161246
+        "bytes": 167162
       },
       "chromeStatus": 0,
-      "stderr": "161246 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mycampus-attendance.png\r\n",
+      "stderr": "167162 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mycampus-attendance.png\r\n",
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
     {
       "routePath": "/mycampus/elearning",
-      "url": "http://127.0.0.1:5174/mycampus/elearning",
+      "url": "http://127.0.0.1:5175/mycampus/elearning",
       "referenceScreenshot": "../../edu_screnshot/27_mycampus_learning_elearning_empty.png",
       "referenceExists": true,
       "referenceSize": {
@@ -116,7 +116,7 @@
     },
     {
       "routePath": "/mycampus/bookmarks",
-      "url": "http://127.0.0.1:5174/mycampus/bookmarks",
+      "url": "http://127.0.0.1:5175/mycampus/bookmarks",
       "referenceScreenshot": "../../edu_screnshot/28_mycampus_bookmarks_empty.png",
       "referenceExists": true,
       "referenceSize": {
@@ -142,7 +142,7 @@
     },
     {
       "routePath": "/mycampus/documents",
-      "url": "http://127.0.0.1:5174/mycampus/documents",
+      "url": "http://127.0.0.1:5175/mycampus/documents",
       "referenceScreenshot": "../../edu_screnshot/29_mycampus_document_submission_empty.png",
       "referenceExists": true,
       "referenceSize": {
@@ -168,7 +168,7 @@
     },
     {
       "routePath": "/mycampus/pledges",
-      "url": "http://127.0.0.1:5174/mycampus/pledges",
+      "url": "http://127.0.0.1:5175/mycampus/pledges",
       "referenceScreenshot": "../../edu_screnshot/31_mycampus_student_pledge_list.png",
       "referenceExists": true,
       "referenceSize": {
@@ -194,7 +194,7 @@
     },
     {
       "routePath": "/mycampus/education-status",
-      "url": "http://127.0.0.1:5174/mycampus/education-status",
+      "url": "http://127.0.0.1:5175/mycampus/education-status",
       "referenceScreenshot": "../../edu_screnshot/32_mycampus_education_status.png",
       "referenceExists": true,
       "referenceSize": {
@@ -220,7 +220,7 @@
     },
     {
       "routePath": "/classroom/my-replays",
-      "url": "http://127.0.0.1:5174/classroom/my-replays",
+      "url": "http://127.0.0.1:5175/classroom/my-replays",
       "referenceScreenshot": "../../edu_screnshot/13_classroom_my_lecture_replay.png",
       "referenceExists": true,
       "referenceSize": {
@@ -246,7 +246,7 @@
     },
     {
       "routePath": "/classroom/all-replays",
-      "url": "http://127.0.0.1:5174/classroom/all-replays",
+      "url": "http://127.0.0.1:5175/classroom/all-replays",
       "referenceScreenshot": "../../edu_screnshot/14_classroom_all_lecture_replay.png",
       "referenceExists": true,
       "referenceSize": {
@@ -272,7 +272,7 @@
     },
     {
       "routePath": "/classroom/curriculum",
-      "url": "http://127.0.0.1:5174/classroom/curriculum",
+      "url": "http://127.0.0.1:5175/classroom/curriculum",
       "referenceScreenshot": "../../edu_screnshot/02_classroom_weekly_curriculum.png",
       "referenceExists": true,
       "referenceSize": {
@@ -298,7 +298,7 @@
     },
     {
       "routePath": "/classroom/quests",
-      "url": "http://127.0.0.1:5174/classroom/quests",
+      "url": "http://127.0.0.1:5175/classroom/quests",
       "referenceScreenshot": "../../edu_screnshot/03_quest_evaluation_list.png",
       "referenceExists": true,
       "referenceSize": {
@@ -324,7 +324,7 @@
     },
     {
       "routePath": "/classroom/required-learning",
-      "url": "http://127.0.0.1:5174/classroom/required-learning",
+      "url": "http://127.0.0.1:5175/classroom/required-learning",
       "referenceScreenshot": "../../edu_screnshot/15_classroom_required_learning_empty.png",
       "referenceExists": true,
       "referenceSize": {
@@ -350,7 +350,7 @@
     },
     {
       "routePath": "/classroom/resources",
-      "url": "http://127.0.0.1:5174/classroom/resources",
+      "url": "http://127.0.0.1:5175/classroom/resources",
       "referenceScreenshot": "../../edu_screnshot/04_learning_resources.png",
       "referenceExists": true,
       "referenceSize": {
@@ -376,7 +376,7 @@
     },
     {
       "routePath": "/community/surveys",
-      "url": "http://127.0.0.1:5174/community/surveys",
+      "url": "http://127.0.0.1:5175/community/surveys",
       "referenceScreenshot": "../../edu_screnshot/05_community_survey.png",
       "referenceExists": true,
       "referenceSize": {
@@ -402,7 +402,7 @@
     },
     {
       "routePath": "/community/boards/open",
-      "url": "http://127.0.0.1:5174/community/boards/open",
+      "url": "http://127.0.0.1:5175/community/boards/open",
       "referenceScreenshot": "../../edu_screnshot/06_open_board.png",
       "referenceExists": true,
       "referenceSize": {
@@ -428,7 +428,7 @@
     },
     {
       "routePath": "/community/boards/anonymous",
-      "url": "http://127.0.0.1:5174/community/boards/anonymous",
+      "url": "http://127.0.0.1:5175/community/boards/anonymous",
       "referenceScreenshot": "../../edu_screnshot/16_community_anonymous_board.png",
       "referenceExists": true,
       "referenceSize": {
@@ -454,7 +454,7 @@
     },
     {
       "routePath": "/community/class-roster",
-      "url": "http://127.0.0.1:5174/community/class-roster",
+      "url": "http://127.0.0.1:5175/community/class-roster",
       "referenceScreenshot": "../../edu_screnshot/17_community_class_roster.png",
       "referenceExists": true,
       "referenceSize": {
@@ -480,7 +480,7 @@
     },
     {
       "routePath": "/help/notice",
-      "url": "http://127.0.0.1:5174/help/notice",
+      "url": "http://127.0.0.1:5175/help/notice",
       "referenceScreenshot": "../../edu_screnshot/07_helpdesk_notice.png",
       "referenceExists": true,
       "referenceSize": {
@@ -506,7 +506,7 @@
     },
     {
       "routePath": "/help/faq",
-      "url": "http://127.0.0.1:5174/help/faq",
+      "url": "http://127.0.0.1:5175/help/faq",
       "referenceScreenshot": "../../edu_screnshot/08_helpdesk_faq_empty.png",
       "referenceExists": true,
       "referenceSize": {
@@ -532,7 +532,7 @@
     },
     {
       "routePath": "/help/inquiries",
-      "url": "http://127.0.0.1:5174/help/inquiries",
+      "url": "http://127.0.0.1:5175/help/inquiries",
       "referenceScreenshot": "../../edu_screnshot/09_helpdesk_inquiry_empty.png",
       "referenceExists": true,
       "referenceSize": {
@@ -558,7 +558,7 @@
     },
     {
       "routePath": "/help/rules",
-      "url": "http://127.0.0.1:5174/help/rules",
+      "url": "http://127.0.0.1:5175/help/rules",
       "referenceScreenshot": "../../edu_screnshot/18_helpdesk_academic_rules.png",
       "referenceExists": true,
       "referenceSize": {
@@ -584,7 +584,7 @@
     },
     {
       "routePath": "/mentoring/stories",
-      "url": "http://127.0.0.1:5174/mentoring/stories",
+      "url": "http://127.0.0.1:5175/mentoring/stories",
       "referenceScreenshot": "../../edu_screnshot/11_mentoring_story_board.png",
       "referenceExists": true,
       "referenceSize": {
@@ -610,7 +610,7 @@
     },
     {
       "routePath": "/mentoring/qna",
-      "url": "http://127.0.0.1:5174/mentoring/qna",
+      "url": "http://127.0.0.1:5175/mentoring/qna",
       "referenceScreenshot": "../../edu_screnshot/19_mentoring_qna_board.png",
       "referenceExists": true,
       "referenceSize": {
@@ -636,7 +636,7 @@
     },
     {
       "routePath": "/mentoring/notice",
-      "url": "http://127.0.0.1:5174/mentoring/notice",
+      "url": "http://127.0.0.1:5175/mentoring/notice",
       "referenceScreenshot": "../../edu_screnshot/20_mentoring_notice_board.png",
       "referenceExists": true,
       "referenceSize": {
@@ -662,7 +662,7 @@
     },
     {
       "routePath": "/mentoring/meetups/apply",
-      "url": "http://127.0.0.1:5174/mentoring/meetups/apply",
+      "url": "http://127.0.0.1:5175/mentoring/meetups/apply",
       "referenceScreenshot": "../../edu_screnshot/21_mentoring_meetup_apply.png",
       "referenceExists": true,
       "referenceSize": {
@@ -688,7 +688,7 @@
     },
     {
       "routePath": "/mentoring/meetups/info",
-      "url": "http://127.0.0.1:5174/mentoring/meetups/info",
+      "url": "http://127.0.0.1:5175/mentoring/meetups/info",
       "referenceScreenshot": "../../edu_screnshot/22_mentoring_meetup_info_empty.png",
       "referenceExists": true,
       "referenceSize": {
@@ -714,7 +714,7 @@
     },
     {
       "routePath": "/mentoring/meetups/reviews",
-      "url": "http://127.0.0.1:5174/mentoring/meetups/reviews",
+      "url": "http://127.0.0.1:5175/mentoring/meetups/reviews",
       "referenceScreenshot": "../../edu_screnshot/23_mentoring_meetup_review_board.png",
       "referenceExists": true,
       "referenceSize": {
@@ -740,7 +740,7 @@
     },
     {
       "routePath": "/notifications",
-      "url": "http://127.0.0.1:5174/notifications",
+      "url": "http://127.0.0.1:5175/notifications",
       "referenceScreenshot": "../../edu_screnshot/36_notification_inbox.png",
       "referenceExists": true,
       "referenceSize": {
@@ -757,16 +757,16 @@
       "capturedSize": {
         "width": 1326,
         "height": 1492,
-        "bytes": 146289
+        "bytes": 146991
       },
       "chromeStatus": 0,
-      "stderr": "146289 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\notifications.png\r\n",
+      "stderr": "146991 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\notifications.png\r\n",
       "visualParityClaim": false,
       "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
     },
     {
       "routePath": "/403",
-      "url": "http://127.0.0.1:5174/403",
+      "url": "http://127.0.0.1:5175/403",
       "referenceScreenshot": "../../edu_screnshot/39_mycampus_ebook_403_forbidden.png",
       "referenceExists": true,
       "referenceSize": {

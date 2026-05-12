@@ -45,7 +45,7 @@ onMounted(async () => {
         <div class="attendance-date">{{ data.attendanceSummary.date }} · {{ data.attendanceSummary.dayLabel }}</div>
         <div class="attendance-status-row">
           <strong>{{ data.attendanceSummary.message }}</strong>
-          <StatusBadge tone="green">정상</StatusBadge>
+          <StatusBadge :tone="data.attendanceSummary.statusTone || 'slate'">{{ data.attendanceSummary.statusLabel }}</StatusBadge>
         </div>
         <dl class="attendance-times">
           <div>

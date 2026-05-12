@@ -1,0 +1,38 @@
+{
+  "capturedAt": "2026-05-12T02:07:50.568034Z",
+  "apiBaseUrl": "http://127.0.0.1:18080",
+  "login": {
+    "email": "student@edussafy.local",
+    "success": true,
+    "token": "<redacted>"
+  },
+  "checks": [
+    {
+      "name": "attendance today before action",
+      "method": "GET",
+      "endpointPath": "/api/v1/attendance/today",
+      "success": true,
+      "canCheckIn": true,
+      "status": null
+    },
+    {
+      "name": "attendance check-in current KST",
+      "method": "POST",
+      "endpointPath": "/api/v1/attendance/check-in",
+      "statusCode": 200,
+      "success": true,
+      "recordStatus": "LATE",
+      "nextAction": "WAITING"
+    },
+    {
+      "name": "attendance today after check-in",
+      "method": "GET",
+      "endpointPath": "/api/v1/attendance/today",
+      "success": true,
+      "recordStatus": "LATE",
+      "canCheckOut": false,
+      "nextAction": "WAITING"
+    }
+  ],
+  "note": "Executed at about 11:04 KST, so check-in correctly produced LATE and checkout was not yet enabled before 14:00. Clock-bound edge cases are covered by AttendanceServiceTest."
+}

@@ -43,6 +43,11 @@ function formatDate(value) {
   return String(value).split('T')[0].replaceAll('-', '.')
 }
 
+function formatDateTime(value) {
+  if (!value) return ''
+  return String(value).replace('T', ' ').slice(0, 16).replaceAll('-', '.')
+}
+
 function normalizePost(item) {
   const postId = normalizePostId(item.postId ?? item.id)
   return {
@@ -52,7 +57,8 @@ function normalizePost(item) {
     title: item.title,
     author: item.displayName || item.authorName || item.author || '익명',
     date: formatDate(item.createdAt || item.date),
-    views: item.viewCount ?? item.views ?? 0
+    views: item.viewCount ?? item.views ?? 0,
+    likes: item.likeCount ?? item.likes ?? 0
   }
 }
 
@@ -92,9 +98,31 @@ function normalizePostDetail(item, fallback) {
     author: base.displayName || base.authorName || base.author || fallback?.author || '익명',
     date: formatDate(base.createdAt || base.date || fallback?.date),
     views: base.viewCount ?? base.views ?? fallback?.views ?? 0,
+    likes: base.likeCount ?? base.likes ?? fallback?.likes ?? 0,
     body: base.contentText || base.content || base.body || plainText(base.contentHtml) || fallback?.body || fallbackBody(fallback || base),
     files: base.files || []
   }
+}
+
+function normalizeComment(item) {
+  return {
+    id: item.id,
+    parentId: item.parentId,
+    body: item.content || '',
+    author: item.displayName || item.author || '익명',
+    isMine: Boolean(item.isMine),
+    date: formatDateTime(item.createdAt || item.date)
+  }
+}
+
+function boardKey(group, variant) {
+  if (group === 'mentoring') {
+    if (variant === 'qna') return 'mentoringQna'
+    if (variant === 'notice') return 'mentoringNotice'
+    if (variant === 'reviews') return 'mentoringReviews'
+    return 'mentoringStories'
+  }
+  return variant || 'open'
 }
 
 async function fetchBoardItems(boardCode) {
@@ -173,6 +201,35 @@ export function loadCommunityPosts(variant) {
 
 export function loadCommunityPostDetail(variant, postId) {
   return fetchBoardDetail(variant, postId)
+}
+
+export async function likeBoardPost(group, variant, postId) {
+  if (!isApiEnabled) return null
+
+  const key = boardKey(group, variant)
+  return boardsApi.likePost(boardCodeByKey[key] || boardCodeByKey.open, postId)
+}
+
+export async function loadBoardComments(group, variant, postId) {
+  if (!isApiEnabled) return []
+
+  const key = boardKey(group, variant)
+  const comments = await boardsApi.comments(boardCodeByKey[key] || boardCodeByKey.open, postId)
+  return pageItems(comments).map(normalizeComment)
+}
+
+export async function createBoardComment(group, variant, postId, content) {
+  if (!isApiEnabled) return { id: 'mock-comment' }
+
+  const key = boardKey(group, variant)
+  return boardsApi.createComment(boardCodeByKey[key] || boardCodeByKey.open, postId, { content })
+}
+
+export async function deleteBoardComment(commentId) {
+  if (!isApiEnabled) return true
+
+  await boardsApi.deleteComment(commentId)
+  return true
 }
 
 export function loadHelpNoticePosts() {

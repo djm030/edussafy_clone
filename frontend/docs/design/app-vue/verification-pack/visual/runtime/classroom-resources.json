@@ -1,6 +1,6 @@
 {
   "routePath": "/classroom/resources",
-  "url": "http://127.0.0.1:5174/classroom/resources",
+  "url": "http://127.0.0.1:5175/classroom/resources",
   "referenceScreenshot": "../../edu_screnshot/04_learning_resources.png",
   "referenceExists": true,
   "referenceSize": {

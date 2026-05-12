@@ -1,6 +1,6 @@
 {
   "routePath": "/mentoring/qna",
-  "url": "http://127.0.0.1:5174/mentoring/qna",
+  "url": "http://127.0.0.1:5175/mentoring/qna",
   "referenceScreenshot": "../../edu_screnshot/19_mentoring_qna_board.png",
   "referenceExists": true,
   "referenceSize": {

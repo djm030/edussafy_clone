@@ -29,6 +29,27 @@ export async function loadNotifications() {
   return pageItems(page).map(normalizeNotification)
 }
 
+export async function markNotificationRead(notificationId) {
+  if (!isApiEnabled) return true
+
+  await notificationsApi.markRead(notificationId)
+  return true
+}
+
+export async function markAllNotificationsRead() {
+  if (!isApiEnabled) return true
+
+  await notificationsApi.markAllRead()
+  return true
+}
+
+export async function deleteNotification(notificationId) {
+  if (!isApiEnabled) return true
+
+  await notificationsApi.delete(notificationId)
+  return true
+}
+
 export async function loadUnreadNotificationCount() {
   if (!isApiEnabled) return mockNotifications.filter((item) => item.unread).length
 

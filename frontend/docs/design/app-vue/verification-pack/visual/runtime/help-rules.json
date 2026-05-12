@@ -1,6 +1,6 @@
 {
   "routePath": "/help/rules",
-  "url": "http://127.0.0.1:5174/help/rules",
+  "url": "http://127.0.0.1:5175/help/rules",
   "referenceScreenshot": "../../edu_screnshot/18_helpdesk_academic_rules.png",
   "referenceExists": true,
   "referenceSize": {

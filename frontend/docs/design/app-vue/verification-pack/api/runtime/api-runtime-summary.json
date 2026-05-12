@@ -1,7 +1,7 @@
 {
-  "capturedAt": "2026-05-12T01:24:44.393Z",
+  "capturedAt": "2026-05-12T02:04:47.385Z",
   "command": "API_BASE_URL=<url> node frontend/docs/design/app-vue/scripts/run-api-runtime-check.mjs",
-  "apiBaseUrl": "http://127.0.0.1:8088",
+  "apiBaseUrl": "http://127.0.0.1:18080",
   "usedMockFallback": false,
   "apiRuntimeExercised": true,
   "apiCompleteClaim": false,
@@ -23,7 +23,7 @@
   "boardPostSamples": [
     {
       "boardCode": "free",
-      "postId": "16",
+      "postId": "19",
       "source": "existing-list"
     },
     {
@@ -53,7 +53,7 @@
     },
     {
       "boardCode": "mento-review",
-      "postId": "18",
+      "postId": "21",
       "source": "existing-list"
     }
   ],
@@ -540,7 +540,7 @@
     },
     {
       "endpoint": "GET /api/v1/boards/free/posts/{postId}",
-      "endpointPath": "/api/v1/boards/free/posts/16",
+      "endpointPath": "/api/v1/boards/free/posts/19",
       "method": "GET",
       "statusCode": 200,
       "success": true,
@@ -828,7 +828,7 @@
     },
     {
       "endpoint": "GET /api/v1/boards/mento-review/posts/{postId}",
-      "endpointPath": "/api/v1/boards/mento-review/posts/18",
+      "endpointPath": "/api/v1/boards/mento-review/posts/21",
       "method": "GET",
       "statusCode": 200,
       "success": true,

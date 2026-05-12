@@ -16,6 +16,71 @@
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
+.attendance-action-panel {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: center;
+  margin-bottom: 24px;
+  padding: 24px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-default);
+  background: var(--color-canvas);
+  box-shadow: var(--shadow-card);
+}
+
+.attendance-action-panel h2 {
+  margin: 8px 0;
+  color: var(--color-primary-deep);
+  font-size: 24px;
+}
+
+.attendance-action-panel p:not(.eyebrow-text) {
+  color: var(--color-text-secondary);
+  font-weight: 700;
+}
+
+.attendance-action-times {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 120px));
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.attendance-action-times div {
+  padding: 12px;
+  border: 1px solid var(--color-divider);
+  background: var(--color-surface);
+}
+
+.attendance-action-times dt {
+  color: var(--color-text-secondary);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.attendance-action-times dd {
+  margin-top: 4px;
+  color: var(--color-primary-deep);
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.attendance-action-buttons {
+  display: grid;
+  gap: 10px;
+  min-width: 140px;
+}
+
+.button-primary.secondary {
+  background: var(--color-success);
+}
+
+.button-primary:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
 .level-card,
 .attendance-card,
 .education-card,
@@ -106,10 +171,23 @@
   font-size: 18px;
 }
 
+.notification-actions {
+  display: grid;
+  justify-items: end;
+  gap: 8px;
+}
+
+.notification-actions .outline-button {
+  min-width: 64px;
+  padding: 8px 10px;
+  text-align: center;
+}
+
 @media (max-width: 960px) {
   .level-dashboard,
   .attendance-summary,
-  .education-grid {
+  .education-grid,
+  .attendance-action-panel {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -118,6 +196,7 @@
   .level-dashboard,
   .attendance-summary,
   .education-grid,
+  .attendance-action-panel,
   .notification-card {
     grid-template-columns: 1fr;
   }

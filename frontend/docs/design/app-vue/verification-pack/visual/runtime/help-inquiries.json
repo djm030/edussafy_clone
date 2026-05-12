@@ -1,6 +1,6 @@
 {
   "routePath": "/help/inquiries",
-  "url": "http://127.0.0.1:5174/help/inquiries",
+  "url": "http://127.0.0.1:5175/help/inquiries",
   "referenceScreenshot": "../../edu_screnshot/09_helpdesk_inquiry_empty.png",
   "referenceExists": true,
   "referenceSize": {

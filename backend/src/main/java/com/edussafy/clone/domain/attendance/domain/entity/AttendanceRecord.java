@@ -76,4 +76,18 @@ public class AttendanceRecord extends BaseTimeEntity {
         if (checkOutType != null) this.checkOutType = checkOutType;
         if (note != null) this.note = note;
     }
+
+    public void checkIn(LocalDateTime checkInAt, AttendanceStatus status, String checkInType, String note) {
+        this.checkInAt = checkInAt;
+        this.status = status;
+        this.checkInType = checkInType;
+        this.note = note;
+    }
+
+    public void checkOut(LocalDateTime checkOutAt, AttendanceStatus status, String checkOutType, String note) {
+        this.checkOutAt = checkOutAt;
+        this.status = status;
+        this.checkOutType = checkOutType;
+        this.note = note;
+    }
 }

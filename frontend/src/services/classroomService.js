@@ -1,5 +1,5 @@
 import { isApiEnabled } from '../api/client'
-import { classroomApi, learningApi, tasksApi } from '../api/modules'
+import { bookmarksApi, classroomApi, learningApi, tasksApi } from '../api/modules'
 import {
   allReplayItems,
   classroomPhases,
@@ -81,6 +81,7 @@ function normalizeLearningResource(item) {
     views: item.viewCount ?? item.views ?? 0,
     likes: item.likeCount ?? item.likes ?? 0,
     bookmarks: item.bookmarkCount ?? item.bookmarks ?? 0,
+    downloads: item.downloadCount ?? item.downloads ?? 0,
     textbook: item.isTextbook ?? type === 'FILE',
     label: item.label || category
   }
@@ -191,6 +192,30 @@ export async function loadLearningResourceDetail(resourceId) {
 
   const resource = await learningApi.content(resourceId)
   return normalizeLearningResource(resource)
+}
+
+export async function likeLearningResource(resourceId) {
+  if (!isApiEnabled) return null
+
+  return learningApi.like(resourceId)
+}
+
+export async function downloadLearningResource(resourceId) {
+  if (!isApiEnabled) return null
+
+  return learningApi.download(resourceId)
+}
+
+export async function completeLearningResource(resourceId) {
+  if (!isApiEnabled) return null
+
+  return learningApi.complete(resourceId)
+}
+
+export async function bookmarkLearningResource(resourceId) {
+  if (!isApiEnabled) return null
+
+  return bookmarksApi.add({ targetType: 'LEARNING_CONTENT', targetId: Number(resourceId) })
 }
 
 export async function loadReplayItems() {

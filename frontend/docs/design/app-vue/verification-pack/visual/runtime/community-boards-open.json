@@ -1,6 +1,6 @@
 {
   "routePath": "/community/boards/open",
-  "url": "http://127.0.0.1:5174/community/boards/open",
+  "url": "http://127.0.0.1:5175/community/boards/open",
   "referenceScreenshot": "../../edu_screnshot/06_open_board.png",
   "referenceExists": true,
   "referenceSize": {

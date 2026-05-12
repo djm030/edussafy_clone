@@ -1,6 +1,6 @@
 {
   "routePath": "/classroom/required-learning",
-  "url": "http://127.0.0.1:5174/classroom/required-learning",
+  "url": "http://127.0.0.1:5175/classroom/required-learning",
   "referenceScreenshot": "../../edu_screnshot/15_classroom_required_learning_empty.png",
   "referenceExists": true,
   "referenceSize": {

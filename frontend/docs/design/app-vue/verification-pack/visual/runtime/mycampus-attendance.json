@@ -1,6 +1,6 @@
 {
   "routePath": "/mycampus/attendance",
-  "url": "http://127.0.0.1:5174/mycampus/attendance",
+  "url": "http://127.0.0.1:5175/mycampus/attendance",
   "referenceScreenshot": "../../edu_screnshot/26_mycampus_attendance_status.png",
   "referenceExists": true,
   "referenceSize": {
@@ -17,10 +17,10 @@
   "capturedSize": {
     "width": 1326,
     "height": 2123,
-    "bytes": 161246
+    "bytes": 167162
   },
   "chromeStatus": 0,
-  "stderr": "161246 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mycampus-attendance.png\r\n",
+  "stderr": "167162 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\mycampus-attendance.png\r\n",
   "visualParityClaim": false,
   "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
 }

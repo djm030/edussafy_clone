@@ -57,8 +57,12 @@ export const boardsApi = {
   createPost: (boardCode, payload) => post(`/boards/${boardCode}/posts`, payload),
   updatePost: (boardCode, postId, payload) => patch(`/boards/${boardCode}/posts/${postId}`, payload),
   deletePost: (boardCode, postId) => remove(`/boards/${boardCode}/posts/${postId}`),
+  likePost: (boardCode, postId) => post(`/boards/${boardCode}/posts/${postId}/like`),
+  unlikePost: (boardCode, postId) => remove(`/boards/${boardCode}/posts/${postId}/like`),
   comments: (boardCode, postId) => get(`/boards/${boardCode}/posts/${postId}/comments`),
-  createComment: (boardCode, postId, payload) => post(`/boards/${boardCode}/posts/${postId}/comments`, payload)
+  createComment: (boardCode, postId, payload) => post(`/boards/${boardCode}/posts/${postId}/comments`, payload),
+  updateComment: (commentId, payload) => patch(`/comments/${commentId}`, payload),
+  deleteComment: (commentId) => remove(`/comments/${commentId}`)
 }
 
 export const classroomApi = {
@@ -76,6 +80,8 @@ export const learningApi = {
   required: (params) => get('/learning/contents/required', params),
   openLearning: (params) => get('/learning/contents/open-learning', params),
   content: (contentId) => get(`/learning/contents/${contentId}`),
+  like: (contentId) => post(`/learning/contents/${contentId}/like`),
+  download: (contentId) => post(`/learning/contents/${contentId}/download`),
   saveProgress: (contentId, payload) => post(`/learning/contents/${contentId}/progress`, payload),
   complete: (contentId) => post(`/learning/contents/${contentId}/complete`),
   myProgress: (params) => get('/learning/progress/my', params),
@@ -90,6 +96,9 @@ export const tasksApi = {
 }
 
 export const attendanceApi = {
+  today: () => get('/attendance/today'),
+  checkIn: () => post('/attendance/check-in'),
+  checkOut: () => post('/attendance/check-out'),
   my: (params) => get('/attendance/my', params),
   detail: (attendanceRecordId) => get(`/attendance/my/${attendanceRecordId}`),
   appeal: (payload) => post('/attendance/appeals', payload),

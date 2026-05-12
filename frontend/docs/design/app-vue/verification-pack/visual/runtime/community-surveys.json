@@ -1,6 +1,6 @@
 {
   "routePath": "/community/surveys",
-  "url": "http://127.0.0.1:5174/community/surveys",
+  "url": "http://127.0.0.1:5175/community/surveys",
   "referenceScreenshot": "../../edu_screnshot/05_community_survey.png",
   "referenceExists": true,
   "referenceSize": {

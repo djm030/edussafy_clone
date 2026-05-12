@@ -21,7 +21,18 @@ const attendanceLabels = {
   LATE: '지각',
   NORMAL: '출석',
   OUT: '외출',
+  OUTING: '외출',
+  PENDING: '대기',
   PRESENT: '출석'
+}
+
+const statusTones = {
+  ABSENT: 'slate',
+  EARLY_LEAVE: 'green',
+  LATE: 'slate',
+  NORMAL: 'blue',
+  OUTING: 'green',
+  PENDING: 'slate'
 }
 
 const pointTypeLabels = {
@@ -53,6 +64,13 @@ function dayFromDate(value) {
   const date = new Date(value)
   if (Number.isNaN(date.getTime())) return ''
   return new Intl.DateTimeFormat('ko-KR', { weekday: 'short' }).format(date).replace('요일', '')
+}
+
+function dayLabelFromDate(value) {
+  if (!value) return ''
+  const date = new Date(value)
+  if (Number.isNaN(date.getTime())) return ''
+  return new Intl.DateTimeFormat('ko-KR', { weekday: 'long' }).format(date)
 }
 
 function normalizeProfile(user) {
@@ -110,8 +128,39 @@ function normalizeAttendanceDay(item) {
     date: formatDate(date),
     day: item.dayLabel || item.day || dayFromDate(date),
     status: attendanceLabels[status] || item.statusLabel || status,
+    statusTone: statusTones[status] || 'slate',
     checkIn: formatTime(item.checkInAt || item.checkIn),
     checkOut: formatTime(item.checkOutAt || item.checkOut)
+  }
+}
+
+function normalizeTodayAttendance(today) {
+  const record = today?.record || null
+  const date = record?.attendanceDate || today?.currentDate || new Date().toISOString().slice(0, 10)
+  const status = record?.status || 'PENDING'
+  const checkedIn = Boolean(record?.checkInAt)
+  const checkedOut = Boolean(record?.checkOutAt)
+  const defaultMessage = checkedOut
+    ? '오늘 출석 처리가 완료되었습니다.'
+    : checkedIn
+      ? '퇴실 처리를 진행해 주세요.'
+      : '아직 출석 전입니다.'
+
+  return {
+    record,
+    date: formatDate(date),
+    rawDate: date,
+    dayLabel: dayLabelFromDate(date),
+    checkInAt: formatTime(record?.checkInAt),
+    checkOutAt: formatTime(record?.checkOutAt),
+    status,
+    statusLabel: attendanceLabels[status] || status,
+    statusTone: statusTones[status] || 'slate',
+    canCheckIn: Boolean(today?.canCheckIn),
+    canCheckOut: Boolean(today?.canCheckOut),
+    nextAction: today?.nextAction || (checkedOut ? 'DONE' : checkedIn ? 'CHECK_OUT' : 'CHECK_IN'),
+    message: today?.message || defaultMessage,
+    serverTime: formatTime(today?.currentTime)
   }
 }
 
@@ -301,15 +350,67 @@ export async function loadLevelPointsData() {
 }
 
 export async function loadAttendanceData() {
-  if (!isApiEnabled) return { attendanceSummary, attendanceDays }
+  if (!isApiEnabled) {
+    return {
+      attendanceSummary,
+      attendanceDays,
+      todayAttendance: normalizeTodayAttendance({
+        record: {
+          attendanceDate: new Date().toISOString().slice(0, 10),
+          checkInAt: '08:51',
+          checkOutAt: null,
+          status: 'NORMAL'
+        },
+        canCheckIn: false,
+        canCheckOut: true,
+        nextAction: 'CHECK_OUT',
+        message: '오늘 출석이 정상 처리되었습니다.'
+      })
+    }
+  }
 
-  const page = await attendanceApi.my({ page: 0, size: 7 })
+  const [today, page] = await Promise.all([
+    attendanceApi.today(),
+    attendanceApi.my({ page: 0, size: 7 })
+  ])
   const days = pageItems(page).map(normalizeAttendanceDay)
 
   return {
     attendanceSummary: summarizeAttendance(days),
-    attendanceDays: days
+    attendanceDays: days,
+    todayAttendance: normalizeTodayAttendance(today)
   }
+}
+
+export async function loadTodayAttendanceData() {
+  if (!isApiEnabled) {
+    return normalizeTodayAttendance({
+      record: {
+        attendanceDate: new Date().toISOString().slice(0, 10),
+        checkInAt: '08:51',
+        checkOutAt: null,
+        status: 'NORMAL'
+      },
+      canCheckIn: false,
+      canCheckOut: true,
+      nextAction: 'CHECK_OUT',
+      message: '오늘 출석이 정상 처리되었습니다.'
+    })
+  }
+
+  return normalizeTodayAttendance(await attendanceApi.today())
+}
+
+export async function checkInAttendanceData() {
+  if (!isApiEnabled) return loadTodayAttendanceData()
+
+  return normalizeTodayAttendance(await attendanceApi.checkIn())
+}
+
+export async function checkOutAttendanceData() {
+  if (!isApiEnabled) return loadTodayAttendanceData()
+
+  return normalizeTodayAttendance(await attendanceApi.checkOut())
 }
 
 export async function loadPledgesData() {

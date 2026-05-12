@@ -1,6 +1,6 @@
 {
   "routePath": "/classroom/my-replays",
-  "url": "http://127.0.0.1:5174/classroom/my-replays",
+  "url": "http://127.0.0.1:5175/classroom/my-replays",
   "referenceScreenshot": "../../edu_screnshot/13_classroom_my_lecture_replay.png",
   "referenceExists": true,
   "referenceSize": {

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-12T01:24:03.678Z",
+  "generatedAt": "2026-05-12T02:07:13.309Z",
   "generator": "frontend/docs/design/app-vue/scripts/build-contract-inventory.mjs",
   "constraints": {
     "noVisualDomainImplementationBeforePhase0Artifacts": true,

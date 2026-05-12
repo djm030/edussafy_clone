@@ -1,6 +1,6 @@
 {
   "routePath": "/notifications",
-  "url": "http://127.0.0.1:5174/notifications",
+  "url": "http://127.0.0.1:5175/notifications",
   "referenceScreenshot": "../../edu_screnshot/36_notification_inbox.png",
   "referenceExists": true,
   "referenceSize": {
@@ -17,10 +17,10 @@
   "capturedSize": {
     "width": 1326,
     "height": 1492,
-    "bytes": 146289
+    "bytes": 146991
   },
   "chromeStatus": 0,
-  "stderr": "146289 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\notifications.png\r\n",
+  "stderr": "146991 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\notifications.png\r\n",
   "visualParityClaim": false,
   "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
 }

@@ -1,6 +1,6 @@
 {
   "routePath": "/mentoring/meetups/info",
-  "url": "http://127.0.0.1:5174/mentoring/meetups/info",
+  "url": "http://127.0.0.1:5175/mentoring/meetups/info",
   "referenceScreenshot": "../../edu_screnshot/22_mentoring_meetup_info_empty.png",
   "referenceExists": true,
   "referenceSize": {
