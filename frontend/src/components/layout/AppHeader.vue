@@ -2,7 +2,12 @@
   <header class="global-header">
     <div class="header-inner">
       <RouterLink class="brand" to="/dashboard" aria-label="SSAFY EDU home">
-        <span class="brand-mark">SS</span>
+        <span class="brand-mark" aria-hidden="true">
+          <span>SAMSUNG</span>
+          <span>SW</span>
+          <span>AI ACADEMY</span>
+          <span>FOR YOUTH</span>
+        </span>
         <span class="brand-copy">
           <strong>SSAFY EDU</strong>
           <small>SAMSUNG SW·AI ACADEMY FOR YOUTH</small>
@@ -25,6 +30,8 @@
           <span class="notification-dot">{{ notificationCount }}</span>
           알림
         </RouterLink>
+        <span class="user-avatar" aria-hidden="true"></span>
+        <span class="user-number">1545067</span>
         <RouterLink class="profile-chip" to="/mycampus/profile">김싸피</RouterLink>
         <RouterLink class="logout-link" to="/login" @click="logout">로그아웃</RouterLink>
       </div>

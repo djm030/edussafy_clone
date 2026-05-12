@@ -197,3 +197,26 @@
     padding-left: 22px;
   }
 }
+
+/* Screenshot parity pass overrides after feature CSS imports */
+.primary-nav-link {
+  white-space: nowrap;
+}
+
+.dashboard-page > .dashboard-state.warning {
+  display: none;
+}
+
+.dashboard-page .attendance-card {
+  padding: 42px 20px;
+  border: 0;
+  background: #ffe94a;
+}
+
+.dashboard-page .attendance-card .dashboard-card-header h2 {
+  color: #111;
+}
+
+.dashboard-page .attendance-card .attendance-status-row {
+  background: #fff;
+}

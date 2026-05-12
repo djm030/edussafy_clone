@@ -216,3 +216,150 @@
   gap: 16px;
   text-align: center;
 }
+
+/* Screenshot parity pass: global shell */
+.global-header {
+  position: relative;
+  min-height: 101px;
+}
+
+.header-inner {
+  width: 100%;
+  min-height: 101px;
+  padding-left: 40px;
+  padding-right: 310px;
+  grid-template-columns: 120px 1fr auto;
+  gap: 26px;
+}
+
+.brand {
+  min-width: 86px;
+  align-self: stretch;
+}
+
+.brand-mark {
+  position: relative;
+  width: 86px;
+  height: 62px;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1px;
+  padding: 8px 8px 8px 10px;
+  color: #fff;
+  background: #050505;
+  font-size: 8px;
+  font-weight: 900;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+}
+
+.brand-mark::after {
+  content: '';
+  position: absolute;
+  right: -24px;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-left: 24px solid #050505;
+  border-top: 12px solid transparent;
+}
+
+.brand-copy {
+  display: none;
+}
+
+.primary-nav {
+  height: 101px;
+  justify-content: flex-start;
+  gap: 52px;
+}
+
+.primary-nav-link {
+  padding: 0;
+  font-size: 16px;
+  font-weight: 700;
+  border-bottom: 0;
+}
+
+.primary-nav-link:hover,
+.primary-nav-link.router-link-active {
+  color: #111;
+  border-bottom-color: transparent;
+}
+
+.header-tools {
+  height: 101px;
+  gap: 10px;
+  color: #111;
+}
+
+.notification-link {
+  font-weight: 700;
+}
+
+.notification-dot {
+  min-width: 18px;
+  height: 18px;
+  background: #f03a54;
+}
+
+.user-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #f0d5c5, #b47e65);
+  box-shadow: inset 0 -7px 0 rgb(0 0 0 / 8%);
+}
+
+.user-number {
+  font-size: 12px;
+  line-height: 1;
+}
+
+.profile-chip {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  color: #1b7ed0;
+  background: transparent;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.logout-link {
+  color: #111;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.service-strip {
+  top: 0;
+  right: 0;
+  height: 101px;
+}
+
+.service-link {
+  width: 94px;
+  padding: 0 12px;
+  align-content: center;
+  font-size: 16px;
+  line-height: 1.15;
+  text-decoration: underline;
+  text-underline-offset: 14px;
+  text-decoration-thickness: 2px;
+}
+
+.service-link-light {
+  background: #e8edf2;
+}
+
+.app-footer {
+  margin-top: 72px;
+}
+
+.app-footer-inner {
+  min-height: 156px;
+}

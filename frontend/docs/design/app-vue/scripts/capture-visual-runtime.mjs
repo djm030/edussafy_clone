@@ -47,22 +47,28 @@ for (const row of selectedRows) {
   const routeSlug = slug(row.routePath)
   const outputPath = path.join(screenshotDir, `${routeSlug}.png`)
   const url = `${baseUrl}${routeToUrl(row.routePath)}`
+  const referencePath = resolveReference(row.screenshotPath)
+  const referenceSize = referencePath ? pngSize(referencePath) : null
+  const viewport = {
+    width: referenceSize?.width || 1326,
+    height: referenceSize?.height || 1600
+  }
   const args = [
     '--headless=new',
     '--disable-gpu',
     '--hide-scrollbars',
-    '--window-size=1440,1600',
+    `--window-size=${viewport.width},${viewport.height}`,
     `--screenshot=${outputPath}`,
     url
   ]
   const run = spawnSync(chromePath, args, { encoding: 'utf8', timeout: 60000 })
-  const referencePath = resolveReference(row.screenshotPath)
   const result = {
     routePath: row.routePath,
     url,
     referenceScreenshot: row.screenshotPath,
     referenceExists: referencePath ? existsSync(referencePath) : false,
-    referenceSize: referencePath ? pngSize(referencePath) : null,
+    referenceSize,
+    captureViewport: viewport,
     capturedScreenshot: path.relative(repoRoot, outputPath),
     captured: run.status === 0 && existsSync(outputPath),
     capturedSize: pngSize(outputPath),
