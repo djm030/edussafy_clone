@@ -229,8 +229,8 @@ function normalizeLearningItem(item) {
   const statusLabel = completed ? '수강완료' : (progressRate ? `${progressRate}% 진행` : item.statusLabel || '학습중')
 
   return {
-    id: content.id || content.contentId || item.contentId || item.id,
-    title: content.title || item.title || '이러닝 콘텐츠',
+    id: content.contentId || item.contentId || content.id || item.id,
+    title: content.title || item.contentTitle || item.title || '이러닝 콘텐츠',
     breadcrumb: [category, type],
     description: content.description || content.summary || item.description || item.summary || content.title || '학습 콘텐츠입니다.',
     progress: statusLabel,
@@ -380,6 +380,7 @@ export async function loadAttendanceData() {
     return {
       attendanceSummary,
       attendanceDays,
+      attendanceCalendarDays: attendanceDays,
       todayAttendance: normalizeTodayAttendance({
         record: {
           attendanceDate: new Date().toISOString().slice(0, 10),
@@ -400,13 +401,17 @@ export async function loadAttendanceData() {
     attendanceApi.monthly().catch(() => attendanceApi.my({ page: 0, size: 31 }))
   ])
   const monthlyDays = Array.isArray(attendance?.days) ? attendance.days : null
+  const calendarDays = monthlyDays
+    ? monthlyDays.map(normalizeMonthlyAttendanceDay)
+    : pageItems(attendance).map(normalizeAttendanceDay)
   const days = monthlyDays
-    ? monthlyDays.map(normalizeMonthlyAttendanceDay).filter((item) => item.status !== '-')
+    ? calendarDays.filter((item) => item.status !== '-')
     : pageItems(attendance).map(normalizeAttendanceDay)
 
   return {
     attendanceSummary: attendance?.summary ? normalizeMonthlySummary(attendance.summary) : summarizeAttendance(days),
     attendanceDays: days,
+    attendanceCalendarDays: calendarDays,
     todayAttendance: normalizeTodayAttendance(attendance?.today || today)
   }
 }

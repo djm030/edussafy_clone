@@ -26,7 +26,7 @@ import { getApiErrorMessage, isApiEnabled } from '../../api/client'
 import { loadPledgesData } from '../../services/mycampusService'
 
 const pledges = ref(isApiEnabled ? [] : mockPledges)
-const isLoading = ref(false)
+const isLoading = ref(true)
 const loadError = ref('')
 
 const columns = [

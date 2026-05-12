@@ -30,7 +30,7 @@ import { ruleCategories as mockRuleCategories } from '../../data/boards'
 import { loadHelpRules } from '../../services/boardService'
 
 const ruleCategories = ref(isApiEnabled ? [] : mockRuleCategories)
-const isLoading = ref(false)
+const isLoading = ref(true)
 const loadError = ref('')
 
 onMounted(async () => {

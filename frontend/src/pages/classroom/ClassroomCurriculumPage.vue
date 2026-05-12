@@ -79,7 +79,7 @@ import { loadCurriculumData } from '../../services/classroomService'
 const classroomPhases = ref(isApiEnabled ? [] : mockClassroomPhases)
 const curriculumWeeks = ref(isApiEnabled ? [] : mockCurriculumWeeks)
 const curriculumDays = ref(isApiEnabled ? [] : mockCurriculumDays)
-const isLoading = ref(false)
+const isLoading = ref(true)
 const loadError = ref('')
 
 onMounted(async () => {

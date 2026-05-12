@@ -41,7 +41,7 @@ import { loadSurveys } from '../../services/surveyService'
 import { matchesText } from '../../utils/listControls'
 
 const surveys = ref(isApiEnabled ? [] : mockSurveys)
-const isLoading = ref(false)
+const isLoading = ref(true)
 const loadError = ref('')
 const searchQuery = ref('')
 const searchFilter = ref('전체')

@@ -38,8 +38,10 @@ function dayLabel(value) {
 }
 
 function normalizeQuest(item) {
-  const status = item.status === 'OPEN' || item.status === 'PENDING' ? '예정' : '완료'
-  const result = item.resultStatus || item.myResultStatus || item.result || (status === '예정' ? '시험기간' : '제출완료')
+  const rawStatus = item.myResultStatus || item.resultStatus || item.status
+  const isSubmitted = ['SUBMITTED', 'COMPLETED', 'GRADED', 'PASS', 'FAIL', 'EVALUATED'].includes(rawStatus)
+  const status = isSubmitted || !['OPEN', 'PENDING', 'SCHEDULED'].includes(rawStatus) ? '완료' : '예정'
+  const result = item.resultStatus || item.myResultStatus || item.result || (isSubmitted ? '제출완료' : '시험기간')
   const answerData = item.answerData || item.myAnswerData || {}
 
   return {

@@ -39,9 +39,9 @@ const email = ref(isApiEnabled ? '' : 'student@ssafy.com')
 const password = ref(isApiEnabled ? '' : '0000')
 const isSubmitting = ref(false)
 const message = ref(route.query.reason === 'session-expired'
-  ? '??? ???????. ?? ???? ???.'
+  ? '세션이 만료되었습니다. 다시 로그인해 주세요.'
   : route.query.reason === 'session-required'
-    ? '??? ? ??? ? ????.'
+    ? '로그인이 필요한 페이지입니다.'
     : '')
 const messageTone = ref('')
 const helperText = computed(() => isApiEnabled

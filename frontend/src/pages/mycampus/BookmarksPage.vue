@@ -18,7 +18,7 @@
         <select aria-label="Sort"><option>최근 찜한순</option></select>
       </div>
 
-      <div v-if="bookmarkedItems.length" class="resource-results">
+      <div v-if="!isLoading && bookmarkedItems.length" class="resource-results">
         <RouterLink v-for="item in bookmarkedItems" :key="item.id" class="resource-result-item" :to="`/classroom/resources/${item.id}`">
           <div class="resource-image"><span>{{ item.label }}</span><small>{{ item.status }}</small></div>
           <div class="resource-body">
@@ -33,7 +33,7 @@
           </div>
         </RouterLink>
       </div>
-      <EmptyState v-else message="찜한 학습자료가 없습니다." />
+      <EmptyState v-else-if="!isLoading" message="찜한 학습자료가 없습니다." />
     </main>
   </div>
 </template>
@@ -48,7 +48,7 @@ import { getApiErrorMessage, isApiEnabled } from '../../api/client'
 import { loadBookmarkData } from '../../services/mycampusService'
 
 const bookmarkedItems = ref(isApiEnabled ? [] : mockBookmarkedItems)
-const isLoading = ref(false)
+const isLoading = ref(true)
 const loadError = ref('')
 
 onMounted(async () => {

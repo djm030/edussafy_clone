@@ -37,7 +37,7 @@ import { getApiErrorMessage, isApiEnabled } from '../../api/client'
 import { deleteNotification, loadNotifications, markAllNotificationsRead, markNotificationRead } from '../../services/notificationsService'
 
 const notifications = ref(isApiEnabled ? [] : mockNotifications)
-const isLoading = ref(false)
+const isLoading = ref(true)
 const isSubmitting = ref(false)
 const loadError = ref('')
 

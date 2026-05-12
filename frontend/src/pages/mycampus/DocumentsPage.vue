@@ -29,7 +29,7 @@ import { getApiErrorMessage, isApiEnabled } from '../../api/client'
 import { loadDocumentsData } from '../../services/mycampusService'
 
 const documents = ref(isApiEnabled ? [] : mockDocuments)
-const isLoading = ref(false)
+const isLoading = ref(true)
 const loadError = ref('')
 
 const columns = [

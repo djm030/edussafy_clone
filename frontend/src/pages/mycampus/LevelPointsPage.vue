@@ -47,7 +47,7 @@ import { loadLevelPointsData } from '../../services/mycampusService'
 const emptyPointSummary = { ...mockPointSummary, level: '-', rank: '-', totalPoints: 0, scholarshipPoints: 0, nextLevel: 0 }
 const pointSummary = ref(isApiEnabled ? emptyPointSummary : mockPointSummary)
 const pointHistory = ref(isApiEnabled ? [] : mockPointHistory)
-const isLoading = ref(false)
+const isLoading = ref(true)
 const loadError = ref('')
 
 const columns = [

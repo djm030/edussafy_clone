@@ -33,7 +33,7 @@ import { loadHelpFaqs } from '../../services/boardService'
 import { matchesText } from '../../utils/listControls'
 
 const faqs = ref(isApiEnabled ? [] : mockFaqs)
-const isLoading = ref(false)
+const isLoading = ref(true)
 const loadError = ref('')
 const searchQuery = ref('')
 const searchFilter = ref('전체')

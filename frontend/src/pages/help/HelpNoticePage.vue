@@ -32,7 +32,7 @@ import { loadHelpNoticePosts } from '../../services/boardService'
 import { matchesText, pageNumbers, paginateItems } from '../../utils/listControls'
 
 const notices = ref(isApiEnabled ? [] : mockNotices)
-const isLoading = ref(false)
+const isLoading = ref(true)
 const loadError = ref('')
 const searchQuery = ref('')
 const searchFilter = ref('전체')

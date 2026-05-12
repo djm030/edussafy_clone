@@ -74,7 +74,7 @@ const route = useRoute()
 const post = ref({})
 const comments = ref([])
 const commentBody = ref('')
-const isLoading = ref(false)
+const isLoading = ref(true)
 const isSubmitting = ref(false)
 const loadError = ref('')
 

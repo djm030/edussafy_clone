@@ -36,7 +36,7 @@ import { loadClassMembers } from '../../services/userListService'
 import { matchesText } from '../../utils/listControls'
 
 const classMembers = ref(isApiEnabled ? [] : mockClassMembers)
-const isLoading = ref(false)
+const isLoading = ref(true)
 const loadError = ref('')
 const searchQuery = ref('')
 const searchFilter = ref('서울 6반')

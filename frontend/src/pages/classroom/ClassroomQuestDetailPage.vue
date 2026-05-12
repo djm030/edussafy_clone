@@ -12,7 +12,7 @@ import { loadQuestDetail, submitQuestAnswer } from '../../services/classroomServ
 const route = useRoute()
 const quest = ref(isApiEnabled ? null : questItems[0])
 const answer = ref('')
-const isLoading = ref(false)
+const isLoading = ref(true)
 const isSubmitting = ref(false)
 const loadError = ref('')
 const submitMessage = ref('')

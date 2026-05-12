@@ -52,7 +52,7 @@ import { loadSurveyDetail, submitSurveyAnswers } from '../../services/surveyServ
 const route = useRoute()
 const survey = ref({ title: '설문조사', description: '', questions: [] })
 const answers = reactive({})
-const isLoading = ref(false)
+const isLoading = ref(true)
 const isSubmitting = ref(false)
 const message = ref('')
 const messageTone = ref('')

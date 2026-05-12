@@ -31,7 +31,7 @@ import { getApiErrorMessage, isApiEnabled } from '../../api/client'
 import { loadEducationStatusData } from '../../services/mycampusService'
 
 const educationStatus = ref(isApiEnabled ? [] : mockEducationStatus)
-const isLoading = ref(false)
+const isLoading = ref(true)
 const loadError = ref('')
 
 onMounted(async () => {

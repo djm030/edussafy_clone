@@ -6,7 +6,7 @@
     <p v-if="isLoading" class="dashboard-state">Quest/평가 목록을 확인하고 있습니다.</p>
     <p v-else-if="loadError" class="dashboard-state warning">{{ loadError }}</p>
 
-    <div v-if="visibleQuestItems.length" class="quest-evaluation-list">
+    <div v-if="!isLoading && visibleQuestItems.length" class="quest-evaluation-list">
       <RouterLink v-for="item in visibleQuestItems" :key="item.id" class="quest-evaluation-card" :to="`/classroom/quests/${item.id}`">
         <strong class="quest-type">{{ item.type }}</strong>
         <span :class="['status-circle', item.status === '예정' ? 'pending' : 'done']">{{ item.status }}</span>
@@ -25,9 +25,9 @@
         </div>
       </RouterLink>
     </div>
-    <p v-else class="dashboard-state">표시할 Quest/평가 항목이 없습니다.</p>
+    <p v-else-if="!isLoading" class="dashboard-state">표시할 Quest/평가 항목이 없습니다.</p>
 
-    <PaginationBar v-model:active="currentPage" :pages="pages" />
+    <PaginationBar v-if="!isLoading" v-model:active="currentPage" :pages="pages" />
   </section>
 </template>
 
@@ -43,7 +43,7 @@ import { loadQuestItems } from '../../services/classroomService'
 import { pageNumbers, paginateItems } from '../../utils/listControls'
 
 const questItems = ref(isApiEnabled ? [] : mockQuestItems)
-const isLoading = ref(false)
+const isLoading = ref(true)
 const loadError = ref('')
 const currentPage = ref(1)
 const pageSize = 5

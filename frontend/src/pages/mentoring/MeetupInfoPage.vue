@@ -12,7 +12,7 @@
       <p v-if="isLoading" class="dashboard-state">간담회 신청 내역을 확인하고 있습니다.</p>
       <p v-else-if="loadError" class="dashboard-state warning">{{ loadError }}</p>
 
-      <section v-if="participations.length" class="meetup-grid" aria-label="My meetup applications">
+      <section v-if="!isLoading && participations.length" class="meetup-grid" aria-label="My meetup applications">
         <article v-for="meetup in participations" :key="meetup.id" class="meetup-card">
           <span :class="['table-status', meetup.statusTone]">{{ meetup.status }}</span>
           <h2>{{ meetup.title }}</h2>
@@ -28,7 +28,7 @@
           </div>
         </article>
       </section>
-      <EmptyState v-else message="신청한 간담회 정보가 없습니다." />
+      <EmptyState v-else-if="!isLoading" message="신청한 간담회 정보가 없습니다." />
 
       <section class="info-panel">
         <h2>안내</h2>
@@ -47,7 +47,7 @@ import { mentoringTabs } from '../../constants/navigation'
 import { loadMyMeetupParticipations } from '../../services/surveyService'
 
 const participations = ref([])
-const isLoading = ref(false)
+const isLoading = ref(true)
 const loadError = ref('')
 
 onMounted(async () => {

@@ -1,5 +1,6 @@
 package com.edussafy.clone.domain.user.application;
 
+import com.edussafy.clone.domain.notification.domain.repository.NotificationRepository;
 import com.edussafy.clone.domain.user.domain.entity.User;
 import com.edussafy.clone.domain.user.domain.entity.UserStat;
 import com.edussafy.clone.domain.user.domain.enums.UserRole;
@@ -24,6 +25,7 @@ public class UserQueryService {
     private final UserRepository userRepository;
     private final UserStatRepository userStatRepository;
     private final UserDtoMapper userDtoMapper;
+    private final NotificationRepository notificationRepository;
 
     public UserMeResponse getMe(Long userId) {
         User user = getUser(userId);
@@ -33,9 +35,10 @@ public class UserQueryService {
     public CampusSummaryResponse getCampusSummary(Long userId) {
         User user = getUser(userId);
         UserMeResponse userResponse = userDtoMapper.toMeResponse(user);
+        long unreadNotificationCount = notificationRepository.countByReceiverAndIsReadFalse(user);
         return userStatRepository.findByUser(user)
-                .map(stat -> toCampusSummary(userResponse, stat))
-                .orElseGet(() -> defaultCampusSummary(userResponse));
+                .map(stat -> toCampusSummary(userResponse, stat, unreadNotificationCount))
+                .orElseGet(() -> defaultCampusSummary(userResponse, unreadNotificationCount));
     }
 
     public PageResponse<UserMeResponse> searchStudents(String keyword, Integer generation, String region, Integer classNo, int page, int size) {
@@ -71,7 +74,7 @@ public class UserQueryService {
         return userRepository.findById(userId).orElseThrow(UserNotFoundException::new);
     }
 
-    private CampusSummaryResponse toCampusSummary(UserMeResponse userResponse, UserStat stat) {
+    private CampusSummaryResponse toCampusSummary(UserMeResponse userResponse, UserStat stat, long unreadNotificationCount) {
         return new CampusSummaryResponse(
                 userResponse,
                 stat.getScholarshipPoint(),
@@ -80,11 +83,11 @@ public class UserQueryService {
                 stat.getLevelNo(),
                 stat.getAttendanceRate(),
                 stat.getCompletedLearningCount(),
-                0L
+                unreadNotificationCount
         );
     }
 
-    private CampusSummaryResponse defaultCampusSummary(UserMeResponse userResponse) {
-        return new CampusSummaryResponse(userResponse, 0, 0, "Lv.1", 1, 0.0, 0, 0L);
+    private CampusSummaryResponse defaultCampusSummary(UserMeResponse userResponse, long unreadNotificationCount) {
+        return new CampusSummaryResponse(userResponse, 0, 0, "Lv.1", 1, 0.0, 0, unreadNotificationCount);
     }
 }

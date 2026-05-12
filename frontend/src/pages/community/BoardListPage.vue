@@ -51,7 +51,7 @@ const columns = [
 ]
 
 const items = ref(isApiEnabled ? [] : normalizeIds(props.variant === 'anonymous' ? anonymousPosts : openBoardPosts))
-const isLoading = ref(false)
+const isLoading = ref(true)
 const loadError = ref('')
 const searchQuery = ref('')
 const searchFilter = ref('전체')

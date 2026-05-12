@@ -20,7 +20,7 @@
       <select aria-label="Sort"><option>최신등록순</option></select>
     </div>
 
-    <div v-if="filteredItems.length" class="resource-results">
+    <div v-if="!isLoading && filteredItems.length" class="resource-results">
       <RouterLink v-for="item in filteredItems" :key="item.id" class="resource-result-item" :to="`/classroom/resources/${item.id}`">
         <div class="resource-image"><span>{{ item.label }}</span><small>REQ</small></div>
         <div class="resource-body">
@@ -30,7 +30,7 @@
         </div>
       </RouterLink>
     </div>
-    <EmptyState v-else message="표시할 필수학습이 없습니다." />
+    <EmptyState v-else-if="!isLoading" message="표시할 필수학습이 없습니다." />
   </section>
 </template>
 
@@ -44,7 +44,7 @@ import { loadLearningResources } from '../../services/classroomService'
 import { matchesText } from '../../utils/listControls'
 
 const requiredItems = ref([])
-const isLoading = ref(false)
+const isLoading = ref(true)
 const loadError = ref('')
 const searchQuery = ref('')
 const selectedCategory = ref('전체')

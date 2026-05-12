@@ -1,17 +1,14 @@
 import { routePaths } from './routes'
 
-export const primaryNavigation = [
-  { label: '마이캠퍼스', path: routePaths.mycampusLevelPoints },
-  { label: '강의실', path: routePaths.classroomMyReplays },
-  { label: '커뮤니티', path: routePaths.communitySurveys },
-  { label: 'HELP DESK', path: routePaths.helpNotice },
-  { label: '멘토링 게시판', path: routePaths.mentoringStories }
-]
-
-export const serviceLinks = [
-  { label: 'JOB SSAFY', tone: 'light', url: 'https://job.ssafy.com' },
-  { label: 'SSAFY GIT', tone: 'blue', url: 'https://project.ssafy.com' },
-  { label: 'Meeting! SSAFY', tone: 'green', url: 'https://meeting.ssafy.com' }
+export const mycampusTabs = [
+  { label: '장학포인트/레벨', path: routePaths.mycampusLevelPoints },
+  { label: '출결현황', path: routePaths.mycampusAttendance },
+  { label: '학습중 이러닝', path: routePaths.mycampusElearning },
+  { label: '찜한 목록', path: routePaths.mycampusBookmarks },
+  { label: '서류 제출', path: routePaths.mycampusDocuments },
+  { label: '서약서', path: routePaths.mycampusPledges },
+  { label: '교육현황', path: routePaths.mycampusEducationStatus },
+  { label: '회원정보', path: routePaths.mycampusProfile }
 ]
 
 export const classroomTabs = [
@@ -21,6 +18,12 @@ export const classroomTabs = [
   { label: 'Quest/평가', path: routePaths.classroomQuests },
   { label: '필수학습', path: routePaths.classroomRequiredLearning },
   { label: '학습자료', path: routePaths.classroomResources }
+]
+
+export const serviceLinks = [
+  { label: 'JOB SSAFY', tone: 'light', url: 'https://job.ssafy.com' },
+  { label: 'SSAFY GIT', tone: 'blue', url: 'https://project.ssafy.com' },
+  { label: 'Meeting! SSAFY', tone: 'green', url: 'https://meeting.ssafy.com' }
 ]
 
 export const communityTabs = [
@@ -44,4 +47,12 @@ export const mentoringTabs = [
   { label: '간담회 신청', path: routePaths.mentoringMeetupApply },
   { label: '간담회 정보', path: routePaths.mentoringMeetupInfo },
   { label: '간담회 후기', path: routePaths.mentoringMeetupReviews }
+]
+
+export const primaryNavigation = [
+  { label: '마이캠퍼스', path: routePaths.mycampusLevelPoints, children: mycampusTabs },
+  { label: '강의실', path: routePaths.classroomMyReplays, children: classroomTabs },
+  { label: '커뮤니티', path: routePaths.communitySurveys, children: communityTabs },
+  { label: 'HELP DESK', path: routePaths.helpNotice, children: helpTabs },
+  { label: '멘토링 게시판', path: routePaths.mentoringStories, children: mentoringTabs }
 ]

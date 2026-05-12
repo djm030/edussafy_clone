@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.BDDMockito.given;
 
+import com.edussafy.clone.domain.notification.domain.repository.NotificationRepository;
 import com.edussafy.clone.domain.user.domain.entity.User;
 import com.edussafy.clone.domain.user.domain.entity.UserStat;
 import com.edussafy.clone.domain.user.domain.enums.UserRole;
@@ -29,6 +30,9 @@ class UserQueryServiceTest {
     @Mock
     private UserStatRepository userStatRepository;
 
+    @Mock
+    private NotificationRepository notificationRepository;
+
     private final UserDtoMapper userDtoMapper = Mappers.getMapper(UserDtoMapper.class);
 
     @Test
@@ -45,7 +49,8 @@ class UserQueryServiceTest {
                 .build();
         given(userRepository.findById(1L)).willReturn(Optional.of(user));
         given(userStatRepository.findByUser(user)).willReturn(Optional.of(stat));
-        UserQueryService service = new UserQueryService(userRepository, userStatRepository, userDtoMapper);
+        given(notificationRepository.countByReceiverAndIsReadFalse(user)).willReturn(2L);
+        UserQueryService service = newService();
 
         CampusSummaryResponse response = service.getCampusSummary(1L);
 
@@ -56,7 +61,7 @@ class UserQueryServiceTest {
         assertThat(response.levelNo()).isEqualTo(3);
         assertThat(response.attendanceRate()).isEqualTo(96.5);
         assertThat(response.completedLearningCount()).isEqualTo(12);
-        assertThat(response.unreadNotificationCount()).isZero();
+        assertThat(response.unreadNotificationCount()).isEqualTo(2L);
     }
 
     @Test
@@ -64,7 +69,8 @@ class UserQueryServiceTest {
         User user = user();
         given(userRepository.findById(1L)).willReturn(Optional.of(user));
         given(userStatRepository.findByUser(user)).willReturn(Optional.empty());
-        UserQueryService service = new UserQueryService(userRepository, userStatRepository, userDtoMapper);
+        given(notificationRepository.countByReceiverAndIsReadFalse(user)).willReturn(1L);
+        UserQueryService service = newService();
 
         CampusSummaryResponse response = service.getCampusSummary(1L);
 
@@ -75,15 +81,20 @@ class UserQueryServiceTest {
         assertThat(response.levelNo()).isEqualTo(1);
         assertThat(response.attendanceRate()).isEqualTo(0.0);
         assertThat(response.completedLearningCount()).isZero();
+        assertThat(response.unreadNotificationCount()).isEqualTo(1L);
     }
 
     @Test
     void getCampusSummary_throws_when_user_not_found() {
         given(userRepository.findById(999L)).willReturn(Optional.empty());
-        UserQueryService service = new UserQueryService(userRepository, userStatRepository, userDtoMapper);
+        UserQueryService service = newService();
 
         assertThatThrownBy(() -> service.getCampusSummary(999L))
                 .isInstanceOf(UserNotFoundException.class);
+    }
+
+    private UserQueryService newService() {
+        return new UserQueryService(userRepository, userStatRepository, userDtoMapper, notificationRepository);
     }
 
     private User user() {

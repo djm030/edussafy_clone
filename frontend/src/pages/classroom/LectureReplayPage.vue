@@ -17,7 +17,7 @@ const props = defineProps({
 
 const route = useRoute()
 const allReplayItems = ref(isApiEnabled ? [] : mockAllReplayItems)
-const isLoading = ref(false)
+const isLoading = ref(true)
 const loadError = ref('')
 const selectedSessionId = computed(() => typeof route.query.sessionId === 'string' ? route.query.sessionId : '')
 const visibleReplayItems = computed(() => {

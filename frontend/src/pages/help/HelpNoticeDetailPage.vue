@@ -36,7 +36,7 @@ import { loadHelpNoticeDetail } from '../../services/boardService'
 
 const route = useRoute()
 const notice = ref({})
-const isLoading = ref(false)
+const isLoading = ref(true)
 const loadError = ref('')
 
 function fallbackNotice() {

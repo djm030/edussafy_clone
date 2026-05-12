@@ -42,7 +42,7 @@ import { loadInquiryDetail } from '../../services/userListService'
 
 const route = useRoute()
 const inquiry = ref({})
-const isLoading = ref(false)
+const isLoading = ref(true)
 const loadError = ref('')
 
 async function loadInquiry() {

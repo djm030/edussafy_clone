@@ -38,7 +38,7 @@ import { meetups as mockMeetups } from '../../data/boards'
 import { loadMeetupApplications, submitMeetupApplication } from '../../services/surveyService'
 
 const meetups = ref(isApiEnabled ? [] : mockMeetups)
-const isLoading = ref(false)
+const isLoading = ref(true)
 const isSubmitting = ref(null)
 const message = ref('')
 const messageTone = ref('')

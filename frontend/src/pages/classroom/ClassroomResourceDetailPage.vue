@@ -16,7 +16,7 @@ import {
 
 const route = useRoute()
 const resource = ref(isApiEnabled ? null : learningResources[0])
-const isLoading = ref(false)
+const isLoading = ref(true)
 const isSubmitting = ref(false)
 const loadError = ref('')
 const message = ref('')

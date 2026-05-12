@@ -56,7 +56,7 @@ import { matchesText } from '../../utils/listControls'
 
 const route = useRoute()
 const learningResources = ref(isApiEnabled ? [] : mockLearningResources)
-const isLoading = ref(false)
+const isLoading = ref(true)
 const loadError = ref('')
 const searchQuery = ref('')
 const textbookOnly = ref(false)

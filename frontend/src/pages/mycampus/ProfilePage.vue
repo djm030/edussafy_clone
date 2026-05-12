@@ -33,7 +33,7 @@ import { mycampusTabs, profileInfo } from '../../data/mycampus'
 import { loadProfileData, saveProfileData } from '../../services/mycampusService'
 
 const profile = ref({ ...profileInfo })
-const isLoading = ref(false)
+const isLoading = ref(true)
 const isSaving = ref(false)
 const message = ref('')
 const messageTone = ref('')

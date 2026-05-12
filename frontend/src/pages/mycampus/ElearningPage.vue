@@ -13,12 +13,12 @@
       <p v-if="isLoading" class="dashboard-state">이러닝 학습 목록을 확인하고 있습니다.</p>
       <p v-else-if="loadError" class="dashboard-state warning">{{ loadError }}</p>
 
-      <div class="list-toolbar">
+      <div v-if="!isLoading" class="list-toolbar">
         <strong>총 <span>{{ eLearningItems.length }}</span>건</strong>
         <select aria-label="Sort"><option>최근 학습순</option></select>
       </div>
 
-      <div v-if="eLearningItems.length" class="resource-results">
+      <div v-if="!isLoading && eLearningItems.length" class="resource-results">
         <RouterLink v-for="item in eLearningItems" :key="item.id" class="resource-result-item" :to="`/classroom/resources/${item.id}`">
           <div class="resource-image"><span>{{ item.label }}</span><small>{{ item.status }}</small></div>
           <div class="resource-body">
@@ -33,7 +33,7 @@
           </div>
         </RouterLink>
       </div>
-      <EmptyState v-else message="학습중인 이러닝이 없습니다." />
+      <EmptyState v-else-if="!isLoading" message="학습중인 이러닝이 없습니다." />
     </main>
   </div>
 </template>
@@ -48,7 +48,7 @@ import { getApiErrorMessage, isApiEnabled } from '../../api/client'
 import { loadElearningData } from '../../services/mycampusService'
 
 const eLearningItems = ref(isApiEnabled ? [] : mockElearningItems)
-const isLoading = ref(false)
+const isLoading = ref(true)
 const loadError = ref('')
 
 onMounted(async () => {

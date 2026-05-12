@@ -35,7 +35,7 @@ import { loadInquiries } from '../../services/userListService'
 import { matchesText, pageNumbers, paginateItems } from '../../utils/listControls'
 
 const inquiries = ref(isApiEnabled ? [] : mockInquiries)
-const isLoading = ref(false)
+const isLoading = ref(true)
 const loadError = ref('')
 const searchQuery = ref('')
 const searchFilter = ref('전체')
