@@ -1,0 +1,93 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "SSAFY EDU home" [ref=e6] [cursor=pointer]:
+        - /url: /dashboard
+        - generic [ref=e7]:
+          - generic [ref=e8]: SAMSUNG
+          - generic [ref=e9]: SW
+          - generic [ref=e10]: AI ACADEMY
+          - generic [ref=e11]: FOR YOUTH
+      - navigation "Primary navigation" [ref=e12]:
+        - link "마이캠퍼스" [ref=e14] [cursor=pointer]:
+          - /url: /mycampus/level-points
+        - link "강의실" [ref=e16] [cursor=pointer]:
+          - /url: /classroom/my-replays
+        - link "커뮤니티" [ref=e18] [cursor=pointer]:
+          - /url: /community/surveys
+        - link "HELP DESK" [ref=e20] [cursor=pointer]:
+          - /url: /help/notice
+        - link "멘토링 게시판" [ref=e22] [cursor=pointer]:
+          - /url: /mentoring/stories
+      - generic "User tools" [ref=e23]:
+        - generic [ref=e24]:
+          - link "JOB SSAFY" [ref=e25] [cursor=pointer]:
+            - /url: https://job.ssafy.com
+          - link "SSAFY GIT" [ref=e26] [cursor=pointer]:
+            - /url: https://project.ssafy.com
+          - link "Meeting! SSAFY" [ref=e27] [cursor=pointer]:
+            - /url: https://meeting.ssafy.com
+        - link "Notifications" [ref=e28] [cursor=pointer]:
+          - /url: /notifications
+          - generic [ref=e30]: "0"
+        - button "1300001 김싸피님" [ref=e33] [cursor=pointer]:
+          - generic [ref=e34]: "1300001"
+          - generic [ref=e35]: 김싸피님
+          - generic [ref=e36]: ⌄
+  - main [ref=e37]:
+    - generic [ref=e38]:
+      - heading "마이캠퍼스" [level=1] [ref=e41]
+      - navigation "MyCampus sections" [ref=e42]:
+        - link "레벨&장학포인트" [ref=e43] [cursor=pointer]:
+          - /url: /mycampus/level-points
+        - link "출석현황" [ref=e44] [cursor=pointer]:
+          - /url: /mycampus/attendance
+        - link "학습중 이러닝" [ref=e45] [cursor=pointer]:
+          - /url: /mycampus/elearning
+        - link "찜한 목록" [ref=e46] [cursor=pointer]:
+          - /url: /mycampus/bookmarks
+        - link "서류제출" [ref=e47] [cursor=pointer]:
+          - /url: /mycampus/documents
+        - link "교육생 서약서" [ref=e48] [cursor=pointer]:
+          - /url: /mycampus/pledges
+      - main [ref=e49]:
+        - generic [ref=e50]:
+          - paragraph [ref=e51]: E-Learning
+          - heading "학습중 이러닝" [level=1] [ref=e52]
+          - paragraph [ref=e53]: 진행 중인 이러닝과 학습 상태를 확인합니다.
+        - generic [ref=e54]:
+          - strong [ref=e55]: 총 1건
+          - combobox "Sort" [ref=e56]:
+            - option "최근 학습순" [selected]
+        - link "E-LEARNING 완료 Spring Boot API Smoke Test 수강완료 카테고리 이러닝 > 학습자료 학습 콘텐츠입니다. DATE - VIEW 0 BOOKMARK 0" [ref=e58] [cursor=pointer]:
+          - /url: /classroom/resources/1
+          - generic [ref=e59]:
+            - generic [ref=e60]: E-LEARNING
+            - generic [ref=e61]: 완료
+          - generic [ref=e62]:
+            - heading "Spring Boot API Smoke Test 수강완료" [level=2] [ref=e63]:
+              - text: Spring Boot API Smoke Test
+              - generic [ref=e64]: 수강완료
+            - paragraph [ref=e65]:
+              - text: 카테고리
+              - strong [ref=e66]: 이러닝 > 학습자료
+            - paragraph [ref=e67]: 학습 콘텐츠입니다.
+            - list [ref=e68]:
+              - listitem [ref=e69]: DATE -
+              - listitem [ref=e70]: VIEW 0
+              - listitem [ref=e71]: BOOKMARK 0
+  - link "Open inquiry form" [ref=e72] [cursor=pointer]:
+    - /url: /help/inquiries/write
+    - text: ✦ 상담
+  - contentinfo [ref=e73]:
+    - generic [ref=e74]:
+      - generic [ref=e75]: SSAFY EDU
+      - generic [ref=e76]:
+        - navigation "Footer links" [ref=e77]:
+          - link "이용약관" [ref=e78] [cursor=pointer]:
+            - /url: /403
+          - generic [ref=e79]: "|"
+          - link "개인정보처리방침" [ref=e80] [cursor=pointer]:
+            - /url: /403
+        - paragraph [ref=e81]: 본 사이트의 콘텐츠는 저작권법의 보호를 받는 바 무단 전재, 복사, 배포 등을 금합니다.
+        - generic [ref=e82]: Copyright © SAMSUNG All Rights Reserved.

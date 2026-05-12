@@ -1,6 +1,6 @@
 {
   "routePath": "/dashboard",
-  "url": "http://127.0.0.1:5176/dashboard?visualAccessToken=<redacted>&visualRefreshToken=<redacted>",
+  "url": "http://127.0.0.1:5173/dashboard",
   "referenceScreenshot": "../../edu_screnshot/01_home_dashboard.png",
   "referenceExists": true,
   "referenceSize": {
@@ -12,16 +12,16 @@
     "width": 1326,
     "height": 2254
   },
-  "capturedScreenshot": "frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\dashboard.png",
+  "capturedScreenshot": "frontend/docs/design/app-vue/verification-pack/screenshots/runtime/dashboard.png",
   "captured": true,
   "capturedSize": {
     "width": 1326,
     "height": 2254,
-    "bytes": 193289
+    "bytes": 365220
   },
   "chromeStatus": 0,
-  "stderr": "193289 bytes written to file C:\\Users\\kwanyeol\\Desktop\\ssafyclone\\frontend\\docs\\design\\app-vue\\verification-pack\\screenshots\\runtime\\dashboard.png\r\n",
-  "authenticatedCapture": true,
+  "stderr": "365220 bytes written to file /Users/baeggwan-yeol/Desktop/eduSSAFY/frontend/docs/design/app-vue/verification-pack/screenshots/runtime/dashboard.png\n",
+  "authenticatedCapture": false,
   "visualParityClaim": false,
   "verdict": "CAPTURED_DIMENSION_CHECK_ONLY"
 }

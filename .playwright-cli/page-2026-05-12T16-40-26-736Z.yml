@@ -1,0 +1,228 @@
+- generic [ref=e3]:
+  - banner [ref=e22]:
+    - generic [ref=e23]:
+      - link "SSAFY EDU home" [ref=e24] [cursor=pointer]:
+        - /url: /dashboard
+        - generic [ref=e25]:
+          - generic [ref=e26]: SAMSUNG
+          - generic [ref=e27]: SW
+          - generic [ref=e28]: AI ACADEMY
+          - generic [ref=e29]: FOR YOUTH
+      - navigation "Primary navigation" [ref=e30]:
+        - link "마이캠퍼스" [ref=e32] [cursor=pointer]:
+          - /url: /mycampus/level-points
+        - link "강의실" [ref=e34] [cursor=pointer]:
+          - /url: /classroom/my-replays
+        - generic [ref=e35]:
+          - link "커뮤니티" [ref=e36] [cursor=pointer]:
+            - /url: /community/surveys
+          - menu [ref=e225]:
+            - menuitem "설문조사" [ref=e226] [cursor=pointer]
+            - menuitem "열린 게시판" [ref=e227] [cursor=pointer]
+            - menuitem "익명 게시판" [ref=e228] [cursor=pointer]
+            - menuitem "우리반 보기" [ref=e229] [cursor=pointer]
+        - link "HELP DESK" [ref=e38] [cursor=pointer]:
+          - /url: /help/notice
+        - link "멘토링 게시판" [ref=e40] [cursor=pointer]:
+          - /url: /mentoring/stories
+      - generic "User tools" [ref=e41]:
+        - generic [ref=e42]:
+          - link "JOB SSAFY" [ref=e43] [cursor=pointer]:
+            - /url: https://job.ssafy.com
+          - link "SSAFY GIT" [ref=e44] [cursor=pointer]:
+            - /url: https://project.ssafy.com
+          - link "Meeting! SSAFY" [ref=e45] [cursor=pointer]:
+            - /url: https://meeting.ssafy.com
+        - link "Notifications" [ref=e46] [cursor=pointer]:
+          - /url: /notifications
+          - generic [ref=e48]: "0"
+        - button "1300001 김싸피님" [ref=e51] [cursor=pointer]:
+          - generic [ref=e52]: "1300001"
+          - generic [ref=e53]: 김싸피님
+          - generic [ref=e54]: ⌄
+  - main [ref=e4]:
+    - generic [ref=e55]:
+      - generic [ref=e56]:
+        - article [ref=e57]:
+          - generic [ref=e58]:
+            - heading "출석체크 & 현황" [level=2] [ref=e59]
+            - link "＋" [ref=e60] [cursor=pointer]:
+              - /url: /mycampus/attendance
+          - generic [ref=e61]:
+            - generic [ref=e62]: 05. 13
+            - strong [ref=e63]: 수요일
+          - generic [ref=e64]:
+            - strong [ref=e65]: 오늘 출석 상태를 확인했습니다.
+            - generic [ref=e66]: 대기
+          - generic [ref=e67]:
+            - generic [ref=e68]:
+              - term [ref=e69]: 입실
+              - definition [ref=e70]: "-"
+            - generic [ref=e71]:
+              - term [ref=e72]: 퇴실
+              - definition [ref=e73]: "-"
+          - generic [ref=e74]:
+            - button "입실" [disabled] [ref=e75]
+            - button "퇴실" [disabled] [ref=e76]
+        - region "학습 요약" [ref=e77]:
+          - generic [ref=e78]:
+            - generic [ref=e79]:
+              - generic [ref=e80]: 장학포인트
+              - strong [ref=e81]: 120 P
+            - generic [ref=e82]:
+              - generic [ref=e83]: 레벨&경험치
+              - strong [ref=e84]: 350 EXP
+            - generic [ref=e85]:
+              - generic [ref=e86]: ☺
+              - generic [ref=e87]:
+                - strong [ref=e88]: 새싹 개발자
+                - generic [ref=e89]: Lv.2
+            - generic [ref=e90]:
+              - generic [ref=e91]: S
+              - generic [ref=e94]: G
+          - generic [ref=e95]:
+            - heading "알림 0" [level=2] [ref=e96]:
+              - text: 알림
+              - strong [ref=e97]: "0"
+            - list [ref=e98]:
+              - listitem [ref=e99]:
+                - generic [ref=e100]: 필독
+                - strong [ref=e101]: 데모 환경 준비 완료
+                - generic [ref=e102]: ⌂ 2026-05-11
+      - generic [ref=e103]:
+        - article [ref=e104]:
+          - generic [ref=e105]:
+            - heading "주차별 커리큘럼" [level=2] [ref=e106]
+            - link "＋" [ref=e107] [cursor=pointer]:
+              - /url: /classroom/curriculum
+          - list "주차별 커리큘럼 미리보기" [ref=e108]:
+            - listitem [ref=e109]:
+              - strong [ref=e112]: 2026-05-11(월)
+              - generic [ref=e113]: 09:00~12:00
+              - article [ref=e114]:
+                - generic [ref=e115]: ●과정 미정
+                - generic [ref=e116]:
+                  - text: 과목 미정
+                  - strong [ref=e117]: 백엔드 API 실행 검증
+                  - paragraph [ref=e118]: 최강사
+                - link "교재" [ref=e119] [cursor=pointer]:
+                  - /url: /classroom/resources?sessionId=1&type=textbook
+            - listitem [ref=e120]:
+              - strong [ref=e123]: 2026-05-11(월)
+              - generic [ref=e124]: 시간 미정
+              - article [ref=e125]:
+                - generic [ref=e126]: ●과정 미정
+                - generic [ref=e127]:
+                  - text: 과목 미정
+                  - strong [ref=e128]: API 검증 다시보기
+                  - paragraph [ref=e129]: 최강사
+                - link "교재" [ref=e130] [cursor=pointer]:
+                  - /url: /classroom/resources?sessionId=2&type=textbook
+        - article [ref=e131]:
+          - generic [ref=e132]:
+            - heading "Quest/평가" [level=2] [ref=e133]
+            - link "＋" [ref=e134] [cursor=pointer]:
+              - /url: /classroom/quests
+          - list [ref=e135]:
+            - listitem [ref=e136]:
+              - link "제출 Quest API 통합 검증 Quest" [ref=e137] [cursor=pointer]:
+                - /url: /classroom/quests/1
+                - generic [ref=e138]: 제출
+                - generic [ref=e139]:
+                  - generic [ref=e140]: Quest
+                  - strong [ref=e141]: API 통합 검증 Quest
+      - generic [ref=e142]:
+        - article [ref=e143]:
+          - generic [ref=e144]:
+            - heading "학습자료‹ ›" [level=2] [ref=e145]
+            - link "＋" [ref=e146] [cursor=pointer]:
+              - /url: /classroom/resources
+          - generic [ref=e147]:
+            - link "FILE 커리큘럼 > 교재 Docker Compose 운영 노트 Docker/Nginx 구성 확인용 자료 ◎ 6 ♡ 0 ♡ 0" [ref=e148] [cursor=pointer]:
+              - /url: /classroom/resources/2
+              - generic [ref=e149]:
+                - generic [ref=e150]: FILE
+                - generic [ref=e151]: ▣
+              - generic [ref=e152]:
+                - generic [ref=e153]: 커리큘럼 > 교재
+                - strong [ref=e154]: Docker Compose 운영 노트
+                - paragraph [ref=e155]: Docker/Nginx 구성 확인용 자료
+                - generic [ref=e156]:
+                  - generic [ref=e157]: ◎ 6
+                  - generic [ref=e158]: ♡ 0
+                  - generic [ref=e159]: ♡ 0
+            - link "VIDEO 커리큘럼 > 교재 Spring Boot API Smoke Test 통합 실행 검증용 영상 콘텐츠 ◎ 12 ♡ 1 ♡ 0" [ref=e160] [cursor=pointer]:
+              - /url: /classroom/resources/1
+              - generic [ref=e161]:
+                - generic [ref=e162]: VIDEO
+                - generic [ref=e163]: ▣
+              - generic [ref=e164]:
+                - generic [ref=e165]: 커리큘럼 > 교재
+                - strong [ref=e166]: Spring Boot API Smoke Test
+                - paragraph [ref=e167]: 통합 실행 검증용 영상 콘텐츠
+                - generic [ref=e168]:
+                  - generic [ref=e169]: ◎ 12
+                  - generic [ref=e170]: ♡ 1
+                  - generic [ref=e171]: ♡ 0
+        - article [ref=e172]:
+          - generic [ref=e173]:
+            - heading "학습중 이러닝" [level=2] [ref=e174]
+            - link "＋" [ref=e175] [cursor=pointer]:
+              - /url: /mycampus/elearning
+          - link "Spring Boot API Smoke Test 수강완료" [ref=e177] [cursor=pointer]:
+            - /url: /classroom/resources/1
+            - strong [ref=e178]: Spring Boot API Smoke Test
+            - generic [ref=e179]: 수강완료
+        - article [ref=e180]:
+          - generic [ref=e181]:
+            - heading "SSAFYcial" [level=2] [ref=e182]
+            - link "＋" [ref=e183] [cursor=pointer]:
+              - /url: /mentoring/stories
+          - list
+        - article [ref=e184]:
+          - generic [ref=e185]:
+            - heading "자유게시판" [level=2] [ref=e186]
+            - link "＋" [ref=e187] [cursor=pointer]:
+              - /url: /community/boards/open
+          - list [ref=e188]:
+            - listitem [ref=e189]:
+              - link "Browser click community 김싸피" [ref=e190] [cursor=pointer]:
+                - /url: /community/boards/open/19
+                - strong [ref=e191]: Browser click community
+                - generic [ref=e192]: 김싸피
+            - listitem [ref=e194]:
+              - link "Browser click community 김싸피" [ref=e195] [cursor=pointer]:
+                - /url: /community/boards/open/17
+                - strong [ref=e196]: Browser click community
+                - generic [ref=e197]: 김싸피
+            - listitem [ref=e199]:
+              - link "Runtime smoke community post 김싸피" [ref=e200] [cursor=pointer]:
+                - /url: /community/boards/open/13
+                - strong [ref=e201]: Runtime smoke community post
+                - generic [ref=e202]: 김싸피
+            - listitem [ref=e204]:
+              - link "Runtime smoke community post 김싸피" [ref=e205] [cursor=pointer]:
+                - /url: /community/boards/open/11
+                - strong [ref=e206]: Runtime smoke community post
+                - generic [ref=e207]: 김싸피
+      - complementary [ref=e209]:
+        - strong [ref=e210]: 공지사항
+        - generic [ref=e211]: Role smoke notice
+        - time [ref=e212]: 2026-05-12
+        - link "▣ e-book" [ref=e213] [cursor=pointer]:
+          - /url: /403
+  - link "Open inquiry form" [ref=e214] [cursor=pointer]:
+    - /url: /help/inquiries/write
+    - text: ✦ 상담
+  - contentinfo [ref=e215]:
+    - generic [ref=e216]:
+      - generic [ref=e217]: SSAFY EDU
+      - generic [ref=e218]:
+        - navigation "Footer links" [ref=e219]:
+          - link "이용약관" [ref=e220] [cursor=pointer]:
+            - /url: /403
+          - generic [ref=e221]: "|"
+          - link "개인정보처리방침" [ref=e222] [cursor=pointer]:
+            - /url: /403
+        - paragraph [ref=e223]: 본 사이트의 콘텐츠는 저작권법의 보호를 받는 바 무단 전재, 복사, 배포 등을 금합니다.
+        - generic [ref=e224]: Copyright © SAMSUNG All Rights Reserved.

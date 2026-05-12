@@ -1,0 +1,19 @@
+- main [ref=e4]:
+  - main [ref=e5]:
+    - region "Login form" [ref=e6]:
+      - generic [ref=e7]:
+        - generic [ref=e8]: SS
+        - generic [ref=e9]:
+          - strong [ref=e10]: SSAFY EDU
+          - paragraph [ref=e11]: SAMSUNG SW·AI ACADEMY FOR YOUTH
+      - generic [ref=e12]:
+        - heading "로그인" [level=1] [ref=e13]
+        - paragraph [ref=e14]: 백엔드 계정으로 로그인합니다.
+        - generic [ref=e15]:
+          - generic [ref=e16]: 이메일
+          - textbox "이메일" [ref=e17]
+        - generic [ref=e18]:
+          - generic [ref=e19]: 비밀번호
+          - textbox "비밀번호" [ref=e20]
+        - paragraph [ref=e21]: 로그인이 필요한 페이지입니다.
+        - button "로그인" [ref=e22] [cursor=pointer]

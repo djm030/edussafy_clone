@@ -1,0 +1,53 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "SSAFY EDU home" [ref=e6] [cursor=pointer]:
+        - /url: /dashboard
+        - generic [ref=e7]:
+          - generic [ref=e8]: SAMSUNG
+          - generic [ref=e9]: SW
+          - generic [ref=e10]: AI ACADEMY
+          - generic [ref=e11]: FOR YOUTH
+      - navigation "Primary navigation" [ref=e12]:
+        - link "마이캠퍼스" [ref=e14] [cursor=pointer]:
+          - /url: /mycampus/level-points
+        - link "강의실" [ref=e16] [cursor=pointer]:
+          - /url: /classroom/my-replays
+        - link "커뮤니티" [ref=e18] [cursor=pointer]:
+          - /url: /community/surveys
+        - link "HELP DESK" [ref=e20] [cursor=pointer]:
+          - /url: /help/notice
+        - link "멘토링 게시판" [ref=e22] [cursor=pointer]:
+          - /url: /mentoring/stories
+      - generic "User tools" [ref=e23]:
+        - generic [ref=e24]:
+          - link "JOB SSAFY" [ref=e25] [cursor=pointer]:
+            - /url: https://job.ssafy.com
+          - link "SSAFY GIT" [ref=e26] [cursor=pointer]:
+            - /url: https://project.ssafy.com
+          - link "Meeting! SSAFY" [ref=e27] [cursor=pointer]:
+            - /url: https://meeting.ssafy.com
+        - link "Notifications" [ref=e28] [cursor=pointer]:
+          - /url: /notifications
+          - generic [ref=e30]: "0"
+        - button "1300001 김싸피님" [ref=e33] [cursor=pointer]:
+          - generic [ref=e34]: "1300001"
+          - generic [ref=e35]: 김싸피님
+          - generic [ref=e36]: ⌄
+  - main [ref=e37]:
+    - paragraph [ref=e39]: 최신 대시보드 정보를 확인하고 있습니다.
+  - link "Open inquiry form" [ref=e40] [cursor=pointer]:
+    - /url: /help/inquiries/write
+    - text: ✦ 상담
+  - contentinfo [ref=e41]:
+    - generic [ref=e42]:
+      - generic [ref=e43]: SSAFY EDU
+      - generic [ref=e44]:
+        - navigation "Footer links" [ref=e45]:
+          - link "이용약관" [ref=e46] [cursor=pointer]:
+            - /url: /403
+          - generic [ref=e47]: "|"
+          - link "개인정보처리방침" [ref=e48] [cursor=pointer]:
+            - /url: /403
+        - paragraph [ref=e49]: 본 사이트의 콘텐츠는 저작권법의 보호를 받는 바 무단 전재, 복사, 배포 등을 금합니다.
+        - generic [ref=e50]: Copyright © SAMSUNG All Rights Reserved.
