@@ -31,6 +31,7 @@ import PageHero from '../../components/ui/PageHero.vue'
 import SectionTabs from '../../components/ui/SectionTabs.vue'
 import { communityTabs, mentoringTabs } from '../../constants/navigation'
 import { anonymousPosts, openBoardPosts, mentoringPosts } from '../../data/boards'
+import { isApiEnabled } from '../../api/client'
 import { loadCommunityPostDetail, loadMentoringPostDetail } from '../../services/boardService'
 
 const props = defineProps({
@@ -72,6 +73,12 @@ async function loadPost() {
       ? await loadMentoringPostDetail(current.value.variant, route.params.id)
       : await loadCommunityPostDetail(current.value.variant, route.params.id)
   } catch (error) {
+    if (isApiEnabled) {
+      post.value = {}
+      loadError.value = 'Post detail could not be loaded from the API.'
+      console.warn(error)
+      return
+    }
     const fallback = fallbackPost()
     post.value = {
       ...fallback,

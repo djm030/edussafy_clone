@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { mkdirSync, readdirSync, readFileSync, unlinkSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -26,11 +26,21 @@ function slug(value) {
   return String(value).replace(/^https?:\/\//, '').replace(/[^A-Za-z0-9]+/g, '-').replace(/^-|-$/g, '').toLowerCase() || 'root'
 }
 
+function artifactSlug(row) {
+  return row.endpoint.includes('{') ? slug(row.endpoint) : slug(row.endpointPath)
+}
+
 function redactHeaders(headers) {
   return Object.fromEntries(Object.entries(headers).map(([key, value]) => [key, key.toLowerCase() === 'authorization' ? 'Bearer <redacted>' : value]))
 }
 
-function endpointToPath(endpoint) {
+function endpointToPath(endpoint, sampleReplacements = {}) {
+  const boardPostMatch = endpoint.match(/^GET\s+(\/api\/v1\/boards\/([^/]+)\/posts\/)\{postId\}$/i)
+  if (boardPostMatch) {
+    const [, prefix, boardCode] = boardPostMatch
+    const postId = sampleReplacements[`boardPost:${boardCode}`]
+    if (postId) return `${prefix}${postId}`
+  }
   return endpoint.replace(/^GET\s+|^POST\s+|^PATCH\s+/i, '').replace(/\{([^}]+)\}/g, (_, key) => replacements[key] || '1')
 }
 
@@ -58,6 +68,11 @@ function shapeOf(value) {
   return Object.keys(value).slice(0, 12).join(',')
 }
 
+function collectionItems(value) {
+  if (Array.isArray(value)) return value
+  return value?.content || value?.items || value?.data || []
+}
+
 async function login() {
   const result = await request('/api/v1/auth/login', {
     method: 'POST',
@@ -83,6 +98,65 @@ async function getJson(pathname, token) {
     errorCode: result.body?.errorCode || null,
     message: result.body?.message || null
   }
+}
+
+async function findCategoryId(boardCode, token) {
+  const raw = await request(`/api/v1/boards/${boardCode}/categories`, {
+    headers: { Authorization: `Bearer ${token}` }
+  })
+  const data = raw.body?.data ?? raw.body
+  const items = collectionItems(data)
+  return items[0]?.id || items[0]?.categoryId || null
+}
+
+async function findBoardPostId(boardCode, token) {
+  const raw = await request(`/api/v1/boards/${boardCode}/posts`, {
+    headers: { Authorization: `Bearer ${token}` }
+  })
+  const data = raw.body?.data ?? raw.body
+  const items = collectionItems(data)
+  return items[0]?.id || items[0]?.postId || null
+}
+
+async function createBoardPost(boardCode, token) {
+  const categoryId = await findCategoryId(boardCode, token)
+  if (!categoryId) return null
+  const result = await request(`/api/v1/boards/${boardCode}/posts`, {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      categoryId,
+      title: `Runtime smoke ${boardCode} post`,
+      contentType: 'TEXT',
+      contentText: 'Runtime smoke evidence.',
+      contentHtml: null,
+      contentJson: null,
+      fileIds: []
+    })
+  })
+  return result.body?.data?.id || result.body?.id || null
+}
+
+async function resolveBoardPostSamples(endpoints, token) {
+  const boardCodes = new Set()
+  for (const endpoint of endpoints) {
+    const match = endpoint.match(/^GET\s+\/api\/v1\/boards\/([^/]+)\/posts\/\{postId\}$/i)
+    if (match) boardCodes.add(match[1])
+  }
+
+  const replacementsByBoard = {}
+  const sampleRows = []
+  for (const boardCode of boardCodes) {
+    let postId = await findBoardPostId(boardCode, token)
+    let source = 'existing-list'
+    if (!postId) {
+      postId = await createBoardPost(boardCode, token)
+      source = postId ? 'created-runtime-smoke-post' : 'unresolved'
+    }
+    if (postId) replacementsByBoard[`boardPost:${boardCode}`] = String(postId)
+    sampleRows.push({ boardCode, postId: postId ? String(postId) : null, source })
+  }
+  return { replacementsByBoard, sampleRows }
 }
 
 async function runFormChecks(token) {
@@ -138,17 +212,27 @@ async function runFormChecks(token) {
 const inventory = JSON.parse(readFileSync(inventoryPath, 'utf8'))
 const capturedAt = new Date().toISOString()
 mkdirSync(outDir, { recursive: true })
+for (const fileName of readdirSync(outDir)) {
+  if (fileName.endsWith('.api.json')) unlinkSync(path.join(outDir, fileName))
+}
 
 const loginResult = await login()
 const endpointRows = []
+let boardPostSamples = []
 if (loginResult.token) {
   const endpoints = new Map()
+  const endpointLabels = new Map()
   for (const row of inventory.canonicalRows) {
     for (const endpoint of row.apiEndpoints || []) {
       if (!endpoint || endpoint === 'N/A') continue
       if (methodOf(endpoint) !== 'GET') continue
-      endpoints.set(endpointToPath(endpoint), endpoint)
+      endpointLabels.set(endpoint, endpoint)
     }
+  }
+  const resolvedSamples = await resolveBoardPostSamples(endpointLabels.keys(), loginResult.token)
+  boardPostSamples = resolvedSamples.sampleRows
+  for (const endpoint of endpointLabels.keys()) {
+    endpoints.set(endpointToPath(endpoint, resolvedSamples.replacementsByBoard), endpoint)
   }
   for (const [pathname, endpoint] of endpoints) {
     const result = await getJson(pathname, loginResult.token)
@@ -179,13 +263,14 @@ const summary = {
     formCheckSuccesses: formRows.filter((row) => row.success).length
   },
   blocker: loginResult.token ? null : 'BLOCKED: real API login failed; API completion cannot be claimed.',
+  boardPostSamples,
   endpoints: endpointRows,
   formInteractions: formRows
 }
 
 writeFileSync(path.join(outDir, 'api-runtime-summary.json'), `${JSON.stringify(summary, null, 2)}\n`)
 for (const row of endpointRows) {
-  writeFileSync(path.join(outDir, `${slug(row.endpointPath)}.api.json`), `${JSON.stringify(row, null, 2)}\n`)
+  writeFileSync(path.join(outDir, `${artifactSlug(row)}.api.json`), `${JSON.stringify(row, null, 2)}\n`)
 }
 writeFileSync(path.join(outDir, 'form-interactions-runtime.json'), `${JSON.stringify({ capturedAt, rows: formRows }, null, 2)}\n`)
 console.log(JSON.stringify(summary, null, 2))

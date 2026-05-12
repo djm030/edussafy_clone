@@ -29,6 +29,7 @@ import { onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import PageHero from '../../components/ui/PageHero.vue'
 import SectionTabs from '../../components/ui/SectionTabs.vue'
+import { isApiEnabled } from '../../api/client'
 import { helpTabs } from '../../constants/navigation'
 import { notices } from '../../data/boards'
 import { loadHelpNoticeDetail } from '../../services/boardService'
@@ -52,6 +53,12 @@ async function loadNotice() {
   try {
     notice.value = await loadHelpNoticeDetail(route.params.id)
   } catch (error) {
+    if (isApiEnabled) {
+      notice.value = {}
+      loadError.value = 'Notice detail could not be loaded from the API.'
+      console.warn(error)
+      return
+    }
     notice.value = fallbackNotice()
     loadError.value = '공지 상세를 불러오지 못해 임시 데이터를 표시합니다.'
     console.warn(error)
