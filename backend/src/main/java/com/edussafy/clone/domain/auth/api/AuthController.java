@@ -4,6 +4,7 @@ import com.edussafy.clone.domain.auth.application.AuthService;
 import com.edussafy.clone.domain.auth.dto.request.LoginRequest;
 import com.edussafy.clone.domain.auth.dto.request.PasswordChangeRequest;
 import com.edussafy.clone.domain.auth.dto.request.PasswordResetTemporaryRequest;
+import com.edussafy.clone.domain.auth.dto.request.TokenRefreshRequest;
 import com.edussafy.clone.domain.auth.dto.response.LoginResponse;
 import com.edussafy.clone.domain.auth.dto.response.TemporaryPasswordResponse;
 import com.edussafy.clone.domain.user.application.UserQueryService;
@@ -30,6 +31,11 @@ public class AuthController {
     @PostMapping("/login")
     public ApiResponse<LoginResponse> login(@Valid @RequestBody LoginRequest request) {
         return ApiResponse.ok(authService.login(request));
+    }
+
+    @PostMapping("/refresh")
+    public ApiResponse<LoginResponse> refresh(@Valid @RequestBody TokenRefreshRequest request) {
+        return ApiResponse.ok(authService.refresh(request));
     }
 
     @PostMapping("/logout")

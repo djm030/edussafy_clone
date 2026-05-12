@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-12T02:07:13.309Z",
+  "generatedAt": "2026-05-12T02:40:21.874Z",
   "generator": "frontend/docs/design/app-vue/scripts/build-contract-inventory.mjs",
   "constraints": {
     "noVisualDomainImplementationBeforePhase0Artifacts": true,
@@ -259,7 +259,7 @@
       "component": "LoginPage",
       "props": "",
       "source": "router/index.js",
-      "line": 44
+      "line": 45
     },
     {
       "pathExpression": "'/'",
@@ -269,7 +269,7 @@
       "component": "",
       "props": "",
       "source": "router/index.js",
-      "line": 45
+      "line": 46
     },
     {
       "pathExpression": "routePaths.dashboard",
@@ -279,7 +279,7 @@
       "component": "DashboardPage",
       "props": "",
       "source": "router/index.js",
-      "line": 46
+      "line": 47
     },
     {
       "pathExpression": "routePaths.mycampusLevelPoints",
@@ -289,7 +289,7 @@
       "component": "LevelPointsPage",
       "props": "",
       "source": "router/index.js",
-      "line": 47
+      "line": 48
     },
     {
       "pathExpression": "routePaths.mycampusAttendance",
@@ -299,7 +299,7 @@
       "component": "AttendancePage",
       "props": "",
       "source": "router/index.js",
-      "line": 48
+      "line": 49
     },
     {
       "pathExpression": "routePaths.mycampusElearning",
@@ -309,7 +309,7 @@
       "component": "ElearningPage",
       "props": "",
       "source": "router/index.js",
-      "line": 49
+      "line": 50
     },
     {
       "pathExpression": "routePaths.mycampusBookmarks",
@@ -319,7 +319,7 @@
       "component": "BookmarksPage",
       "props": "",
       "source": "router/index.js",
-      "line": 50
+      "line": 51
     },
     {
       "pathExpression": "routePaths.mycampusDocuments",
@@ -329,7 +329,7 @@
       "component": "DocumentsPage",
       "props": "",
       "source": "router/index.js",
-      "line": 51
+      "line": 52
     },
     {
       "pathExpression": "routePaths.mycampusDocumentWrite",
@@ -339,7 +339,7 @@
       "component": "DocumentWritePage",
       "props": "",
       "source": "router/index.js",
-      "line": 52
+      "line": 53
     },
     {
       "pathExpression": "routePaths.mycampusPledges",
@@ -349,7 +349,7 @@
       "component": "PledgesPage",
       "props": "",
       "source": "router/index.js",
-      "line": 53
+      "line": 54
     },
     {
       "pathExpression": "routePaths.mycampusEducationStatus",
@@ -359,7 +359,7 @@
       "component": "EducationStatusPage",
       "props": "",
       "source": "router/index.js",
-      "line": 54
+      "line": 55
     },
     {
       "pathExpression": "routePaths.mycampusProfile",
@@ -369,7 +369,7 @@
       "component": "ProfilePage",
       "props": "",
       "source": "router/index.js",
-      "line": 55
+      "line": 56
     },
     {
       "pathExpression": "routePaths.mycampusPassword",
@@ -379,7 +379,7 @@
       "component": "PasswordPage",
       "props": "",
       "source": "router/index.js",
-      "line": 56
+      "line": 57
     },
     {
       "pathExpression": "routePaths.classroomMyReplays",
@@ -389,7 +389,7 @@
       "component": "LectureReplayPage",
       "props": "{ variant: 'my' }",
       "source": "router/index.js",
-      "line": 57
+      "line": 58
     },
     {
       "pathExpression": "routePaths.classroomAllReplays",
@@ -399,7 +399,7 @@
       "component": "LectureReplayPage",
       "props": "{ variant: 'all' }",
       "source": "router/index.js",
-      "line": 58
+      "line": 59
     },
     {
       "pathExpression": "routePaths.classroomCurriculum",
@@ -409,7 +409,7 @@
       "component": "ClassroomCurriculumPage",
       "props": "",
       "source": "router/index.js",
-      "line": 59
+      "line": 60
     },
     {
       "pathExpression": "routePaths.classroomQuests",
@@ -419,7 +419,7 @@
       "component": "ClassroomQuestListPage",
       "props": "",
       "source": "router/index.js",
-      "line": 60
+      "line": 61
     },
     {
       "pathExpression": "'/classroom/quests/:id'",
@@ -429,7 +429,7 @@
       "component": "ClassroomQuestDetailPage",
       "props": "",
       "source": "router/index.js",
-      "line": 61
+      "line": 62
     },
     {
       "pathExpression": "routePaths.classroomRequiredLearning",
@@ -439,7 +439,7 @@
       "component": "RequiredLearningPage",
       "props": "",
       "source": "router/index.js",
-      "line": 62
+      "line": 63
     },
     {
       "pathExpression": "routePaths.classroomResources",
@@ -449,7 +449,7 @@
       "component": "ClassroomResourcesPage",
       "props": "",
       "source": "router/index.js",
-      "line": 63
+      "line": 64
     },
     {
       "pathExpression": "'/classroom/resources/:id'",
@@ -459,7 +459,7 @@
       "component": "ClassroomResourceDetailPage",
       "props": "",
       "source": "router/index.js",
-      "line": 64
+      "line": 65
     },
     {
       "pathExpression": "routePaths.communitySurveys",
@@ -469,7 +469,7 @@
       "component": "CommunitySurveysPage",
       "props": "",
       "source": "router/index.js",
-      "line": 65
+      "line": 66
     },
     {
       "pathExpression": "'/community/surveys/:id'",
@@ -479,7 +479,7 @@
       "component": "SurveyDetailPage",
       "props": "",
       "source": "router/index.js",
-      "line": 66
+      "line": 67
     },
     {
       "pathExpression": "routePaths.communityOpenBoard",
@@ -489,7 +489,7 @@
       "component": "BoardListPage",
       "props": "{ variant: 'open' }",
       "source": "router/index.js",
-      "line": 67
+      "line": 68
     },
     {
       "pathExpression": "routePaths.communityOpenBoardWrite",
@@ -499,7 +499,7 @@
       "component": "BoardWritePage",
       "props": "",
       "source": "router/index.js",
-      "line": 68
+      "line": 69
     },
     {
       "pathExpression": "'/community/boards/open/:id'",
@@ -509,7 +509,7 @@
       "component": "PostDetailPage",
       "props": "{ source: 'open' }",
       "source": "router/index.js",
-      "line": 69
+      "line": 70
     },
     {
       "pathExpression": "routePaths.communityAnonymousBoard",
@@ -519,7 +519,7 @@
       "component": "BoardListPage",
       "props": "{ variant: 'anonymous' }",
       "source": "router/index.js",
-      "line": 70
+      "line": 71
     },
     {
       "pathExpression": "'/community/boards/anonymous/:id'",
@@ -529,7 +529,7 @@
       "component": "PostDetailPage",
       "props": "{ source: 'anonymous' }",
       "source": "router/index.js",
-      "line": 71
+      "line": 72
     },
     {
       "pathExpression": "routePaths.communityClassRoster",
@@ -539,7 +539,7 @@
       "component": "ClassRosterPage",
       "props": "",
       "source": "router/index.js",
-      "line": 72
+      "line": 73
     },
     {
       "pathExpression": "routePaths.helpNotice",
@@ -549,7 +549,7 @@
       "component": "HelpNoticePage",
       "props": "",
       "source": "router/index.js",
-      "line": 73
+      "line": 74
     },
     {
       "pathExpression": "'/help/notice/:id'",
@@ -559,7 +559,7 @@
       "component": "HelpNoticeDetailPage",
       "props": "",
       "source": "router/index.js",
-      "line": 74
+      "line": 75
     },
     {
       "pathExpression": "routePaths.helpFaq",
@@ -569,7 +569,7 @@
       "component": "HelpFaqPage",
       "props": "",
       "source": "router/index.js",
-      "line": 75
+      "line": 76
     },
     {
       "pathExpression": "routePaths.helpInquiries",
@@ -579,7 +579,7 @@
       "component": "HelpInquiriesPage",
       "props": "",
       "source": "router/index.js",
-      "line": 76
+      "line": 77
     },
     {
       "pathExpression": "'/help/inquiries/:id'",
@@ -589,7 +589,7 @@
       "component": "HelpInquiryDetailPage",
       "props": "",
       "source": "router/index.js",
-      "line": 77
+      "line": 78
     },
     {
       "pathExpression": "routePaths.helpInquiryWrite",
@@ -599,7 +599,7 @@
       "component": "HelpInquiryWritePage",
       "props": "",
       "source": "router/index.js",
-      "line": 78
+      "line": 79
     },
     {
       "pathExpression": "routePaths.helpRules",
@@ -609,7 +609,7 @@
       "component": "HelpRulesPage",
       "props": "",
       "source": "router/index.js",
-      "line": 79
+      "line": 80
     },
     {
       "pathExpression": "routePaths.mentoringStories",
@@ -619,7 +619,7 @@
       "component": "MentoringBoardPage",
       "props": "{ variant: 'stories' }",
       "source": "router/index.js",
-      "line": 80
+      "line": 81
     },
     {
       "pathExpression": "'/mentoring/stories/:id'",
@@ -629,7 +629,7 @@
       "component": "PostDetailPage",
       "props": "{ source: 'stories' }",
       "source": "router/index.js",
-      "line": 81
+      "line": 82
     },
     {
       "pathExpression": "routePaths.mentoringQna",
@@ -639,7 +639,7 @@
       "component": "MentoringBoardPage",
       "props": "{ variant: 'qna' }",
       "source": "router/index.js",
-      "line": 82
+      "line": 83
     },
     {
       "pathExpression": "'/mentoring/qna/:id'",
@@ -649,7 +649,7 @@
       "component": "PostDetailPage",
       "props": "{ source: 'qna' }",
       "source": "router/index.js",
-      "line": 83
+      "line": 84
     },
     {
       "pathExpression": "routePaths.mentoringNotice",
@@ -659,7 +659,7 @@
       "component": "MentoringBoardPage",
       "props": "{ variant: 'notice' }",
       "source": "router/index.js",
-      "line": 84
+      "line": 85
     },
     {
       "pathExpression": "'/mentoring/notice/:id'",
@@ -669,7 +669,7 @@
       "component": "PostDetailPage",
       "props": "{ source: 'notice' }",
       "source": "router/index.js",
-      "line": 85
+      "line": 86
     },
     {
       "pathExpression": "routePaths.mentoringMeetupApply",
@@ -679,7 +679,7 @@
       "component": "MeetupApplyPage",
       "props": "",
       "source": "router/index.js",
-      "line": 86
+      "line": 87
     },
     {
       "pathExpression": "routePaths.mentoringMeetupInfo",
@@ -689,7 +689,7 @@
       "component": "MeetupInfoPage",
       "props": "",
       "source": "router/index.js",
-      "line": 87
+      "line": 88
     },
     {
       "pathExpression": "routePaths.mentoringMeetupReviews",
@@ -699,7 +699,7 @@
       "component": "MentoringBoardPage",
       "props": "{ variant: 'reviews' }",
       "source": "router/index.js",
-      "line": 88
+      "line": 89
     },
     {
       "pathExpression": "'/mentoring/meetups/reviews/:id'",
@@ -709,7 +709,7 @@
       "component": "PostDetailPage",
       "props": "{ source: 'reviews' }",
       "source": "router/index.js",
-      "line": 89
+      "line": 90
     },
     {
       "pathExpression": "routePaths.mentoringMeetupReviewWrite",
@@ -719,7 +719,7 @@
       "component": "MeetupReviewWritePage",
       "props": "",
       "source": "router/index.js",
-      "line": 90
+      "line": 91
     },
     {
       "pathExpression": "routePaths.notifications",
@@ -729,7 +729,7 @@
       "component": "NotificationsPage",
       "props": "",
       "source": "router/index.js",
-      "line": 91
+      "line": 92
     },
     {
       "pathExpression": "routePaths.forbidden",
@@ -739,7 +739,7 @@
       "component": "ErrorPage",
       "props": "",
       "source": "router/index.js",
-      "line": 92
+      "line": 93
     },
     {
       "pathExpression": "routePaths.notFound",
@@ -749,7 +749,7 @@
       "component": "ErrorPage",
       "props": "",
       "source": "router/index.js",
-      "line": 93
+      "line": 94
     },
     {
       "pathExpression": "'/:pathMatch(.*)*'",
@@ -759,7 +759,7 @@
       "component": "",
       "props": "",
       "source": "router/index.js",
-      "line": 94
+      "line": 95
     }
   ],
   "frameRoutes": [
@@ -1468,6 +1468,7 @@
       "secondaryScreenshotPaths": [],
       "apiEndpoints": [
         "POST /api/v1/auth/login",
+        "POST /api/v1/auth/refresh",
         "GET /api/v1/auth/me"
       ],
       "boardCodes": [],
@@ -1516,6 +1517,7 @@
         "../../edu_screnshot/40_attendance_detail_from_home_more.png"
       ],
       "apiEndpoints": [
+        "GET /api/v1/dashboard/my",
         "GET /api/v1/auth/me",
         "GET /api/v1/users/me/campus-summary",
         "GET /api/v1/points/my/summary",
@@ -1785,7 +1787,7 @@
       "screenshotPath": "../../edu_screnshot/13_classroom_my_lecture_replay.png",
       "secondaryScreenshotPaths": [],
       "apiEndpoints": [
-        "GET /api/v1/course-sessions/replays"
+        "GET /api/v1/course-sessions/replays/my"
       ],
       "boardCodes": [],
       "expectedDataShape": "page-specific DTO or paged list normalized by frontend service",
@@ -1833,7 +1835,8 @@
       "apiEndpoints": [
         "GET /api/v1/courses/my",
         "GET /api/v1/courses/{courseId}/weeks",
-        "GET /api/v1/courses/{courseId}/weeks/{weekId}/sessions"
+        "GET /api/v1/courses/{courseId}/weeks/{weekId}/sessions",
+        "GET /api/v1/courses/{courseId}/sessions"
       ],
       "boardCodes": [],
       "expectedDataShape": "page-specific DTO or paged list normalized by frontend service",

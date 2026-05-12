@@ -38,8 +38,10 @@ function normalizeMeetup(item) {
     id: item.id || item.surveyId,
     title: item.title || item.surveyTitle || '간담회 신청',
     mentor: item.mentorName || item.hostName || item.ownerName || '멘토',
-    date: [formatDate(item.openAt || item.startAt || item.createdAt), formatDate(item.closeAt || item.endAt)].filter(Boolean).join(' ~ '),
+    date: [formatDate(item.eventStartAt || item.openAt || item.startAt || item.createdAt), formatDate(item.eventEndAt || item.closeAt || item.endAt)].filter(Boolean).join(' ~ '),
     capacity: item.capacity ? `${item.capacity}명` : item.capacityLabel || '정원 확인중',
+    location: item.location || '',
+    selectionPolicy: item.selectionPolicy || '',
     status,
     statusTone: item.statusTone || statusTone(status)
   }
@@ -56,8 +58,12 @@ function normalizeMeetupParticipation(item) {
     formType,
     title: survey.title || item.title || '간담회 신청',
     mentor: survey.mentorName || item.mentorName || '멘토',
-    date: [formatDate(survey.openAt || item.submittedAt || item.createdAt), formatDate(survey.closeAt)].filter(Boolean).join(' ~ '),
+    date: [formatDate(survey.eventStartAt || item.eventStartAt || survey.openAt || item.submittedAt || item.createdAt), formatDate(survey.eventEndAt || item.eventEndAt || survey.closeAt || item.closeAt)].filter(Boolean).join(' ~ '),
     capacity: survey.capacity ? `${survey.capacity}명` : item.capacityLabel || '신청 내역',
+    location: survey.location || item.location || '',
+    selectionPolicy: survey.selectionPolicy || item.selectionPolicy || '',
+    linkedPostTitle: survey.linkedPostTitle || item.linkedPostTitle || '',
+    linkedPostContent: survey.linkedPostContent || item.linkedPostContent || '',
     status,
     statusTone: item.statusTone || statusTone(status)
   }

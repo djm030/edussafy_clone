@@ -38,6 +38,8 @@ import LoginPage from '../pages/auth/LoginPage.vue'
 import PostDetailPage from '../pages/shared/PostDetailPage.vue'
 import ErrorPage from '../pages/errors/ErrorPage.vue'
 import { routePaths } from '../constants/routes'
+import { getAccessToken, getRefreshToken, isApiEnabled } from '../api/client'
+import { authApi } from '../api/modules'
 
 
 const routes = [
@@ -94,7 +96,29 @@ const routes = [
   { path: '/:pathMatch(.*)*', name: 'not-found-wildcard', redirect: routePaths.notFound }
 ]
 
-export default createRouter({
+const router = createRouter({
   history: createWebHistory(),
   routes
 })
+
+router.beforeEach(async (to) => {
+  if (!isApiEnabled || to.meta.layout === 'auth') return true
+  if (getAccessToken()) return true
+  if (getRefreshToken()) {
+    try {
+      await authApi.refresh()
+      return true
+    } catch {
+      // Continue to the login redirect below when refresh is rejected.
+    }
+  }
+  return {
+    path: routePaths.login,
+    query: {
+      redirect: to.fullPath,
+      reason: 'session-required'
+    }
+  }
+})
+
+export default router

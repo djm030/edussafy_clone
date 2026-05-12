@@ -4,13 +4,13 @@
   "method": "GET",
   "statusCode": 200,
   "success": true,
-  "dataShapeSummary": "id,categoryId,categoryName,title,description,formType,openAt,closeAt,isRequired,eventType,location,capacity",
+  "dataShapeSummary": "id,categoryId,categoryName,title,description,formType,openAt,closeAt,isRequired,eventType,eventStartAt,eventEndAt",
   "redactedRequest": {
     "headers": {
       "Authorization": "Bearer <redacted>"
     }
   },
-  "redactedResponseSample": "id,categoryId,categoryName,title,description,formType,openAt,closeAt,isRequired,eventType,location,capacity",
+  "redactedResponseSample": "id,categoryId,categoryName,title,description,formType,openAt,closeAt,isRequired,eventType,eventStartAt,eventEndAt",
   "errorCode": null,
   "message": "요청이 성공했습니다."
 }

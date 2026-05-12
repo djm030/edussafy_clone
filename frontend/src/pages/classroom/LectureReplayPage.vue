@@ -6,7 +6,7 @@ import { useRoute } from 'vue-router'
 import { getApiErrorMessage, isApiEnabled } from '../../api/client'
 import { classroomTabs } from '../../constants/navigation'
 import { allReplayItems as mockAllReplayItems, replayGroups } from '../../data/classroom'
-import { loadReplayItems } from '../../services/classroomService'
+import { loadMyReplayItems, loadReplayItems } from '../../services/classroomService'
 
 const props = defineProps({
   variant: {
@@ -29,12 +29,12 @@ const visibleReplayItems = computed(() => {
 watch(
   () => props.variant,
   async (variant) => {
-    if (variant !== 'all') return
-
     isLoading.value = true
     loadError.value = ''
     try {
-      allReplayItems.value = await loadReplayItems()
+      allReplayItems.value = variant === 'my'
+        ? await loadMyReplayItems()
+        : await loadReplayItems()
     } catch (error) {
       if (isApiEnabled) {
         allReplayItems.value = []

@@ -51,4 +51,19 @@ class AuthControllerTest {
                 .andExpect(jsonPath("$.data.refreshToken").value("refresh-token"))
                 .andExpect(jsonPath("$.data.user.email").value("user@example.com"));
     }
+
+    @Test
+    void refresh_returns_token_response() throws Exception {
+        UserMeResponse user = new UserMeResponse(1L, "user@example.com", "User", null, null, null, null, UserRole.STUDENT, UserStatus.ACTIVE);
+        given(authService.refresh(any())).willReturn(new LoginResponse("new-access-token", "new-refresh-token", user));
+
+        mockMvc.perform(post("/api/v1/auth/refresh")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"refreshToken\":\"refresh-token\"}"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.success").value(true))
+                .andExpect(jsonPath("$.data.accessToken").value("new-access-token"))
+                .andExpect(jsonPath("$.data.refreshToken").value("new-refresh-token"))
+                .andExpect(jsonPath("$.data.user.email").value("user@example.com"));
+    }
 }

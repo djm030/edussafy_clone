@@ -1,6 +1,6 @@
 {
   "endpoint": "GET /api/v1/boards/mento-review/posts/{postId}",
-  "endpointPath": "/api/v1/boards/mento-review/posts/21",
+  "endpointPath": "/api/v1/boards/mento-review/posts/24",
   "method": "GET",
   "statusCode": 200,
   "success": true,

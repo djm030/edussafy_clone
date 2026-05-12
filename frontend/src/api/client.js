@@ -1,11 +1,16 @@
 import axios from 'axios'
 
 const ACCESS_TOKEN_KEY = 'edussafy.accessToken'
+const REFRESH_TOKEN_KEY = 'edussafy.refreshToken'
 
 export const isApiEnabled = import.meta.env.VITE_USE_API === 'true'
 
 export function getAccessToken() {
   return window.localStorage.getItem(ACCESS_TOKEN_KEY)
+}
+
+export function getRefreshToken() {
+  return window.localStorage.getItem(REFRESH_TOKEN_KEY)
 }
 
 export function hasAccessToken() {
@@ -16,8 +21,28 @@ export function setAccessToken(token) {
   window.localStorage.setItem(ACCESS_TOKEN_KEY, token)
 }
 
+export function setRefreshToken(token) {
+  window.localStorage.setItem(REFRESH_TOKEN_KEY, token)
+}
+
+export function setAuthTokens({ accessToken, refreshToken }) {
+  if (accessToken) setAccessToken(accessToken)
+  if (refreshToken) setRefreshToken(refreshToken)
+}
+
 export function clearAccessToken() {
   window.localStorage.removeItem(ACCESS_TOKEN_KEY)
+}
+
+export function clearAuthTokens() {
+  window.localStorage.removeItem(ACCESS_TOKEN_KEY)
+  window.localStorage.removeItem(REFRESH_TOKEN_KEY)
+}
+
+function redirectToLogin() {
+  if (window.location.pathname === '/login') return
+  const redirect = encodeURIComponent(`${window.location.pathname}${window.location.search}`)
+  window.location.assign(`/login?reason=session-expired&redirect=${redirect}`)
 }
 
 export const healthClient = axios.create({
@@ -26,6 +51,11 @@ export const healthClient = axios.create({
 })
 
 export const apiClient = axios.create({
+  baseURL: '/api/v1',
+  timeout: 10000
+})
+
+const refreshClient = axios.create({
   baseURL: '/api/v1',
   timeout: 10000
 })
@@ -40,9 +70,29 @@ apiClient.interceptors.request.use((config) => {
 
 apiClient.interceptors.response.use(
   (response) => response,
-  (error) => {
-    if (error?.response?.status === 401) {
-      clearAccessToken()
+  async (error) => {
+    const originalRequest = error?.config
+    const authUrl = originalRequest?.url || ''
+    const canRefresh = !authUrl.includes('/auth/login') && !authUrl.includes('/auth/refresh')
+    if (error?.response?.status === 401 && originalRequest && !originalRequest._retry && canRefresh) {
+      const refreshToken = getRefreshToken()
+      if (refreshToken) {
+        originalRequest._retry = true
+        try {
+          const response = await refreshClient.post('/auth/refresh', { refreshToken })
+          const data = unwrapApiResponse(response)
+          setAuthTokens(data)
+          originalRequest.headers = originalRequest.headers || {}
+          originalRequest.headers.Authorization = `Bearer ${data.accessToken}`
+          return apiClient(originalRequest)
+        } catch (refreshError) {
+          clearAuthTokens()
+          redirectToLogin()
+          return Promise.reject(refreshError)
+        }
+      }
+      clearAuthTokens()
+      redirectToLogin()
     }
     return Promise.reject(error)
   }
@@ -57,6 +107,9 @@ export function getApiErrorCode(error) {
 }
 
 export function getApiErrorMessage(error, fallback = '요청 처리 중 오류가 발생했습니다.') {
+  if (getApiErrorStatus(error) === 401) {
+    return '세션이 만료되었습니다. 다시 로그인해 주세요.'
+  }
   return error?.response?.data?.message || getApiErrorCode(error) || error?.message || fallback
 }
 

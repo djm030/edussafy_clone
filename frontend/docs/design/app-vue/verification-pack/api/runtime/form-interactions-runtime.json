@@ -1,6 +1,23 @@
 {
-  "capturedAt": "2026-05-12T02:04:47.385Z",
+  "capturedAt": "2026-05-12T02:42:56.232Z",
   "rows": [
+    {
+      "name": "auth refresh",
+      "endpointPath": "/api/v1/auth/refresh",
+      "method": "POST",
+      "statusCode": 200,
+      "success": true,
+      "errorCode": null,
+      "message": "요청이 성공했습니다.",
+      "dataShapeSummary": "accessToken,refreshToken,user",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>",
+          "Content-Type": "application/json"
+        },
+        "bodyShape": "refreshToken"
+      }
+    },
     {
       "name": "free category lookup",
       "endpointPath": "/api/v1/boards/free/categories",
@@ -162,7 +179,7 @@
       "success": true,
       "errorCode": null,
       "message": "요청이 성공했습니다.",
-      "dataShapeSummary": "id,surveyId,surveyTitle,answers,formType,participantStatus,submittedAt,cancelledAt,createdAt",
+      "dataShapeSummary": "id,surveyId,surveyTitle,answers,formType,participantStatus,submittedAt,cancelledAt,createdAt,openAt,closeAt,eventStartAt",
       "redactedRequest": {
         "headers": {
           "Authorization": "Bearer <redacted>",

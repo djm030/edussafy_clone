@@ -29,15 +29,20 @@
 
 <script setup>
 import { computed, ref } from 'vue'
-import { useRouter } from 'vue-router'
-import { getApiErrorMessage, isApiEnabled, setAccessToken } from '../../api/client'
+import { useRoute, useRouter } from 'vue-router'
+import { getApiErrorMessage, isApiEnabled, setAuthTokens } from '../../api/client'
 import { authApi } from '../../api/modules'
 
 const router = useRouter()
+const route = useRoute()
 const email = ref(isApiEnabled ? '' : 'student@ssafy.com')
 const password = ref(isApiEnabled ? '' : '0000')
 const isSubmitting = ref(false)
-const message = ref('')
+const message = ref(route.query.reason === 'session-expired'
+  ? '??? ???????. ?? ???? ???.'
+  : route.query.reason === 'session-required'
+    ? '??? ? ??? ? ????.'
+    : '')
 const messageTone = ref('')
 const helperText = computed(() => isApiEnabled
   ? '백엔드 계정으로 로그인합니다.'
@@ -58,11 +63,11 @@ async function login() {
   try {
     if (isApiEnabled) {
       await authApi.login({ email: email.value, password: password.value })
-      router.push('/dashboard')
+      router.push(typeof route.query.redirect === 'string' ? route.query.redirect : '/dashboard')
       return
     }
 
-    setAccessToken(`demo-token:${email.value}:${password.value.length}`)
+    setAuthTokens({ accessToken: `demo-token:${email.value}:${password.value.length}` })
     router.push('/dashboard')
   } catch (error) {
     message.value = getApiErrorMessage(error, '로그인에 실패했습니다.')

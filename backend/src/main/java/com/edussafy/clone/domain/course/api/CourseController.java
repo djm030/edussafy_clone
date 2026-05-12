@@ -7,6 +7,7 @@ import com.edussafy.clone.domain.course.dto.response.CourseWeekResponse;
 import com.edussafy.clone.global.response.ApiResponse;
 import com.edussafy.clone.global.response.PageResponse;
 import com.edussafy.clone.global.security.CurrentUser;
+import java.time.LocalDate;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -46,6 +47,17 @@ public class CourseController {
         return ApiResponse.ok(courseQueryService.getWeekSessions(courseId, weekId, page, size));
     }
 
+    @GetMapping("/courses/{courseId}/sessions")
+    public ApiResponse<PageResponse<CourseSessionResponse>> getCourseSessionsInRange(
+            @PathVariable Long courseId,
+            @RequestParam(required = false) LocalDate startDate,
+            @RequestParam(required = false) LocalDate endDate,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "50") int size
+    ) {
+        return ApiResponse.ok(courseQueryService.getCourseSessionsInRange(courseId, startDate, endDate, page, size));
+    }
+
     @GetMapping("/course-sessions/{sessionId}")
     public ApiResponse<CourseSessionResponse> getSession(@PathVariable Long sessionId) {
         return ApiResponse.ok(courseQueryService.getSession(sessionId));
@@ -60,5 +72,15 @@ public class CourseController {
             @RequestParam(defaultValue = "20") int size
     ) {
         return ApiResponse.ok(courseQueryService.getReplays(courseId, weekId, keyword, page, size));
+    }
+
+    @GetMapping("/course-sessions/replays/my")
+    public ApiResponse<PageResponse<CourseSessionResponse>> getMyReplays(
+            @CurrentUser Long currentUserId,
+            @RequestParam(required = false) String keyword,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "20") int size
+    ) {
+        return ApiResponse.ok(courseQueryService.getMyReplays(currentUserId, keyword, page, size));
     }
 }

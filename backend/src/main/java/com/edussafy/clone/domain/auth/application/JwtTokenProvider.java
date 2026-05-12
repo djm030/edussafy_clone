@@ -14,6 +14,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class JwtTokenProvider {
 
+    private static final String REFRESH_TOKEN_TYPE = "refresh";
+
     private final SecretKey secretKey;
     private final long accessTokenValidityMillis;
     private final long refreshTokenValidityMillis;
@@ -63,6 +65,15 @@ public class JwtTokenProvider {
         try {
             parseClaims(token);
             return true;
+        } catch (RuntimeException exception) {
+            return false;
+        }
+    }
+
+    public boolean validateRefreshToken(String token) {
+        try {
+            Claims claims = parseClaims(token);
+            return REFRESH_TOKEN_TYPE.equals(claims.get("type", String.class));
         } catch (RuntimeException exception) {
             return false;
         }

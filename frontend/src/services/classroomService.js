@@ -225,6 +225,13 @@ export async function loadReplayItems() {
   return pageItems(page).map(normalizeReplay)
 }
 
+export async function loadMyReplayItems() {
+  if (!isApiEnabled) return allReplayItems
+
+  const page = await classroomApi.myReplays({ page: 0, size: 10 })
+  return pageItems(page).map(normalizeReplay)
+}
+
 export async function loadCurriculumData() {
   if (!isApiEnabled) return { classroomPhases, curriculumWeeks, curriculumDays }
 
@@ -245,7 +252,12 @@ export async function loadCurriculumData() {
     }
   }
 
-  const sessionsPage = await classroomApi.sessions(courseId, weekId)
+  const sessionsPage = await classroomApi.sessionsInRange(courseId, {
+    startDate: activeWeek?.startDate,
+    endDate: activeWeek?.endDate,
+    page: 0,
+    size: 50
+  }).catch(() => classroomApi.sessions(courseId, weekId))
   const days = normalizeCurriculumDays(pageItems(sessionsPage))
 
   return {

@@ -23,10 +23,27 @@ public class SurveyDtoMapper {
         return new SurveyResponse(survey.getId(), survey.getCategory() == null ? null : survey.getCategory().getId(),
                 survey.getCategory() == null ? null : survey.getCategory().getName(), survey.getTitle(), survey.getDescription(),
                 survey.getFormType(), survey.getOpenAt(), survey.getCloseAt(), survey.getIsRequired(), survey.getEventType(),
-                survey.getLocation(), survey.getCapacity(), survey.getSelectionPolicy(), questions.stream().map(this::toQuestionResponse).toList());
+                survey.getEventStartAt(), survey.getEventEndAt(), survey.getLocation(), survey.getCapacity(), survey.getSelectionPolicy(),
+                survey.getLinkedPost() == null ? null : survey.getLinkedPost().getId(),
+                survey.getLinkedPost() == null ? null : survey.getLinkedPost().getTitle(),
+                survey.getLinkedPost() == null ? null : linkedPostContent(survey),
+                questions.stream().map(this::toQuestionResponse).toList());
     }
     public SurveyParticipantResponse toParticipantResponse(SurveyParticipant participant) {
         return new SurveyParticipantResponse(participant.getId(), participant.getSurvey().getId(), participant.getSurvey().getTitle(),
-                participant.getAnswers(), participant.getSurvey().getFormType(), participant.getParticipantStatus(), participant.getSubmittedAt(), participant.getCancelledAt(), participant.getCreatedAt());
+                participant.getAnswers(), participant.getSurvey().getFormType(), participant.getParticipantStatus(), participant.getSubmittedAt(), participant.getCancelledAt(), participant.getCreatedAt(),
+                participant.getSurvey().getOpenAt(), participant.getSurvey().getCloseAt(),
+                participant.getSurvey().getEventStartAt(), participant.getSurvey().getEventEndAt(),
+                participant.getSurvey().getEventType() == null ? null : participant.getSurvey().getEventType().name(),
+                participant.getSurvey().getLocation(), participant.getSurvey().getCapacity(), participant.getSurvey().getSelectionPolicy(),
+                participant.getSurvey().getLinkedPost() == null ? null : participant.getSurvey().getLinkedPost().getId(),
+                participant.getSurvey().getLinkedPost() == null ? null : participant.getSurvey().getLinkedPost().getTitle(),
+                participant.getSurvey().getLinkedPost() == null ? null : linkedPostContent(participant.getSurvey()));
+    }
+
+    private String linkedPostContent(Survey survey) {
+        return survey.getLinkedPost().getContentText() != null
+                ? survey.getLinkedPost().getContentText()
+                : survey.getLinkedPost().getContentHtml();
     }
 }

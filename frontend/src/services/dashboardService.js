@@ -1,5 +1,5 @@
 import { isApiEnabled } from '../api/client'
-import { attendanceApi, authApi, notificationsApi, pointsApi, usersApi } from '../api/modules'
+import { dashboardApi } from '../api/modules'
 import { dashboardData } from '../data/dashboard'
 
 function pageItems(page) {
@@ -74,17 +74,12 @@ function normalizeAttendanceSummary(today) {
 export async function loadDashboardData() {
   if (!isApiEnabled) return dashboardData
 
-  const [me, campusSummary, pointSummary, notificationsPage, todayAttendance] = await Promise.all([
-    authApi.me(),
-    usersApi.campusSummary(),
-    pointsApi.summary(),
-    notificationsApi.my({ page: 0, size: 3 }),
-    attendanceApi.today()
-  ])
+  const apiDashboard = await dashboardApi.my()
 
-  const summaryUser = campusSummary?.user || me || dashboardData.user
-  const stat = campusSummary?.stat || pointSummary || dashboardData.pointSummary
-  const notifications = pageItems(notificationsPage).slice(0, 3).map(normalizeNotification)
+  const campusSummary = apiDashboard?.campusSummary || {}
+  const pointSummary = apiDashboard?.pointSummary || {}
+  const summaryUser = apiDashboard?.user || campusSummary?.user || dashboardData.user
+  const notifications = pageItems(apiDashboard?.notifications).slice(0, 3).map(normalizeNotification)
 
   return {
     ...dashboardData,
@@ -94,10 +89,34 @@ export async function loadDashboardData() {
     },
     pointSummary: {
       ...dashboardData.pointSummary,
-      ...stat,
-      unreadNotificationCount: stat.unreadNotificationCount ?? dashboardData.pointSummary.unreadNotificationCount
+      ...pointSummary,
+      unreadNotificationCount: campusSummary.unreadNotificationCount ?? dashboardData.pointSummary.unreadNotificationCount
     },
-    attendanceSummary: normalizeAttendanceSummary(todayAttendance),
-    notifications
+    attendanceSummary: normalizeAttendanceSummary(apiDashboard?.todayAttendance),
+    notifications,
+    curriculumPreview: pageItems(apiDashboard?.curriculumPreview).map((item) => ({
+      id: item.id,
+      weekNo: item.weekId || '-',
+      title: item.title,
+      date: formatDate(item.sessionDate || item.startAt),
+      type: item.sessionType
+    })),
+    questPreview: pageItems(apiDashboard?.questPreview).map((item) => ({
+      id: item.id,
+      title: item.title,
+      taskType: item.taskType,
+      status: item.myResultStatus || 'SCHEDULED',
+      score: item.score,
+      closeAt: formatDate(item.closeAt)
+    })),
+    learningPreview: pageItems(apiDashboard?.learningPreview).map((item) => ({
+      id: item.id,
+      title: item.title,
+      contentType: item.contentType,
+      duration: item.durationSeconds ? `${Math.ceil(item.durationSeconds / 60)}분` : '자료',
+      required: Boolean(item.isRequired)
+    })),
+    freeBoardPosts: pageItems(apiDashboard?.freeBoardPosts),
+    notices: pageItems(apiDashboard?.notices)
   }
 }

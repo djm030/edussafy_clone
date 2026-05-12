@@ -1,7 +1,7 @@
 {
-  "capturedAt": "2026-05-12T02:04:47.385Z",
+  "capturedAt": "2026-05-12T02:42:56.232Z",
   "command": "API_BASE_URL=<url> node frontend/docs/design/app-vue/scripts/run-api-runtime-check.mjs",
-  "apiBaseUrl": "http://127.0.0.1:18080",
+  "apiBaseUrl": "http://127.0.0.1:8088",
   "usedMockFallback": false,
   "apiRuntimeExercised": true,
   "apiCompleteClaim": false,
@@ -14,16 +14,16 @@
     "message": "요청이 성공했습니다."
   },
   "summary": {
-    "getEndpoints": 51,
-    "getEndpointSuccesses": 51,
-    "formChecks": 11,
-    "formCheckSuccesses": 11
+    "getEndpoints": 54,
+    "getEndpointSuccesses": 54,
+    "formChecks": 12,
+    "formCheckSuccesses": 12
   },
   "blocker": null,
   "boardPostSamples": [
     {
       "boardCode": "free",
-      "postId": "19",
+      "postId": "22",
       "source": "existing-list"
     },
     {
@@ -53,7 +53,7 @@
     },
     {
       "boardCode": "mento-review",
-      "postId": "21",
+      "postId": "24",
       "source": "existing-list"
     }
   ],
@@ -71,6 +71,22 @@
         }
       },
       "redactedResponseSample": "id,email,name,studentNo,generation,region,classNo,role,status",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
+    },
+    {
+      "endpoint": "GET /api/v1/dashboard/my",
+      "endpointPath": "/api/v1/dashboard/my",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "user,campusSummary,pointSummary,todayAttendance,notifications,curriculumPreview,questPreview,learningPreview,freeBoardPosts,notices",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "user,campusSummary,pointSummary,todayAttendance,notifications,curriculumPreview,questPreview,learningPreview,freeBoardPosts,notices",
       "errorCode": null,
       "message": "요청이 성공했습니다."
     },
@@ -283,6 +299,22 @@
       "message": "요청이 성공했습니다."
     },
     {
+      "endpoint": "GET /api/v1/course-sessions/replays/my",
+      "endpointPath": "/api/v1/course-sessions/replays/my",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "content,page,size,totalElements,totalPages",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "content,page,size,totalElements,totalPages",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
+    },
+    {
       "endpoint": "GET /api/v1/course-sessions/replays",
       "endpointPath": "/api/v1/course-sessions/replays",
       "method": "GET",
@@ -333,6 +365,22 @@
     {
       "endpoint": "GET /api/v1/courses/{courseId}/weeks/{weekId}/sessions",
       "endpointPath": "/api/v1/courses/1/weeks/1/sessions",
+      "method": "GET",
+      "statusCode": 200,
+      "success": true,
+      "dataShapeSummary": "content,page,size,totalElements,totalPages",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>"
+        }
+      },
+      "redactedResponseSample": "content,page,size,totalElements,totalPages",
+      "errorCode": null,
+      "message": "요청이 성공했습니다."
+    },
+    {
+      "endpoint": "GET /api/v1/courses/{courseId}/sessions",
+      "endpointPath": "/api/v1/courses/1/sessions",
       "method": "GET",
       "statusCode": 200,
       "success": true,
@@ -496,13 +544,13 @@
       "method": "GET",
       "statusCode": 200,
       "success": true,
-      "dataShapeSummary": "id,categoryId,categoryName,title,description,formType,openAt,closeAt,isRequired,eventType,location,capacity",
+      "dataShapeSummary": "id,categoryId,categoryName,title,description,formType,openAt,closeAt,isRequired,eventType,eventStartAt,eventEndAt",
       "redactedRequest": {
         "headers": {
           "Authorization": "Bearer <redacted>"
         }
       },
-      "redactedResponseSample": "id,categoryId,categoryName,title,description,formType,openAt,closeAt,isRequired,eventType,location,capacity",
+      "redactedResponseSample": "id,categoryId,categoryName,title,description,formType,openAt,closeAt,isRequired,eventType,eventStartAt,eventEndAt",
       "errorCode": null,
       "message": "요청이 성공했습니다."
     },
@@ -540,7 +588,7 @@
     },
     {
       "endpoint": "GET /api/v1/boards/free/posts/{postId}",
-      "endpointPath": "/api/v1/boards/free/posts/19",
+      "endpointPath": "/api/v1/boards/free/posts/22",
       "method": "GET",
       "statusCode": 200,
       "success": true,
@@ -828,7 +876,7 @@
     },
     {
       "endpoint": "GET /api/v1/boards/mento-review/posts/{postId}",
-      "endpointPath": "/api/v1/boards/mento-review/posts/21",
+      "endpointPath": "/api/v1/boards/mento-review/posts/24",
       "method": "GET",
       "statusCode": 200,
       "success": true,
@@ -876,6 +924,23 @@
     }
   ],
   "formInteractions": [
+    {
+      "name": "auth refresh",
+      "endpointPath": "/api/v1/auth/refresh",
+      "method": "POST",
+      "statusCode": 200,
+      "success": true,
+      "errorCode": null,
+      "message": "요청이 성공했습니다.",
+      "dataShapeSummary": "accessToken,refreshToken,user",
+      "redactedRequest": {
+        "headers": {
+          "Authorization": "Bearer <redacted>",
+          "Content-Type": "application/json"
+        },
+        "bodyShape": "refreshToken"
+      }
+    },
     {
       "name": "free category lookup",
       "endpointPath": "/api/v1/boards/free/categories",
@@ -1037,7 +1102,7 @@
       "success": true,
       "errorCode": null,
       "message": "요청이 성공했습니다.",
-      "dataShapeSummary": "id,surveyId,surveyTitle,answers,formType,participantStatus,submittedAt,cancelledAt,createdAt",
+      "dataShapeSummary": "id,surveyId,surveyTitle,answers,formType,participantStatus,submittedAt,cancelledAt,createdAt,openAt,closeAt,eventStartAt",
       "redactedRequest": {
         "headers": {
           "Authorization": "Bearer <redacted>",

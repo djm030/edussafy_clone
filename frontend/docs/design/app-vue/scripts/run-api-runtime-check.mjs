@@ -80,7 +80,8 @@ async function login() {
     body: JSON.stringify({ email, password })
   })
   const token = result.body?.data?.accessToken || result.body?.accessToken
-  return { ...result, token }
+  const refreshToken = result.body?.data?.refreshToken || result.body?.refreshToken
+  return { ...result, token, refreshToken }
 }
 
 async function getJson(pathname, token) {
@@ -159,7 +160,7 @@ async function resolveBoardPostSamples(endpoints, token) {
   return { replacementsByBoard, sampleRows }
 }
 
-async function runFormChecks(token) {
+async function runFormChecks(token, refreshToken) {
   const headers = { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' }
   const rows = []
   async function add(name, pathname, body, method = 'POST') {
@@ -175,6 +176,10 @@ async function runFormChecks(token) {
       dataShapeSummary: shapeOf(result.body?.data ?? result.body),
       redactedRequest: { headers: redactHeaders(headers), bodyShape: shapeOf(body) }
     })
+  }
+
+  if (refreshToken) {
+    await add('auth refresh', '/api/v1/auth/refresh', { refreshToken })
   }
 
   const categoryCache = new Map()
@@ -240,7 +245,7 @@ if (loginResult.token) {
   }
 }
 
-const formRows = loginResult.token ? await runFormChecks(loginResult.token) : []
+const formRows = loginResult.token ? await runFormChecks(loginResult.token, loginResult.refreshToken) : []
 const summary = {
   capturedAt,
   command: 'API_BASE_URL=<url> node frontend/docs/design/app-vue/scripts/run-api-runtime-check.mjs',

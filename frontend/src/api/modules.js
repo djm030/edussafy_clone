@@ -1,4 +1,4 @@
-import { apiClient, clearAccessToken, setAccessToken, unwrapApiResponse } from './client'
+import { apiClient, clearAuthTokens, getRefreshToken, setAuthTokens, unwrapApiResponse } from './client'
 
 async function request(config) {
   const response = await apiClient(config)
@@ -24,14 +24,20 @@ function remove(url, data) {
 export const authApi = {
   async login(credentials) {
     const data = await post('/auth/login', credentials)
-    if (data?.accessToken) setAccessToken(data.accessToken)
+    setAuthTokens(data || {})
+    return data
+  },
+  async refresh() {
+    const refreshToken = getRefreshToken()
+    const data = await post('/auth/refresh', { refreshToken })
+    setAuthTokens(data || {})
     return data
   },
   async logout() {
     try {
       return await post('/auth/logout')
     } finally {
-      clearAccessToken()
+      clearAuthTokens()
     }
   },
   me: () => get('/auth/me'),
@@ -69,9 +75,15 @@ export const classroomApi = {
   myCourses: () => get('/courses/my'),
   course: (courseId) => get(`/courses/${courseId}`),
   weeks: (courseId) => get(`/courses/${courseId}/weeks`),
+  sessionsInRange: (courseId, params) => get(`/courses/${courseId}/sessions`, params),
   sessions: (courseId, weekId) => get(`/courses/${courseId}/weeks/${weekId}/sessions`),
   session: (sessionId) => get(`/course-sessions/${sessionId}`),
-  replays: (params) => get('/course-sessions/replays', params)
+  replays: (params) => get('/course-sessions/replays', params),
+  myReplays: (params) => get('/course-sessions/replays/my', params)
+}
+
+export const dashboardApi = {
+  my: () => get('/dashboard/my')
 }
 
 export const learningApi = {

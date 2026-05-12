@@ -43,6 +43,8 @@ public class Survey extends BaseTimeEntity {
     private Boolean isRequired;
     @Enumerated(EnumType.STRING)
     private EventType eventType;
+    private LocalDateTime eventStartAt;
+    private LocalDateTime eventEndAt;
     private String location;
     private Integer capacity;
     @Column(columnDefinition = "TEXT")
@@ -52,11 +54,11 @@ public class Survey extends BaseTimeEntity {
     @ManyToOne(fetch = FetchType.LAZY) @JoinColumn(name = "created_by_id")
     private User createdBy;
     @Builder
-    public Survey(Long id, SurveyCategory category, String title, String description, FormType formType, LocalDateTime openAt, LocalDateTime closeAt, Boolean isRequired, EventType eventType, String location, Integer capacity, String selectionPolicy, BoardPost linkedPost, User createdBy) {
-        this.id=id; this.category=category; this.title=title; this.description=description; this.formType=formType; this.openAt=openAt; this.closeAt=closeAt; this.isRequired=isRequired == null ? false : isRequired; this.eventType=eventType; this.location=location; this.capacity=capacity; this.selectionPolicy=selectionPolicy; this.linkedPost=linkedPost; this.createdBy=createdBy;
+    public Survey(Long id, SurveyCategory category, String title, String description, FormType formType, LocalDateTime openAt, LocalDateTime closeAt, Boolean isRequired, EventType eventType, LocalDateTime eventStartAt, LocalDateTime eventEndAt, String location, Integer capacity, String selectionPolicy, BoardPost linkedPost, User createdBy) {
+        this.id=id; this.category=category; this.title=title; this.description=description; this.formType=formType; this.openAt=openAt; this.closeAt=closeAt; this.isRequired=isRequired == null ? false : isRequired; this.eventType=eventType; this.eventStartAt=eventStartAt; this.eventEndAt=eventEndAt; this.location=location; this.capacity=capacity; this.selectionPolicy=selectionPolicy; this.linkedPost=linkedPost; this.createdBy=createdBy;
     }
 
-    public void update(SurveyCategory category, String title, String description, FormType formType, LocalDateTime openAt, LocalDateTime closeAt, Boolean isRequired, EventType eventType, String location, Integer capacity, String selectionPolicy, BoardPost linkedPost) {
-        this.category=category; this.title=title; this.description=description; this.formType=formType; this.openAt=openAt; this.closeAt=closeAt; this.isRequired=isRequired != null && isRequired; this.eventType=eventType; this.location=location; this.capacity=capacity; this.selectionPolicy=selectionPolicy; this.linkedPost=linkedPost;
+    public void update(SurveyCategory category, String title, String description, FormType formType, LocalDateTime openAt, LocalDateTime closeAt, Boolean isRequired, EventType eventType, LocalDateTime eventStartAt, LocalDateTime eventEndAt, String location, Integer capacity, String selectionPolicy, BoardPost linkedPost) {
+        this.category=category; this.title=title; this.description=description; this.formType=formType; this.openAt=openAt; this.closeAt=closeAt; this.isRequired=isRequired != null && isRequired; this.eventType=eventType; this.eventStartAt=eventStartAt; this.eventEndAt=eventEndAt; this.location=location; this.capacity=capacity; this.selectionPolicy=selectionPolicy; this.linkedPost=linkedPost;
     }
 }

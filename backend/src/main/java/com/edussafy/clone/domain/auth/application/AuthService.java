@@ -3,6 +3,7 @@ package com.edussafy.clone.domain.auth.application;
 import com.edussafy.clone.domain.auth.dto.request.LoginRequest;
 import com.edussafy.clone.domain.auth.dto.request.PasswordChangeRequest;
 import com.edussafy.clone.domain.auth.dto.request.PasswordResetTemporaryRequest;
+import com.edussafy.clone.domain.auth.dto.request.TokenRefreshRequest;
 import com.edussafy.clone.domain.auth.dto.response.LoginResponse;
 import com.edussafy.clone.domain.auth.dto.response.TemporaryPasswordResponse;
 import com.edussafy.clone.domain.user.domain.entity.PasswordChangeHistory;
@@ -40,6 +41,21 @@ public class AuthService {
         if (!passwordEncoder.matches(request.password(), user.getPassword())) {
             throw new BusinessException(ErrorCode.LOGIN_FAILED);
         }
+
+        return new LoginResponse(
+                jwtTokenProvider.createAccessToken(user.getId(), user.getEmail(), user.getRole()),
+                jwtTokenProvider.createRefreshToken(user.getId()),
+                userDtoMapper.toMeResponse(user)
+        );
+    }
+
+    public LoginResponse refresh(TokenRefreshRequest request) {
+        if (!jwtTokenProvider.validateRefreshToken(request.refreshToken())) {
+            throw new BusinessException(ErrorCode.INVALID_TOKEN);
+        }
+        Long userId = jwtTokenProvider.getUserId(request.refreshToken());
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new BusinessException(ErrorCode.INVALID_TOKEN));
 
         return new LoginResponse(
                 jwtTokenProvider.createAccessToken(user.getId(), user.getEmail(), user.getRole()),

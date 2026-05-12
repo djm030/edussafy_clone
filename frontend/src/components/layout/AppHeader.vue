@@ -54,14 +54,14 @@
 
 <script setup>
 import { onMounted, ref } from 'vue'
-import { clearAccessToken } from '../../api/client'
+import { clearAuthTokens } from '../../api/client'
 import { primaryNavigation, serviceLinks } from '../../constants/navigation'
 import { loadUnreadNotificationCount } from '../../services/notificationsService'
 
 const notificationCount = ref(1)
 
 function logout() {
-  clearAccessToken()
+  clearAuthTokens()
 }
 
 onMounted(async () => {

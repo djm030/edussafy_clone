@@ -19,8 +19,13 @@
           <dl>
             <div><dt>멘토</dt><dd>{{ meetup.mentor }}</dd></div>
             <div><dt>일정</dt><dd>{{ meetup.date }}</dd></div>
+            <div v-if="meetup.location"><dt>접속/장소</dt><dd>{{ meetup.location }}</dd></div>
             <div><dt>상태</dt><dd>{{ meetup.capacity }}</dd></div>
           </dl>
+          <div v-if="meetup.linkedPostTitle || meetup.linkedPostContent" class="dashboard-state">
+            <strong>{{ meetup.linkedPostTitle || '간담회 안내' }}</strong>
+            <p>{{ meetup.linkedPostContent }}</p>
+          </div>
         </article>
       </section>
       <EmptyState v-else message="신청한 간담회 정보가 없습니다." />

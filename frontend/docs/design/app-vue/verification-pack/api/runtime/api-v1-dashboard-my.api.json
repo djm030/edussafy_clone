@@ -1,0 +1,16 @@
+{
+  "endpoint": "GET /api/v1/dashboard/my",
+  "endpointPath": "/api/v1/dashboard/my",
+  "method": "GET",
+  "statusCode": 200,
+  "success": true,
+  "dataShapeSummary": "user,campusSummary,pointSummary,todayAttendance,notifications,curriculumPreview,questPreview,learningPreview,freeBoardPosts,notices",
+  "redactedRequest": {
+    "headers": {
+      "Authorization": "Bearer <redacted>"
+    }
+  },
+  "redactedResponseSample": "user,campusSummary,pointSummary,todayAttendance,notifications,curriculumPreview,questPreview,learningPreview,freeBoardPosts,notices",
+  "errorCode": null,
+  "message": "요청이 성공했습니다."
+}

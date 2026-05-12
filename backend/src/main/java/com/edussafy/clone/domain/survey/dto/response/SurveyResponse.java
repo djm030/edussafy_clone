@@ -7,5 +7,7 @@ import java.util.List;
 
 public record SurveyResponse(Long id, Long categoryId, String categoryName, String title, String description,
                              FormType formType, LocalDateTime openAt, LocalDateTime closeAt, Boolean isRequired,
-                             EventType eventType, String location, Integer capacity, String selectionPolicy,
+                             EventType eventType, LocalDateTime eventStartAt, LocalDateTime eventEndAt,
+                             String location, Integer capacity, String selectionPolicy,
+                             Long linkedPostId, String linkedPostTitle, String linkedPostContent,
                              List<SurveyQuestionResponse> questions) { }

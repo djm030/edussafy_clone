@@ -14,7 +14,11 @@ import com.edussafy.clone.domain.course.dto.response.CourseWeekResponse;
 import com.edussafy.clone.domain.course.exception.CourseNotFoundException;
 import com.edussafy.clone.domain.course.exception.CourseSessionNotFoundException;
 import com.edussafy.clone.domain.course.exception.CourseWeekNotFoundException;
+import com.edussafy.clone.domain.user.domain.entity.User;
+import com.edussafy.clone.domain.user.domain.repository.UserRepository;
+import com.edussafy.clone.domain.user.exception.UserNotFoundException;
 import com.edussafy.clone.global.response.PageResponse;
+import java.time.LocalDate;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -29,6 +33,7 @@ public class CourseQueryService {
     private final CourseRepository courseRepository;
     private final CourseWeekRepository courseWeekRepository;
     private final CourseSessionRepository courseSessionRepository;
+    private final UserRepository userRepository;
     private final CourseDtoMapper courseDtoMapper;
 
     public List<CourseResponse> getMyCourses(Long userId) {
@@ -68,6 +73,20 @@ public class CourseQueryService {
                 .searchSessions(courseId, weekId, CourseSessionType.REPLAY, blankToNull(keyword), PageRequest.of(page, size))
                 .map(courseDtoMapper::toSessionResponse);
         return PageResponse.from(sessions);
+    }
+
+    public PageResponse<CourseSessionResponse> getMyReplays(Long userId, String keyword, int page, int size) {
+        User user = userRepository.findById(userId).orElseThrow(UserNotFoundException::new);
+        return PageResponse.from(courseSessionRepository
+                .findMyReplays(user.getGeneration(), user.getRegion(), user.getClassNo(), CourseSessionType.REPLAY, blankToNull(keyword), PageRequest.of(page, size))
+                .map(courseDtoMapper::toSessionResponse));
+    }
+
+    public PageResponse<CourseSessionResponse> getCourseSessionsInRange(Long courseId, LocalDate startDate, LocalDate endDate, int page, int size) {
+        getCourseEntity(courseId);
+        return PageResponse.from(courseSessionRepository
+                .findCourseSessionsInRange(courseId, startDate, endDate, PageRequest.of(page, size))
+                .map(courseDtoMapper::toSessionResponse));
     }
 
     private Course getCourseEntity(Long courseId) {

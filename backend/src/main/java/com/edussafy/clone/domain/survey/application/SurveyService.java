@@ -2,6 +2,7 @@ package com.edussafy.clone.domain.survey.application;
 
 import com.edussafy.clone.domain.survey.domain.entity.Survey;
 import com.edussafy.clone.domain.survey.domain.entity.SurveyParticipant;
+import com.edussafy.clone.domain.survey.domain.enums.ParticipantStatus;
 import com.edussafy.clone.domain.survey.domain.enums.FormType;
 import com.edussafy.clone.domain.survey.domain.repository.SurveyCategoryRepository;
 import com.edussafy.clone.domain.survey.domain.repository.SurveyParticipantRepository;
@@ -16,9 +17,12 @@ import com.edussafy.clone.domain.survey.exception.SurveyNotFoundException;
 import com.edussafy.clone.domain.user.domain.entity.User;
 import com.edussafy.clone.domain.user.domain.repository.UserRepository;
 import com.edussafy.clone.domain.user.exception.UserNotFoundException;
+import com.edussafy.clone.global.exception.BusinessException;
+import com.edussafy.clone.global.exception.ErrorCode;
 import com.edussafy.clone.global.response.PageResponse;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.time.LocalDateTime;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
@@ -52,6 +56,11 @@ public class SurveyService {
         User user = getUser(userId);
         SurveyParticipant participant = surveyParticipantRepository.findBySurveyAndUser(survey, user)
                 .orElseGet(() -> surveyParticipantRepository.save(SurveyParticipant.builder().survey(survey).user(user).build()));
+        if (participant.getParticipantStatus() == ParticipantStatus.SUBMITTED
+                || participant.getParticipantStatus() == ParticipantStatus.SELECTED) {
+            return mapper.toParticipantResponse(participant);
+        }
+        validateSubmittable(survey);
         participant.submit(toJson(request.answers()));
         return mapper.toParticipantResponse(participant);
     }
@@ -74,4 +83,22 @@ public class SurveyService {
     private User getUser(Long userId) { return userRepository.findById(userId).orElseThrow(UserNotFoundException::new); }
     private String normalize(String keyword) { return keyword == null || keyword.isBlank() ? null : keyword; }
     private String toJson(Object value) { try { return objectMapper.writeValueAsString(value); } catch (JsonProcessingException e) { throw new IllegalArgumentException("Invalid answer data", e); } }
+    private void validateSubmittable(Survey survey) {
+        LocalDateTime now = LocalDateTime.now();
+        if (survey.getOpenAt() != null && now.isBefore(survey.getOpenAt())) {
+            throw new BusinessException(ErrorCode.INVALID_REQUEST);
+        }
+        if (survey.getCloseAt() != null && now.isAfter(survey.getCloseAt())) {
+            throw new BusinessException(ErrorCode.INVALID_REQUEST);
+        }
+        if (survey.getCapacity() != null && survey.getCapacity() > 0) {
+            long submittedCount = surveyParticipantRepository.countBySurveyAndParticipantStatusIn(
+                    survey,
+                    List.of(ParticipantStatus.SUBMITTED, ParticipantStatus.SELECTED)
+            );
+            if (submittedCount >= survey.getCapacity()) {
+                throw new BusinessException(ErrorCode.INVALID_REQUEST);
+            }
+        }
+    }
 }

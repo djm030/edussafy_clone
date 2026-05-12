@@ -3,7 +3,9 @@ package com.edussafy.clone.domain.survey.domain.repository;
 import com.edussafy.clone.domain.survey.domain.entity.Survey;
 import com.edussafy.clone.domain.survey.domain.entity.SurveyParticipant;
 import com.edussafy.clone.domain.survey.domain.enums.FormType;
+import com.edussafy.clone.domain.survey.domain.enums.ParticipantStatus;
 import com.edussafy.clone.domain.user.domain.entity.User;
+import java.util.Collection;
 import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,4 +16,5 @@ public interface SurveyParticipantRepository extends JpaRepository<SurveyPartici
     Optional<SurveyParticipant> findBySurveyAndUser(Survey survey, User user);
     Page<SurveyParticipant> findByUserOrderByCreatedAtDesc(User user, Pageable pageable);
     Page<SurveyParticipant> findByUserAndSurvey_FormTypeOrderByCreatedAtDesc(User user, FormType formType, Pageable pageable);
+    long countBySurveyAndParticipantStatusIn(Survey survey, Collection<ParticipantStatus> statuses);
 }
